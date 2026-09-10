@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animatePodcast } from "./podcast-animation";
 import { createFipsAnimation } from "./fips-animation";
+import { animateIceberg } from "./iceberg-animation";
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
@@ -19,6 +20,7 @@ window.addEventListener("pageshow", forceScrollTop);
 
 gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+animateIceberg(reduced);
 animatePodcast(reduced);
 
 // Hold the scene for one breath, using the same scrolling model as the opening.
@@ -466,6 +468,7 @@ async function runExperience() {
   });
 
   gsap.utils.toArray(".chapter").forEach(chapter => {
+    if (chapter.closest(".ice-journey")) return;
     gsap.from(chapter.querySelector("h2"), { yPercent: 70, opacity: 0, duration: 1, ease: "power4.out", scrollTrigger: { trigger: chapter, start: "top 60%" } });
     gsap.from(chapter.querySelector(".chapter-body"), { y: 40, opacity: 0, duration: .8, delay: .2, scrollTrigger: { trigger: chapter, start: "top 55%" } });
     gsap.to(chapter.querySelector(".chapter-number"), { yPercent: -18, scrollTrigger: { trigger: chapter, start: "top bottom", end: "bottom top", scrub: 1 } });

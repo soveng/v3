@@ -2,6 +2,11 @@
 
 Website for Sovereign Engineering.
 
+The homepage's iceberg sequence is drawn in canvas by
+`src/iceberg-animation.js`. Scrolling pins the scene, opens the fault, and
+descends from week 01 into weeks 02–03. Reduced-motion visitors see both
+chapters in a static, sequential layout.
+
 ## Podcast and FAQ content
 
 The podcast archive, individual episodes, FAQ, and policies are static pages
