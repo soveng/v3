@@ -49,7 +49,28 @@ footer { font:400 var(--type-label)/1.35 var(--mono); letter-spacing:.12em; text
 
 .chapters { position:relative; }.chapter { min-height:100vh; position:relative; display:grid; place-items:center; padding:8vh 5vw; overflow:hidden; }.chapter-build,.chapter-ship { background:var(--ink); }.chapter-demo { background:var(--red); }
 .chapter-number { position:absolute; left:2vw; top:50%; transform:translateY(-50%); color:rgba(255,255,255,.12); }.chapter-content { width:min(900px,75vw); position:relative; z-index:2; }.chapter-label { margin-bottom:3vh; }.chapter-body { width:min(430px,70vw); margin:4vh 0 0 auto; color:var(--dim); }.chapter-demo .chapter-body { color:#fff; }.chapter-aside { position:absolute; right:2.5vw; top:50%; writing-mode:vertical-rl; }
-.signal { position:absolute; inset:auto 0 5%; height:25%; display:flex; gap:1vw; align-items:end; opacity:.18; }.signal span { flex:1; background:#fff; height:20%; transform-origin:bottom; }
+.chapter-demo { display:block; padding:0; }
+.demo-stage { position:relative; min-height:100svh; padding:8svh 5vw; display:grid; place-items:center; overflow:hidden; }
+.chapter-demo.demo-scroll { min-height:260svh; overflow:clip; }
+.demo-scroll .demo-stage { position:sticky; top:0; }
+.demo-stage .chapter-content { width:min(1100px,90vw); }
+.demo-stage h2 { max-width:6ch; }
+.demo-stage .chapter-body { margin:4svh 0 0; max-width:28ch; }
+.demo-scene { position:absolute; right:1vw; bottom:10svh; width:60vw; max-height:75svh; color:var(--bone); pointer-events:none; }
+.demo-check { stroke-dasharray:1; }
+@media(max-width:720px) {
+  .demo-stage { align-items:start; padding-top:115px; }
+  .demo-stage h2 { font-size:clamp(56px,14vw,76px); max-width:none; }
+  .demo-stage .chapter-body { margin-top:24px; max-width:32ch; }
+  .demo-scene { width:100%; height:40svh; right:0; bottom:10px; }
+}
+@media(max-width:720px) and (max-height:650px) {
+  .demo-stage { padding-top:90px; }
+  .demo-stage h2 { font-size:46px; }
+  .demo-stage .chapter-label { margin-bottom:18px; }
+  .demo-stage .chapter-body { margin-top:18px; font-size:16px; }
+  .demo-scene { height:35svh; bottom:0; }
+}
 .chapter-break { background:var(--bone); color:var(--ink); display:block; padding:0; }
 .chapter-ship { display:block; padding:0; background:linear-gradient(#080808,#0a1319); }
 .ship-stage { position:relative; min-height:100svh; padding:8svh 5vw; display:grid; place-items:center; overflow:hidden; }

@@ -149,15 +149,51 @@
           <p class="chapter-aside">Make it real.</p>
         </div>
       </article>
-      <article class="chapter chapter-demo">
+      <article class="chapter chapter-demo" id="demo-day">
+        <div class="demo-stage">
+          <svg class="demo-scene" viewBox="0 0 800 600" aria-hidden="true">
+            <defs>
+              <linearGradient id="demo-light" x1="0" x2="1"><stop stop-color="#eee8dd" stop-opacity=".32"/><stop offset="1" stop-color="#eee8dd" stop-opacity=".04"/></linearGradient>
+            </defs>
+            <path class="demo-beam" d="M174 421 L292 104 L740 104 L740 392 L174 435 Z" fill="url(#demo-light)"/>
+            <g class="demo-screen" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M280 94 H752 M292 104 H740 V392 H292 Z M516 392 V474 M457 492 L516 474 L575 492"/>
+              <rect class="demo-screen-light" x="293" y="105" width="446" height="286" fill="currentColor" fill-opacity=".08" stroke="none"/>
+              <g class="demo-app">
+                <rect x="324" y="134" width="384" height="224" rx="8" fill="#c1272f"/>
+                <path d="M324 166 H708" opacity=".5"/>
+                <g fill="currentColor" stroke="none"><circle cx="340" cy="150" r="3"/><circle cx="352" cy="150" r="3"/><circle cx="364" cy="150" r="3"/></g>
+                <path d="M350 190 H421 M350 204 H464" opacity=".6"/>
+                <rect x="348" y="226" width="336" height="52" rx="5" opacity=".4"/>
+                <rect x="364" y="243" width="18" height="18" rx="3"/>
+                <path d="M400 247 H555 M400 258 H508" opacity=".6"/>
+                <g class="demo-button"><rect x="584" y="297" width="100" height="36" rx="18" fill="currentColor"/><path d="M621 315 H647 M641 309 L647 315 L641 321" stroke="#c1272f"/></g>
+                <g class="demo-result">
+                  <path class="demo-check" pathLength="1" d="M367 251 L372 256 L380 246" stroke-width="2.5"/>
+                  <path d="M400 252 H555"/>
+                  <circle cx="362" cy="315" r="10" fill="currentColor" stroke="none"/>
+                  <path d="M357 315 L361 319 L367 312" stroke="#c1272f"/>
+                  <path d="M383 315 H449" opacity=".6"/>
+                </g>
+              </g>
+            </g>
+            <circle class="demo-click" cx="636" cy="315" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0"/>
+            <path class="demo-cursor" d="M634 314 L637 344 L645 336 L651 348 L657 345 L650 333 L662 331 Z" fill="currentColor" stroke="#c1272f" stroke-width="2"/>
+            <g class="demo-projector" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="66" y="400" width="96" height="57" rx="10"/>
+              <path d="M162 413 L178 408 V445 L162 440 M80 415 H112 M80 423 H112 M80 431 H112 M89 457 L80 480 M140 457 L149 480"/>
+              <circle class="demo-power" cx="141" cy="417" r="4" fill="currentColor" stroke="none"/>
+              <path class="demo-lens" d="M178 416 V437" stroke-width="4"/>
+            </g>
+          </svg>
         <div class="chapter-number">V</div>
         <div class="chapter-content">
           <p class="chapter-label">Friday = Demo Day</p>
           <h2>Show the work.</h2>
           <p class="chapter-body">No decks. No theatre. Put working software in front of the room, learn fast, and return sharper on Monday.</p>
         </div>
-        <div class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <p class="chapter-aside">Demo on Friday.</p>
+        </div>
       </article>
       <article class="chapter chapter-alumni" id="keep-building">
         <div class="blocks-stage">

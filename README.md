@@ -11,6 +11,10 @@ chapters in a static, sequential layout.
 `src/blocks-animation.js` draws the alumni section's stacking bricks in canvas.
 Both scenes follow scrolling and use an unpinned static layout for reduced motion.
 
+`src/demo-animation.js` lights a projector, reveals an app, and clicks its button
+to complete a task in the red Demo Day section. The short pinned sequence follows
+scrolling; reduced motion and no JavaScript show the completed SVG scene.
+
 ## Podcast and FAQ content
 
 The podcast archive, individual episodes, FAQ, and policies are static pages

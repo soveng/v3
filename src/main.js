@@ -5,6 +5,7 @@ import { createFipsAnimation } from "./fips-animation";
 import { animateIceberg } from "./iceberg-animation";
 import { animateShip } from "./ship-animation";
 import { animateBlocks } from "./blocks-animation";
+import { animateDemo } from "./demo-animation";
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
@@ -24,6 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 animateIceberg(reduced);
 animateShip(reduced);
+animateDemo(reduced);
 animateBlocks(reduced);
 animatePodcast(reduced);
 
@@ -478,7 +480,6 @@ async function runExperience() {
     gsap.to(chapter.querySelector(".chapter-number"), { yPercent: -18, scrollTrigger: { trigger: chapter, start: "top bottom", end: "bottom top", scrub: 1 } });
   });
 
-  gsap.to(".signal span", { scaleY: () => gsap.utils.random(.2, 1), duration: .5, stagger: { each: .09, repeat: -1, yoyo: true }, ease: "sine.inOut" });
   gsap.utils.toArray(".project-plant").forEach((project, index) => {
     const plant = project.querySelector(".botanical");
     const renderer = createPlantAnimation(plant, plant.dataset.species, index + 1);
