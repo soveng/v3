@@ -54,9 +54,9 @@ git remote -v
 Do this before starting new work:
 
 ```sh
-git switch main
-git pull upstream main
-git push origin main
+git switch master
+git pull upstream master
+git push origin master
 ```
 
 This downloads upstream changes and updates your fork.
@@ -69,7 +69,7 @@ Use a short name describing the problem:
 git switch -c short-problem-name
 ```
 
-Keep the branch focused on one problem. Make changes here, not on `main`.
+Keep the branch focused on one problem. Make changes here, not on `master`.
 
 ### 6. Test and commit
 
@@ -100,7 +100,7 @@ git push -u origin short-problem-name
 
 1. Open your fork on GitHub.
 2. Click **Compare & pull request**.
-3. Confirm the base repository is `soveng/v3` and the base branch is `main`.
+3. Confirm the base repository is `soveng/v3` and the base branch is `master`.
 4. Explain the problem, your change, and how you tested it.
 5. Click **Create pull request**.
 
