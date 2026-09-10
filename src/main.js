@@ -188,7 +188,7 @@ function createPlantAnimation(canvas, species, seed) {
   const context = canvas.getContext("2d");
   const state = { progress: reduced ? 1 : 0 };
   const speciesConfig = {
-    cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: "#553a35", trunkWidth: 8, leaf: "#4c7148", accent: "#ed7e91", flowers: 11, crown: false, shape: "pointed" },
+    cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: "#553a35", trunkWidth: 8, leaf: "#4c7148", accent: "#ed7e91", flowers: 27, crown: false, shape: "pointed" },
     cashew: { height: 0, leaves: 0, leafLength: 0, leafWidth: 0, trunk: "#9b622d", trunkWidth: 0, leaf: "#d8ad68", accent: "#f1cf8b", flowers: 0, crown: false, shape: "cashew" },
     banyan: { height: .8, leaves: 28, leafLength: .16, leafWidth: .045, trunk: "#604933", trunkWidth: 16, leaf: "#2f6644", accent: "#ed3238", flowers: 0, crown: true, shape: "broad", roots: true },
     papyrus: { height: .82, leaves: 34, leafLength: .19, leafWidth: .009, trunk: "#71884d", trunkWidth: 7, leaf: "#5c8b55", accent: "#d9b83e", flowers: 0, crown: true, shape: "needle" },
@@ -315,16 +315,22 @@ function createPlantAnimation(canvas, species, seed) {
   }
 
   function drawFlowers(progress, width, height) {
+    const flowerNoise = index => {
+      const value = Math.sin(index * 127.1 + seed * 31.7) * 43758.5453;
+      return value - Math.floor(value);
+    };
     for (let index = 0; index < config.flowers; index += 1) {
-      const threshold = .62 + index * .025;
+      const threshold = species === "cherry" ? .46 + index / config.flowers * .32 : .62 + index * .025;
       const growth = smooth(clamp((progress - threshold) / .2));
       if (!growth) continue;
-      const attach = species === "firebush" ? .4 + index * .045 : .72 + (index % 4) * .065;
+      const attach = species === "cherry" ? .52 + flowerNoise(index + 210) * .45 : species === "firebush" ? .4 + index * .045 : .72 + (index % 4) * .065;
       const point = stemPoint(attach, width, height);
       const side = index % 2 ? 1 : -1;
-      const x = point.x + side * width * (.025 + index * .007);
-      const y = point.y - index * 5;
-      const radius = width * (species === "cherry" ? .01 : .012) * growth;
+      const x = point.x + side * width * (species === "cherry" ? .015 + flowerNoise(index + 250) * .14 : .025 + index * .007);
+      const y = point.y - (species === "cherry" ? flowerNoise(index + 280) * 24 : index * 5);
+      const radius = species === "cherry"
+        ? Math.max(4, Math.min(13, width * .01)) * (.55 + flowerNoise(index + 320) * 1.1) * growth
+        : width * .012 * growth;
       context.save();
       context.translate(x, y);
       context.rotate(side * .45);
