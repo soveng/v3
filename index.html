@@ -183,9 +183,57 @@
       </div>
     </section>
 
-    <section class="podcast-preview" aria-labelledby="podcast-title">
-      <a href="/podcast/" tabindex="-1" aria-hidden="true"><img src="/images/nosolutions-cover.jpg" width="600" height="600" alt="" loading="lazy"></a>
-      <div><p class="section-index">03 / The conversations</p><h2 id="podcast-title">No Solutions.</h2><p>Walking dialogues about freedom tech, open protocols, and the trade-offs of building in the open.</p><a class="text-link" href="/podcast/">Listen to the podcast ↗</a></div>
+    <section class="podcast-preview" id="podcast" aria-labelledby="podcast-title">
+      <div class="podcast-stage">
+        <div class="bell-scene">
+          <svg class="bell-meme" viewBox="0 0 760 610" role="img" aria-labelledby="bell-title bell-description">
+            <title id="bell-title">No solutions. Only trade-offs.</title>
+            <desc id="bell-description">A bell curve with a worried thinker at its peak and a quiet hooded figure on the right. The focus returns to the relaxed, smiling character on the far left.</desc>
+            <defs>
+              <radialGradient id="grug-glow"><stop stop-color="#ed3238" stop-opacity=".18"/><stop offset="1" stop-color="#ed3238" stop-opacity="0"/></radialGradient>
+              <filter id="meme-ink" color-interpolation-filters="sRGB">
+                <feColorMatrix type="saturate" values="0"/>
+                <feComponentTransfer>
+                  <feFuncR type="table" tableValues="1 0"/>
+                  <feFuncG type="table" tableValues="1 0"/>
+                  <feFuncB type="table" tableValues="1 0"/>
+                </feComponentTransfer>
+                <feColorMatrix type="luminanceToAlpha" result="ink"/>
+                <feFlood flood-color="#eee8dd"/>
+                <feComposite in2="ink" operator="in"/>
+              </filter>
+            </defs>
+            <ellipse class="grug-glow" cx="156" cy="295" rx="215" ry="200" fill="url(#grug-glow)"/>
+            <path class="bell-baseline" d="M32 401 H728"/>
+            <path class="bell-outline" d="M40 390 C164 390 224 372 280 234 C317 142 336 89 380 89 C424 89 443 142 480 234 C536 372 596 390 720 390"/>
+            <path class="bell-trace" pathLength="1" d="M40 390 C164 390 224 372 280 234 C317 142 336 89 380 89 C424 89 443 142 480 234 C536 372 596 390 720 390"/>
+            <g class="bell-thinker meme-character">
+              <svg x="313" y="0" width="140" height="126" viewBox="265 65 155 140" overflow="hidden">
+                <image href="/images/bell-curve-meme.png" width="675" height="499"/>
+              </svg>
+            </g>
+            <g class="bell-sage meme-character">
+              <svg x="578" y="232" width="140" height="155" viewBox="495 248 165 183" overflow="hidden">
+                <image href="/images/bell-curve-meme.png" width="675" height="499"/>
+              </svg>
+            </g>
+            <g class="bell-grug">
+              <g class="grug-portrait meme-character">
+                <svg x="35" y="170" width="228" height="185" viewBox="15 300 155 126" overflow="hidden">
+                  <image href="/images/bell-curve-meme.png" width="675" height="499"/>
+                </svg>
+              </g>
+            </g>
+            <circle class="bell-traveler" cx="143" cy="385" r="5"/>
+            <g class="grug-caption">
+              <path d="M149 408 V446 H184"/>
+              <text x="198" y="452">no solutions.</text>
+              <text x="198" y="484">only trade-offs.</text>
+            </g>
+          </svg>
+        </div>
+        <div class="podcast-copy"><p class="section-index">03 / The conversations</p><h2 id="podcast-title">No Solutions.</h2><p>Walking dialogues about freedom tech, open protocols, and the trade-offs of building in the open.</p><a class="text-link" href="/podcast/">Listen to the podcast ↗</a></div>
+      </div>
     </section>
 
     <section class="finale" id="apply">

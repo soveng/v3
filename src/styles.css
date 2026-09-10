@@ -89,10 +89,23 @@ footer { min-height:90px; border-top:1px solid #282828; display:grid; grid-templ
 .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:12px 24px; padding:24px 0; }
 .text-link,.content-links,.episode-meta,.section-menu { font:400 var(--type-label)/1.6 var(--mono); }
 .text-link { display:inline-block; margin-top:24px; text-decoration:underline; text-underline-offset:6px; }
-.podcast-preview { position:relative; padding:120px 6vw; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); align-items:center; gap:8vw; border-bottom:1px solid #333; }
-.podcast-preview img { width:100%; height:auto; }
-.podcast-preview h2 { font:400 var(--type-title)/1 var(--serif); margin:24px 0; }
-.podcast-preview p:not(.section-index) { max-width:36ch; color:var(--dim); }
+/* The curve draws itself, then gives the floor to the grug on its left. */
+.podcast-preview { position:relative; min-height:170svh; border-bottom:1px solid #333; }
+.podcast-stage { min-height:100svh; position:sticky; top:0; padding:90px 6vw 60px; display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:center; gap:4vw; }
+.bell-scene { min-width:0; }
+.bell-meme { display:block; width:100%; height:auto; overflow:visible; }
+.bell-baseline { stroke:var(--dim); stroke-width:1; opacity:.15; }
+.bell-outline,.bell-trace { fill:none; stroke-width:2; stroke-linecap:round; }
+.bell-outline { stroke:var(--bone); opacity:.14; }
+.bell-trace { stroke:var(--red); stroke-dasharray:1; stroke-dashoffset:0; }
+.meme-character { filter:url(#meme-ink); }
+.bell-thinker,.bell-sage { opacity:.45; }
+.bell-traveler { fill:var(--red); opacity:0; }
+.grug-caption path { fill:none; stroke:var(--red); stroke-width:1; }
+.grug-caption text { fill:var(--bone); font:20px var(--mono); letter-spacing:.04em; }
+.podcast-copy { padding-bottom:3vh; }
+.podcast-preview h2 { font:400 clamp(64px,7vw,112px)/.95 var(--serif); letter-spacing:-.045em; margin:28px 0; max-width:6ch; }
+.podcast-preview p:not(.section-index) { max-width:32ch; color:var(--dim); }
 .cohort-status { margin:36px auto 0; color:var(--dim); max-width:40ch; }
 .content-page .nav { mix-blend-mode:normal; background:var(--ink); border-bottom:1px solid #333; }
 .content-shell { max-width:1440px; margin:auto; padding:160px 5vw 100px; }
@@ -139,9 +152,15 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .nav-links { gap:14px; }
   .nav-links a:last-child { white-space:nowrap; }
   .content-shell { padding-top:130px; }
-  .podcast-preview,.podcast-hero,.episode-hero,.faq-layout { grid-template-columns:1fr; gap:32px; }
-  .podcast-preview { padding:72px 6vw; }
-  .podcast-preview img,.podcast-hero > img { max-width:320px; }
+  .podcast-hero,.episode-hero,.faq-layout { grid-template-columns:1fr; gap:32px; }
+  .podcast-preview { min-height:150svh; }
+  .podcast-stage { grid-template-columns:1fr; align-content:center; gap:24px; padding:80px 6vw 40px; }
+  .bell-meme { max-height:45svh; }
+  .grug-caption text { font-size:27px; }
+  .podcast-copy { padding:0; }
+  .podcast-preview h2 { font-size:clamp(48px,13vw,80px); max-width:none; margin:16px 0; }
+  .podcast-preview .text-link { margin-top:20px; }
+  .podcast-hero > img { max-width:320px; }
   .episode-hero > img { max-width:240px; }
   .podcast-hero,.episode-hero { margin-bottom:64px; }
   .archive-heading { display:block; }
@@ -152,4 +171,12 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .footer-links { justify-content:start; }
   .finale footer,.content-footer { grid-template-columns:1fr; gap:12px; padding:24px 0; }
   .finale footer > a,.content-footer a:last-child { justify-self:start; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .podcast-preview { min-height:0; }
+  .podcast-stage { position:relative; min-height:0; }
+}
+@media (max-height:600px) and (max-width:720px) {
+  .podcast-stage { position:relative; }
+  .podcast-preview { min-height:0; }
 }

@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { animatePodcast } from "./podcast-animation";
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
@@ -17,6 +18,7 @@ window.addEventListener("pageshow", forceScrollTop);
 
 gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+animatePodcast(reduced);
 
 const SHARD_COLUMNS = 125;
 const SHARD_ROWS = 80;

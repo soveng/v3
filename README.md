@@ -14,6 +14,11 @@ server to regenerate the pages:
 - `content/faq.md`: FAQ answers, in YAML frontmatter with Markdown answers.
 - `content/policy.md`: selection and participation policies.
 - `scripts/generate-pages.js`: shared page layout and content rendering.
+- `src/podcast-animation.js`: the homepage bell-curve scroll sequence.
+  Its characters use the [Bell Curve template](https://imgflip.com/memegenerator/533936279/Bell-Curve)
+  stored unchanged at `public/images/bell-curve-meme.png`. SVG crops and filters
+  isolate the characters and match the site's colours; the curve is drawn in SVG.
+  Reduced-motion visitors get the complete static illustration.
 
 The root `podcast/`, `faq/`, and `policy/` directories are generated and ignored
 by Git. They are replaced during generation; do not edit or store source in them.
