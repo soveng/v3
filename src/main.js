@@ -21,6 +21,15 @@ gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 animatePodcast(reduced);
 
+// Let the breathing cue run while people pause here, and rest offscreen.
+if (!reduced) {
+  const breathSection = document.querySelector(".chapter-break");
+  const breathObserver = new IntersectionObserver(([entry]) => {
+    breathSection.classList.toggle("is-breathing", entry.isIntersecting);
+  }, { threshold: .15 });
+  breathObserver.observe(breathSection);
+}
+
 const homeNav = document.querySelector(".nav-home");
 const updateNav = trigger => {
   const visible = trigger.progress > 0;
