@@ -21,6 +21,8 @@ share a root anchor, and TollGate stays upright to preserve that connection.
 The deeper root section grows with scrolling; three slow packet pulses repeat
 while the network is visible, traveling outward and back toward TollGate.
 Reduced-motion visitors see a static view, and offscreen animation is paused.
+Portrait screens generate additional short, staggered root branches in pixel
+coordinates rather than stretching the desktop network vertically.
 
 ## Podcast and FAQ content
 

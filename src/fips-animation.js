@@ -43,9 +43,59 @@ export function createFipsAnimation(canvas, reducedMotion) {
   }
   const ancestry = branch => branch ? [...ancestry(branch.parent), branch] : [];
   const deepest = tips.reduce((a, b) => a.end.y > b.end.y ? a : b);
-  const sortedTips = [...tips].sort((a, b) => a.end.x - b.end.x);
-  const routes = [ancestry(sortedTips[Math.floor(sortedTips.length * .15)]), ancestry(deepest), ancestry(sortedTips[Math.floor(sortedTips.length * .85)])];
-  const rootDepth = Math.max(...tips.map(tip => tip.end.y));
+  let sortedTips = [...tips].sort((a, b) => a.end.x - b.end.x);
+  let routes = [ancestry(sortedTips[Math.floor(sortedTips.length * .15)]), ancestry(deepest), ancestry(sortedTips[Math.floor(sortedTips.length * .85)])];
+  let rootDepth = Math.max(...tips.map(tip => tip.end.y));
+  const desktop = { branches: [...branches], tips: sortedTips, routes, rootDepth };
+  let portrait = false;
+
+  function layoutRoots(width, height) {
+    portrait = width <= 720 && height > width;
+    branches.length = 0;
+    if (!portrait) {
+      branches.push(...desktop.branches);
+      sortedTips = desktop.tips; routes = desktop.routes; rootDepth = desktop.rootDepth;
+      return;
+    }
+    // Build in screen pixels: a deeper screen gets more branching, not longer cells.
+    seed = 812;
+    rootDepth = .96;
+    const ends = [];
+    const point = (x, y) => ({ x: x / width, y: y / height });
+    function segment(start, end, parent, depth, bend) {
+      const branch = { start, end, parent, depth,
+        control: point((start.x + end.x) * width / 2 + bend, (start.y + end.y) * height / 2),
+        arrival: Math.min(.49, start.y * .5),
+        hairs: Array.from({ length: 3 }, () => ({ t: .2 + random() * .65, side: random() > .5 ? 1 : -1, length: .009 + random() * .012 })),
+      };
+      branches.push(branch);
+      return branch;
+    }
+    function lateral(start, angle, length, parent, depth) {
+      const x = start.x * width + Math.cos(angle) * length;
+      const y = start.y * height + Math.sin(angle) * length;
+      if (x < 18 || x > width - 18 || y > height * .98) return;
+      const branch = segment(start, point(x, y), parent, depth, (random() - .5) * length * .6);
+      if (depth >= 5) { ends.push(branch); return; }
+      lateral(branch.end, angle - .4, length * .62, branch, depth + 1);
+      lateral(branch.end, angle + .55, length * .68, branch, depth + 1);
+    }
+    const count = Math.ceil(height / 52);
+    let parent = null;
+    let start = point(rootX * width, 0);
+    for (let index = 1; index <= count; index++) {
+      const t = index === count ? 1 : (index + (random() - .5) * .45) / count;
+      const x = width * (rootX + Math.sin(t * Math.PI * 3) * .075 + smooth((t - .55) / .45) * .25);
+      const branch = segment(start, point(x, height * .96 * t), parent, .4 + t * 2.5, (random() - .5) * 30);
+      const side = index % 2 ? -1 : 1;
+      lateral(branch.end, (side < 0 ? 2.65 : .55) + (random() - .5) * .35, Math.min(80, width * .2) * (.7 + random() * .4), branch, 2);
+      parent = branch; start = branch.end;
+    }
+    ends.push(parent);
+    sortedTips = ends.sort((a, b) => a.end.x - b.end.x);
+    const lower = ends.filter(branch => branch.end.y > .55);
+    routes = [ancestry(lower[0] || parent), ancestry(parent), ancestry(lower[lower.length - 1] || parent)];
+  }
   let visible = false;
   let frame = 0;
   let elapsed = 0;
@@ -108,7 +158,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
         const next = at(branch, hair.t + .01);
         const angle = Math.atan2(next.y - p.y, next.x - p.x) + hair.side * .9;
         const a = project(p);
-        const b = project({ x: p.x + Math.cos(angle) * hair.length * reach, y: p.y + Math.sin(angle) * hair.length * reach });
+        const b = project({ x: p.x + Math.cos(angle) * hair.length * reach, y: p.y + Math.sin(angle) * hair.length * reach * (portrait ? width / height : 1) });
         context.beginPath(); context.moveTo(a.x, a.y);
         context.quadraticCurveTo(a.x, b.y, b.x, b.y);
         context.strokeStyle = "rgba(124,113,83,.42)";
@@ -121,7 +171,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
     const canvasRect = canvas.getBoundingClientRect();
     const titleRect = copy.querySelector("h3").getBoundingClientRect();
     const textRect = copy.querySelector("p").getBoundingClientRect();
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; !portrait && index < 3; index++) {
       const start = sortedTips[Math.floor(sortedTips.length * (.72 + index * .08))].end;
       const end = {
         x: (titleRect.right - canvasRect.left - titleRect.width * (.05 + index * .12)) / width,
@@ -168,6 +218,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
     canvas.style.left = `${sourceRect.left - cardRect.left}px`;
     canvas.style.width = `${source.clientWidth}px`;
     canvas.style.height = `${Math.max(120, card.clientHeight + 80 - top)}px`;
+    layoutRoots(canvas.clientWidth, canvas.clientHeight);
     const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(canvas.clientWidth * ratio);
     canvas.height = Math.round(canvas.clientHeight * ratio);
