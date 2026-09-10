@@ -411,6 +411,52 @@ function createPlantAnimation(canvas, species, seed) {
     });
   }
 
+  function drawPapyrus(progress, width, height) {
+    const spread = Math.min(width, 1000);
+    const baseX = width * .5;
+    const baseY = height * .96;
+    // Bare, slender stems rise from one clump, each ending in a fine umbrella.
+    const stalks = [[-.21, .55, .75], [.2, .62, .85], [-.1, .77, .9], [.1, .7, .85], [0, .84, 1]];
+    context.lineCap = "round";
+    stalks.forEach(([offset, tall, crownScale], index) => {
+      const growth = smooth(clamp((progress - index * .045) / .55));
+      if (!growth) return;
+      const rootX = baseX + (index - 2) * 3;
+      const x = baseX + offset * spread;
+      const y = baseY - height * tall;
+      const topX = rootX + (x - rootX) * growth;
+      const topY = baseY + (y - baseY) * growth;
+      context.beginPath(); context.moveTo(rootX, baseY);
+      context.bezierCurveTo(rootX + offset * spread * .12, baseY - height * tall * growth * .4, topX - offset * spread * .12, topY + height * .15 * growth, topX, topY);
+      context.strokeStyle = index % 2 ? "#668044" : "#496a3c";
+      context.lineWidth = Math.max(2.5, Math.min(5, width * .005)); context.stroke();
+      context.strokeStyle = "rgba(205,207,130,.5)"; context.lineWidth = .8; context.stroke();
+      const bloom = smooth(clamp((progress - .38 - index * .045) / .4));
+      if (!bloom) return;
+      const radius = Math.min(145, width * .22) * crownScale * bloom;
+      for (let ray = 0; ray < 44; ray++) {
+        const angle = ray / 44 * Math.PI * 2;
+        const reach = radius * (.65 + noise(ray + index * 53) * .35);
+        const dx = Math.cos(angle) * reach;
+        const dy = Math.sin(angle) * reach * .48;
+        const droop = reach * (.25 + noise(ray + 90) * .15);
+        const endX = topX + dx, endY = topY + dy + droop;
+        context.beginPath(); context.moveTo(topX, topY);
+        context.bezierCurveTo(topX + dx * .35, topY + dy * .45 - reach * .22, topX + dx * .82, topY + dy - reach * .12, endX, endY);
+        context.strokeStyle = ray % 3 ? "#66854b" : "#9aa35a";
+        context.lineWidth = ray % 5 ? .8 : 1.25; context.stroke();
+        // Tiny terminal branchlets give the crown its feathery papyrus texture.
+        for (const side of [-1, 1]) {
+          context.beginPath(); context.moveTo(endX - dx * .09, endY - droop * .35);
+          context.quadraticCurveTo(endX + side * reach * .035, endY - 5 * bloom, endX + side * reach * .07, endY + 3 * bloom);
+          context.strokeStyle = "rgba(121,136,72,.7)"; context.lineWidth = .55; context.stroke();
+        }
+      }
+      context.beginPath(); context.arc(topX, topY, 2 * bloom, 0, Math.PI * 2);
+      context.fillStyle = "#56723d"; context.fill();
+    });
+  }
+
   function drawAntenna(progress, width, height) {
     const growth = smooth(clamp((progress - .68) / .24));
     if (!growth) return;
@@ -454,6 +500,10 @@ function createPlantAnimation(canvas, species, seed) {
     context.clearRect(0, 0, width, height);
     if (species === "cashew") {
       drawCashewPile(state.progress, width, height);
+      return;
+    }
+    if (species === "papyrus") {
+      drawPapyrus(state.progress, width, height);
       return;
     }
     if (config.roots) {
