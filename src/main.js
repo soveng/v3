@@ -196,6 +196,7 @@ function createPlantAnimation(canvas, species, seed) {
     firebush: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
   };
   const config = speciesConfig[species];
+  if (species === "mangrove") canvas.dataset.rootX = .5 + Math.sin(seed) * .012;
 
   const smooth = value => value * value * (3 - 2 * value);
   const clamp = value => Math.max(0, Math.min(1, value));
@@ -499,7 +500,7 @@ async function runExperience() {
         renderer.state.progress = self.progress;
         renderer.draw();
         const copyProgress = gsap.utils.clamp(0, 1, (self.progress - .72) / .2);
-        gsap.set(plant, { rotate: plant.dataset.species === "mycelium" ? 0 : (index % 2 ? 1 : -1) * 10 * self.progress, transformOrigin: "50% 100%" });
+        gsap.set(plant, { rotate: ["mycelium", "mangrove"].includes(plant.dataset.species) ? 0 : (index % 2 ? 1 : -1) * 10 * self.progress, transformOrigin: "50% 100%" });
         gsap.set(copy, { opacity: copyProgress, y: (1 - copyProgress) * 32 });
       }
     });

@@ -15,9 +15,10 @@ Both scenes follow scrolling and use an unpinned static layout for reduced motio
 to complete a task in the red Demo Day section. The short pinned sequence follows
 scrolling; reduced motion and no JavaScript show the completed SVG scene.
 
-`src/fips-animation.js` grows two mycelium colonies with tapered roots and fine
-side filaments. Nearby tips join, then a warm signal follows a connected root
-path. Growth is deterministic and scroll-driven, with a static reduced-motion view.
+`src/fips-animation.js` grows a branching root network directly from the base
+of TollGate’s mangrove, showing FIPS emerging from TollGate. The two canvases
+share a root anchor, and TollGate stays upright to preserve that connection.
+Growth is deterministic and scroll-driven, with a static reduced-motion view.
 
 ## Podcast and FAQ content
 

@@ -1,4 +1,4 @@
-// Two branching colonies grow together; a signal follows their living filaments.
+// FIPS grows underground from the exact base of the TollGate mangrove.
 export function createFipsAnimation(canvas, reducedMotion) {
   const context = canvas.getContext("2d");
   const state = { progress: reducedMotion ? 1 : 0 };
@@ -7,51 +7,43 @@ export function createFipsAnimation(canvas, reducedMotion) {
   let seed = 812;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
   const branches = [];
-  const tips = [[], []];
+  const tips = [];
+  const source = document.querySelector('#tollgate .botanical');
+  const rootX = Number(source.dataset.rootX);
 
-  function grow(start, angle, length, depth, colony, parent = null) {
+  function grow(start, angle, length, depth, parent = null) {
     const end = {
-      x: Math.max(.035, Math.min(.965, start.x + Math.cos(angle) * length)),
-      y: Math.max(.08, Math.min(.92, start.y + Math.sin(angle) * length * 1.5)),
+      x: start.x + Math.cos(angle) * length * .65,
+      y: Math.max(.08, Math.min(.92, start.y + Math.sin(angle) * length)),
     };
     const bend = (random() - .5) * length * .8;
     const branch = {
-      start, end, depth, colony, parent,
+      start, end, depth, parent,
       control: { x: (start.x + end.x) / 2 - Math.sin(angle) * bend,
         y: (start.y + end.y) / 2 + Math.cos(angle) * bend },
       arrival: depth * .095 + random() * .025,
       hairs: Array.from({ length: 3 }, () => ({ t: .25 + random() * .6, side: random() > .5 ? 1 : -1, length: .006 + random() * .012 })),
     };
     branches.push(branch);
-    if (depth === 4) { tips[colony].push(branch); return; }
+    if (depth === 5) { tips.push(branch); return; }
     for (const side of [-1, 1]) {
-      grow(end, angle + side * (.25 + random() * .55), length * (.62 + random() * .16), depth + 1, colony, branch);
+      const direction = angle + side * (.25 + random() * .4);
+      grow(end, Math.max(.2, Math.min(Math.PI - .2, direction)), length * (.65 + random() * .13), depth + 1, branch);
     }
   }
 
-  for (const colony of [0, 1]) {
-    const origin = { x: colony ? .71 : .29, y: colony ? .48 : .52 };
-    for (let arm = 0; arm < 6; arm++) {
-      grow(origin, arm / 6 * Math.PI * 2 + (random() - .5) * .35, .095 + random() * .025, 0, colony);
-    }
-  }
-
-  // Nearby root tips fuse naturally, with no regular grid or node markers.
-  const candidates = tips[0].flatMap(a => tips[1].map(b => ({ a, b, distance: Math.hypot(a.end.x - b.end.x, a.end.y - b.end.y) })))
-    .sort((a, b) => a.distance - b.distance);
-  const joins = [];
-  const used = new Set();
-  for (const { a, b, distance } of candidates) {
-    if (used.has(a) || used.has(b) || (distance > .19 && joins.length)) continue;
-    joins.push({ start: a.end, end: b.end, control: { x: (a.end.x + b.end.x) / 2, y: (a.end.y + b.end.y) / 2 + .025 }, depth: 4, arrival: .53, hairs: [], a, b });
-    used.add(a); used.add(b);
-    if (joins.length === 7) break;
+  const trunk = {
+    start: { x: rootX, y: 0 }, end: { x: rootX + .012, y: .14 },
+    control: { x: rootX - .018, y: .08 },
+    depth: 0, arrival: 0, hairs: [], parent: null,
+  };
+  branches.push(trunk);
+  for (const angle of [.35, .9, 1.5, 2.15, 2.75]) {
+    grow(trunk.end, angle, .23 + random() * .03, 1, trunk);
   }
   const ancestry = branch => branch ? [...ancestry(branch.parent), branch] : [];
-  const bridge = joins[0];
-  const route = [...ancestry(bridge.a).map(branch => ({ branch, reverse: false })),
-    { branch: bridge, reverse: false },
-    ...ancestry(bridge.b).reverse().map(branch => ({ branch, reverse: true }))];
+  const deepest = tips.reduce((a, b) => a.end.y > b.end.y ? a : b);
+  const route = ancestry(deepest);
 
   function at(branch, t) {
     const u = 1 - t;
@@ -65,10 +57,8 @@ export function createFipsAnimation(canvas, reducedMotion) {
     context.clearRect(0, 0, width, height);
     if (!width || !height) return;
     const progress = clamp(state.progress);
-    const spread = Math.min(width, 1100);
-    const card = canvas.closest(".project-plant");
-    const meshHeight = Math.max(120, Math.min(height, card.clientHeight - card.querySelector(".plant-copy").offsetHeight - 48));
-    const project = p => ({ x: (width - spread) / 2 + p.x * spread, y: p.y * meshHeight });
+    const spread = width;
+    const project = p => ({ x: p.x * spread, y: p.y * height });
     const size = Math.max(.65, spread / 1000);
     context.lineCap = "round";
 
@@ -86,13 +76,13 @@ export function createFipsAnimation(canvas, reducedMotion) {
       }
     }
 
-    for (const branch of [...branches, ...joins]) {
+    for (const branch of branches) {
       const growth = smooth((progress - branch.arrival) / .2);
       if (!growth) continue;
-      const weight = (3.6 * Math.pow(.65, branch.depth) + .3) * size;
-      filament(branch, 0, growth, branch.depth < 2 ? "#536448" : "#899475", weight);
+      const weight = (12 * Math.pow(.53, branch.depth) + .25) * size;
+      filament(branch, 0, growth, branch.depth < 2 ? "#594737" : "#8b8063", weight);
       // Pale edges and tiny lateral hairs give each root a tapered, fibrous texture.
-      filament(branch, 0, growth, "rgba(193,196,156,.48)", weight * .3);
+      filament(branch, 0, growth, "rgba(193,177,140,.38)", weight * .3);
       for (const hair of branch.hairs) {
         const reach = smooth((growth - hair.t) / .25);
         if (!reach) continue;
@@ -103,20 +93,20 @@ export function createFipsAnimation(canvas, reducedMotion) {
         const b = project({ x: p.x + Math.cos(angle) * hair.length * reach, y: p.y + Math.sin(angle) * hair.length * reach });
         context.beginPath(); context.moveTo(a.x, a.y);
         context.quadraticCurveTo(a.x, b.y, b.x, b.y);
-        context.strokeStyle = "rgba(109,127,86,.42)";
+        context.strokeStyle = "rgba(124,113,83,.42)";
         context.lineWidth = .55 * size; context.stroke();
       }
     }
 
     const travel = clamp((progress - .74) / .25) * route.length;
-    route.forEach(({ branch, reverse }, index) => {
+    route.forEach((branch, index) => {
       const growth = clamp(travel - index);
-      if (growth) filament(branch, reverse ? 1 : 0, reverse ? 1 - growth : growth, "rgba(190,79,57,.72)", 1.5 * size);
+      if (growth) filament(branch, 0, growth, "rgba(190,79,57,.72)", 1.5 * size);
     });
     if (travel > 0 && travel < route.length) {
-      const { branch, reverse } = route[Math.floor(travel)];
+      const branch = route[Math.floor(travel)];
       const t = travel % 1;
-      const p = project(at(branch, reverse ? 1 - t : t));
+      const p = project(at(branch, t));
       const glow = context.createRadialGradient(p.x, p.y, 0, p.x, p.y, 14 * size);
       glow.addColorStop(0, "rgba(237,110,65,.45)");
       glow.addColorStop(1, "rgba(237,110,65,0)");
@@ -126,6 +116,14 @@ export function createFipsAnimation(canvas, reducedMotion) {
   }
 
   function resize() {
+    const card = canvas.closest(".project-plant");
+    const sourceRect = source.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const top = sourceRect.top + source.clientHeight * .96 - cardRect.top;
+    canvas.style.top = `${top}px`;
+    canvas.style.left = `${sourceRect.left - cardRect.left}px`;
+    canvas.style.width = `${source.clientWidth}px`;
+    canvas.style.height = `${Math.max(120, card.clientHeight - card.querySelector(".plant-copy").offsetHeight - 48 - top)}px`;
     const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(canvas.clientWidth * ratio);
     canvas.height = Math.round(canvas.clientHeight * ratio);
@@ -134,6 +132,6 @@ export function createFipsAnimation(canvas, reducedMotion) {
   }
   resize();
   window.addEventListener("resize", resize);
-  document.fonts.ready.then(draw);
+  document.fonts.ready.then(resize);
   return { state, draw };
 }
