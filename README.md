@@ -8,9 +8,8 @@ descends from week 01 into weeks 02–03. Reduced-motion visitors see both
 chapters in a static, sequential layout.
 
 `src/ship-animation.js` assembles and launches the SVG sailboat;
-`src/blocks-animation.js` assembles a studded, impossible staircase in the alumni
-section. Twelve chunky 2×4 bricks form four ascending flights that meet on the same
-projected sightline.
+`src/blocks-animation.js` assembles a small house from eighteen regular 2×4
+bricks, with an open doorway, blue foundation, and stepped red roof.
 Both scenes follow scrolling and use an unpinned static layout for reduced motion.
 
 `src/demo-animation.js` lights a projector, reveals an app, and clicks its button

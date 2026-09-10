@@ -14,32 +14,14 @@ export function animateBlocks(reducedMotion) {
     ["#ed3238", "#b3232b", "#791b24"],
     ["#648b9c", "#406777", "#284450"],
   ];
-  // The upper landing ends on the lower landing's sightline. In projection,
-  // all four ascending flights close into one impossible loop.
-  // Twelve identical 2×4 bricks alternate orientation between the flights.
-  const steps = 3;
-  const rise = .45;
-  const slope = .45;
-  const longStep = 4;
-  const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]];
-  let u = 0, v = 0;
-  for (let flight = 0; flight < 4; flight++) {
-    const [du, dv] = directions[flight];
-    const run = flight < 2 ? longStep : 2;
-    for (let step = 0; step < steps; step++) {
-      const index = flight * steps + step;
-      bricks.push({ u: u + du * run * .5, v: v + dv * run * .5,
-        z: (index + .5) * rise, du, dv, run, breadth: flight < 2 ? 2 : 4, flight, index });
-      u += du * run; v += dv * run;
-    }
-  }
-  const rawPoint = (u, v, z) => ({ x: u - v, y: (u + v) * slope - z });
-  const outline = bricks.flatMap(brick => {
-    const { u, v, z, du, dv, run, breadth } = brick;
-    return [-1, 1].flatMap(a => [-1, 1].map(b => rawPoint(u + du * run * a / 2 - dv * b * breadth / 2, v + dv * run * a / 2 + du * b * breadth / 2, z)));
-  });
-  const bounds = { left: Math.min(...outline.map(p => p.x)), right: Math.max(...outline.map(p => p.x)),
-    top: Math.min(...outline.map(p => p.y)) - 1, bottom: Math.max(...outline.map(p => p.y)) + 1.6 };
+  // A small community house: foundation, open doorway, lintel, stepped roof.
+  const add = (u, v, z, length, depth, color) => bricks.push({ u, v, z, length, depth, color, index: bricks.length });
+  for (const v of [0, 2]) for (const u of [0, 4]) add(u, v, 0, 4, 2, 2);
+  for (const z of [1, 2]) for (const u of [0, 6]) add(u, 0, z, 2, 4, 0);
+  for (const v of [0, 2]) for (const u of [0, 4]) add(u, v, 3, 4, 2, 0);
+  for (const u of [1, 3, 5]) add(u, 0, 4, 2, 4, 1);
+  for (const u of [2, 4]) add(u, 0, 5, 2, 4, 1);
+  add(3, 0, 6, 2, 4, 1);
   let frame = 0;
 
   function draw() {
@@ -48,13 +30,13 @@ export function animateBlocks(reducedMotion) {
     const height = canvas.clientHeight;
     if (!width || !height) return;
     context.clearRect(0, 0, width, height);
-    const unit = Math.min(width * .78 / (bounds.right - bounds.left), height * .72 / (bounds.bottom - bounds.top));
-    const originX = width * .54 - (bounds.left + bounds.right) / 2 * unit;
-    const originY = height * .57 - (bounds.top + bounds.bottom) / 2 * unit;
-    const project = (u, v, z, fall = 0) => {
-      const p = rawPoint(u, v, z);
-      return { x: originX + p.x * unit, y: originY + p.y * unit - fall };
-    };
+    const unit = Math.min(width * .78 / 12, height * .8 / 12);
+    const originX = width * .54 - unit * 2;
+    const originY = height * .59;
+    const project = (u, v, z, fall = 0) => ({
+      x: originX + (u - v) * unit,
+      y: originY + (u + v) * unit * .4 - z * unit * 1.2 - fall,
+    });
     function face(points, color) {
       context.beginPath();
       points.forEach((p, index) => index ? context.lineTo(p.x, p.y) : context.moveTo(p.x, p.y));
@@ -71,39 +53,32 @@ export function animateBlocks(reducedMotion) {
     context.fillStyle = shadow;
     context.fillRect(0, originY - unit * 2, width, unit * 6);
 
-    const paintOrder = [3, 0, 2, 1].flatMap(flight => bricks.filter(brick => brick.flight === flight));
-    function drawBrick({ u, v, z, du, dv, run, breadth, index }) {
+    function drawBrick({ u, v, z, length, depth, color: colorIndex, index }) {
       const arrival = index / bricks.length * .86;
       const raw = clamp((state.progress - arrival) / .14);
       if (!raw) return;
       const fall = Math.pow(1 - raw, 3) * unit * 3;
-      const color = colors[index % 4 === 0 ? 1 : index % 4 === 2 ? 2 : 0];
-      const point = (along, across, elevation = z) => project(u + du * along - dv * across, v + dv * along + du * across, elevation, fall);
-      const half = run * .495;
-      const acrossHalf = breadth / 2 - .02;
-      const corners = [point(-half, -acrossHalf), point(half, -acrossHalf), point(half, acrossHalf), point(-half, acrossHalf)];
+      const color = colors[colorIndex];
+      const point = (x, y, elevation = z + 1) => project(u + x, v + y, elevation, fall);
+      const a = point(.025, .025), b = point(length - .025, .025);
+      const c = point(length - .025, depth - .025), d = point(.025, depth - .025);
       context.globalAlpha = Math.min(1, raw * 4);
-      // Visible vertical faces give every tread the same upward step.
-      for (let edge = 0; edge < 4; edge++) {
-        const a = corners[edge], b = corners[(edge + 1) % 4];
-        if (b.x < a.x) face([a, b, { x: b.x, y: b.y + unit * 1.2 }, { x: a.x, y: a.y + unit * 1.2 }], edge % 2 ? color[2] : color[1]);
-      }
-      face(corners, color[0]);
-      for (let along = -run / 2 + .5; along < run / 2; along++) {
-      for (let across = -breadth / 2 + .5; across < breadth / 2; across++) {
-        const stud = point(along, across);
-        const radius = unit * .29;
-        context.fillStyle = color[1];
-        context.beginPath(); context.ellipse(stud.x, stud.y, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
-        context.fillStyle = color[0];
-        context.beginPath(); context.ellipse(stud.x, stud.y - unit * .18, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
-        context.strokeStyle = "rgba(8,8,8,.22)"; context.lineWidth = .6; context.stroke();
-      }
+      face([b, point(length - .025, .025, z), point(length - .025, depth - .025, z), c], color[2]);
+      face([d, c, point(length - .025, depth - .025, z), point(.025, depth - .025, z)], color[1]);
+      face([a, b, c, d], color[0]);
+      for (let x = .5; x < length; x++) {
+        for (let y = .5; y < depth; y++) {
+          const stud = point(x, y);
+          const radius = unit * .29;
+          context.fillStyle = color[1];
+          context.beginPath(); context.ellipse(stud.x, stud.y, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
+          context.fillStyle = color[0];
+          context.beginPath(); context.ellipse(stud.x, stud.y - unit * .18, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
+          context.strokeStyle = "rgba(8,8,8,.22)"; context.lineWidth = .6; context.stroke();
+        }
       }
     }
-    paintOrder.forEach(drawBrick);
-    // This overlap is the impossible joint, revealed as the loop closes.
-    if (state.progress > .96) drawBrick(bricks[0]);
+    bricks.forEach(drawBrick);
     context.globalAlpha = 1;
   }
 
