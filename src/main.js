@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animatePodcast } from "./podcast-animation";
+import { createFipsAnimation } from "./fips-animation";
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
@@ -149,6 +150,7 @@ function createShardGlobe(canvas, image) {
 }
 
 function createPlantAnimation(canvas, species, seed) {
+  if (species === "mycelium") return createFipsAnimation(canvas, reduced);
   const context = canvas.getContext("2d");
   const state = { progress: reduced ? 1 : 0 };
   const speciesConfig = {
@@ -463,7 +465,7 @@ async function runExperience() {
         renderer.state.progress = self.progress;
         renderer.draw();
         const copyProgress = gsap.utils.clamp(0, 1, (self.progress - .72) / .2);
-        gsap.set(plant, { rotate: (index % 2 ? 1 : -1) * 10 * self.progress, transformOrigin: "50% 100%" });
+        gsap.set(plant, { rotate: plant.dataset.species === "mycelium" ? 0 : (index % 2 ? 1 : -1) * 10 * self.progress, transformOrigin: "50% 100%" });
         gsap.set(copy, { opacity: copyProgress, y: (1 - copyProgress) * 32 });
       }
     });
