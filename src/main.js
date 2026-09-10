@@ -188,12 +188,12 @@ function createPlantAnimation(canvas, species, seed) {
   const context = canvas.getContext("2d");
   const state = { progress: reduced ? 1 : 0 };
   const speciesConfig = {
-    cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: "#553a35", trunkWidth: 8, leaf: "#4c7148", accent: "#ed7e91", flowers: 27, crown: false, shape: "pointed" },
+    cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: "#553a35", trunkWidth: 8, leaf: "#4c7148", accent: "#ed7e91", flowers: 21, crown: false, shape: "pointed" },
     cashew: { height: 0, leaves: 0, leafLength: 0, leafWidth: 0, trunk: "#9b622d", trunkWidth: 0, leaf: "#d8ad68", accent: "#f1cf8b", flowers: 0, crown: false, shape: "cashew" },
     banyan: { height: .8, leaves: 28, leafLength: .16, leafWidth: .045, trunk: "#604933", trunkWidth: 16, leaf: "#2f6644", accent: "#ed3238", flowers: 0, crown: true, shape: "broad", roots: true },
     papyrus: { height: .82, leaves: 34, leafLength: .19, leafWidth: .009, trunk: "#71884d", trunkWidth: 7, leaf: "#5c8b55", accent: "#d9b83e", flowers: 0, crown: true, shape: "needle" },
     mangrove: { height: .67, leaves: 24, leafLength: .13, leafWidth: .035, trunk: "#594737", trunkWidth: 13, leaf: "#346c52", accent: "#ed3238", flowers: 0, crown: false, shape: "broad", roots: true },
-    firebush: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
+    dandelion: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
   };
   const config = speciesConfig[species];
   if (species === "mangrove") canvas.dataset.rootX = .5 + Math.sin(seed) * .012;
@@ -463,6 +463,66 @@ function createPlantAnimation(canvas, species, seed) {
     });
   }
 
+  function drawDandelion(progress, width, height) {
+    const base = { x: width * .46, y: height * .96 };
+    const head = { x: width * .49, y: height * .32 };
+    const growth = smooth(clamp(progress / .4));
+    const radius = Math.max(44, Math.min(95, width * .15));
+    context.lineCap = "round";
+    // A basal rosette of toothed leaves leaves the flower stalk bare.
+    for (let leaf = 0; leaf < 6; leaf++) {
+      const side = leaf % 2 ? 1 : -1;
+      const length = Math.min(width * .24, 190) * (.65 + noise(leaf + 55) * .35) * growth;
+      context.save(); context.translate(base.x, base.y); context.rotate(side * (.55 + leaf * .12));
+      context.beginPath(); context.moveTo(0, 0);
+      for (let tooth = 1; tooth <= 8; tooth++) {
+        const t = tooth / 9;
+        context.lineTo(-Math.sin(t * Math.PI) * length * (tooth % 2 ? .18 : .055), -length * t);
+      }
+      context.lineTo(0, -length);
+      for (let tooth = 8; tooth >= 1; tooth--) {
+        const t = tooth / 9;
+        context.lineTo(Math.sin(t * Math.PI) * length * (tooth % 2 ? .18 : .055), -length * t);
+      }
+      context.closePath(); context.fillStyle = leaf % 2 ? "#567842" : "#3f673b"; context.fill();
+      context.beginPath(); context.moveTo(0, 0); context.lineTo(0, -length);
+      context.strokeStyle = "rgba(216,222,153,.55)"; context.lineWidth = .8; context.stroke(); context.restore();
+    }
+    const crownY = base.y + (head.y - base.y) * growth;
+    context.beginPath(); context.moveTo(base.x, base.y);
+    context.bezierCurveTo(base.x - 12, base.y - height * .24 * growth, head.x + 12, crownY + height * .2 * growth, head.x, crownY);
+    context.strokeStyle = "#6e854a"; context.lineWidth = 4; context.stroke();
+    context.strokeStyle = "rgba(213,218,153,.5)"; context.lineWidth = 1; context.stroke();
+    const bloom = smooth(clamp((progress - .25) / .25));
+    if (!bloom) return;
+    context.beginPath(); context.arc(head.x, crownY, 7 * bloom, 0, Math.PI * 2);
+    context.fillStyle = "#998a5d"; context.fill();
+    for (let seedIndex = 0; seedIndex < 42; seedIndex++) {
+      const angle = seedIndex * 2.39996;
+      const reach = radius * Math.sqrt((seedIndex + 1) / 42) * bloom;
+      const departure = .55 + (seedIndex % 13) / 13 * .28;
+      const flight = seedIndex % 5 === 0 ? 0 : smooth(clamp((progress - departure) / .3));
+      const x = head.x + Math.cos(angle) * reach + flight * width * (.2 + noise(seedIndex + 90) * .3);
+      const y = crownY + Math.sin(angle) * reach - flight * height * (.08 + noise(seedIndex + 125) * .2) + Math.sin(flight * Math.PI * 2) * 12;
+      const rotation = angle + Math.PI / 2 + flight * .65;
+      if (flight === 0) {
+        context.beginPath(); context.moveTo(head.x, crownY); context.lineTo(x, y);
+        context.strokeStyle = "rgba(139,143,115,.28)"; context.lineWidth = .6; context.stroke();
+      }
+      context.save(); context.translate(x, y); context.rotate(rotation); context.globalAlpha = bloom;
+      const tuft = Math.max(6, radius * .12);
+      context.beginPath(); context.moveTo(0, 9); context.lineTo(0, 0);
+      context.strokeStyle = "#9b8962"; context.lineWidth = 1; context.stroke();
+      for (let hair = 0; hair < 9; hair++) {
+        const fan = Math.PI + hair / 8 * Math.PI;
+        context.beginPath(); context.moveTo(0, 0);
+        context.quadraticCurveTo(Math.cos(fan) * tuft * .5, Math.sin(fan) * tuft * .7, Math.cos(fan) * tuft, Math.sin(fan) * tuft - 2);
+        context.strokeStyle = hair % 2 ? "#b7b9a4" : "#969d86"; context.lineWidth = .65; context.stroke();
+      }
+      context.restore();
+    }
+  }
+
   function drawAntenna(progress, width, height) {
     const growth = smooth(clamp((progress - .68) / .24));
     if (!growth) return;
@@ -506,6 +566,10 @@ function createPlantAnimation(canvas, species, seed) {
     context.clearRect(0, 0, width, height);
     if (species === "cashew") {
       drawCashewPile(state.progress, width, height);
+      return;
+    }
+    if (species === "dandelion") {
+      drawDandelion(state.progress, width, height);
       return;
     }
     if (species === "papyrus") {
