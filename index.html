@@ -110,14 +110,44 @@
           <p class="chapter-aside">Room to breathe.</p>
         </div>
       </article>
-      <article class="chapter chapter-ship">
-        <div class="chapter-number">IV</div>
-        <div class="chapter-content">
-          <p class="chapter-label">Weeks 05—06</p>
-          <h2>Ship it.</h2>
-          <p class="chapter-body">Turn the experiments into something people can use. Test it, fix the rough edges, and put it out into the world.</p>
+      <article class="chapter chapter-ship" id="ship-it">
+        <div class="ship-stage">
+          <svg class="ship-scene" viewBox="0 0 800 600" aria-hidden="true">
+            <defs><radialGradient id="launch-glow"><stop stop-color="#ed3238" stop-opacity=".18"/><stop offset="1" stop-color="#ed3238" stop-opacity="0"/></radialGradient></defs>
+            <circle class="launch-glow" cx="430" cy="325" r="265" fill="url(#launch-glow)"/>
+            <g class="ship-water">
+              <path pathLength="1" d="M25 429 Q180 414 350 426 T775 421"/>
+              <path pathLength="1" d="M0 466 Q190 448 352 461 T800 455"/>
+              <path pathLength="1" d="M80 511 Q210 493 380 507 T755 499"/>
+            </g>
+            <g class="ship-wake">
+              <path pathLength="1" d="M130 437 Q325 462 640 426"/>
+              <path pathLength="1" d="M80 460 Q320 492 685 436"/>
+            </g>
+            <g class="ship-vessel">
+              <g class="ship-hull">
+                <path class="ship-hull-body" d="M179 384 Q366 409 634 373 L589 427 Q372 454 223 423 Z"/>
+                <path class="ship-hull-stripe" d="M205 403 Q386 427 613 399 L600 414 Q386 440 218 416 Z"/>
+                <path class="ship-deck" d="M175 383 Q366 409 639 372 M239 389 L247 375 H296 L304 397 M495 392 L500 372 H536 L544 386"/>
+                <path class="ship-portholes" d="M306 421 H319 M347 424 H360 M388 424 H401 M429 421 H442 M470 418 H483"/>
+              </g>
+              <g class="ship-rig">
+                <path pathLength="1" d="M387 402 V129 M223 389 L387 151 L594 380 M229 368 H573"/>
+              </g>
+              <path class="ship-sail ship-sail-main" d="M375 167 V367 H238 Q329 291 375 167 Z"/>
+              <path class="ship-sail ship-sail-front" d="M400 173 Q434 276 564 362 L400 366 Z"/>
+              <path class="ship-sail-seam" pathLength="1" d="M366 204 Q340 296 265 354 M411 216 Q455 299 539 349"/>
+              <path class="ship-pennant" d="M388 133 Q411 117 445 132 L430 142 L447 154 Q414 141 388 157 Z"/>
+            </g>
+          </svg>
+          <div class="chapter-number">IV</div>
+          <div class="chapter-content">
+            <p class="chapter-label">Weeks 05—06</p>
+            <h2>Ship it.</h2>
+            <p class="chapter-body">Turn the experiments into something people can use. Test it, fix the rough edges, and put it out into the world.</p>
+          </div>
+          <p class="chapter-aside">Make it real.</p>
         </div>
-        <p class="chapter-aside">Make it real.</p>
       </article>
       <article class="chapter chapter-demo">
         <div class="chapter-number">V</div>
@@ -129,7 +159,9 @@
         <div class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <p class="chapter-aside">Demo on Friday.</p>
       </article>
-      <article class="chapter chapter-alumni">
+      <article class="chapter chapter-alumni" id="keep-building">
+        <div class="blocks-stage">
+          <canvas class="blocks-canvas" aria-hidden="true"></canvas>
         <div class="chapter-number">VI</div>
         <div class="chapter-content">
           <p class="chapter-label">Beyond the Cohort</p>
@@ -137,6 +169,7 @@
           <p class="chapter-body">Join a community of alumni who keep building together. Shipped apps, projects running in production, and collaborators to call on long after you leave the island.</p>
         </div>
         <p class="chapter-aside">The work continues.</p>
+        </div>
       </article>
     </section>
 

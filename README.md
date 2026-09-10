@@ -7,6 +7,10 @@ The homepage's iceberg sequence is drawn in canvas by
 descends from week 01 into weeks 02–03. Reduced-motion visitors see both
 chapters in a static, sequential layout.
 
+`src/ship-animation.js` assembles and launches the SVG sailboat;
+`src/blocks-animation.js` draws the alumni section's stacking bricks in canvas.
+Both scenes follow scrolling and use an unpinned static layout for reduced motion.
+
 ## Podcast and FAQ content
 
 The podcast archive, individual episodes, FAQ, and policies are static pages

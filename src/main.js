@@ -3,6 +3,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animatePodcast } from "./podcast-animation";
 import { createFipsAnimation } from "./fips-animation";
 import { animateIceberg } from "./iceberg-animation";
+import { animateShip } from "./ship-animation";
+import { animateBlocks } from "./blocks-animation";
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
@@ -21,6 +23,8 @@ window.addEventListener("pageshow", forceScrollTop);
 gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 animateIceberg(reduced);
+animateShip(reduced);
+animateBlocks(reduced);
 animatePodcast(reduced);
 
 // Hold the scene for one breath, using the same scrolling model as the opening.
