@@ -1,0 +1,108 @@
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
+import { dirname } from "node:path";
+import { XMLParser, XMLValidator } from "fast-xml-parser";
+import { parse } from "yaml";
+import { marked } from "marked";
+import sanitizeHtml from "sanitize-html";
+
+const site = "https://sovereignengineering.io";
+const escape = value => String(value ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const slug = title => title.replace(/^#/, "").replace(/[^a-zA-Z0-9\s-]/g, "").trim().replace(/\s+/g, "-").toLowerCase();
+const clean = html => sanitizeHtml(html, {
+  allowedTags: sanitizeHtml.defaults.allowedTags,
+  allowedAttributes: { a: ["href", "title"] },
+  allowedSchemes: ["https", "http", "mailto"],
+  transformTags: { a: (tagName, attrs) => ({ tagName, attribs: { ...attrs, href: (attrs.href || "").replace(/^https:\/\/sovereignengineering\.io\/podcast\//, "/podcast/") } }) },
+});
+const markdown = text => clean(marked.parse(text || ""));
+const textOnly = html => sanitizeHtml(html, { allowedTags: [], allowedAttributes: {} });
+const safeUrl = url => {
+  if (!/^https?:\/\//.test(url || "")) throw new Error(`Invalid podcast URL: ${url}`);
+  return escape(url);
+};
+
+function layout(title, description, path, body, image = "/images/nosolutions-og.jpg") {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>${escape(title)} — Sovereign Engineering</title>
+  <meta name="description" content="${escape(description)}">
+  <link rel="canonical" href="${site}${path}">
+  <meta property="og:title" content="${escape(title)}">
+  <meta property="og:description" content="${escape(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${site}${path}">
+  <meta property="og:image" content="${escape(image.startsWith("/") ? site + image : image)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="No Solutions" href="/dialogues.xml">
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="content-page">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="nav-brand" href="/" aria-label="Sovereign Engineering home"><img src="/src/assets/brandmark.svg" alt=""><span>Sovereign<br>Engineering</span></a>
+    <div class="nav-links"><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>Podcast</a><a href="/faq/"${path === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a><a href="/#apply">Cohorts ↗</a></div>
+  </nav>
+  <main id="content" class="content-shell">${body}</main>
+  <footer class="content-footer"><a href="/">Sovereign Engineering<br>Madeira, Portugal</a><a href="/policy/">Policies</a><a href="mailto:info@sovereignengineering.io">Get in touch ↗</a></footer>
+</body>
+</html>`;
+}
+
+export function generatePages() {
+  const xml = readFileSync("public/dialogues.xml", "utf8");
+  if (XMLValidator.validate(xml) !== true) throw new Error("Invalid podcast RSS");
+  const channel = new XMLParser({ ignoreAttributes: false, parseTagValue: false }).parse(xml).rss.channel;
+  const episodes = (Array.isArray(channel.item) ? channel.item : [channel.item]).map(item => {
+    const duration = Number(item["itunes:duration"]);
+    const date = new Date(item.pubDate);
+    if (!item.title || !Number.isFinite(duration) || !Number.isFinite(date.getTime())) throw new Error("Incomplete podcast episode");
+    return { ...item, slug: slug(item.title), date, duration: `${Math.floor(duration / 60)} min` };
+  }).sort((a, b) => b.date - a.date);
+  if (!episodes.length || new Set(episodes.map(ep => ep.slug)).size !== episodes.length) throw new Error("Missing or duplicate episodes");
+  const files = [];
+  // These directories contain only generated output, never editable source.
+  for (const directory of ["podcast", "faq", "policy"]) rmSync(directory, { recursive: true, force: true });
+  const write = (path, html) => {
+    mkdirSync(dirname(path), { recursive: true });
+    writeFileSync(path, html);
+    files.push(path);
+  };
+  const meta = ep => `<p class="episode-meta"><time datetime="${ep.date.toISOString()}">${ep.date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time><span>${ep.duration}</span></p>`;
+  const description = "Walking dialogues about freedom tech, open protocols, and the trade-offs of building in the open.";
+  write("podcast/index.html", layout("No Solutions", description, "/podcast/", `
+    <header class="podcast-hero">
+      <img src="/images/nosolutions-cover.jpg" width="600" height="600" alt="No Solutions podcast artwork">
+      <div><p class="section-index">The Sovereign Engineering podcast</p><h1>No<br>Solutions.</h1><p class="content-lead">${description}</p>
+      <div class="content-links"><a href="/dialogues.xml">Subscribe via RSS ↗</a><a href="https://castr.me/npub1n00yy9y3704drtpph5wszen64w287nquftkcwcjv7gnnkpk2q54s73000n">castr.me ↗</a><a href="https://podcastindex.org/podcast/7206062">Podcast Index ↗</a><a href="https://njump.to/nosolutions@sovereignengineering.io">Nostr ↗</a></div></div>
+    </header>
+    <section aria-labelledby="episodes"><div class="archive-heading"><h2 id="episodes">Walking towards a better internet.</h2><p class="section-index">${episodes.length} episodes / Latest first</p></div>
+    <div class="episode-list">${episodes.map(ep => `<article class="episode-card"><a href="/podcast/${ep.slug}/"><img src="${safeUrl(ep["itunes:image"]["@_href"])}" alt="" width="240" height="240" loading="lazy"><div>${meta(ep)}<h3>${escape(ep.title)}</h3><p>${textOnly(ep.description.match(/<p[^>]*>([\s\S]*?)<\/p>/)?.[1] || "").slice(0, 350)}</p><span class="text-link">Listen to episode ↗</span></div></a></article>`).join("")}</div></section>`));
+  for (const ep of episodes) {
+    const audio = safeUrl(ep.enclosure["@_url"]);
+    const transcript = ep["podcast:transcript"];
+    const notes = ep["podcast:contentLink"];
+    write(`podcast/${ep.slug}/index.html`, layout(`${ep.title} — No Solutions`, description, `/podcast/${ep.slug}/`, `
+      <a class="text-link" href="/podcast/">← All episodes</a>
+      <header class="episode-hero"><img src="${safeUrl(ep["itunes:image"]["@_href"])}" width="400" height="400" alt="Episode artwork"><div><p class="section-index">No Solutions</p><h1>${escape(ep.title)}</h1>${meta(ep)}
+      <audio controls preload="none" aria-label="${escape(ep.title)}"><source src="${audio}" type="${escape(ep.enclosure["@_type"] || "audio/mpeg")}">Your browser does not support audio playback.</audio>
+      <div class="content-links"><a href="${audio}">Open audio ↗</a>${ep.link ? `<a href="${safeUrl(ep.link.replace("njump.me", "njump.to"))}">Discuss on Nostr ↗</a>` : ""}${notes ? `<a href="${safeUrl(notes["@_href"])}">Show notes ↗</a>` : ""}${transcript ? `<a href="${safeUrl(transcript["@_url"])}">Transcript ↗</a>` : ""}</div></div></header>
+      <section class="prose show-notes" aria-label="Episode notes">${clean(ep.description)}</section>
+      <a class="text-link" href="/podcast/">← All episodes</a>`, ep["itunes:image"]["@_href"]));
+  }
+  for (const name of ["faq", "policy"]) {
+    const source = readFileSync(`content/${name}.md`, "utf8");
+    const data = parse(source.split("---")[1]);
+    const sections = data.sections.map(section => `<section class="faq-section" id="${escape(section.id)}"><h2>${escape(section.title)}</h2>${section.questions ? markdown(section.content) : ""}${section.questions ? section.questions.map(q => {
+      const id = slug(q.question);
+      return `<details id="${id}"><summary>${escape(q.question)}</summary><div class="prose">${markdown(q.answer)}</div></details>`;
+    }).join("") : `<div class="prose">${markdown(section.content)}</div>`}</section>`).join("");
+    write(`${name}/index.html`, layout(name === "faq" ? "Frequently asked questions" : data.title, data.description, `/${name}/`, `
+      <header class="text-hero"><p class="section-index">Sovereign Engineering / ${name === "faq" ? "The practical details" : "How we work"}</p><h1>${name === "faq" ? "Before you<br>join us." : escape(data.title)}</h1><div class="content-lead">${name === "faq" ? "The program, the island, and what to expect." : markdown(data.intro.content)}</div></header>
+      <div class="faq-layout"><aside class="section-menu" aria-label="On this page">${data.sections.map(section => `<a href="#${escape(section.id)}">${escape(section.title)}</a>`).join("")}</aside><div>${sections}</div></div><script type="module" src="/src/content.js"></script>`, "/images/sovereign-engineering.png"));
+  }
+  return files;
+}

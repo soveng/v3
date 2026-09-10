@@ -2,6 +2,42 @@
 
 Website for Sovereign Engineering.
 
+## Podcast and FAQ content
+
+The podcast archive, individual episodes, FAQ, and policies are static pages
+generated when Vite starts or builds. Edit the sources, then restart the dev
+server to regenerate the pages:
+
+- `public/dialogues.xml`: the No Solutions RSS feed and source for all episodes.
+  Preserve existing GUIDs, enclosures, and titles (titles determine the existing
+  episode URLs). Add new episodes here, then rebuild.
+- `content/faq.md`: FAQ answers, in YAML frontmatter with Markdown answers.
+- `content/policy.md`: selection and participation policies.
+- `scripts/generate-pages.js`: shared page layout and content rendering.
+
+The root `podcast/`, `faq/`, and `policy/` directories are generated and ignored
+by Git. They are replaced during generation; do not edit or store source in them.
+The build does not fetch content from the live site. Audio, episode artwork,
+and transcripts remain hosted at their original URLs. Players load audio only
+when requested.
+
+Content and podcast artwork were migrated from
+[`soveng/website`](https://github.com/soveng/website/tree/a7bdb068bed022c9dcb7b466a16b6227629c8994).
+The feed is preserved verbatim, including Podcasting 2.0 metadata. FAQ cohort
+links now point to `/#apply`; the policy's philosophy link points to the program
+section while new philosophy copy is pending. Nostr verification metadata is
+preserved at `/.well-known/nostr.json`.
+
+Before public release:
+
+- Finish the intended concept, philosophy, and loop copy.
+- Confirm the next cohort's dates and application status; SEC-08 is currently
+  shown as concluded, matching the source site's closed applications.
+- Decide how legacy routes such as `/concept`, `/philosophy`, `/loop`,
+  `/projects`, `/books`, and `/timeline` should be retained or redirected.
+- Verify external media playback and subscription on the production domain.
+  Canonical and social URLs assume `https://sovereignengineering.io`.
+
 ## Run locally
 
 If you only want to run the website:

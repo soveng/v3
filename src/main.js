@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
 function forceScrollTop() {
+  if (location.hash) return;
   const previousBehavior = document.documentElement.style.scrollBehavior;
   document.documentElement.style.scrollBehavior = "auto";
   window.scrollTo(0, 0);
@@ -350,6 +351,7 @@ function createPlantAnimation(canvas, species, seed) {
 }
 
 async function runExperience() {
+  gsap.set(".prologue", { display: "grid" });
   const cityImage = document.querySelector(".city img");
   try { await cityImage.decode(); } catch { /* Browser can still draw loaded fallback. */ }
   const shardCanvas = document.querySelector(".shard-canvas");

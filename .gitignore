@@ -3,6 +3,11 @@ dist/
 .vite/
 .vercel/
 
+# HTML generated from content and the podcast feed by vite.config.js
+/podcast/
+/faq/
+/policy/
+
 .env
 .env.*
 !.env.example
