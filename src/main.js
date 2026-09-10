@@ -62,8 +62,15 @@ const updateNav = trigger => {
   homeNav.inert = !visible;
 };
 ScrollTrigger.create({
-  trigger: ".chapter-intro .chapter-content",
-  start: "top 85%",
+  trigger: ".ice-journey",
+  start: () => {
+    if (reduced) return "top top";
+    const section = document.querySelector(".ice-journey");
+    const distance = section.offsetHeight - section.querySelector(".ice-stage").offsetHeight;
+    // Break the ice occupies the first 43% of the shared iceberg sequence.
+    return `top+=${distance * .43 * .5} top`;
+  },
+  end: "max",
   onUpdate: updateNav,
   onRefresh: updateNav,
 });
