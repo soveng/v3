@@ -203,6 +203,8 @@ function createPlantAnimation(canvas, species, seed) {
     dandelion: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
   };
   const config = speciesConfig[species];
+  const papyrusCrownCache = new Map();
+  let papyrusCacheWidth = 0;
   const puzzleGlobe = species === "banyan" ? new Image() : null;
   if (puzzleGlobe) {
     puzzleGlobe.onload = () => draw();
@@ -227,6 +229,10 @@ function createPlantAnimation(canvas, species, seed) {
     const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
+    if (papyrusCacheWidth !== Math.round(width * ratio)) {
+      papyrusCrownCache.clear();
+      papyrusCacheWidth = Math.round(width * ratio);
+    }
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -444,6 +450,40 @@ function createPlantAnimation(canvas, species, seed) {
     });
   }
 
+  function papyrusCrown(index, radius) {
+    if (papyrusCrownCache.has(index)) return papyrusCrownCache.get(index);
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+    const extent = Math.ceil(radius * 1.4 + 8);
+    const bitmap = document.createElement("canvas");
+    bitmap.width = bitmap.height = Math.ceil(extent * 2 * ratio);
+    const paint = bitmap.getContext("2d");
+    paint.setTransform(ratio, 0, 0, ratio, extent * ratio, extent * ratio);
+    paint.lineCap = "round";
+      for (let ray = 0; ray < 44; ray++) {
+        const angle = ray / 44 * Math.PI * 2;
+        const reach = radius * (.65 + noise(ray + index * 53) * .35);
+        const dx = Math.cos(angle) * reach;
+        const dy = Math.sin(angle) * reach * .48;
+        const droop = reach * (.25 + noise(ray + 90) * .15);
+        const endX = 0 + dx, endY = 0 + dy + droop;
+        paint.beginPath(); paint.moveTo(0, 0);
+        paint.bezierCurveTo(0 + dx * .35, 0 + dy * .45 - reach * .22, 0 + dx * .82, 0 + dy - reach * .12, endX, endY);
+        paint.strokeStyle = ray % 3 ? "#66854b" : "#9aa35a";
+        paint.lineWidth = ray % 5 ? .8 : 1.25; paint.stroke();
+        // Tiny terminal branchlets give the crown its feathery papyrus texture.
+        for (const side of [-1, 1]) {
+          paint.beginPath(); paint.moveTo(endX - dx * .09, endY - droop * .35);
+          paint.quadraticCurveTo(endX + side * reach * .035, endY - 5, endX + side * reach * .07, endY + 3);
+          paint.strokeStyle = "rgba(121,136,72,.7)"; paint.lineWidth = .55; paint.stroke();
+        }
+      }
+      paint.beginPath(); paint.arc(0, 0, 2, 0, Math.PI * 2);
+      paint.fillStyle = "#56723d"; paint.fill();
+    const crown = { bitmap, extent };
+    papyrusCrownCache.set(index, crown);
+    return crown;
+  }
+
   function drawPapyrus(progress, width, height) {
     const spread = Math.min(width, 1000);
     const baseX = width * .5;
@@ -466,27 +506,8 @@ function createPlantAnimation(canvas, species, seed) {
       context.strokeStyle = "rgba(205,207,130,.5)"; context.lineWidth = .8; context.stroke();
       const bloom = smooth(clamp((progress - .38 - index * .045) / .4));
       if (!bloom) return;
-      const radius = Math.min(145, width * .22) * crownScale * bloom;
-      for (let ray = 0; ray < 44; ray++) {
-        const angle = ray / 44 * Math.PI * 2;
-        const reach = radius * (.65 + noise(ray + index * 53) * .35);
-        const dx = Math.cos(angle) * reach;
-        const dy = Math.sin(angle) * reach * .48;
-        const droop = reach * (.25 + noise(ray + 90) * .15);
-        const endX = topX + dx, endY = topY + dy + droop;
-        context.beginPath(); context.moveTo(topX, topY);
-        context.bezierCurveTo(topX + dx * .35, topY + dy * .45 - reach * .22, topX + dx * .82, topY + dy - reach * .12, endX, endY);
-        context.strokeStyle = ray % 3 ? "#66854b" : "#9aa35a";
-        context.lineWidth = ray % 5 ? .8 : 1.25; context.stroke();
-        // Tiny terminal branchlets give the crown its feathery papyrus texture.
-        for (const side of [-1, 1]) {
-          context.beginPath(); context.moveTo(endX - dx * .09, endY - droop * .35);
-          context.quadraticCurveTo(endX + side * reach * .035, endY - 5 * bloom, endX + side * reach * .07, endY + 3 * bloom);
-          context.strokeStyle = "rgba(121,136,72,.7)"; context.lineWidth = .55; context.stroke();
-        }
-      }
-      context.beginPath(); context.arc(topX, topY, 2 * bloom, 0, Math.PI * 2);
-      context.fillStyle = "#56723d"; context.fill();
+      const { bitmap, extent } = papyrusCrown(index, Math.min(145, width * .22) * crownScale);
+      context.drawImage(bitmap, topX - extent * bloom, topY - extent * bloom, extent * 2 * bloom, extent * 2 * bloom);
     });
   }
 
@@ -552,13 +573,13 @@ function createPlantAnimation(canvas, species, seed) {
 
   function drawKnowledgeFruit(progress, width, height) {
     if (!puzzleGlobe?.complete || !puzzleGlobe.naturalWidth) return;
-    const fruits = [[-.13, .64, .9], [.14, .72, 1], [.025, .49, .85]];
+    const fruits = [[-.075, .79, .9], [.085, .84, 1]];
     fruits.forEach(([offset, attach, scale], index) => {
       const growth = smooth(clamp((progress - .6 - index * .06) / .22));
       if (!growth) return;
       const branch = stemPoint(attach, width, height);
       const x = branch.x + offset * Math.min(width, 1000);
-      const y = branch.y + 20;
+      const y = branch.y + 8;
       const size = Math.max(44, Math.min(76, width * .09)) * scale * growth;
       context.beginPath(); context.moveTo(branch.x, branch.y);
       context.quadraticCurveTo(x, branch.y - 12, x, y + 5);
