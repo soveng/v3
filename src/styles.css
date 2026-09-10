@@ -174,7 +174,6 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .archive-heading { display:block; }
   .archive-heading .section-index { margin-top:20px; }
   .episode-card > a { grid-template-columns:80px minmax(0,1fr); gap:20px; padding:28px 0; }
-  .episode-card .text-link { margin-top:16px; }
   .section-menu { position:static; border-bottom:1px solid #444; padding-bottom:32px; }
   .footer-links { justify-content:start; }
   .finale footer,.content-footer { grid-template-columns:1fr; gap:12px; padding:24px 0; }
