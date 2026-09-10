@@ -21,13 +21,24 @@ gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 animatePodcast(reduced);
 
-// Let the breathing cue run while people pause here, and rest offscreen.
+// Hold the scene for one breath, using the same scrolling model as the opening.
 if (!reduced) {
   const breathSection = document.querySelector(".chapter-break");
-  const breathObserver = new IntersectionObserver(([entry]) => {
-    breathSection.classList.toggle("is-breathing", entry.isIntersecting);
-  }, { threshold: .15 });
-  breathObserver.observe(breathSection);
+  const breathStage = breathSection.querySelector(".breath-stage");
+  const cloud = breathSection.querySelector(".breath-cloud");
+  breathSection.classList.add("breathing-scroll");
+  gsap.set(cloud, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: .68, opacity: .45 });
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: breathSection,
+      start: "top top",
+      end: () => "+=" + (breathSection.offsetHeight - breathStage.offsetHeight),
+      scrub: .8,
+      invalidateOnRefresh: true,
+    },
+  })
+    .to(cloud, { scale: 1, opacity: .9, duration: 4, ease: "sine.inOut" })
+    .to(cloud, { scale: .68, opacity: .45, duration: 6, ease: "sine.inOut" });
 }
 
 const homeNav = document.querySelector(".nav-home");
