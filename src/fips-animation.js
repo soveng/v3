@@ -73,6 +73,9 @@ export function createFipsAnimation(canvas, reducedMotion) {
     const progress = clamp(state.progress);
     const spread = width;
     const project = p => ({ x: p.x * spread, y: p.y / rootDepth * height * .96 });
+    const copy = canvas.closest(".project-plant").querySelector(".plant-copy");
+    const copyTop = copy.offsetTop - parseFloat(canvas.style.top);
+    const inkOpacity = y => 1 - smooth((y - copyTop + 50) / 100) * .65;
     const size = Math.max(.65, spread / 1000);
     context.lineCap = "round";
 
@@ -84,6 +87,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
         const b = project(at(branch, start + (end - start) * (step + 1) / steps));
         context.beginPath();
         context.moveTo(a.x, a.y); context.lineTo(b.x, b.y);
+        context.globalAlpha = inkOpacity((a.y + b.y) / 2);
         context.strokeStyle = color;
         context.lineWidth = weight * (1 - t * .38);
         context.stroke();
@@ -108,8 +112,23 @@ export function createFipsAnimation(canvas, reducedMotion) {
         context.beginPath(); context.moveTo(a.x, a.y);
         context.quadraticCurveTo(a.x, b.y, b.x, b.y);
         context.strokeStyle = "rgba(124,113,83,.42)";
+        context.globalAlpha = inkOpacity(a.y);
         context.lineWidth = .55 * size; context.stroke();
       }
+    }
+
+    // A few trailing rootlets reach across the headline and description themselves.
+    const canvasRect = canvas.getBoundingClientRect();
+    const titleRect = copy.querySelector("h3").getBoundingClientRect();
+    const textRect = copy.querySelector("p").getBoundingClientRect();
+    for (let index = 0; index < 3; index++) {
+      const start = sortedTips[Math.floor(sortedTips.length * (.72 + index * .08))].end;
+      const end = {
+        x: (titleRect.right - canvasRect.left - titleRect.width * (.05 + index * .12)) / width,
+        y: (textRect.bottom - canvasRect.top + 12 + index * 12) / (height * .96) * rootDepth,
+      };
+      const rootlet = { start, end, control: { x: end.x - .04, y: start.y + (end.y - start.y) * .3 } };
+      filament(rootlet, 0, smooth((progress / .65 - .55) / .2), "rgba(139,128,99,.8)", .9 * size);
     }
 
     // Slow, repeated packets make the network readable even while scrolling pauses.
@@ -130,11 +149,13 @@ export function createFipsAnimation(canvas, reducedMotion) {
       const glow = context.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius);
       glow.addColorStop(0, "rgba(237,110,65,.65)");
       glow.addColorStop(1, "rgba(237,110,65,0)");
+      context.globalAlpha = inkOpacity(p.y);
       context.fillStyle = glow;
       context.fillRect(p.x - radius, p.y - radius, radius * 2, radius * 2);
       context.beginPath(); context.arc(p.x, p.y, Math.max(2.5, 3 * size), 0, Math.PI * 2);
       context.fillStyle = "#ed5834"; context.fill();
     });
+    context.globalAlpha = 1;
     if (visible && !reducedMotion && progress >= .5 && !frame) frame = requestAnimationFrame(tick);
   }
 
@@ -146,7 +167,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
     canvas.style.top = `${top}px`;
     canvas.style.left = `${sourceRect.left - cardRect.left}px`;
     canvas.style.width = `${source.clientWidth}px`;
-    canvas.style.height = `${Math.max(120, card.clientHeight - card.querySelector(".plant-copy").offsetHeight - 48 - top)}px`;
+    canvas.style.height = `${Math.max(120, card.clientHeight + 80 - top)}px`;
     const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(canvas.clientWidth * ratio);
     canvas.height = Math.round(canvas.clientHeight * ratio);
