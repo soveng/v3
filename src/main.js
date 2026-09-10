@@ -372,6 +372,41 @@ function createPlantAnimation(canvas, species, seed) {
     });
   }
 
+  function drawDish(progress, width, height) {
+    const growth = smooth(clamp((progress - .68) / .24));
+    if (!growth) return;
+    const tip = stemPoint(1, width, height);
+    const size = Math.max(28, Math.min(42, width * .035));
+    context.save();
+    context.translate(tip.x, tip.y);
+    context.globalAlpha = growth;
+    context.strokeStyle = "#594737";
+    context.lineWidth = 3;
+    context.beginPath(); context.moveTo(0, 0); context.lineTo(0, -76 * growth); context.stroke();
+    context.translate(0, -82 * growth);
+    context.scale(growth, growth);
+    // A shallow dish tilted skyward, with a red receiver at its focus.
+    context.beginPath();
+    context.moveTo(-size * .75, -size * .65);
+    context.bezierCurveTo(-size * 1.05, size * .7, -size * .15, size * 1.1, size * .75, size * .65);
+    context.closePath();
+    context.fillStyle = "#c3c3ac"; context.fill();
+    context.lineWidth = 2; context.stroke();
+    context.beginPath();
+    context.moveTo(-size * .25, size * .3);
+    context.lineTo(size * .5, -size * .55);
+    context.lineTo(size * .75, size * .65);
+    context.stroke();
+    context.beginPath(); context.arc(size * .5, -size * .55, 3.5, 0, Math.PI * 2);
+    context.fillStyle = "#ed3238"; context.fill();
+    context.strokeStyle = "rgba(89,71,55,.4)";
+    context.lineWidth = 1.2;
+    for (const radius of [size * .45, size * .7]) {
+      context.beginPath(); context.arc(size * .5, -size * .55, radius, -1.25, -.15); context.stroke();
+    }
+    context.restore();
+  }
+
   function draw() {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -395,6 +430,7 @@ function createPlantAnimation(canvas, species, seed) {
     drawStem(state.progress, width, height);
     drawLeaves(state.progress, width, height);
     drawFlowers(state.progress, width, height);
+    if (species === "mangrove") drawDish(state.progress, width, height);
   }
 
   resize();
