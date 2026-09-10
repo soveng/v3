@@ -703,7 +703,8 @@ async function runExperience() {
     if (chapter.closest(".ice-journey")) return;
     gsap.from(chapter.querySelector("h2"), { yPercent: 70, opacity: 0, duration: 1, ease: "power4.out", scrollTrigger: { trigger: chapter, start: "top 60%" } });
     gsap.from(chapter.querySelector(".chapter-body"), { y: 40, opacity: 0, duration: .8, delay: .2, scrollTrigger: { trigger: chapter, start: "top 55%" } });
-    gsap.to(chapter.querySelector(".chapter-number"), { yPercent: -18, scrollTrigger: { trigger: chapter, start: "top bottom", end: "bottom top", scrub: 1 } });
+    const numeral = chapter.querySelector(".chapter-number");
+    if (numeral) gsap.to(numeral, { yPercent: -18, scrollTrigger: { trigger: chapter, start: "top bottom", end: "bottom top", scrub: 1 } });
   });
 
   gsap.utils.toArray(".project-plant").forEach((project, index) => {
