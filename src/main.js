@@ -370,6 +370,45 @@ function createPlantAnimation(canvas, species, seed) {
       context.beginPath(); context.moveTo(-nutSize * .34, -nutSize * .38); context.bezierCurveTo(-nutSize * .55, -.04 * nutSize, -nutSize * .27, nutSize * .27, nutSize * .06, nutSize * .24); context.stroke();
       context.restore();
     });
+    // A handful of deliberate zaps land on individual nuts as the pile grows.
+    [8, 15, 22, 28, 33].forEach((index, strike) => {
+      const nut = cashews[index];
+      const start = index / cashews.length * .88 + .055;
+      const phase = reduced ? .55 : (progress - start) / .12;
+      if (phase <= 0 || phase >= 1 || (reduced && strike % 2 === 0)) return;
+      const growth = smooth(clamp((progress - index / cashews.length * .88) / .085));
+      const x = baseX + nut.x * Math.min(width, 980);
+      const y = baseY - nut.y * Math.min(width, 820) - (1 - growth) * height * .13 - nutSize * .15;
+      const length = Math.min(135, Math.max(75, width * .13));
+      const side = strike % 2 ? -1 : 1;
+      const fade = Math.sin(phase * Math.PI);
+      context.save();
+      context.globalAlpha = fade;
+      context.lineCap = "round";
+      context.lineJoin = "round";
+      if (!reduced) {
+        const points = [[x + side * length * .3, y - length], [x - side * length * .04, y - length * .53], [x + side * length * .2, y - length * .58], [x, y]];
+        context.beginPath();
+        points.forEach(([px, py], point) => point ? context.lineTo(px, py) : context.moveTo(px, py));
+        context.strokeStyle = "rgba(237,50,56,.16)"; context.lineWidth = 9; context.stroke();
+        context.strokeStyle = "#ed5834"; context.lineWidth = 3; context.stroke();
+        context.strokeStyle = "#ffe2a0"; context.lineWidth = 1; context.stroke();
+      }
+      const glow = context.createRadialGradient(x, y, 0, x, y, nutSize * 1.25);
+      glow.addColorStop(0, "rgba(255,179,56,.5)"); glow.addColorStop(1, "rgba(255,179,56,0)");
+      context.fillStyle = glow;
+      context.fillRect(x - nutSize * 1.25, y - nutSize * 1.25, nutSize * 2.5, nutSize * 2.5);
+      for (let spark = 0; spark < 5; spark++) {
+        const angle = Math.PI + (spark + .25) / 5 * Math.PI;
+        const distance = nutSize * (.35 + phase * .9);
+        context.beginPath();
+        context.moveTo(x + Math.cos(angle) * distance, y + Math.sin(angle) * distance);
+        context.lineTo(x + Math.cos(angle) * (distance + 5), y + Math.sin(angle) * (distance + 5));
+        context.strokeStyle = spark % 2 ? "#ed5834" : "#c89335";
+        context.lineWidth = 1.5; context.stroke();
+      }
+      context.restore();
+    });
   }
 
   function drawAntenna(progress, width, height) {
