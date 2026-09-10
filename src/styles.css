@@ -63,7 +63,7 @@ footer { font:400 var(--type-label)/1.35 var(--mono); letter-spacing:.12em; text
 .ice-animated .ice-stage { position:sticky; top:0; height:100svh; }
 .ice-animated .chapter { position:absolute; inset:0; height:100%; min-height:0; }
 .breath-stage { position:relative; min-height:100svh; display:grid; place-items:center; padding:8svh 5vw; overflow:hidden; }
-.chapter-break.breathing-scroll { min-height:300svh; overflow:clip; }
+.chapter-break.breathing-scroll { min-height:400svh; overflow:clip; }
 .breathing-scroll .breath-stage { position:sticky; top:0; }
 .chapter-break .chapter-number { color:rgba(8,8,8,.12); }
 .chapter-break .chapter-body { color:#555; }
