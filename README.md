@@ -9,7 +9,8 @@ chapters in a static, sequential layout.
 
 `src/ship-animation.js` assembles and launches the SVG sailboat;
 `src/blocks-animation.js` assembles a studded, impossible staircase in the alumni
-section. Four ascending flights meet on the same projected sightline.
+section. Twelve chunky 2×4 bricks form four ascending flights that meet on the same
+projected sightline.
 Both scenes follow scrolling and use an unpinned static layout for reduced motion.
 
 `src/demo-animation.js` lights a projector, reveals an app, and clicks its button

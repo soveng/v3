@@ -16,29 +16,30 @@ export function animateBlocks(reducedMotion) {
   ];
   // The upper landing ends on the lower landing's sightline. In projection,
   // all four ascending flights close into one impossible loop.
-  const steps = 7;
-  const rise = .24;
+  // Twelve identical 2×4 bricks alternate orientation between the flights.
+  const steps = 3;
+  const rise = .45;
   const slope = .45;
-  const longStep = 1 + 2 * rise / slope;
+  const longStep = 4;
   const directions = [[1, 0], [0, 1], [-1, 0], [0, -1]];
   let u = 0, v = 0;
   for (let flight = 0; flight < 4; flight++) {
     const [du, dv] = directions[flight];
-    const run = flight < 2 ? longStep : 1;
+    const run = flight < 2 ? longStep : 2;
     for (let step = 0; step < steps; step++) {
       const index = flight * steps + step;
       bricks.push({ u: u + du * run * .5, v: v + dv * run * .5,
-        z: (index + .5) * rise, du, dv, run, flight, index });
+        z: (index + .5) * rise, du, dv, run, breadth: flight < 2 ? 2 : 4, flight, index });
       u += du * run; v += dv * run;
     }
   }
   const rawPoint = (u, v, z) => ({ x: u - v, y: (u + v) * slope - z });
   const outline = bricks.flatMap(brick => {
-    const { u, v, z, du, dv, run } = brick;
-    return [-1, 1].flatMap(a => [-1, 1].map(b => rawPoint(u + du * run * a / 2 - dv * b, v + dv * run * a / 2 + du * b, z)));
+    const { u, v, z, du, dv, run, breadth } = brick;
+    return [-1, 1].flatMap(a => [-1, 1].map(b => rawPoint(u + du * run * a / 2 - dv * b * breadth / 2, v + dv * run * a / 2 + du * b * breadth / 2, z)));
   });
   const bounds = { left: Math.min(...outline.map(p => p.x)), right: Math.max(...outline.map(p => p.x)),
-    top: Math.min(...outline.map(p => p.y)) - 1, bottom: Math.max(...outline.map(p => p.y)) + 1.2 };
+    top: Math.min(...outline.map(p => p.y)) - 1, bottom: Math.max(...outline.map(p => p.y)) + 1.6 };
   let frame = 0;
 
   function draw() {
@@ -71,30 +72,33 @@ export function animateBlocks(reducedMotion) {
     context.fillRect(0, originY - unit * 2, width, unit * 6);
 
     const paintOrder = [3, 0, 2, 1].flatMap(flight => bricks.filter(brick => brick.flight === flight));
-    function drawBrick({ u, v, z, du, dv, run, flight, index }) {
+    function drawBrick({ u, v, z, du, dv, run, breadth, index }) {
       const arrival = index / bricks.length * .86;
       const raw = clamp((state.progress - arrival) / .14);
       if (!raw) return;
       const fall = Math.pow(1 - raw, 3) * unit * 3;
-      const color = colors[index === 0 ? 1 : index === 14 ? 2 : 0];
+      const color = colors[index % 4 === 0 ? 1 : index % 4 === 2 ? 2 : 0];
       const point = (along, across, elevation = z) => project(u + du * along - dv * across, v + dv * along + du * across, elevation, fall);
       const half = run * .495;
-      const corners = [point(-half, -.98), point(half, -.98), point(half, .98), point(-half, .98)];
+      const acrossHalf = breadth / 2 - .02;
+      const corners = [point(-half, -acrossHalf), point(half, -acrossHalf), point(half, acrossHalf), point(-half, acrossHalf)];
       context.globalAlpha = Math.min(1, raw * 4);
       // Visible vertical faces give every tread the same upward step.
       for (let edge = 0; edge < 4; edge++) {
         const a = corners[edge], b = corners[(edge + 1) % 4];
-        if (b.x < a.x) face([a, b, { x: b.x, y: b.y + unit * .65 }, { x: a.x, y: a.y + unit * .65 }], edge % 2 ? color[2] : color[1]);
+        if (b.x < a.x) face([a, b, { x: b.x, y: b.y + unit * 1.2 }, { x: a.x, y: a.y + unit * 1.2 }], edge % 2 ? color[2] : color[1]);
       }
       face(corners, color[0]);
-      for (const across of [-.48, .48]) {
-        const stud = point(0, across);
-        const radius = unit * .2;
+      for (let along = -run / 2 + .5; along < run / 2; along++) {
+      for (let across = -breadth / 2 + .5; across < breadth / 2; across++) {
+        const stud = point(along, across);
+        const radius = unit * .29;
         context.fillStyle = color[1];
         context.beginPath(); context.ellipse(stud.x, stud.y, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
         context.fillStyle = color[0];
-        context.beginPath(); context.ellipse(stud.x, stud.y - unit * .09, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
+        context.beginPath(); context.ellipse(stud.x, stud.y - unit * .18, radius, radius * .45, 0, 0, Math.PI * 2); context.fill();
         context.strokeStyle = "rgba(8,8,8,.22)"; context.lineWidth = .6; context.stroke();
+      }
       }
     }
     paintOrder.forEach(drawBrick);
