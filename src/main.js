@@ -20,6 +20,19 @@ gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 animatePodcast(reduced);
 
+const homeNav = document.querySelector(".nav-home");
+const updateNav = trigger => {
+  const visible = trigger.progress > 0;
+  homeNav.classList.toggle("is-visible", visible);
+  homeNav.inert = !visible;
+};
+ScrollTrigger.create({
+  trigger: ".manifesto-copy",
+  start: "top 85%",
+  onUpdate: updateNav,
+  onRefresh: updateNav,
+});
+
 const SHARD_COLUMNS = 125;
 const SHARD_ROWS = 80;
 const SHARD_COUNT = SHARD_COLUMNS * SHARD_ROWS;
@@ -373,7 +386,7 @@ async function runExperience() {
       gsap.set(".prologue", { display: "none" });
       document.body.style.overflow = "";
     }})
-    .from([".opening-meta", ".nav"], { opacity: 0, duration: .6 }, "<.3");
+    .from(".opening-meta", { opacity: 0, duration: .6 }, "<.3");
 
   gsap.to(".city-bloom", { scale: 1.25, opacity: .55, duration: 3.5, ease: "sine.inOut", yoyo: true, repeat: -1 });
 
