@@ -37,7 +37,7 @@ const updateNav = trigger => {
   homeNav.inert = !visible;
 };
 ScrollTrigger.create({
-  trigger: ".manifesto-copy",
+  trigger: ".chapter-intro .chapter-content",
   start: "top 85%",
   onUpdate: updateNav,
   onRefresh: updateNav,
