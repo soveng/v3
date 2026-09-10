@@ -1,0 +1,1543 @@
+[
+  {
+    "name": "Highlighter",
+    "description": "A nostr client & NIP for sharing and discovering highlights from books, articles, and more.",
+    "cohort": "SEC-00",
+    "link": "https://highlighter.com/",
+    "linkText": "highlighter.com",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Lightning Prisms",
+    "description": "Programmable value splits for Lightning payments. See blog post for details.",
+    "cohort": "SEC-00",
+    "link": "https://dergigi.com/2023/03/12/lightning-prisms/",
+    "linkText": "dergigi.com/2023/03/12/lightning-prisms/",
+    "logo": "/images/showcase/lightning-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NIP-90: Data Vending Machines",
+    "description": "Nostr protocol extension for on-demand computation and data vending. See NIP and reference site.",
+    "cohort": "SEC-00",
+    "link": "https://nips.nostr.com/90",
+    "linkText": "nips.nostr.com/90",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://www.data-vending-machines.org/",
+        "linkText": "data-vending-machines.org"
+      }
+    ]
+  },
+  {
+    "name": "Alphaama",
+    "description": "Just a nostr fucking client",
+    "cohort": "SEC-01",
+    "link": "https://github.com/eskema/alphaama",
+    "linkText": "github.com/eskema/alphaama",
+    "logo": "/images/showcase/alphaama-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Blossom",
+    "description": "A specification for HTTP endpoints that allow users to store blobs of data on publicly accessible servers",
+    "cohort": "SEC-01",
+    "link": "https://github.com/hzrd149/awesome-blossom",
+    "linkText": "github.com/hzrd149/awesome-blossom",
+    "logo": "/images/showcase/blossom-logo.png",
+    "highlight": true,
+    "extraLinks": [
+      {
+        "link": "https://github.com/hzrd149/blossom",
+        "linkText": "github.com/hzrd149/blossom"
+      }
+    ]
+  },
+  {
+    "name": "Blossom Drive",
+    "description": "A cloud drive built using blossom servers and nostr for decentralized file storage",
+    "cohort": "SEC-01",
+    "link": "https://github.com/hzrd149/blossom-drive",
+    "linkText": "github.com/hzrd149/blossom-drive",
+    "logo": "/images/showcase/blossom-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Confidential computing research",
+    "description": "Non-exhaustive research notes of building blocks for a better, more decentralized internet.",
+    "cohort": "SEC-01",
+    "link": "https://ungovernable.tech",
+    "linkText": "ungovernable.tech",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "featurestr-bountiestr",
+    "description": "Feature request and bounty system built on nostr protocol",
+    "cohort": "SEC-01",
+    "link": "https://github.com/sebdeveloper6952/featurestr-bountiestr",
+    "linkText": "github.com/sebdeveloper6952/featurestr-bountiestr",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "GitPear",
+    "description": "Git-based collaboration tool with nostr integration",
+    "cohort": "SEC-01",
+    "link": "https://github.com/dzdidi/gitpear",
+    "linkText": "github.com/dzdidi/gitpear",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "go-dvm",
+    "description": "Go implementation of Data Vending Machine (DVM) for nostr",
+    "cohort": "SEC-01",
+    "link": "https://github.com/sebdeveloper6952/godvm",
+    "linkText": "github.com/sebdeveloper6952/godvm",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Gonuts",
+    "description": "Cashu mint implementation in Go for eCash functionality",
+    "cohort": "SEC-01",
+    "link": "https://github.com/elnosh/gonuts",
+    "linkText": "github.com/elnosh/gonuts",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "keyNest",
+    "description": "Secure key management solution for nostr and Bitcoin",
+    "cohort": "SEC-01",
+    "link": "https://github.com/gzuuus/keynest",
+    "linkText": "github.com/gzuuus/keynest",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "LowEnt",
+    "description": "Low entropy key generation and management tool",
+    "cohort": "SEC-01",
+    "link": "https://github.com/gzuuus/lowent",
+    "linkText": "github.com/gzuuus/lowent",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Malware DVMs",
+    "description": "Data Vending Machines for malware analysis and security services",
+    "cohort": "SEC-01",
+    "link": "https://github.com/sebdeveloper6952/malware.dvms.app",
+    "linkText": "github.com/sebdeveloper6952/malware.dvms.app",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NIP-66",
+    "description": "Relay monitoring and discovery specification for nostr network health",
+    "cohort": "SEC-01",
+    "link": "https://nips.nostr.com/66",
+    "linkText": "nips.nostr.com/66",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr-idb",
+    "description": "Collection of helper methods for storing nostr events in IndexedDB",
+    "cohort": "SEC-01",
+    "link": "https://github.com/hzrd149/nostr-idb",
+    "linkText": "github.com/hzrd149/nostr-idb",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostrocket",
+    "description": "Non-custodial coordination layer for sovereign individuals. Connects proof of work directly to satflow without any entity controlling resources. Replaces the company model with a protocol for allocating time and resources towards shared goals.",
+    "cohort": "SEC-01",
+    "link": "https://nostrocket.org",
+    "linkText": "nostrocket.org",
+    "logo": "/images/showcase/nostrocket-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "noStrudel on StartOS",
+    "description": "noStrudel nostr client packaged for StartOS self-sovereign computing platform",
+    "cohort": "SEC-01",
+    "link": "https://github.com/hzrd149/nostrudel-startos",
+    "linkText": "github.com/hzrd149/nostrudel-startos",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Note Duel",
+    "description": "Wager nostr notes on real-world outcomes using DLCs. Pick a Superposition oracle event, choose your side, and write winning/losing notes — cryptographically enforced smart contracts decide which note gets published from your profile.",
+    "cohort": "SEC-01",
+    "link": "https://blog.mutinywallet.com/note-duel-superposition/#note-duel",
+    "linkText": "blog.mutinywallet.com",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "npub.cash",
+    "description": "A nostr native Lightning Address service that provides Lightning addresses for everyone using Cashu eCash",
+    "cohort": "SEC-01",
+    "link": "https://npub.cash/",
+    "linkText": "npub.cash",
+    "logo": "https://npub.cash/logo.png",
+    "highlight": true
+  },
+  {
+    "name": "nsecBunker on StartOS",
+    "description": "nsecBunker remote signing service packaged for StartOS platform",
+    "cohort": "SEC-01",
+    "link": "https://github.com/hzrd149/nsecbunker-startos",
+    "linkText": "github.com/hzrd149/nsecbunker-startos",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Wasm DVM",
+    "description": "WebAssembly-based Data Vending Machine with plugin system",
+    "cohort": "SEC-01",
+    "link": "https://github.com/benthecarman/wasm-dvm/",
+    "linkText": "github.com/benthecarman/wasm-dvm",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NIP-54: Wiki / Wikifreedia",
+    "description": "A nostr-native wiki system that embraces multiple perspectives instead of enforcing a single canonical truth. Born at SEC-01 as Wikifreedia, now standardized as NIP-54.",
+    "cohort": "SEC-01",
+    "link": "https://wikifreedia.xyz/",
+    "linkText": "wikifreedia.xyz",
+    "logo": "/images/showcase/wikifreedia-logo.png",
+    "highlight": true,
+    "extraLinks": [
+      {
+        "link": "https://github.com/nostr-protocol/nips/blob/master/54.md",
+        "linkText": "NIP-54"
+      },
+      {
+        "link": "https://github.com/pablof7z/wiki",
+        "linkText": "GitHub"
+      }
+    ]
+  },
+  {
+    "name": "Zapstore",
+    "description": "Zapstore is the first permissionless app store powered by open standards and your social graph",
+    "cohort": "SEC-01",
+    "link": "https://zapstore.dev/",
+    "linkText": "zapstore.dev",
+    "logo": "/images/showcase/zapstore.svg",
+    "highlight": true
+  },
+  {
+    "name": "cypher.space",
+    "description": "Launchpad for Bitcoin-native commerce that uses Nostr identities to deploy your own sovereign Nsites storefront and merchant portal, now running as a fork from the Nostr Boutique project.",
+    "cohort": "SEC-02",
+    "link": "https://cypher.space/",
+    "linkText": "cypher.space",
+    "logo": "https://cypher.space/cypher-soveng.gif",
+    "highlight": false
+  },
+  {
+    "name": "Kartapio",
+    "description": "Restaurant menu and ordering system with Bitcoin payments",
+    "cohort": "SEC-02",
+    "link": "https://github.com/vstabile/kartapio",
+    "linkText": "github.com/vstabile/kartapio",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NIP-60",
+    "description": "Nostr protocol extension for Cashu wallet functionality, enabling seamless eCash transactions within nostr applications.",
+    "cohort": "SEC-02",
+    "link": "https://github.com/nostr-protocol/nips/blob/master/60.md",
+    "linkText": "github.com/nostr-protocol/nips/60.md",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": true
+  },
+  {
+    "name": "NIP-61",
+    "description": "Nutzaps: Receiving—and verifying— zaps, has always been a weak point in nostr. Nutzaps have enabled a new, more straightforward and verifiable way to participate in the zap-economy.",
+    "cohort": "SEC-02",
+    "link": "https://github.com/nostr-protocol/nips/blob/master/61.md",
+    "linkText": "github.com/nostr-protocol/nips/61.md",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": true
+  },
+  {
+    "name": "Nostr Safebox",
+    "description": "Nostr Safebox is the concept of a ‘safebox’ for Nostr. It’s a generalization of the wallet concept for storing secure, private personal information.The idea is that the safebox contains different item types, wallets, records, etc. You can give a client access by providing the nsec of the safebox. If you no longer trust the client, you can transfer the data to another safebox and delete the current one (no guarantees on deletion, of course)",
+    "cohort": "SEC-02",
+    "link": "https://safebox.dev/",
+    "linkText": "safebox.dev",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nsite",
+    "description": "Host static websites on Nostr using blossom servers for storage and nostr relays for mapping",
+    "cohort": "SEC-02",
+    "link": "https://nsite.run/",
+    "linkText": "nsite.run",
+    "logo": "https://cdn-icons-png.flaticon.com/512/17283/17283061.png",
+    "highlight": true
+  },
+  {
+    "name": "OpenBalance",
+    "description": "Open-source accounting and financial management platform",
+    "cohort": "SEC-02",
+    "link": "https://openbalance.com/",
+    "linkText": "openbalance.com",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "PubPay",
+    "description": "Public key-based payment system for seamless Bitcoin transactions",
+    "cohort": "SEC-02",
+    "link": "https://pubpay.me/",
+    "linkText": "pubpay.me",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "SatShoot",
+    "description": "Freelancing on nostr",
+    "cohort": "SEC-02",
+    "link": "https://github.com/Pleb5/satshoot",
+    "linkText": "github.com/Pleb5/satshoot",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Shopstr",
+    "description": "Decentralized marketplace with NIP-60/61 Cashu integration",
+    "cohort": "SEC-02",
+    "link": "https://shopstr.store/",
+    "linkText": "shopstr.store",
+    "logo": "/images/showcase/shopstr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Sigit",
+    "description": "SIGit is a secure, private and decentralised document signing tool built on Nostr and Blossom",
+    "cohort": "SEC-02",
+    "link": "https://sigit.io/",
+    "linkText": "sigit.io",
+    "logo": "/images/showcase/sigit-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Sov.Biz",
+    "description": "Sovereign business platform for decentralized commerce",
+    "cohort": "SEC-02",
+    "link": "http://sov.biz",
+    "linkText": "sov.biz",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Tollgate",
+    "description": "Freedom-enhancing internet infrastructure with four core modules: Merchant (e-cash payments), Valve (captive portal access control), Crows Nest (gateway discovery), and Janitor (updates via NIP-94). Successfully deployed at multiple events and now focusing on automated router-to-router payments and improved mobile clients. Demonstrates that free markets with small, frequent payments using bearer assets are the most efficient way to connect devices.",
+    "cohort": "SEC-02",
+    "link": "https://tollgate.me/",
+    "linkText": "tollgate.me",
+    "logo": "/images/showcase/tollgate-logo.webp",
+    "highlight": true
+  },
+  {
+    "name": "Athenut",
+    "description": "Privacy-preserving Web Search Powered by Kagi & Cashu",
+    "cohort": "SEC-03",
+    "link": "https://github.com/thesimplekid/athenut-frontend",
+    "linkText": "GitHub",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/thesimplekid/athenut-mint",
+        "linkText": "athenut-mint"
+      }
+    ]
+  },
+  {
+    "name": "Bolt12 prisms",
+    "description": "Lightning Network payment splitting and distribution system",
+    "cohort": "SEC-03",
+    "link": "https://primal.net/thread/7bfc7747f029a34f3345943f347e04de427104d1e04922e727ff795a59696f32",
+    "linkText": "primal.net",
+    "logo": "/images/showcase/lightning-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "mimoty",
+    "description": "A personal relay which is also a remote signing service for nostr",
+    "cohort": "SEC-03",
+    "link": "https://github.com/gzuuus/mimoty",
+    "linkText": "github.com/gzuuus/mimoty",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nostr MLS",
+    "description": "Encrypted group messages on Nostr with Messaging Layer Security Protocol",
+    "cohort": "SEC-03",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr-based Tollgate",
+    "description": "Decentralized internet access using nostr for communication and discovery. Enables mesh network adoption by transferring infrastructure costs to users permissionlessly. Uses captive portals and MAC address tracking to allow anonymous internet access while still enabling proper accounting of purchased access.",
+    "cohort": "SEC-03",
+    "link": "https://github.com/OpenTollGate/tollgate",
+    "linkText": "github.com/OpenTollGate/tollgate",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nostr-epoxy",
+    "description": "Reverse proxy for nostr relays with enhanced performance and caching",
+    "cohort": "SEC-03",
+    "link": "https://github.com/Origami74/nostr-epoxy-reverse-proxy",
+    "linkText": "github.com/Origami74/nostr-epoxy-reverse-proxy",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "note mixer relay",
+    "description": "A Nostr relay that mixes and anonymizes events using the Khatru framework.",
+    "cohort": "SEC-03",
+    "link": "https://github.com/gzuuus/note-mixer-relay",
+    "linkText": "github.com/gzuuus/note-mixer-relay",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Novia",
+    "description": "Nostr Video Archive - a service to build a video archive using yt-dlp, indexes all videos, and publishes metadata as NIP-71 video events. It allows users to request archived videos from Novia instances (using a DVM) to watch videos from the decentralized archives.",
+    "cohort": "SEC-03",
+    "link": "https://github.com/teamnovia/novia",
+    "linkText": "github.com/teamnovia/novia",
+    "logo": "/images/showcase/novia-logo.jpg",
+    "highlight": false
+  },
+  {
+    "name": "Nutstash Design",
+    "description": "User interface design for Cashu eCash wallet applications",
+    "cohort": "SEC-03",
+    "link": "https://www.nutstash.app/",
+    "linkText": "nutstash.app",
+    "logo": "/images/showcase/nutstash-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nutstash v2 Re-Design",
+    "description": "Multi-mint Cashu wallet rebuilt from scratch. Send ecash to nostr keys, backup via nostr, contacts and chat built in. Multi-platform, self-custodial, privacy-first.",
+    "cohort": "SEC-03",
+    "link": "https://github.com/gandlafbtc/nutstash-wallet/releases/tag/nutstash-v2.0.1",
+    "linkText": "github.com/gandlafbtc/nutstash-wallet",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Safebox",
+    "description": "Secure storage solution for Bitcoin and nostr keys",
+    "cohort": "SEC-03",
+    "link": "https://github.com/trbouma/safebox",
+    "linkText": "github.com/trbouma/safebox",
+    "logo": "/images/showcase/safebox-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "SATS’N’FACTS Website",
+    "description": "Bitcoin technical unconference in Thailand. Hackathons, art exhibitions, and community events bringing together Bitcoin and Nostr builders in Asia. Bitcoin ticketing and merch store powered by LNbits.",
+    "cohort": "SEC-03",
+    "link": "https://stacker.news/items/868441",
+    "linkText": "stacker.news/items/868441",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "TollGate Branding and Landing page",
+    "description": "Branding, design, and landing page for TollGate — the pay-as-you-go Bitcoin ecash WiFi network. No KYC, no subscriptions, no sign-ups. Share your internet with your community and earn sats.",
+    "cohort": "SEC-03",
+    "link": "https://tollgate.me/",
+    "linkText": "tollgate.me",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Totem",
+    "description": "Decentralized identity and reputation system",
+    "cohort": "SEC-03",
+    "link": "https://github.com/totemize",
+    "linkText": "github.com/totemize",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "voca",
+    "description": "Privacy-preserving offline text-to-speech app for GrapheneOS",
+    "cohort": "SEC-03",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NextBlock",
+    "description": "Sovereign digital infrastructure project. Includes the PROMO Protocol (attention marketplace on Nostr), Billboard (ethical advertising where people price their attention in Bitcoin), and Telescope (Bitcoin-based temporal system).",
+    "cohort": "SEC-04",
+    "link": "https://joinnextblock.com/",
+    "linkText": "joinnextblock.com",
+    "logo": "/images/showcase/nextblock-logo.png",
+    "highlight": false,
+    "showOnLanding": false
+  },
+  {
+    "name": "Cassette",
+    "description": "WASM-based Nostr relay implementation for the Cassette platform",
+    "cohort": "SEC-04",
+    "link": "https://github.com/dskvr/cassette",
+    "linkText": "github.com/dskvr/cassette",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "castr.me",
+    "description": "Effortlessly turn any npub into a podcast feed.",
+    "cohort": "SEC-04",
+    "link": "https://castr.me/",
+    "linkText": "castr.me",
+    "logo": "/images/showcase/castrme-logo.png",
+    "highlight": true,
+    "extraLinks": [
+      {
+        "link": "https://github.com/dergigi/castr.me",
+        "linkText": "github.com/dergigi/castr.me"
+      }
+    ]
+  },
+  {
+    "name": "DVMCP",
+    "description": "Bridge implementation that connects Model Context Protocol (MCP) servers to Nostr's Data Vending Machine (DVM) ecosystem",
+    "cohort": "SEC-04",
+    "link": "https://github.com/gzuuus/dvmcp/",
+    "linkText": "github.com/gzuuus/dvmcp/",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "gitworkshop.dev",
+    "description": "Nostr-native git collaboration platform for code review and patch management, built on ngit",
+    "cohort": "SEC-04",
+    "link": "https://gitworkshop.dev/",
+    "linkText": "gitworkshop.dev",
+    "logo": "/images/showcase/gitworkshop-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "HTTPN",
+    "description": "HTTP over Nostr - consists of a client, server, JS library, and NPM package(s)",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Hypernote Stories",
+    "description": "Instagram Stories on Hypernote",
+    "cohort": "SEC-04",
+    "link": "https://github.com/futurepaul/hypernote-stories",
+    "linkText": "github.com/futurepaul/hypernote-stories",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Kindlr",
+    "description": "Nostr Kind Explorer",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nescrow",
+    "description": "Open Escrow Protocol where an Escrow is a client, doesn’t need to run LN infrastructure with Escrow discovery, ratings & reviews.",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "next.nostr.watch",
+    "description": "Next-generation nostr relay monitoring and analytics platform",
+    "cohort": "SEC-04",
+    "link": "https://nostr.watch/",
+    "linkText": "nostr.watch",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nginx 402 mod",
+    "description": "Collection of 402 implementations ln & ecash",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NIP-37",
+    "description": "Transport method announcement. A way for services to decouple from a single network or protocol.",
+    "cohort": "SEC-04",
+    "link": "https://github.com/nostr-protocol/nips/pull/1585",
+    "linkText": "NIPS PR#1585",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nostr wallet app",
+    "description": "Mobile wallet application with Cashu eCash integration",
+    "cohort": "SEC-04",
+    "link": "https://github.com/hvmelo/cashu_app",
+    "linkText": "github.com/hvmelo/cashu_app",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nsite manager",
+    "description": "Management interface for nsite static website hosting",
+    "cohort": "SEC-04",
+    "link": "https://github.com/hzrd149/nsite-manager",
+    "linkText": "github.com/hzrd149/nsite-manager",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nutmoji",
+    "description": "Cashu eCash wallet with emoji-based token representation",
+    "cohort": "SEC-04",
+    "link": "https://wallet.cashu.me/",
+    "linkText": "wallet.cashu.me",
+    "logo": "/images/showcase/cashu-nutmoji-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "obsidian-nostr-publisher",
+    "description": "Obsidian plugin for publishing to nostr",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Olas",
+    "description": "Photo-sharing client on nostr.",
+    "cohort": "SEC-04",
+    "link": "https://olas.app",
+    "linkText": "olas.app",
+    "logo": "/images/showcase/olas-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Plebeian Market",
+    "description": "A content management system and marketplace that provides normies and communities infrastructure for circular economies and the move towards localisation",
+    "cohort": "SEC-04",
+    "link": "https://plebeian.market/",
+    "linkText": "plebeian.market",
+    "logo": "/images/showcase/plebeian-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "pointstr geotags",
+    "description": "Put points on a map",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Receipt.Cash",
+    "description": "Scan and split fiat receipts with bitcoiners. Pay the fiat volunteer back in Lightning or Cashu",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "rust-multiplatform",
+    "description": "Rust framework for building cross-platform applications",
+    "cohort": "SEC-04",
+    "link": "https://github.com/justinmoon/rust-multiplatform",
+    "linkText": "github.com/justinmoon/rust-multiplatform",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "sec.membler.club",
+    "description": "Community platform for Sovereign Engineering cohort members",
+    "cohort": "SEC-04",
+    "link": "https://sec.membler.club/",
+    "linkText": "sec.membler.club",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "soveng/nsite",
+    "description": "Auto-deploy your GitHub page to nsite",
+    "cohort": "SEC-04",
+    "link": "https://github.com/soveng/nsite",
+    "linkText": "github.com/soveng/nsite",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "spryte",
+    "description": "Lightweight nostr client library and toolkit",
+    "cohort": "SEC-04",
+    "link": "https://github.com/sandwichfarm/spryte",
+    "linkText": "github.com/sandwichfarm/spryte",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "TENEX",
+    "description": "Orchestrate the orchestrators. Autonomous, agentic learning through distributed cognition through nostr.",
+    "cohort": "SEC-04",
+    "link": "https://github.com/pablof7z/tenex",
+    "linkText": "github.com/pablof7z/tenex",
+    "logo": "/images/showcase/tenex-logo.webp",
+    "highlight": false
+  },
+  {
+    "name": "Trackstr",
+    "description": "Employee monitoring tool, provides an alternative to Hubstaff or Trackabi",
+    "cohort": "SEC-04",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "wavefunc.live",
+    "description": "Internet radio registry on nostr with music recognition and other nostr native social features.",
+    "cohort": "SEC-04",
+    "link": "https://wavefunc.live/",
+    "linkText": "wavefunc.live",
+    "logo": "/images/showcase/wavefunc-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "wifistr",
+    "description": "Open wifi map on nostr",
+    "cohort": "SEC-04",
+    "link": "https://github.com/coderinf/wifistr",
+    "linkText": "github.com/coderinf/wifistr",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "ants",
+    "description": "Left-side of the curve Nostr search done well",
+    "cohort": "SEC-05",
+    "link": "https://ants.sh/",
+    "linkText": "ants.sh",
+    "logo": "/images/showcase/ants-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/dergigi/ants/",
+        "linkText": "GitHub"
+      }
+    ]
+  },
+  {
+    "name": "Backyard Explorer",
+    "description": "An example search app for window.nostrdb",
+    "cohort": "SEC-05",
+    "link": "https://github.com/hzrd149/backyard-explorer",
+    "linkText": "github.com/hzrd149/backyard-explorer",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Beacon",
+    "description": "AI and Bitcoin stuffed in chat apps, WhatsApp/Signal/Qual using ContextVM",
+    "cohort": "SEC-05",
+    "link": "https://github.com/orgs/beacon21m/repositories",
+    "linkText": "github.com/beacon21m",
+    "logo": "/images/showcase/beacon-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "bitcoin-nostr-relay",
+    "description": "A Rust library for relaying Bitcoin transactions over Nostr",
+    "cohort": "SEC-05",
+    "link": "https://crates.io/crates/bitcoin-nostr-relay",
+    "linkText": "crates.io/crates/bitcoin-nostr-relay",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Blob Box",
+    "description": "Simple blossom server built for UmbrelOS",
+    "cohort": "SEC-05",
+    "link": "https://github.com/hzrd149/umbrel-blob-box",
+    "linkText": "github.com/hzrd149/umbrel-blob-box",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "BloVM",
+    "description": "Blossom server monitor & indexer with blob health checks, also uses ContextVM",
+    "cohort": "SEC-05",
+    "link": "https://github.com/ContextVM/blovm",
+    "linkText": "github.com/ContextVM/blovm",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Boris",
+    "description": "Nostr-native reading and highlighting app. Bookmarks, social highlights, zap splits, offline-first with local relay support.",
+    "cohort": "SEC-05",
+    "link": "https://readwithboris.com",
+    "linkText": "readwithboris.com",
+    "logo": "/images/showcase/boris-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://read.withboris.com/",
+        "linkText": "App"
+      },
+      {
+        "link": "https://github.com/dergigi/boris",
+        "linkText": "GitHub (App)"
+      },
+      {
+        "link": "https://github.com/dergigi/boris-landing",
+        "linkText": "GitHub (Landing Page)"
+      }
+    ]
+  },
+  {
+    "name": "Chrysalis",
+    "description": "Atomic Cashu mint migration with 'traveling server' concept",
+    "cohort": "SEC-05",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "ContextVM",
+    "description": "A protocol that bridges Nostr and Model Context Protocol (MCP) to enable decentralized access and exposure of computational services. Provides SDK for JavaScript/TypeScript with core modules, transports, proxy, gateway, relay, and signer components.",
+    "cohort": "SEC-05",
+    "link": "https://www.contextvm.org/",
+    "linkText": "contextvm.org",
+    "logo": "/images/showcase/contextvm-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://docs.contextvm.org/",
+        "linkText": "Docs"
+      },
+      {
+        "link": "https://github.com/contextvm/ts-sdk",
+        "linkText": "GitHub SDK"
+      }
+    ]
+  },
+  {
+    "name": "Craig David",
+    "description": "Get roasted by Craig David(AI), because no matter what, he's having a better week than you",
+    "cohort": "SEC-05",
+    "link": "https://github.com/humansinstitute/craigdavid",
+    "linkText": "github.com/humansinstitute/craigdavid",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Earthly.city",
+    "description": "Maps stitched, stored, and served as blobs",
+    "cohort": "SEC-05",
+    "link": "https://earthly.city/",
+    "linkText": "earthly.city",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "FIPS",
+    "description": "Fuck IPs using bloom filters",
+    "cohort": "SEC-05",
+    "link": "https://fips.network/",
+    "linkText": "fips.network",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://gitworkshop.dev/arjen@swissdash.site/fips-poc-sec",
+        "linkText": "gitworkshop.dev/arjen@swissdash.site/fips-poc-sec"
+      }
+    ]
+  },
+  {
+    "name": "Frontier Browser",
+    "description": "The Web is Dead, Long Live the Web! A browser built from the ground up",
+    "cohort": "SEC-05",
+    "link": "https://github.com/justinmoon/frontier",
+    "linkText": "github.com/justinmoon/frontier",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Gather",
+    "description": "Spontaneous event publishing with temporary postings",
+    "cohort": "SEC-05",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "hashpool",
+    "description": "Improvements on hashpool - mining pools, eHash & Cashu",
+    "cohort": "SEC-05",
+    "link": "https://github.com/vnprc/hashpool",
+    "linkText": "github.com/vnprc/hashpool",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://pool.hashpool.dev/",
+        "linkText": "dashboard"
+      },
+      {
+        "link": "https://proxy.hashpool.dev/",
+        "linkText": "proxy"
+      }
+    ]
+  },
+  {
+    "name": "Hypernote",
+    "description": "Main idea of the hypermedia system built on Nostr. Includes Stories (story feature extension), Elements (UI elements library), OS (imagined as an operating system), and Pages (component-oriented version using zig-mdx and zig-nostr-loader for building reactive Nostr applications)",
+    "cohort": "SEC-05",
+    "link": "https://github.com/futurepaul/hypernote",
+    "linkText": "github.com/futurepaul/hypernote",
+    "logo": "/images/showcase/hypernote-logo.gif",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/futurepaul/hypernote-stories",
+        "linkText": "stories"
+      },
+      {
+        "link": "https://hypernote-elements.vercel.app",
+        "linkText": "elements"
+      },
+      {
+        "link": "https://github.com/futurepaul/hypernote-os",
+        "linkText": "OS"
+      },
+      {
+        "link": "https://github.com/futurepaul/hypernote-pages",
+        "linkText": "pages"
+      }
+    ]
+  },
+  {
+    "name": "Innpub",
+    "description": "Location sensitive voice meetup app using MoQ",
+    "cohort": "SEC-05",
+    "link": "https://github.com/futurepaul/innpub",
+    "linkText": "github.com/futurepaul/innpub",
+    "logo": "/images/showcase/innpub-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Local++",
+    "description": "Mobile app for local LLM models with dynamic online/offline switching using Routstr/OTRTA",
+    "cohort": "SEC-05",
+    "link": "https://github.com/Routstr/local-plus-plus",
+    "linkText": "github.com/Routstr/local-plus-plus",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Marmot Chat",
+    "description": "Audio/video calls using Nostr IDs with E2EE and MLS, MOQ for data transfer",
+    "cohort": "SEC-05",
+    "link": "https://github.com/justinmoon/av-demo",
+    "linkText": "github.com/justinmoon/av-demo",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NEET",
+    "description": "P2P calls via Nostr using Iroh for hole punching",
+    "cohort": "SEC-05",
+    "link": "https://github.com/justinmoon/neet-native",
+    "linkText": "github.com/justinmoon/neet-native",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "noDNS",
+    "description": "DNS over Nostr",
+    "cohort": "SEC-05",
+    "link": "https://ants.sh/?q=noDNS+by%3Aarjen",
+    "linkText": "ants.sh/?q=noDNS+by%3Aarjen",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "noDNS BIP353 & BOLT12",
+    "description": "BIP353 & BOLT12 payments over noDNS",
+    "cohort": "SEC-05",
+    "link": "https://github.com/bencoin21/nodns_bip353_bolt12_silentpayment",
+    "linkText": "github.com/bencoin21/nodns_bip353_bolt12_silentpayment",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "noPorts",
+    "description": "NGrok-like service over Nostr with smart reverse proxy",
+    "cohort": "SEC-05",
+    "link": "",
+    "linkText": "",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr Bucket",
+    "description": "Browser extension that provides a nostr event cache to all web apps",
+    "cohort": "SEC-05",
+    "link": "https://github.com/hzrd149/nostr-bucket",
+    "linkText": "github.com/hzrd149/nostr-bucket",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr Gatekeeper",
+    "description": "A nostr connect bunker that actually works",
+    "cohort": "SEC-05",
+    "link": "https://github.com/hzrd149/nostr-gatekeeper",
+    "linkText": "github.com/hzrd149/nostr-gatekeeper",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr Globe",
+    "description": "Privacy-first 3D globe visualization of upcoming Nostr events. Interactive filtering by date, radius, tags, and keywords. No trackers — data fetched directly from configured relays.",
+    "cohort": "SEC-05",
+    "link": "https://github.com/fanyiy/nostr-globe",
+    "linkText": "github.com/fanyiy/nostr-globe",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NUT-XX: Deterministic NUT-13 Derivation Paths",
+    "description": "Cashu NUT proposal for deterministic NUT-13 derivation paths",
+    "cohort": "SEC-05",
+    "link": "https://github.com/cashubtc/nuts/pull/292",
+    "linkText": "github.com/cashubtc/nuts/pull/292",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NUT-XX: Mining Share Payment Method",
+    "description": "Cashu NUT proposal for mining share payment method",
+    "cohort": "SEC-05",
+    "link": "https://github.com/cashubtc/nuts/pull/293",
+    "linkText": "github.com/cashubtc/nuts/pull/293",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nutoff",
+    "description": "Cashu wallet using ContextVM for remote access",
+    "cohort": "SEC-05",
+    "link": "https://github.com/gzuuus/nutoff-wallet",
+    "linkText": "github.com/gzuuus/nutoff-wallet",
+    "logo": "/images/showcase/cashu-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Opencode UI",
+    "description": "Web companion for managing remote opencode instances",
+    "cohort": "SEC-05",
+    "link": "https://github.com/justinmoon/opencode-ui",
+    "linkText": "github.com/justinmoon/opencode-ui",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "OTRTA (Routstr client)",
+    "description": "Openrouter over Nostr using Cashu for selling local/API compute in a self-custodial manner",
+    "cohort": "SEC-05",
+    "link": "https://github.com/Routstr/otrta-client",
+    "linkText": "github.com/Routstr/otrta-client",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Paygress",
+    "description": "VM provisioning and VPN purchasing over Nostr with Kubernetes integration",
+    "cohort": "SEC-05",
+    "link": "https://github.com/DhananjayPurohit/paygress",
+    "linkText": "github.com/DhananjayPurohit/paygress",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Retired in a field",
+    "description": "Solving developer funding using ContextVM",
+    "cohort": "SEC-05",
+    "link": "https://retired.otherstuff.ai/",
+    "linkText": "retired.otherstuff.ai",
+    "logo": "/images/showcase/retired-in-a-field.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/humansinstitute/retired_in_a_field",
+        "linkText": "GitHub"
+      }
+    ]
+  },
+  {
+    "name": "Routstr",
+    "description": "Protocol to buy and sell LLM compute using Cashu payments over Nostr",
+    "cohort": "SEC-05",
+    "link": "https://github.com/orgs/Routstr",
+    "linkText": "github.com/Routstr",
+    "logo": "/images/showcase/routstr.png",
+    "highlight": false
+  },
+  {
+    "name": "Seekstr",
+    "description": "Nostr media event summarizer and transcription service. Indexes multimedia content from relays and makes it searchable.",
+    "cohort": "SEC-05",
+    "link": "https://github.com/9qeklajc/seekstr",
+    "linkText": "github.com/9qeklajc/seekstr",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Spotstr",
+    "description": "Maps on Nostr with encrypted group sharing of locations and importing BTCMaps data",
+    "cohort": "SEC-05",
+    "link": "https://github.com/k0sti/spotstr",
+    "linkText": "github.com/k0sti/spotstr",
+    "logo": "/images/showcase/spotstr.png",
+    "highlight": false
+  },
+  {
+    "name": "Wally",
+    "description": "Desktop native wallet with NWC",
+    "cohort": "SEC-05",
+    "link": "https://github.com/Origami74/wally",
+    "linkText": "github.com/Origami74/wally",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Window.nostrdb.js",
+    "description": "A polyfill for window.nostrdb",
+    "cohort": "SEC-05",
+    "link": "https://github.com/hzrd149/window.nostrdb.js",
+    "linkText": "github.com/hzrd149/window.nostrdb.js",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Wingman",
+    "description": "AI Development remote assistant app, which now can use many LLM providers",
+    "cohort": "SEC-05",
+    "link": "https://github.com/humansinstitute/wingman",
+    "linkText": "github.com/humansinstitute/wingman",
+    "logo": "/images/showcase/wingman.png",
+    "highlight": false
+  },
+  {
+    "name": "Zig MDX",
+    "description": "An MDX (Markdown with JSX) tokenizer and parser written in Zig",
+    "cohort": "SEC-05",
+    "link": "https://github.com/futurepaul/zig-mdx",
+    "linkText": "github.com/futurepaul/zig-mdx",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Zig Nostr Loader",
+    "description": "A WASM-first Nostr event loader built with Zig, designed for high-performance caching and deduplication",
+    "cohort": "SEC-05",
+    "link": "https://github.com/futurepaul/zig-nostr-loader",
+    "linkText": "github.com/futurepaul/zig-nostr-loader",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "nihao",
+    "description": "Nostr identity setup and health-check CLI. Creates a complete Nostr identity (keypair, profile, relay list, DM relays, lightning address, Cashu wallet) in one command. Audits existing npub health with a 0–8 score. Single Go binary, non-interactive, agent-friendly. Also available as an OpenClaw skill.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/dergigi/nihao",
+    "linkText": "github.com/dergigi/nihao",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://clawhub.ai/dergigi/nihao",
+        "linkText": "clawhub.ai/dergigi/nihao"
+      }
+    ]
+  },
+  {
+    "name": "One Npub",
+    "description": "Single npub backed by FROST threshold signatures. Distributes key shares in a 2-of-3 multisig style for nostr identities. If one share is compromised, rotate shares while keeping the npub safe.",
+    "cohort": "SEC-06",
+    "link": "https://primal.net/e/nevent1qqs0e68rmd88x5y0utelj6w5plcmplnafhx9t382wjgjgpvldpnn4mqssqv2w",
+    "linkText": "primal.net",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nomen",
+    "description": "Persistent, searchable memory for AI agents using nostr as the sync layer. WoT-integrated with five visibility tiers from public to agent-private, hybrid search combining semantic vectors and full-text, and sleep-inspired consolidation. Works as MCP server, Context-VM, or embedded Rust library.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/k0sti/nomen",
+    "linkText": "github.com/k0sti/nomen",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Fleetgner",
+    "description": "Delegated nostr signer that runs as an MCP server. Granular access controls where admin grants specific users permission to sign with specific keys, with optional policies constraining what can be signed. NIP-46 support for existing clients plus CVM/MCP tools for agents.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/ContextVM/fleetgner",
+    "linkText": "github.com/ContextVM/fleetgner",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr Signal",
+    "description": "Discover and rank trusted local businesses using nostr reputation signals. Combines activity mentions, endorsements, and zaps with customisable weights. Client-side posting via nostr browser extensions, no server needed.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/alexxie16/nostr-signal",
+    "linkText": "github.com/alexxie16/nostr-signal",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Chatstr",
+    "description": "Sane defaults for nostr. Apps pull defaults from your nostr activity or your web of trust for a better, customized experience with fewer footguns.",
+    "cohort": "SEC-06",
+    "link": "https://app.chatstr.ai/",
+    "linkText": "app.chatstr.ai",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Decentralized DNS via Namecoin",
+    "description": "Flutter app for censorship-resistant, human-readable nostr identities via Namecoin. Resolves names like alice.bit to nostr pubkeys stored on-chain, replacing NIP-05 which relies on censorable web servers. Supports NIP-17 encrypted DMs.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/ethicnology/sec-6-decentralized-dns-nostr",
+    "linkText": "github.com/ethicnology/sec-6-decentralized-dns-nostr",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "OAuth Bunker",
+    "description": "Bridges OAuth providers (Google, GitHub, Microsoft, Apple) with nostr identity via NIP-46 remote signing. Split architecture keeps nsecs in an isolated LAN-only bunker. Admin panel protected by NIP-98 HTTP auth with scoped signing permissions.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/flox1an/oauth-bunker",
+    "linkText": "github.com/flox1an/oauth-bunker",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Silent Payments via NIP-05",
+    "description": "Send bitcoin to human-readable nostr identities instead of 118-char silent payment addresses. Resolves NIP-05 names to BIP 352 addresses via nostr profile lookup with Schnorr signature verification. Implemented as a resolver for Sparrow Wallet.",
+    "cohort": "SEC-06",
+    "link": "https://gist.github.com/BoltTouring/dde944661df330ec5119af8ef94159e1",
+    "linkText": "gist.github.com/BoltTouring",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "FriendPub",
+    "description": "Secure key rotation for nostr using threshold cryptography and NIP-17 encrypted DMs. 2-of-3 guardian threshold signature scheme where at least two trusted guardians must approve a rotation. Publishes rotation proofs publicly for network verification.",
+    "cohort": "SEC-06",
+    "link": "https://github.com/tidley/friendpub",
+    "linkText": "github.com/tidley/friendpub",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "CashuTube",
+    "description": "Video streaming platform with Cashu ecash micropayments. Spilman payment channels for pay-per-view without accounts or subscriptions. HLS adaptive bitrate streaming with Cashu wallet integration.",
+    "cohort": "SEC-06",
+    "link": "https://cashutube.satsandsports.cash/",
+    "linkText": "cashutube.satsandsports.cash",
+    "logo": "/images/showcase/bitcoin-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Apprentice",
+    "description": "Nostr-based apprenticeship and attestation system for recruiting, training, and recognizing local work across a community.",
+    "cohort": "SEC-07",
+    "link": "https://apprentice.atobitcoin.io",
+    "linkText": "apprentice.atobitcoin.io",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Archipelago over Meshcore",
+    "description": "Pushes Archipelago messaging and funding flows across Meshcore links, including offline message delivery and bitcoin transaction handoff.",
+    "cohort": "SEC-07",
+    "link": "https://archipelago-foundation.org",
+    "linkText": "archipelago-foundation.org",
+    "logo": "/images/showcase/archipelago-logo.svg",
+    "highlight": false
+  },
+  {
+    "name": "Fanal",
+    "description": "Wallet-style manager for a personal fleet of FIPS nodes. Handles keys, peers, and transport config for running multiple devices.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/oleksky/fanal",
+    "linkText": "github.com/oleksky/fanal",
+    "logo": "/images/showcase/fips-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "FIPS Android",
+    "description": "Android mesh node that runs FIPS through a VpnService TUN, with UniFFI bindings, .fips name resolution, and real hardware routing tests.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/k0sti/fips-android",
+    "linkText": "github.com/k0sti/fips-android",
+    "logo": "/images/showcase/fips-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "FIPS Bloom Research",
+    "description": "Research branch probing how FIPS nodes learn routes, recover from failures, and react to false positives or false negatives in bloom-style routing.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/gzuuus/fips/tree/bloom-research",
+    "linkText": "github.com/gzuuus/fips/tree/bloom-research",
+    "logo": "/images/showcase/fips-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "FIPS Endpoint Discovery",
+    "description": "Advertises FIPS endpoints via replaceable Nostr events and uses hole punching to connect peers without manual coordination.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/jmcorgan/fips",
+    "linkText": "github.com/jmcorgan/fips",
+    "logo": "/images/showcase/fips-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/jmcorgan/fips/pull/53",
+        "linkText": "PR #53"
+      }
+    ]
+  },
+  {
+    "name": "FIPS Mixnet Transport",
+    "description": "Adds a NYM-based transport path to FIPS so traffic can move through cover-rich mixnet routes instead of plain network links.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/jmcorgan/fips",
+    "linkText": "github.com/jmcorgan/fips",
+    "logo": "/images/showcase/fips-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "FIPS Peer Policy Controls",
+    "description": "Adds pubkey allow and deny controls for FIPS peers so nodes can enforce local connection policy on inbound and outbound links.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/jmcorgan/fips",
+    "linkText": "github.com/jmcorgan/fips",
+    "logo": "/images/showcase/fips-logo.png",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/jmcorgan/fips/pull/50",
+        "linkText": "PR #50"
+      },
+      {
+        "link": "https://github.com/jmcorgan/fips/issues/35",
+        "linkText": "Issue #35"
+      }
+    ]
+  },
+  {
+    "name": "fipstr",
+    "description": "Search engine for the FIPS mesh. Indexes advertised services and lets you open sites and apps reachable over FIPS.",
+    "cohort": "SEC-07",
+    "link": "https://search.fipstr.com",
+    "linkText": "search.fipstr.com",
+    "logo": "/images/showcase/fipstr-icon.svg",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/lauri000/fipstr-search",
+        "linkText": "GitHub"
+      }
+    ]
+  },
+  {
+    "name": "FREEDOOM Nsite",
+    "description": "Packages FREEDOOM as a static nsite, proving a full browser game can be served over Nostr-native web hosting.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/jodobear/freedoom-nsite",
+    "linkText": "github.com/jodobear/freedoom-nsite",
+    "logo": "/images/showcase/freedoom-logo.svg",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://5c1zux4p3v4hcj9q4kumfcbo3494lqydx2scp9uax5bwnxu9jrfreedoom.nsite.lol/",
+        "linkText": "FREEDOOM nsite"
+      }
+    ]
+  },
+  {
+    "name": "Hashtree FUSE Mount",
+    "description": "Mounts Hashtree content as a live filesystem. File changes publish new roots and propagate over Blossom-backed distribution.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/mmalmi/hashtree",
+    "linkText": "github.com/mmalmi/hashtree",
+    "logo": "/images/showcase/blossom-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Learn FIPS",
+    "description": "Interactive protocol guide that teaches FIPS through lessons and simulations, from key derivation to routing and recovery.",
+    "cohort": "SEC-07",
+    "link": "https://learn.fips.network",
+    "linkText": "learn.fips.network",
+    "logo": "/images/showcase/learn-fips-logo.svg",
+    "highlight": true,
+    "extraLinks": [
+      {
+        "link": "https://github.com/dergigi/learn-fips",
+        "linkText": "GitHub"
+      }
+    ]
+  },
+  {
+    "name": "LocalGram",
+    "description": "Local-first photo sharing for Android over Wi-Fi Aware. Nearby phones sync captured photos directly without internet infrastructure.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/lauri000/wifi-aware-photo-feed",
+    "linkText": "github.com/lauri000/wifi-aware-photo-feed",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "LoRa Range Test",
+    "description": "Measurement setup and correlation results for SX1280 LoRa links, published through GitWorkshop for reproducible review.",
+    "cohort": "SEC-07",
+    "link": "https://gitworkshop.dev/npub12m5exm2uk3xa674cc5r0hlyvccs5xxn7qv83ezuteefv5972nquq4j4szl/relay.ngit.dev/sx1280-correlation-test",
+    "linkText": "gitworkshop.dev/.../sx1280-correlation-test",
+    "logo": "/images/showcase/gitworkshop-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "MONAD",
+    "description": "Monetized Onion Network Access Daemon. Pays each routing hop with Cashu Spilman channels for onion-routed network access.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/SatsAndSports/MONAD",
+    "linkText": "github.com/SatsAndSports/MONAD",
+    "logo": "/images/showcase/cashu-nutmoji-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "NAAN",
+    "description": "Nostr Agentic Archiving Node. Captures web pages and media, stores the artifacts in Blossom, and preserves proof of when they were archived.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/dergigi/naan",
+    "linkText": "github.com/dergigi/naan",
+    "logo": "/images/showcase/naan-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "Nostr VPN on FIPS",
+    "description": "Ports Nostr VPN onto FIPS so private exit nodes and routed traffic can run across the mesh itself.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/mmalmi/nostr-vpn",
+    "linkText": "github.com/mmalmi/nostr-vpn",
+    "logo": "/images/showcase/nostr-vpn-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "OPNsense FIPS Backup",
+    "description": "OPNsense plugin for encrypted router config backups over the FIPS mesh using Blossom, Hashtree, and Nostr identity.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/oleksky/os-fips-backup",
+    "linkText": "github.com/oleksky/os-fips-backup",
+    "logo": "/images/showcase/blossom-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "PyramidPlot",
+    "description": "Real-time log-scale plotter for time-series streams, used here to visualize simulated FIPS mesh growth over time.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/k0sti/pyramidplot",
+    "linkText": "github.com/k0sti/pyramidplot",
+    "logo": "/images/showcase/nostr-logo.png",
+    "highlight": false
+  },
+  {
+    "name": "TollGate Captive Portal",
+    "description": "Captive portal work for buying Wi-Fi with Lightning, including invoice presentation and session funding flows for TollGate.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/OpenTollGate/tollgate-captive-portal-site",
+    "linkText": "github.com/OpenTollGate/tollgate-captive-portal-site",
+    "logo": "/images/showcase/tollgate-logo.webp",
+    "highlight": false,
+    "extraLinks": [
+      {
+        "link": "https://github.com/OpenTollGate/tollgate-captive-portal-site/pull/9",
+        "linkText": "Frontend PR #9"
+      },
+      {
+        "link": "https://github.com/OpenTollGate/tollgate-module-basic-go/pull/93",
+        "linkText": "Backend PR #93"
+      }
+    ]
+  },
+  {
+    "name": "Top 8",
+    "description": "nostr Top 8 list for curated contacts and social signaling, implemented inside noStrudel with a NIP-51 follow-set model.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/jodobear/top8",
+    "linkText": "github.com/jodobear/top8",
+    "logo": "/images/showcase/top8-logo.svg",
+    "highlight": false
+  },
+  {
+    "name": "Wallnut",
+    "description": "Adds NIP-60 and NIP-61 Cashu flows to Alphaama, including nutzaps and double-ratchet experiments for private messaging.",
+    "cohort": "SEC-07",
+    "link": "https://github.com/eskema/alphaama",
+    "linkText": "github.com/eskema/alphaama",
+    "logo": "/images/showcase/alphaama-logo.png",
+    "highlight": false
+  }
+]

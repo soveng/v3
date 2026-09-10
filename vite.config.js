@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { renderTestimonials } from "./scripts/generate-projects.js";
 import { generatePages } from "./scripts/generate-pages.js";
 
 const pages = generatePages();
@@ -16,6 +17,7 @@ export default defineConfig({
   appType: "mpa",
   plugins: [{
     name: "canonical-content-routes",
+    transformIndexHtml: html => html.replace("<!-- TESTIMONIALS -->", renderTestimonials()),
     configureServer: canonicalRoutes,
     configurePreviewServer: canonicalRoutes,
   }],

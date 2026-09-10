@@ -43,7 +43,7 @@ server to regenerate the pages:
   isolate the characters and match the site's colours; the curve is drawn in SVG.
   Reduced-motion visitors get the complete static illustration.
 
-The root `podcast/`, `faq/`, and `policy/` directories are generated and ignored
+The root `podcast/`, `faq/`, `policy/`, and `projects/` directories are generated and ignored
 by Git. They are replaced during generation; do not edit or store source in them.
 The build does not fetch content from the live site. Audio, episode artwork,
 and transcripts remain hosted at their original URLs. Players load audio only
@@ -62,9 +62,27 @@ Before public release:
 - Confirm the next cohort's dates and application status; SEC-08 is currently
   shown as concluded, matching the source site's closed applications.
 - Decide how legacy routes such as `/concept`, `/philosophy`, `/loop`,
-  `/projects`, `/books`, and `/timeline` should be retained or redirected.
+  `/books`, and `/timeline` should be retained or redirected.
 - Verify external media playback and subscription on the production domain.
   Canonical and social URLs assume `https://sovereignengineering.io`.
+
+## Projects and testimonials
+
+The project archive preserves 154 entries across SEC-00 through SEC-07,
+including the original cohort URLs, project anchors, descriptions, and resource
+links. Search and cohort filters enhance the static directory; without JavaScript
+all entries remain visible. The seven homepage highlights link to dedicated
+project stories. Testimonials appear immediately before Apply on the homepage.
+
+- `content/projects.json`: original archive entries.
+- `content/cohorts.json`: cohort introductions.
+- `content/project-stories.json`: featured project explanations and related work.
+- `content/testimonials.json`: original community quotes and attribution links.
+- `scripts/generate-projects.js`: archive, story, and testimonial rendering.
+- `src/project-archive.js`: search, filtering, and progressive results.
+
+Archive content and local project logos were migrated from `soveng/website` at
+`8bfb0bc`. Restart Vite after editing content to regenerate the pages.
 
 ## Run locally
 

@@ -1,3 +1,4 @@
+import { generateProjects } from "./generate-projects.js";
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { dirname } from "node:path";
 import { XMLParser, XMLValidator } from "fast-xml-parser";
@@ -44,7 +45,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
   <a class="skip-link" href="#content">Skip to content</a>
   <nav class="nav" aria-label="Main navigation">
     <a class="nav-brand" href="/" aria-label="Sovereign Engineering home"><img src="/src/assets/brandmark.svg" alt=""><span>Sovereign<br>Engineering</span></a>
-    <div class="nav-links"><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>Podcast</a><a href="/faq/"${path === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a><a href="/#apply">Cohorts ↗</a></div>
+    <div class="nav-links"><a href="/projects/"${path.startsWith("/projects") ? ' aria-current="page"' : ""}>Projects</a><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>Podcast</a><a href="/faq/"${path === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a><a href="/#apply">Cohorts ↗</a></div>
   </nav>
   <main id="content" class="content-shell">${body}</main>
   <footer class="content-footer"><a href="/">Sovereign Engineering<br>Madeira, Portugal</a><a href="/policy/">Policies</a><a href="mailto:info@sovereignengineering.io">Get in touch ↗</a></footer>
@@ -65,7 +66,7 @@ export function generatePages() {
   if (!episodes.length || new Set(episodes.map(ep => ep.slug)).size !== episodes.length) throw new Error("Missing or duplicate episodes");
   const files = [];
   // These directories contain only generated output, never editable source.
-  for (const directory of ["podcast", "faq", "policy"]) rmSync(directory, { recursive: true, force: true });
+  for (const directory of ["podcast", "faq", "policy", "projects"]) rmSync(directory, { recursive: true, force: true });
   const write = (path, html) => {
     mkdirSync(dirname(path), { recursive: true });
     writeFileSync(path, html);
@@ -108,5 +109,6 @@ export function generatePages() {
       <header class="text-hero"><p class="section-index">Sovereign Engineering / ${name === "faq" ? "The practical details" : "How we work"}</p><h1>${name === "faq" ? "Before you<br>join us." : escape(data.title)}</h1><div class="content-lead">${name === "faq" ? "The program, the island, and what to expect." : markdown(data.intro.content)}</div></header>
       <div class="faq-layout"><aside class="section-menu" aria-label="On this page">${data.sections.map(section => `<a href="#${escape(section.id)}">${escape(section.title)}</a>`).join("")}</aside><div>${sections}</div></div><script type="module" src="/src/content.js"></script>`, "/images/sovereign-engineering.png"));
   }
+  generateProjects({ write, layout, escape });
   return files;
 }
