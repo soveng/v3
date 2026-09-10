@@ -372,7 +372,7 @@ function createPlantAnimation(canvas, species, seed) {
     });
   }
 
-  function drawDish(progress, width, height) {
+  function drawAntenna(progress, width, height) {
     const growth = smooth(clamp((progress - .68) / .24));
     if (!growth) return;
     const tip = stemPoint(1, width, height);
@@ -382,28 +382,30 @@ function createPlantAnimation(canvas, species, seed) {
     context.globalAlpha = growth;
     context.strokeStyle = "#594737";
     context.lineWidth = 3;
-    context.beginPath(); context.moveTo(0, 0); context.lineTo(0, -76 * growth); context.stroke();
+    context.beginPath(); context.moveTo(0, 0); context.lineTo(0, -82 * growth); context.stroke();
     context.translate(0, -82 * growth);
     context.scale(growth, growth);
-    // A shallow dish tilted skyward, with a red receiver at its focus.
-    context.beginPath();
-    context.moveTo(-size * .75, -size * .65);
-    context.bezierCurveTo(-size * 1.05, size * .7, -size * .15, size * 1.1, size * .75, size * .65);
-    context.closePath();
-    context.fillStyle = "#c3c3ac"; context.fill();
-    context.lineWidth = 2; context.stroke();
-    context.beginPath();
-    context.moveTo(-size * .25, size * .3);
-    context.lineTo(size * .5, -size * .55);
-    context.lineTo(size * .75, size * .65);
-    context.stroke();
-    context.beginPath(); context.arc(size * .5, -size * .55, 3.5, 0, Math.PI * 2);
-    context.fillStyle = "#ed3238"; context.fill();
-    context.strokeStyle = "rgba(89,71,55,.4)";
-    context.lineWidth = 1.2;
-    for (const radius of [size * .45, size * .7]) {
-      context.beginPath(); context.arc(size * .5, -size * .55, radius, -1.25, -.15); context.stroke();
+    // A rooftop-style directional aerial: reflector, folded dipole, and directors.
+    context.rotate(-Math.PI / 10);
+    context.strokeStyle = "#696b60";
+    context.lineWidth = 2.5;
+    context.beginPath(); context.moveTo(-size, 0); context.lineTo(size * 1.4, 0); context.stroke();
+    for (const [position, halfLength] of [[-.9, .72], [.05, .53], [.48, .46], [.9, .39], [1.3, .32]]) {
+      context.beginPath();
+      context.moveTo(size * position, -size * halfLength);
+      context.lineTo(size * position, size * halfLength);
+      context.lineWidth = position < 0 ? 2.5 : 1.8;
+      context.stroke();
     }
+    context.beginPath();
+    context.roundRect(-size * .5, -size * .59, size * .17, size * 1.18, size * .08);
+    context.lineWidth = 1.8; context.stroke();
+    context.fillStyle = "#ed3238";
+    context.fillRect(-size * .52, -3, size * .21, 6);
+    context.beginPath();
+    context.moveTo(-size * .42, 3);
+    context.quadraticCurveTo(-size * .3, size * .55, size * .12, size * .58);
+    context.strokeStyle = "#594737"; context.lineWidth = 1; context.stroke();
     context.restore();
   }
 
@@ -430,7 +432,7 @@ function createPlantAnimation(canvas, species, seed) {
     drawStem(state.progress, width, height);
     drawLeaves(state.progress, width, height);
     drawFlowers(state.progress, width, height);
-    if (species === "mangrove") drawDish(state.progress, width, height);
+    if (species === "mangrove") drawAntenna(state.progress, width, height);
   }
 
   resize();
