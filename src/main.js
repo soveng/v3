@@ -327,14 +327,22 @@ function createPlantAnimation(canvas, species, seed) {
       return value - Math.floor(value);
     };
     for (let index = 0; index < config.flowers; index += 1) {
-      const threshold = species === "cherry" ? .46 + index / config.flowers * .32 : .62 + index * .025;
+      const threshold = species === "cherry" ? .58 + index / config.flowers * .22 : .62 + index * .025;
       const growth = smooth(clamp((progress - threshold) / .2));
       if (!growth) continue;
       const attach = species === "cherry" ? .52 + flowerNoise(index + 210) * .45 : species === "firebush" ? .4 + index * .045 : .72 + (index % 4) * .065;
       const point = stemPoint(attach, width, height);
       const side = index % 2 ? 1 : -1;
-      const x = point.x + side * width * (species === "cherry" ? .015 + flowerNoise(index + 250) * .14 : .025 + index * .007);
-      const y = point.y - (species === "cherry" ? flowerNoise(index + 280) * 24 : index * 5);
+      const branchGrowth = species === "cherry" ? smooth(clamp((progress - threshold) / .12)) : 1;
+      const x = point.x + side * width * (species === "cherry" ? .015 + flowerNoise(index + 250) * .14 : .025 + index * .007) * branchGrowth;
+      const y = point.y - (species === "cherry" ? flowerNoise(index + 280) * 24 : index * 5) * branchGrowth;
+      if (species === "cherry") {
+        context.beginPath(); context.moveTo(point.x, point.y);
+        context.quadraticCurveTo(point.x + (x - point.x) * .55, point.y + 5 * branchGrowth, x, y);
+        context.strokeStyle = "#765844";
+        context.lineWidth = Math.max(.8, Math.min(1.5, width * .0015));
+        context.lineCap = "round"; context.stroke();
+      }
       const radius = species === "cherry"
         ? Math.max(4, Math.min(13, width * .01)) * (.55 + flowerNoise(index + 320) * 1.1) * growth
         : width * .012 * growth;
