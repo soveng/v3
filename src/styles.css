@@ -277,3 +277,5 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .podcast-stage { position:relative; }
   .podcast-preview { min-height:0; }
 }
+
+.project-plant.jungle-mycelium { min-height:max(800px,110svh); }

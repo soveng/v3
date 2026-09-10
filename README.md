@@ -18,7 +18,9 @@ scrolling; reduced motion and no JavaScript show the completed SVG scene.
 `src/fips-animation.js` grows a branching root network directly from the base
 of TollGate’s mangrove, showing FIPS emerging from TollGate. The two canvases
 share a root anchor, and TollGate stays upright to preserve that connection.
-Growth is deterministic and scroll-driven, with a static reduced-motion view.
+The deeper root section grows with scrolling; three slow packet pulses repeat
+while the network is visible, traveling outward and back toward TollGate.
+Reduced-motion visitors see a static view, and offscreen animation is paused.
 
 ## Podcast and FAQ content
 

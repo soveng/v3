@@ -43,7 +43,21 @@ export function createFipsAnimation(canvas, reducedMotion) {
   }
   const ancestry = branch => branch ? [...ancestry(branch.parent), branch] : [];
   const deepest = tips.reduce((a, b) => a.end.y > b.end.y ? a : b);
-  const route = ancestry(deepest);
+  const sortedTips = [...tips].sort((a, b) => a.end.x - b.end.x);
+  const routes = [ancestry(sortedTips[Math.floor(sortedTips.length * .15)]), ancestry(deepest), ancestry(sortedTips[Math.floor(sortedTips.length * .85)])];
+  const rootDepth = Math.max(...tips.map(tip => tip.end.y));
+  let visible = false;
+  let frame = 0;
+  let elapsed = 0;
+  let previousTime = 0;
+
+  function tick(time) {
+    frame = 0;
+    if (!visible || reducedMotion || state.progress < .5) { previousTime = 0; return; }
+    if (previousTime) elapsed += Math.min(time - previousTime, 50) / 1000;
+    previousTime = time;
+    draw();
+  }
 
   function at(branch, t) {
     const u = 1 - t;
@@ -58,7 +72,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
     if (!width || !height) return;
     const progress = clamp(state.progress);
     const spread = width;
-    const project = p => ({ x: p.x * spread, y: p.y * height });
+    const project = p => ({ x: p.x * spread, y: p.y / rootDepth * height * .96 });
     const size = Math.max(.65, spread / 1000);
     context.lineCap = "round";
 
@@ -77,7 +91,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
     }
 
     for (const branch of branches) {
-      const growth = smooth((progress - branch.arrival) / .2);
+      const growth = smooth((progress / .65 - branch.arrival) / .2);
       if (!growth) continue;
       const weight = (12 * Math.pow(.53, branch.depth) + .25) * size;
       filament(branch, 0, growth, branch.depth < 2 ? "#594737" : "#8b8063", weight);
@@ -98,21 +112,30 @@ export function createFipsAnimation(canvas, reducedMotion) {
       }
     }
 
-    const travel = clamp((progress - .74) / .25) * route.length;
-    route.forEach((branch, index) => {
-      const growth = clamp(travel - index);
-      if (growth) filament(branch, 0, growth, "rgba(190,79,57,.72)", 1.5 * size);
-    });
-    if (travel > 0 && travel < route.length) {
-      const branch = route[Math.floor(travel)];
+    // Slow, repeated packets make the network readable even while scrolling pauses.
+    if (progress >= .5) routes.forEach((route, routeIndex) => {
+      const phase = reducedMotion ? .65 : (elapsed / 12 + routeIndex / 3) % 1;
+      const travel = phase * route.length;
+      const reverse = routeIndex === 1;
+      const ordered = reverse ? [...route].reverse() : route;
+      ordered.forEach((branch, index) => {
+        const head = clamp(travel - index);
+        const tail = clamp(travel - .85 - index);
+        if (head > tail) filament(branch, reverse ? 1 - tail : tail, reverse ? 1 - head : head, "rgba(218,75,43,.9)", 2.4 * size);
+      });
+      const branch = ordered[Math.min(ordered.length - 1, Math.floor(travel))];
       const t = travel % 1;
-      const p = project(at(branch, t));
-      const glow = context.createRadialGradient(p.x, p.y, 0, p.x, p.y, 14 * size);
-      glow.addColorStop(0, "rgba(237,110,65,.45)");
+      const p = project(at(branch, reverse ? 1 - t : t));
+      const radius = Math.max(15, 20 * size);
+      const glow = context.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius);
+      glow.addColorStop(0, "rgba(237,110,65,.65)");
       glow.addColorStop(1, "rgba(237,110,65,0)");
       context.fillStyle = glow;
-      context.fillRect(p.x - 14 * size, p.y - 14 * size, 28 * size, 28 * size);
-    }
+      context.fillRect(p.x - radius, p.y - radius, radius * 2, radius * 2);
+      context.beginPath(); context.arc(p.x, p.y, Math.max(2.5, 3 * size), 0, Math.PI * 2);
+      context.fillStyle = "#ed5834"; context.fill();
+    });
+    if (visible && !reducedMotion && progress >= .5 && !frame) frame = requestAnimationFrame(tick);
   }
 
   function resize() {
@@ -130,6 +153,12 @@ export function createFipsAnimation(canvas, reducedMotion) {
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     draw();
   }
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) draw();
+    else { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
+  });
+  observer.observe(canvas);
   resize();
   window.addEventListener("resize", resize);
   document.fonts.ready.then(resize);
