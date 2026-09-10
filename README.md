@@ -183,3 +183,10 @@ Or deploy from a local clone:
 npx vercel
 npx vercel --prod
 ```
+
+The three Wikifreedia fruits use the unmodified
+[Wikipedia puzzle-globe SVG](https://commons.wikimedia.org/wiki/File:Wikipedia-logo-v2.svg),
+by Wikimedia (version 1 by Nohat, concept by Paullusmagnus), under
+[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+The original SVG is stored in `public/images/wikipedia-globe.svg` and rendered
+at different sizes in the plant canvas.

@@ -203,6 +203,11 @@ function createPlantAnimation(canvas, species, seed) {
     dandelion: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
   };
   const config = speciesConfig[species];
+  const puzzleGlobe = species === "banyan" ? new Image() : null;
+  if (puzzleGlobe) {
+    puzzleGlobe.onload = () => draw();
+    puzzleGlobe.src = "/images/wikipedia-globe.svg";
+  }
   if (species === "mangrove") canvas.dataset.rootX = .5 + Math.sin(seed) * .012;
 
   const smooth = value => value * value * (3 - 2 * value);
@@ -545,6 +550,23 @@ function createPlantAnimation(canvas, species, seed) {
     }
   }
 
+  function drawKnowledgeFruit(progress, width, height) {
+    if (!puzzleGlobe?.complete || !puzzleGlobe.naturalWidth) return;
+    const fruits = [[-.13, .64, .9], [.14, .72, 1], [.025, .49, .85]];
+    fruits.forEach(([offset, attach, scale], index) => {
+      const growth = smooth(clamp((progress - .6 - index * .06) / .22));
+      if (!growth) return;
+      const branch = stemPoint(attach, width, height);
+      const x = branch.x + offset * Math.min(width, 1000);
+      const y = branch.y + 20;
+      const size = Math.max(44, Math.min(76, width * .09)) * scale * growth;
+      context.beginPath(); context.moveTo(branch.x, branch.y);
+      context.quadraticCurveTo(x, branch.y - 12, x, y + 5);
+      context.strokeStyle = "#604933"; context.lineWidth = 1.8; context.stroke();
+      context.drawImage(puzzleGlobe, x - size / 2, y, size, size * puzzleGlobe.naturalHeight / puzzleGlobe.naturalWidth);
+    });
+  }
+
   function drawAntenna(progress, width, height) {
     const growth = smooth(clamp((progress - .68) / .24));
     if (!growth) return;
@@ -614,6 +636,7 @@ function createPlantAnimation(canvas, species, seed) {
     drawLeaves(state.progress, width, height);
     drawFlowers(state.progress, width, height);
     if (species === "mangrove") drawAntenna(state.progress, width, height);
+    if (species === "banyan") drawKnowledgeFruit(state.progress, width, height);
   }
 
   resize();
