@@ -8,6 +8,7 @@ dist/
 /faq/
 /policy/
 /projects/
+/mountain/
 
 .env
 .env.*

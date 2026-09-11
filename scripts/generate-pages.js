@@ -68,7 +68,7 @@ export function generatePages() {
   if (!episodes.length || new Set(episodes.map(ep => ep.slug)).size !== episodes.length) throw new Error("Missing or duplicate episodes");
   const files = [];
   // These directories contain only generated output, never editable source.
-  for (const directory of ["podcast", "faq", "policy", "projects"]) rmSync(directory, { recursive: true, force: true });
+  for (const directory of ["podcast", "faq", "policy", "projects", "mountain"]) rmSync(directory, { recursive: true, force: true });
   const write = (path, html) => {
     mkdirSync(dirname(path), { recursive: true });
     writeFileSync(path, html);
@@ -111,6 +111,8 @@ export function generatePages() {
       <header class="text-hero"><p class="section-index">Sovereign Engineering / ${name === "faq" ? "The practical details" : "How we work"}</p><h1>${name === "faq" ? "Before you<br>join us." : escape(data.title)}</h1><div class="content-lead">${name === "faq" ? "The program, the island, and what to expect." : markdown(data.intro.content)}</div></header>
       <div class="faq-layout"><aside class="section-menu" aria-label="On this page">${data.sections.map(section => `<a href="#${escape(section.id)}">${escape(section.title)}</a>`).join("")}</aside><div>${sections}</div></div><script type="module" src="/src/content.js"></script>`, "/images/sovereign-engineering.png"));
   }
+  write("mountain/index.html", layout("Mountain cohort — 2027", "A one-week Sovereign Engineering mountain cohort in 2027. More details coming soon.", "/mountain/", `
+    <header class="text-hero"><h1>Mountain<br>cohort.</h1><div class="content-lead">${markdown(readFileSync("content/mountain.md", "utf8"))}</div></header>`, "/images/sovereign-engineering.png"));
   generateProjects({ write, layout, escape });
   return files;
 }
