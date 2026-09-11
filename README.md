@@ -75,7 +75,8 @@ all entries remain visible. The seven homepage highlights link to dedicated
 project stories. Testimonials appear immediately before Apply on the homepage in a swipeable
 carousel with all original quotes and author portraits. Swipe, horizontal scrolling, and keyboard
 controls move through the slides. Automatic advance allows at least eight seconds
-per quote, with extra reading time for longer quotes. It pauses offscreen, in hidden
+per quote, with extra reading time for longer quotes. A red line fills toward the
+next transition, pauses with playback, and resets after a swipe. It pauses offscreen, in hidden
 tabs, during hover, focus, or touch, and for reduced-motion visitors. Native horizontal
 scrolling remains available without JavaScript.
 
