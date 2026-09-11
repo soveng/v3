@@ -77,7 +77,7 @@ export function generatePages() {
   const description = "Walking dialogues about freedom tech, open protocols, and the trade-offs of building in the open.";
   write("podcast/index.html", layout("No Solutions", description, "/podcast/", `
     <header class="podcast-hero">
-      <img src="/images/nosolutions-cover.jpg" width="600" height="600" alt="No Solutions podcast artwork">
+      <img src="/images/nosolutions-cover.jpg" width="600" height="600" alt="No Solutions dialogue artwork">
       <div><h1>No<br>Solutions.</h1><p class="content-lead">${description}</p>
       <div class="content-links"><a href="/dialogues.xml">Subscribe via RSS ↗</a><a href="https://castr.me/npub1n00yy9y3704drtpph5wszen64w287nquftkcwcjv7gnnkpk2q54s73000n">castr.me ↗</a><a href="https://podcastindex.org/podcast/7206062">Podcast Index ↗</a><a href="https://njump.to/nosolutions@sovereignengineering.io">Nostr ↗</a></div></div>
     </header>
@@ -85,19 +85,19 @@ export function generatePages() {
       <blockquote cite="https://njump.to/nevent1qqsyeue9x26zdcrz2wx8stvl3kmxw42clqd5n4jgpuvxhemm6q8fyugprfmhxue69uhhq7tjv9kkjepwve5kzar2v9nzucm0d5hsygpm7rrrljungc6q0tuh5hj7ue863q73qlheu4vywtzwhx42a7j9n5psgqqqq3tszvt290"><p>“Once it left its AI psychosis phase it has had some good moments.”</p></blockquote>
       <figcaption>— <a href="https://njump.to/nevent1qqsyeue9x26zdcrz2wx8stvl3kmxw42clqd5n4jgpuvxhemm6q8fyugprfmhxue69uhhq7tjv9kkjepwve5kzar2v9nzucm0d5hsygpm7rrrljungc6q0tuh5hj7ue863q73qlheu4vywtzwhx42a7j9n5psgqqqq3tszvt290">fiatjaf ↗</a></figcaption>
     </figure>
-    <section aria-labelledby="episodes"><div class="archive-heading"><h2 id="episodes">Walking towards a better internet.</h2><p class="section-index">${episodes.length} episodes / Latest first</p></div>
+    <section aria-labelledby="episodes"><div class="archive-heading"><h2 id="episodes">Walking towards a better internet.</h2><p class="section-index">${episodes.length} dialogues / Latest first</p></div>
     <div class="episode-list">${episodes.map(ep => `<article class="episode-card"><a href="/podcast/${ep.slug}/"><img src="${safeUrl(ep["itunes:image"]["@_href"])}" alt="" width="240" height="240" loading="lazy"><div>${meta(ep)}<h3>${escape(ep.title)}</h3><p>${textOnly(ep.description.match(/<p[^>]*>([\s\S]*?)<\/p>/)?.[1] || "").slice(0, 350)}</p></div></a></article>`).join("")}</div></section>`));
   for (const ep of episodes) {
     const audio = safeUrl(ep.enclosure["@_url"]);
     const transcript = ep["podcast:transcript"];
     const notes = ep["podcast:contentLink"];
     write(`podcast/${ep.slug}/index.html`, layout(`${ep.title} — No Solutions`, description, `/podcast/${ep.slug}/`, `
-      <a class="text-link" href="/podcast/">← All episodes</a>
-      <header class="episode-hero"><img src="${safeUrl(ep["itunes:image"]["@_href"])}" width="400" height="400" alt="Episode artwork"><div><p class="section-index">No Solutions</p><h1>${escape(ep.title)}</h1>${meta(ep)}
+      <a class="text-link" href="/podcast/">← All dialogues</a>
+      <header class="episode-hero"><img src="${safeUrl(ep["itunes:image"]["@_href"])}" width="400" height="400" alt="Dialogue artwork"><div><p class="section-index">No Solutions</p><h1>${escape(ep.title)}</h1>${meta(ep)}
       <audio controls preload="none" aria-label="${escape(ep.title)}"><source src="${audio}" type="${escape(ep.enclosure["@_type"] || "audio/mpeg")}">Your browser does not support audio playback.</audio>
       <div class="content-links"><a href="${audio}">Open audio ↗</a>${ep.link ? `<a href="${safeUrl(ep.link.replace("njump.me", "njump.to"))}">Discuss on Nostr ↗</a>` : ""}${notes ? `<a href="${safeUrl(notes["@_href"])}">Show notes ↗</a>` : ""}${transcript ? `<a href="${safeUrl(transcript["@_url"])}">Transcript ↗</a>` : ""}</div></div></header>
-      <section class="prose show-notes" aria-label="Episode notes">${clean(ep.description)}</section>
-      <a class="text-link" href="/podcast/">← All episodes</a>`, ep["itunes:image"]["@_href"]));
+      <section class="prose show-notes" aria-label="Dialogue notes">${clean(ep.description)}</section>
+      <a class="text-link" href="/podcast/">← All dialogues</a>`, ep["itunes:image"]["@_href"]));
   }
   for (const name of ["faq", "policy"]) {
     const source = readFileSync(`content/${name}.md`, "utf8");
