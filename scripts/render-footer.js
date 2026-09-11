@@ -5,12 +5,9 @@ export function renderFooter() {
         <g class="footer-ship-rock">
           <path d="M16 88 L84 88 L75 102 Q47 109 27 101 Z" fill="#080808"/>
           <path d="M25 94 H77 M35 100 H66 M51 88 V15 M23 88 L51 25 L83 88 M15 88 L7 82 M82 88 L94 79"/>
-          <path d="M51 17 Q64 10 77 17 L71 23 Q61 19 51 25" fill="#ed3238" stroke="#ed3238"/>
           <path d="M33 33 Q51 37 71 32 Q65 51 71 69 Q49 75 31 68 Q39 51 33 33 Z" fill="#080808"/>
           <path d="M29 32 H75 M27 70 H76"/>
-          <path d="M51 42 C42 42 42 54 47 55 V59 H55 V55 C61 51 60 42 51 42 Z" fill="currentColor" stroke="none"/>
-          <g fill="#080808" stroke="none"><circle cx="48" cy="49" r="1.7"/><circle cx="54" cy="49" r="1.7"/><path d="M51 52 L49.5 54 H52.5 Z"/></g>
-          <path d="M43 62 L59 68 M43 68 L59 62"/>
+          <path d="M45 36 Q49 53 44 71 M59 35 Q56 52 60 71" stroke-width=".7" opacity=".5"/>
           <path d="M56 77 L78 75 L69 86 H56 Z" fill="#080808"/>
         </g>
       </svg>
