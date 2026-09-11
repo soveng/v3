@@ -593,7 +593,7 @@ function createPlantAnimation(canvas, species, seed) {
     const growth = smooth(clamp(progress / .4));
     if (!growth) return;
     const base = stemPoint(0, width, height);
-    const spread = Math.min(210, width * .48);
+    const spread = Math.min(120, width * .28);
     context.save();
     context.translate(base.x, base.y);
     context.globalAlpha = growth;
