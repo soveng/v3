@@ -1,7 +1,7 @@
 ---
 chapters:
   - day: Mountain cohort / 2027
-    title: One week. One ascent.
+    title: Seven days. One goal
     body: Seven days. One weekly cycle. Come together in the valley, leave the devices behind, and take your ideas up the mountain.
   - day: Day 01 / The valley
     title: Find your crew.
