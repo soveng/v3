@@ -49,8 +49,7 @@ if (!reduced) {
     .to(cloud, { scale: 1, opacity: .9, duration: 4, ease: "sine.inOut" })
     .to(cloud, { scale: .68, opacity: .45, duration: 6, ease: "sine.inOut" })
     .fromTo(breathSection.querySelector(".chapter-body"), { "--breath-drift": "0px" }, {
-      "--breath-drift": () => window.matchMedia("(max-width: 720px)").matches
-        ? `${Math.min(64, breathStage.clientHeight * .07)}px` : "0px",
+      "--breath-drift": () => `${Math.min(64, breathStage.clientHeight * .07)}px`,
       duration: 10,
       ease: "none",
     }, 0);
