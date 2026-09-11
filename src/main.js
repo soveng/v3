@@ -198,7 +198,7 @@ function createPlantAnimation(canvas, species, seed) {
   const speciesConfig = {
     cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: "#553a35", trunkWidth: 8, leaf: "#4c7148", accent: "#ed7e91", flowers: 21, crown: false, shape: "pointed" },
     cashew: { height: 0, leaves: 0, leafLength: 0, leafWidth: 0, trunk: "#9b622d", trunkWidth: 0, leaf: "#d8ad68", accent: "#f1cf8b", flowers: 0, crown: false, shape: "cashew" },
-    banyan: { height: .8, leaves: 28, leafLength: .16, leafWidth: .045, trunk: "#604933", trunkWidth: 16, leaf: "#2f6644", accent: "#ed3238", flowers: 0, crown: true, shape: "broad", roots: true },
+    banyan: { height: .8, leaves: 28, leafLength: .16, leafWidth: .045, trunk: "#604933", trunkWidth: 16, leaf: "#2f6644", accent: "#ed3238", flowers: 0, crown: true, shape: "broad", roots: false },
     papyrus: { height: .82, leaves: 34, leafLength: .19, leafWidth: .009, trunk: "#71884d", trunkWidth: 7, leaf: "#5c8b55", accent: "#d9b83e", flowers: 0, crown: true, shape: "needle" },
     mangrove: { height: .67, leaves: 24, leafLength: .13, leafWidth: .035, trunk: "#594737", trunkWidth: 13, leaf: "#346c52", accent: "#ed3238", flowers: 0, crown: false, shape: "broad", roots: true },
     dandelion: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
