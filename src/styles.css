@@ -362,11 +362,9 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .alumni-quote figcaption img { width:64px; height:64px; flex-shrink:0; border-radius:50%; object-fit:cover; }
 .alumni-quote figcaption > div { display:flex; flex-direction:column; gap:8px; }
 .alumni-quote figcaption div > :last-child { color:#726b60; }
-.testimonial-controls { display:flex; align-items:center; justify-content:flex-end; gap:24px; padding-top:24px; }
-.testimonial-controls button { width:48px; height:48px; border:1px solid #b6afa3; border-radius:50%; background:transparent; color:var(--ink); font:24px var(--serif); cursor:pointer; }
-.testimonial-controls button:hover { background:var(--ink); color:var(--bone); }
-.testimonial-controls button:focus-visible,.testimonial-track:focus-visible { outline:2px solid var(--red); outline-offset:4px; }
-.testimonial-position { font:12px var(--mono); color:#726b60; min-width:5ch; text-align:center; }
+.alumni-quote a:focus-visible,.testimonial-track:focus-visible { outline:2px solid var(--red); outline-offset:4px; }
+.alumni-quote blockquote a:hover { color:#6b3a32; }
+.alumni-quote figcaption > a { flex-shrink:0; }
 @media(max-width:1000px) {
   .cohort-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .project-record-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
