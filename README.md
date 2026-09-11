@@ -60,6 +60,12 @@ links now point to `/#apply`; the policy's philosophy link points to the program
 section while new philosophy copy is pending. Nostr verification metadata is
 preserved at `/.well-known/nostr.json`.
 
+The final homepage invitation is rendered by `scripts/render-apply.js`. Set
+`content/applications.json` to `"status": "open"` and supply the HTTPS
+`applicationUrl` to show the primary application button. The closed state shows a
+short availability message and a subtle FAQ link. Keep the FAQ’s cohort details
+in sync when opening applications.
+
 Before public release:
 
 - Finish the intended concept, philosophy, and loop copy.

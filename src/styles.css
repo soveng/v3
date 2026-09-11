@@ -429,3 +429,13 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .footer-ship-rock { transform-origin:50px 101px; animation:footer-sailing 6s ease-in-out infinite; animation-play-state:var(--ship-motion,running); }
 @keyframes footer-sailing { 0%,100% { transform:translateY(1px) rotate(-2deg); } 50% { transform:translateY(-1px) rotate(2deg); } }
 @media(prefers-reduced-motion:reduce) { .footer-ship-rock { animation:none; } }
+
+.finale-main { padding:4vh 0 2vh; }
+.finale-main h2 { font-size:clamp(58px,9vw,150px); line-height:.95; }
+.application-invitation { max-width:42ch; margin:36px auto 0; color:var(--bone); font-size:clamp(21px,2vw,28px); line-height:1.45; }
+.application-status { margin:32px auto 0; color:var(--dim); font:13px/1.7 var(--mono); }
+.finale-main .apply-button { margin-top:32px; box-shadow:none; }
+.application-faq { display:inline-block; margin-top:24px; color:var(--dim); font:12px/1.5 var(--mono); border-bottom:1px solid #555; padding-bottom:4px; }
+.application-faq:hover { color:var(--bone); border-color:var(--bone); }
+.application-faq:focus-visible,.apply-button:focus-visible { outline:2px solid var(--bone); outline-offset:5px; }
+@media(max-width:420px) { .application-invitation br { display:none; } }

@@ -809,8 +809,7 @@ async function runExperience() {
       }
     });
   });
-  gsap.to(".finale-horizon", { scale: 1.35, rotate: 25, scrollTrigger: { trigger: ".finale", start: "top bottom", end: "bottom bottom", scrub: 1 } });
-  gsap.from(".finale h2", { y: 100, opacity: 0, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".finale", start: "top 55%" } });
+  gsap.from(".finale-main h2", { y: 100, opacity: 0, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".finale", start: "top 55%" } });
 }
 
 if (!reduced) {
