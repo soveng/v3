@@ -2,6 +2,9 @@
 
 Website for Sovereign Engineering.
 
+`src/entry.js` waits for the page stylesheet before starting animations. This
+keeps canvas sizes and pinned scroll distances correct when CSS loads slowly.
+
 The homepage's iceberg sequence is drawn in canvas by
 `src/iceberg-animation.js`. Scrolling pins the scene, opens the fault, and
 descends from week 01 into weeks 02–03. Reduced-motion visitors see both
