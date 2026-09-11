@@ -74,7 +74,9 @@ links. Search and cohort filters enhance the static directory; without JavaScrip
 all entries remain visible. The seven homepage highlights link to dedicated
 project stories. Testimonials appear immediately before Apply on the homepage in a swipeable
 carousel with all original quotes and author portraits. Swipe, horizontal scrolling, and keyboard
-controls move through the slides; there is no automatic advance. Native horizontal
+controls move through the slides. Automatic advance allows at least eight seconds
+per quote, with extra reading time for longer quotes. It pauses offscreen, in hidden
+tabs, during hover, focus, or touch, and for reduced-motion visitors. Native horizontal
 scrolling remains available without JavaScript.
 
 - `content/projects.json`: original archive entries.
@@ -83,7 +85,7 @@ scrolling remains available without JavaScript.
 - `content/testimonials.json`: original community quotes and attribution links.
 - `scripts/generate-projects.js`: archive, story, and testimonial rendering.
 - `src/project-archive.js`: search, filtering, and progressive results.
-- `src/testimonials.js`: carousel keyboard navigation.
+- `src/testimonials.js`: carousel keyboard navigation and automatic advance.
 
 Archive content and local project logos were migrated from `soveng/website` at
 `8bfb0bc`. Restart Vite after editing content to regenerate the pages.
