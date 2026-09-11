@@ -490,6 +490,7 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .mountain-enhanced .mountain-vignette { background:linear-gradient(90deg,#102529 3%,#102529ed 22%,#10252966 45%,transparent 64%),linear-gradient(0deg,#102529 0%,transparent 18%); }
 .mountain-enhanced .mountain-chapter { height:100svh; min-height:700px; display:flex; align-items:center; border:0; padding:110px 6vw 80px; }
 .mountain-enhanced .mountain-copy { width:37%; }
+.mountain-enhanced .mountain-day { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 .mountain-outro { padding:110px 6vw; text-align:center; background:#080808; }
 .mountain-outro h2 { font:400 clamp(50px,6vw,90px)/1 var(--serif); letter-spacing:-.04em; }
 .mountain-outro > p:not(.mountain-day) { max-width:40ch; margin:28px auto 0; font-size:22px; color:var(--dim); }
