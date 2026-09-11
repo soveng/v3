@@ -8,7 +8,16 @@ if (track) {
     track.scrollTo({ left: next * track.clientWidth, behavior: reduced.matches ? 'instant' : 'smooth' });
   };
   const progress = document.querySelector('.testimonial-progress');
-  const fill = progress.querySelector('span');
+  const thumb = progress.querySelector('.testimonial-thumb');
+  const fill = thumb.querySelector('span');
+  progress.hidden = false;
+  track.classList.add('has-page-indicator');
+  thumb.style.width = `${100 / slides.length}%`;
+  const updateIndicator = () => {
+    thumb.style.left = `${track.scrollLeft / track.scrollWidth * 100}%`;
+  };
+  new ResizeObserver(updateIndicator).observe(track);
+  updateIndicator();
   let countdown;
   let settling;
   let scrolling = false;
@@ -16,7 +25,7 @@ if (track) {
   let hovered = false;
   let touching = false;
   const schedule = () => {
-    progress.hidden = reduced.matches;
+
     const paused = !visible || hovered || touching || scrolling || document.hidden || reduced.matches || track.contains(document.activeElement);
     if (paused) { countdown?.pause(); return; }
     if (!countdown) {
@@ -43,6 +52,7 @@ if (track) {
   track.addEventListener('focusin', schedule);
   track.addEventListener('focusout', () => setTimeout(schedule, 0));
   track.addEventListener('scroll', () => {
+    updateIndicator();
     scrolling = true;
     countdown?.cancel();
     countdown = null;
