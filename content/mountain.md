@@ -1,7 +1,7 @@
 ---
 chapters:
   - day: Mountain cohort / Spring 2027
-    title: Seven days. One goal
+    title: Seven days. One goal.
     body: Seven days of dialogical development. Think together through free-flowing conversations, discover what’s worth building, and bring it to life. One weekly cycle, from dialogue to demo.
   - day: Day 01 / The valley
     title: Find your crew.
