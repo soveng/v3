@@ -77,10 +77,11 @@ including the original cohort URLs, project anchors, descriptions, and resource
 links. Search and cohort filters enhance the static directory; without JavaScript
 all entries remain visible. The seven homepage highlights link to dedicated
 project stories. Testimonials appear immediately before Apply on the homepage in a swipeable
-carousel with all original quotes and author portraits. Swipe, horizontal scrolling, and keyboard
+carousel with all original quotes and author portraits: three visible on desktop
+and one on smaller screens. Swipe, horizontal scrolling, and keyboard
 controls move through the slides. Automatic advance allows at least five seconds
-per quote, with extra reading time for longer quotes. The page indicator below the quotes moves with the current slide; its thumb fills
-toward the next transition, pauses with playback, and resets after a swipe. It pauses offscreen, in hidden
+per quote, with extra reading time for longer quotes. A circular timer at the top-right of the carousel counts down to the next
+slide, pauses with playback, and resets after a swipe. It pauses offscreen, in hidden
 tabs, during hover, focus, or touch, and for reduced-motion visitors. Native horizontal
 scrolling remains available without JavaScript.
 
