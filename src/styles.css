@@ -519,6 +519,9 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .mountain-enhanced .mountain-scene { height:52%; }
 }
 
+.mountain-chapter:first-child .mountain-copy { container-type:inline-size; }
+.mountain-copy h1 { max-width:none; font-size:clamp(26px,11cqw,64px); }
+.mountain-title-line { display:block; white-space:nowrap; }
 .mountain-chapter-detail { margin-top:20px; max-width:42ch; color:#e5aa80; font:11px/1.7 var(--mono); }
 .mountain-chapter-detail a { color:inherit; text-decoration:underline; text-underline-offset:3px; }
 .mountain-chapter-detail a:hover { color:var(--bone); }
