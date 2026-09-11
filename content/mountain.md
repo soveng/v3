@@ -11,7 +11,7 @@ chapters:
     body: In the morning, make a shared map of our building blocks, then climb together. Settle in, have dinner, and gather by the fire or in the sauna. No coding.
     detail: Nostr · Blossom · Nsite · FIPS · eCash · MLS · Marmot · MDK
   - day: Day 03 / The mountain
-    title: Less signal. More thought.
+    title: Less reception. More signal.
     body: A full day of device-free time together. Walks, meals, sauna, and fire. Pen and paper. Talk, argue, combine ideas. No coding.
   - day: Day 04 / The mountain
     title: Take it to the top.
