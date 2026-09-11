@@ -72,8 +72,8 @@ export function renderTestimonials() {
   const render = (q, index) => {
     const source = q.noteid || q.npub;
     if (!source || !q.npub) throw new Error(`Missing testimonial source for ${q.name}`);
-    const author = `<a href="https://njump.to/${escape(q.npub)}">${escape(q.name)}</a>`;
-    return `<figure class="alumni-quote" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${quotes.length}"><blockquote><p><a href="https://njump.to/${escape(source)}">${escape(q.content)}</a></p></blockquote><figcaption><a href="https://njump.to/${escape(q.npub)}" aria-label="${escape(q.name)} on Nostr"><img src="${escape(q.avatar)}" alt="" width="64" height="64" loading="lazy" decoding="async"></a><div>${author}<span>${escape(q.designation)}</span></div></figcaption></figure>`;
+    const author = `<a href="https://njump.to/${escape(source)}">${escape(q.name)}</a>`;
+    return `<figure class="alumni-quote" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${quotes.length}"><blockquote><p>${escape(q.content)}</p></blockquote><figcaption><a href="https://njump.to/${escape(source)}" aria-label="${escape(q.name)} — ${q.noteid ? "Read testimonial" : "View profile"}"><img src="${escape(q.avatar)}" alt="" width="64" height="64" loading="lazy" decoding="async"></a><div>${author}<span>${escape(q.designation)}</span></div></figcaption></figure>`;
   };
   return `<section class="testimonials" id="voices" aria-labelledby="voices-title" aria-roledescription="carousel"><div class="testimonials-heading"><p class="section-index">From the people who were there</p><h2 id="voices-title">In good company.</h2></div><div class="testimonial-track" id="testimonial-track" tabindex="0" aria-label="Community testimonials">${quotes.map(render).join("")}</div></section>`;
 }

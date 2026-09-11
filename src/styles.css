@@ -363,7 +363,6 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .alumni-quote figcaption > div { display:flex; flex-direction:column; gap:8px; }
 .alumni-quote figcaption div > :last-child { color:#726b60; }
 .alumni-quote a:focus-visible,.testimonial-track:focus-visible { outline:2px solid var(--red); outline-offset:4px; }
-.alumni-quote blockquote a:hover { color:#6b3a32; }
 .alumni-quote figcaption > a { flex-shrink:0; }
 @media(max-width:1000px) {
   .cohort-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
