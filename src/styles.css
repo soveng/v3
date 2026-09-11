@@ -200,6 +200,7 @@ footer { min-height:90px; border-top:1px solid #282828; display:grid; grid-templ
 .podcast-preview p:not(.section-index) { max-width:32ch; color:var(--dim); }
 .cohort-status { margin:36px auto 0; color:var(--dim); max-width:40ch; }
 .content-page .nav { mix-blend-mode:normal; background:var(--ink); border-bottom:1px solid #333; }
+.content-page:has(.mountain-shell) .nav { mix-blend-mode:difference; background:transparent; border-bottom:0; }
 .content-shell { max-width:1440px; margin:auto; padding:160px 5vw 100px; }
 .content-shell h1 { font:400 clamp(56px,8vw,128px)/.95 var(--serif); letter-spacing:-.045em; margin:24px 0; }
 .content-shell h2 { font:400 clamp(32px,3.5vw,52px)/1.1 var(--serif); }
