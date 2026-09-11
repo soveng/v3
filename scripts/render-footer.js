@@ -1,6 +1,12 @@
-export function renderFooter() {
+export function renderFooter(theme = "sea") {
   return `<footer class="site-footer">
-    <div class="footer-sea" aria-hidden="true">
+    ${theme === "mountain" ? `<div class="footer-ridge" aria-hidden="true">
+      <svg viewBox="0 0 160 80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 76 H12 L49 32 L68 51 L100 8 L143 76 H160"/>
+        <path d="M38 45 L49 32 L61 45 L52 42 L47 47Z M84 29 L100 8 L117 35 L105 29 L99 34 L94 25Z"/>
+        <path d="M100 8 L99 34 L109 52 L104 63 L113 76 M49 32 L53 60 L45 76" opacity=".45"/>
+      </svg>
+    </div>` : `<div class="footer-sea" aria-hidden="true">
       <svg class="footer-ship" viewBox="0 0 100 110" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <g class="footer-ship-rock">
           <path d="M16 88 L84 88 L75 102 Q47 109 27 101 Z" fill="#080808"/>
@@ -18,7 +24,7 @@ export function renderFooter() {
         <defs><pattern id="footer-waves" width="120" height="16" patternUnits="userSpaceOnUse"><path d="M0 8 Q15 2 30 8 T60 8 T90 8 T120 8" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs>
         <rect width="100%" height="16" fill="url(#footer-waves)"/>
       </svg>
-    </div>
+    </div>`}
     <a class="footer-identity" href="/">Sovereign Engineering<span>Madeira, Portugal</span></a>
     <nav class="footer-sitemap" aria-label="Footer navigation">
       <div><h2>Program</h2><a href="/#program">The program</a><a href="/#work">What was built</a><a href="/#voices">Testimonials</a><a href="/#apply">Next cohort</a><a href="/mountain/">Mountain cohort · 2027</a></div>

@@ -50,7 +50,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
     <div class="nav-links"><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>Listen</a><a href="/faq/"${path === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a><a href="/#apply">Apply</a></div>
   </nav>
   <main id="content" class="content-shell${path === "/mountain/" ? " mountain-shell" : ""}">${body}</main>
-  ${renderFooter()}
+  ${renderFooter(path === "/mountain/" ? "mountain" : "sea")}
   <script type="module" src="/src/footer-animation.js"></script>
 </body>
 </html>`;
