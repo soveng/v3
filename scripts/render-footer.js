@@ -27,7 +27,7 @@ export function renderFooter(theme = "sea") {
     </div>`}
     <a class="footer-identity" href="/">Sovereign Engineering<span>Based in Madeira, operating worldwide.</span></a>
     <nav class="footer-sitemap" aria-label="Footer navigation">
-      <div><h2>Program</h2><a href="/#program">The program</a><a href="/#work">What was built</a><a href="/#voices">Testimonials</a><a href="/#apply">Next cohort</a><a href="/mountain/">Mountain cohort · 2027</a></div>
+      <div><h2>Program</h2><a href="/#program">The program</a><a href="/#work">What was built</a><a href="/#voices">Testimonials</a><a href="/#apply">Next cohort</a><a href="/mountain/">Mountain cohort · Spring 2027</a></div>
       <div><h2>Explore</h2><a href="/projects/">Project archive</a><a href="/podcast/">Dialogues</a><a href="/faq/">FAQ</a><a href="/policy/">Policies</a></div>
       <div><h2>Connect</h2><a href="https://njump.me/sovereignengineering.io">Nostr ↗</a><a href="mailto:info@sovereignengineering.io">Get in touch ↗</a><a href="/dialogues.xml">Dialogues RSS ↗</a><a href="https://github.com/soveng">GitHub ↗</a></div>
     </nav>

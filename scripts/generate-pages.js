@@ -112,7 +112,7 @@ export function generatePages() {
       <header class="text-hero"><p class="section-index">Sovereign Engineering / ${name === "faq" ? "The practical details" : "How we work"}</p><h1>${name === "faq" ? "Before you<br>join us." : escape(data.title)}</h1><div class="content-lead">${name === "faq" ? "The program, the island, and what to expect." : markdown(data.intro.content)}</div></header>
       <div class="faq-layout"><aside class="section-menu" aria-label="On this page">${data.sections.map(section => `<a href="#${escape(section.id)}">${escape(section.title)}</a>`).join("")}</aside><div>${sections}</div></div><script type="module" src="/src/content.js"></script>`, "/images/sovereign-engineering.png"));
   }
-  write("mountain/index.html", layout("Mountain cohort — 2027", "Seven days. One weekly cycle. A device-free mountain retreat, followed by 24 hours to build and Demo Day.", "/mountain/", renderMountain(), "/images/sovereign-engineering.png"));
+  write("mountain/index.html", layout("Mountain cohort — Spring 2027", "Seven days. One weekly cycle. A device-free mountain retreat, followed by 24 hours to build and Demo Day.", "/mountain/", renderMountain(), "/images/sovereign-engineering.png"));
   generateProjects({ write, layout, escape });
   return files;
 }
