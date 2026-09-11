@@ -1,6 +1,7 @@
 const journey = document.querySelector('.mountain-journey');
 if (journey) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile = matchMedia('(max-width: 720px)');
   const scene = journey.querySelector('.mountain-scene');
   const chapters = [...journey.querySelectorAll('.mountain-chapter')];
   const world = scene.querySelector('.mountain-world');
@@ -56,7 +57,8 @@ if (journey) {
     ideas.setAttribute('transform', `translate(0 ${10 * (1 - camp)})`);
     demo.style.opacity = String(presentation);
     build.style.opacity = String(building);
-    const sunY = 200 + darkness * 520;
+    const middayY = mobile.matches ? 90 : 200;
+    const sunY = middayY + darkness * (720 - middayY);
     sun.setAttribute('cy', sunY);
     glow.setAttribute('cy', sunY);
     sun.style.opacity = String(.65 * (1 - smooth(darkness)));
