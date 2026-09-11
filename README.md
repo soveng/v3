@@ -19,6 +19,7 @@ scrolling; reduced motion and no JavaScript show the completed SVG scene.
 `src/fips-animation.js` grows a branching root network directly from the base
 of TollGate’s mangrove, showing FIPS emerging from TollGate. The two canvases
 share a root anchor, and TollGate stays upright to preserve that connection.
+A low patch of grass marks the ground between TollGate’s trunk and the roots.
 The deeper root section grows with scrolling; three slow packet pulses repeat
 while the network is visible, traveling outward and back toward TollGate.
 Reduced-motion visitors see a static view, and offscreen animation is paused.
@@ -74,7 +75,7 @@ links. Search and cohort filters enhance the static directory; without JavaScrip
 all entries remain visible. The seven homepage highlights link to dedicated
 project stories. Testimonials appear immediately before Apply on the homepage in a swipeable
 carousel with all original quotes and author portraits. Swipe, horizontal scrolling, and keyboard
-controls move through the slides. Automatic advance allows at least eight seconds
+controls move through the slides. Automatic advance allows at least five seconds
 per quote, with extra reading time for longer quotes. The page indicator below the quotes moves with the current slide; its thumb fills
 toward the next transition, pauses with playback, and resets after a swipe. It pauses offscreen, in hidden
 tabs, during hover, focus, or touch, and for reduced-motion visitors. Native horizontal

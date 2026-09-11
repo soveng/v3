@@ -589,6 +589,39 @@ function createPlantAnimation(canvas, species, seed) {
     });
   }
 
+  function drawGroundCover(progress, width, height) {
+    const growth = smooth(clamp(progress / .4));
+    if (!growth) return;
+    const base = stemPoint(0, width, height);
+    const spread = Math.min(210, width * .48);
+    context.save();
+    context.translate(base.x, base.y);
+    context.globalAlpha = growth;
+    // A low, irregular ground line separates the plant from its underground network.
+    context.beginPath();
+    context.moveTo(-spread / 2, 3);
+    context.bezierCurveTo(-spread * .25, -1, spread * .22, 5, spread / 2, 1);
+    context.strokeStyle = '#8c896b';
+    context.lineWidth = 1.2;
+    context.stroke();
+    for (let i = 0; i < 31; i++) {
+      const t = i / 30;
+      const x = (t - .5) * spread * .92;
+      const envelope = Math.sin(t * Math.PI);
+      const length = (7 + noise(i + 810) * 23) * (.45 + envelope * .55) * growth;
+      const lean = (noise(i + 920) - .5) * 20;
+      const y = 2 + Math.sin(i * 2.4) * 1.5;
+      context.beginPath();
+      context.moveTo(x, y);
+      context.quadraticCurveTo(x + lean * .2, y - length * .65, x + lean, y - length);
+      context.strokeStyle = ['#59734b', '#83915b', '#446647'][i % 3];
+      context.lineWidth = 1 + noise(i + 730) * .7;
+      context.lineCap = 'round';
+      context.stroke();
+    }
+    context.restore();
+  }
+
   function drawAntenna(progress, width, height) {
     const growth = smooth(clamp((progress - .68) / .24));
     if (!growth) return;
@@ -657,7 +690,10 @@ function createPlantAnimation(canvas, species, seed) {
     drawStem(state.progress, width, height);
     drawLeaves(state.progress, width, height);
     drawFlowers(state.progress, width, height);
-    if (species === "mangrove") drawAntenna(state.progress, width, height);
+    if (species === "mangrove") {
+      drawAntenna(state.progress, width, height);
+      drawGroundCover(state.progress, width, height);
+    }
     if (species === "banyan") drawKnowledgeFruit(state.progress, width, height);
   }
 

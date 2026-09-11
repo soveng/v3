@@ -32,7 +32,7 @@ if (track) {
       const words = slides[current()].querySelector('blockquote').textContent.trim().split(/\s+/).length;
       // The fill itself is the clock, so the next slide and indicator cannot drift.
       countdown = fill.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], {
-        duration: Math.max(8000, words * 250 + 2000), fill: 'forwards', easing: 'linear'
+        duration: Math.max(5000, words * 160 + 1000), fill: 'forwards', easing: 'linear'
       });
       countdown.onfinish = () => go(current() + 1);
     }
