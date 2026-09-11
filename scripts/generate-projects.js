@@ -55,7 +55,10 @@ export function generateProjects({ write, layout, escape: e }) {
     write(`projects/${cohort}/index.html`, layout(`${cohort} — ${intros[cohort]?.theme || "Projects"}`, `Projects built during ${cohort} at Sovereign Engineering.`, `/projects/${cohort}/`, `<div class="project-archive"><a class="text-link" href="/projects/">← Project archive</a><header class="cohort-hero"><p class="section-index">${cohort}</p><h1>${e(intros[cohort]?.theme || cohort)}<span class="cohort-ghost" aria-hidden="true">${cohort.slice(-2)}</span></h1><p class="content-lead">${intro(cohort)}</p></header>${pager}${directory(entries(cohort), false)}${pager}${scripts}</div>`, "/images/sovereign-engineering.png"));
   }
   for (const [index, story] of stories.entries()) {
-    const related = projects.filter(p => [...story.matches, ...story.related].includes(p.name));
+    const related = projects.filter(p => {
+      const mentions = [p.name, p.description, p.link, p.linkText, ...(p.extraLinks || []).flatMap(l => [l.link, l.linkText])].join(" ").toLowerCase();
+      return [...story.matches, ...story.related].includes(p.name) || (story.relatedTerms || []).some(term => mentions.includes(term.toLowerCase()));
+    });
     const first = related.map(p => p.cohort).sort()[0];
     const next = stories[(index + 1) % stories.length];
     write(`projects/${story.slug}/index.html`, layout(story.name, story.intro, `/projects/${story.slug}/`, `<div class="project-story"><a class="text-link" href="/projects/">← Project archive</a>
