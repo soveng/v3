@@ -5,20 +5,25 @@ chapters:
     body: Seven days. One weekly cycle. Come together in the valley, leave the devices behind, and take your ideas up the mountain.
   - day: Day 01 / The valley
     title: Find your crew.
-    body: We assemble in the valley. Meet the people beside you, share what brought you here, and get to know each other before we set off.
-  - day: Day 02 / The ascent
+    body: Arrive for Gigi’s introduction and a 30-second circle. Share your project in a lightning talk. Then lunch and a light afternoon together, with a walk or a meal.
+  - day: Day 02 / Valley → Mountain
     title: Up, together.
-    body: We climb the mountain as a crew. A change of pace, a change of perspective. The conversations come with us. The devices stay behind.
-  - day: Days 03–04 / On the mountain
+    body: In the morning, make a shared map of our building blocks, then climb together. Settle in, have dinner, and gather by the fire or in the sauna. No coding.
+    detail: Nostr · Blossom · Nsite · FIPS · eCash · MLS · Marmot · MDK
+  - day: Day 03 / The mountain
     title: Less signal. More thought.
-    body: Pen and paper. Intense brainstorming, ideation, and collaboration. Time to follow an idea, challenge it, and sketch it together. No devices. No coding.
-  - day: Day 05 / Back to the valley
+    body: A full day of device-free time together. Walks, meals, sauna, and fire. Pen and paper. Talk, argue, combine ideas. No coding.
+  - day: Day 04 / The mountain
+    title: Stay with the ideas.
+    body: A second full day on the mountain. More walks, more meals, more sauna, more talking. Stay device-free and keep exploring the ideas together.
+  - day: Day 05 / Mountain → Valley
     title: Down to work.
-    body: We descend with notebooks full of possibilities. Then, twenty-four hours to build. Turn the ideas into something you can put in front of the crew.
-  - day: Day 06 / Demo Day
+    body: Come down. Decompress. Get back into the coworking room. The 24-hour build starts here. Turn the ideas from the mountain into something you can show.
+  - day: Day 06 / The valley
     title: Show it.
-    body: Everyone demos. Share what you built, what you learned, and where it could go next. One weekly cycle, all the way through.
-  - day: Day 07 / The way home
-    title: Let it settle.
-    body: Decompress. Say your goodbyes. Travel home with new connections, fresh perspective, and something to keep working on.
+    body: Finish building in the morning. In the afternoon, everyone demos. Six minutes to show, two minutes to talk. Then food, together.
+    detail: Demo Day · 6 min show / 2 min talk
+  - day: Day 07 / The valley
+    title: Until next time.
+    body: Goodbyes, decompression, and departure. Take the ideas, the work, and the connections home with you.
 ---

@@ -110,7 +110,8 @@ reduced-motion and no-JavaScript visitors see the completed scene.
 
 The mountain page uses one continuous SVG landscape in `scripts/render-mountain.js`.
 `src/mountain.js` follows scrolling through the valley, ascent, device-free camp,
-descent and 24-hour build, demos, and departure. The scene stays pinned while the
+descent and 24-hour build, demos, and departure. Each day has its own chapter,
+with the sun setting and rising between days as you scroll. The scene stays pinned while the
 chapters pass; mobile places the illustration below the copy. Reduced motion and
 no JavaScript show the landscape and chapters in a normal document flow. Exact
 dates, location, and applications remain unannounced.

@@ -514,3 +514,6 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .mountain-description { font-size:16px; margin-top:16px; }
   .mountain-enhanced .mountain-scene { height:52%; }
 }
+
+.mountain-chapter-detail { margin-top:20px; max-width:42ch; color:#e5aa80; font:11px/1.7 var(--mono); }
+@media(max-width:720px) { .mountain-chapter-detail { margin-top:14px; font-size:10px; } }
