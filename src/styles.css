@@ -481,7 +481,9 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .mountain-scroll { display:inline-flex; gap:24px; margin-top:32px; padding-bottom:8px; border-bottom:1px solid #a8b5aa66; font:12px var(--mono); }
 .mountain-scroll span { color:#e5aa80; }
 .mountain-copy a:focus-visible { outline:2px solid #e5aa80; outline-offset:6px; }
-.mountain-enhanced .mountain-stage { position:sticky; top:0; height:100svh; margin-bottom:-100svh; }
+.mountain-enhanced { display:grid; grid-template-columns:minmax(0,1fr); }
+.mountain-enhanced .mountain-stage { grid-area:1 / 1; align-self:start; position:sticky; top:0; height:100svh; }
+.mountain-enhanced .mountain-chapters { grid-area:1 / 1; }
 .mountain-enhanced .mountain-scene { width:77%; right:-8%; mask-image:linear-gradient(90deg,transparent,#000 15%); }
 .mountain-enhanced .mountain-vignette { background:linear-gradient(90deg,#102529 3%,#102529ed 22%,#10252966 45%,transparent 64%),linear-gradient(0deg,#102529 0%,transparent 18%); }
 .mountain-enhanced .mountain-chapter { height:100svh; min-height:700px; display:flex; align-items:center; border:0; padding:110px 6vw 80px; }
