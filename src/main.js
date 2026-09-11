@@ -593,7 +593,7 @@ function createPlantAnimation(canvas, species, seed) {
     const growth = smooth(clamp(progress / .4));
     if (!growth) return;
     const base = stemPoint(0, width, height);
-    const spread = Math.min(120, width * .28);
+    const spread = Math.min(85, width * .20);
     context.save();
     context.translate(base.x, base.y);
     context.globalAlpha = growth;
@@ -604,8 +604,9 @@ function createPlantAnimation(canvas, species, seed) {
     context.strokeStyle = '#8c896b';
     context.lineWidth = 1.2;
     context.stroke();
-    for (let i = 0; i < 31; i++) {
-      const t = i / 30;
+    const bladeCount = 42;
+    for (let i = 0; i < bladeCount; i++) {
+      const t = i / (bladeCount - 1);
       const x = (t - .5) * spread * .92;
       const envelope = Math.sin(t * Math.PI);
       const length = (7 + noise(i + 810) * 23) * (.45 + envelope * .55) * growth;
