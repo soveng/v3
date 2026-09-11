@@ -96,6 +96,10 @@ scrolling remains available without JavaScript.
 Archive content and local project logos were migrated from `soveng/website` at
 `8bfb0bc`. Restart Vite after editing content to regenerate the pages.
 
+The shared footer’s sea divider and ship follow scrolling via
+`src/footer-animation.js`. The ship sails into the center as the waves appear;
+reduced-motion and no-JavaScript visitors see the completed scene.
+
 ## Run locally
 
 If you only want to run the website:

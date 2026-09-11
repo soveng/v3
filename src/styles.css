@@ -426,6 +426,6 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .footer-sea { grid-column:1 / -1; position:relative; height:110px; width:100%; color:#6e6a60; }
 .footer-water { position:absolute; bottom:0; left:0; display:block; }
 .footer-ship { position:absolute; bottom:3px; left:50%; width:90px; height:99px; transform:translateX(-50%); color:#bfb8a8; }
-.footer-ship-rock { transform-origin:50px 101px; animation:footer-sailing 6s ease-in-out infinite; }
+.footer-ship-rock { transform-origin:50px 101px; animation:footer-sailing 6s ease-in-out infinite; animation-play-state:var(--ship-motion,running); }
 @keyframes footer-sailing { 0%,100% { transform:translateY(1px) rotate(-2deg); } 50% { transform:translateY(-1px) rotate(2deg); } }
 @media(prefers-reduced-motion:reduce) { .footer-ship-rock { animation:none; } }

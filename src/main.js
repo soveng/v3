@@ -1,3 +1,4 @@
+import "./footer-animation.js";
 import "./testimonials.js";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

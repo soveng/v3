@@ -4,11 +4,14 @@ export function renderFooter() {
       <svg class="footer-ship" viewBox="0 0 100 110" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <g class="footer-ship-rock">
           <path d="M16 88 L84 88 L75 102 Q47 109 27 101 Z" fill="#080808"/>
-          <path d="M25 94 H77 M35 100 H66 M51 88 V15 M23 88 L51 25 L83 88 M15 88 L7 82 M82 88 L94 79"/>
-          <path d="M33 33 Q51 37 71 32 Q65 51 71 69 Q49 75 31 68 Q39 51 33 33 Z" fill="#080808"/>
-          <path d="M29 32 H75 M27 70 H76"/>
-          <path d="M45 36 Q49 53 44 71 M59 35 Q56 52 60 71" stroke-width=".7" opacity=".5"/>
-          <path d="M56 77 L78 75 L69 86 H56 Z" fill="#080808"/>
+          <path d="M25 94 H77 M35 100 H66 M15 88 L7 82 M82 88 L94 79"/>
+          <path class="footer-mast" d="M35 88 V14"/>
+          <path class="footer-mast" d="M66 88 V25"/>
+          <path d="M18 88 L35 20 L55 88 M47 88 L66 30 L88 84" stroke-width="1"/>
+          <path d="M21 30 Q35 33 49 29 Q45 46 49 64 Q35 68 20 64 Q26 47 21 30 Z" fill="#080808"/>
+          <path d="M54 40 Q66 43 80 39 Q76 56 80 73 Q66 77 53 73 Q58 56 54 40 Z" fill="#080808"/>
+          <path d="M18 29 H51 M17 65 H51 M51 39 H82 M50 74 H82"/>
+          <path d="M34 33 Q38 48 33 66 M65 43 Q69 58 64 75" stroke-width=".7" opacity=".5"/>
         </g>
       </svg>
       <svg class="footer-water" width="100%" height="16" xmlns="http://www.w3.org/2000/svg">

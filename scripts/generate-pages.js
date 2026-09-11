@@ -50,6 +50,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
   </nav>
   <main id="content" class="content-shell">${body}</main>
   ${renderFooter()}
+  <script type="module" src="/src/footer-animation.js"></script>
 </body>
 </html>`;
 }
