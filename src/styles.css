@@ -439,3 +439,25 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .application-faq:hover { color:var(--bone); border-color:var(--bone); }
 .application-faq:focus-visible,.apply-button:focus-visible { outline:2px solid var(--bone); outline-offset:5px; }
 @media(max-width:420px) { .application-invitation br { display:none; } }
+
+@media(max-width:720px) {
+  .plant-copy p {
+    position:relative;
+    isolation:isolate;
+    width:fit-content;
+    max-width:calc(100% - 4vw);
+    color:#3f3d36;
+    font-size:clamp(18px,4.6vw,20px);
+    line-height:1.5;
+  }
+  .plant-copy p::before {
+    content:'';
+    position:absolute;
+    inset:-3px -5px;
+    z-index:-1;
+    background:var(--bone);
+    box-shadow:0 0 9px 5px var(--bone);
+    border-radius:4px;
+  }
+  .project-plant:nth-child(odd) .plant-copy p { margin-left:auto; }
+}
