@@ -58,6 +58,10 @@ export function renderMountain() {
               <g transform="translate(699 331) rotate(10)"><path d="M0 0 H28 V35 H0Z"/><path d="M7 9 L20 25 M7 25 L20 9" stroke="#6d785d"/></g>
               <path d="M568 373 Q627 338 691 351" fill="none" stroke-dasharray="2 5" opacity=".6"/>
             </g>
+            <g class="mountain-build" opacity="0" transform="translate(959 765)" stroke="#d5ceb0" fill="#132e2d" stroke-width="1.5">
+              <path d="M5 0 H49 V28 H5Z M5 28 L0 35 H54 L49 28 M0 35 H54"/>
+              <path d="M19 9 L14 14 L19 19 M35 9 L40 14 L35 19 M30 7 L25 21" fill="none" stroke="#ed6a4d"/>
+            </g>
             <g class="mountain-demo" opacity="0" transform="translate(959 750)" stroke="#d5ceb0" fill="none" stroke-width="1.5">
               <path d="M0 0 H54 V36 H0Z M27 36 V48 M17 48 H37" fill="#132e2d"/>
               <path d="M9 9 H24 M9 16 H39 M9 23 H30" stroke="#d5ceb0"/>

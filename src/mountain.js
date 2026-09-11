@@ -12,6 +12,7 @@ if (journey) {
   const night = scene.querySelector('.mountain-night');
   const ideas = scene.querySelector('.mountain-ideas');
   const demo = scene.querySelector('.mountain-demo');
+  const build = scene.querySelector('.mountain-build');
   const sun = scene.querySelector('.mountain-sun-core');
   const glow = scene.querySelector('.mountain-sun');
   const mist = scene.querySelector('.mountain-mist');
@@ -20,7 +21,6 @@ if (journey) {
   const smooth = n => { const t = clamp(n); return t * t * (3 - 2 * t); };
   const campStop = scene.querySelector('#mountain-ascent').getTotalLength() / routeLength;
   const summitStop = scene.querySelector('#mountain-summit-route').getTotalLength() / routeLength;
-  const stops = [0, .025, campStop, campStop, summitStop, 1, 1, 1];
   let frame = 0;
   let visible = true;
 
@@ -30,11 +30,15 @@ if (journey) {
     const rect = journey.getBoundingClientRect();
     const unit = chapters[0].offsetHeight;
     const raw = Math.max(0, Math.min(chapters.length - 1, -rect.top / unit));
-    const index = Math.floor(raw);
-    const blend = smooth(raw - index);
-    const progress = reduced.matches ? 0 : stops[index] + ((stops[index + 1] ?? stops[index]) - stops[index]) * blend;
-    const camp = reduced.matches ? 0 : smooth((raw - 2.15) / .65) * (1 - smooth((raw - 4.55) / .45));
-    const presentation = reduced.matches ? 0 : smooth((raw - 5.35) / .6);
+    // A chapter is most visible around its own scroll position. Complete each
+    // journey leg while that day's copy is visible, rather than the day before.
+    const index = Math.min(chapters.length - 1, Math.floor(raw + .5));
+    const leg = day => smooth((raw - (day - .3)) / .5);
+    const progress = reduced.matches ? 0 : campStop * leg(2)
+      + (summitStop - campStop) * leg(4) + (1 - summitStop) * leg(5);
+    const camp = reduced.matches ? 0 : smooth((raw - 2.2) / .3) * (1 - smooth((raw - 4.5) / .2));
+    const presentation = reduced.matches ? 0 : smooth((raw - 6) / .2) * (1 - smooth((raw - 6.5) / .3));
+    const building = reduced.matches ? 0 : smooth((raw - 5.2) / .2) * (1 - smooth((raw - 6) / .2));
     const zoom = reduced.matches ? 1 : 1 + camp * .13;
     world.setAttribute('transform', `translate(${660 * (1 - zoom)} ${440 * (1 - zoom)}) scale(${zoom})`);
     trail.style.strokeDashoffset = String(reduced.matches ? 0 : (1 - progress) * 100);
@@ -51,12 +55,16 @@ if (journey) {
     ideas.style.opacity = String(camp);
     ideas.setAttribute('transform', `translate(0 ${10 * (1 - camp)})`);
     demo.style.opacity = String(presentation);
+    build.style.opacity = String(building);
     const sunY = 200 + darkness * 520;
     sun.setAttribute('cy', sunY);
     glow.setAttribute('cy', sunY);
     sun.style.opacity = String(.65 * (1 - smooth(darkness)));
     mist.setAttribute('transform', `translate(${reduced.matches ? 0 : raw * 8} 0)`);
-    caption.textContent = reduced.matches ? 'Valley → Mountain → Valley' : ['The journey / One weekly cycle', 'The valley / Meet the crew', 'The ascent / Leave devices behind', 'Day 03 / Pen & paper', 'Day 04 / Reach the summit', 'The valley / 24 hours to build', 'Demo Day / Show it', 'The way home / Keep the ideas'][Math.min(chapters.length - 1, Math.floor(raw + .01))];
+    caption.textContent = reduced.matches ? 'Valley → Mountain → Valley'
+      : index === 5 && raw >= 5.2 ? 'Day 05 / The 24-hour build begins'
+      : index === 6 ? (raw < 6 ? 'Day 06 / Finish building' : 'Day 06 / Demo Day')
+      : chapters[index].querySelector('.mountain-day').textContent;
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(draw); }
   function configure() {
