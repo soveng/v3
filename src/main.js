@@ -725,6 +725,7 @@ async function runExperience() {
     .to(".prologue", { clipPath: "inset(0 0 100% 0)", duration: .85, ease: "power4.inOut", delay: .3, onComplete: () => {
       gsap.set(".prologue", { display: "none" });
       document.body.style.overflow = "";
+      ScrollTrigger.refresh();
     }})
     .from(".opening-meta", { opacity: 0, duration: .6 }, "<.3");
 
@@ -813,7 +814,11 @@ async function runExperience() {
 }
 
 if (!reduced) {
-  runExperience();
+  // Earlier scenes expand the document as their scroll classes are added.
+  // Measure every trigger again once all scenes and fonts have settled.
+  Promise.all([runExperience(), document.fonts.ready]).then(() => {
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  });
 } else {
   document.querySelectorAll(".botanical").forEach((plant, index) => {
     createPlantAnimation(plant, plant.dataset.species, index + 1);
