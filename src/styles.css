@@ -519,6 +519,9 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 }
 
 .mountain-chapter-detail { margin-top:20px; max-width:42ch; color:#e5aa80; font:11px/1.7 var(--mono); }
+.mountain-chapter-detail a { color:inherit; text-decoration:underline; text-underline-offset:3px; }
+.mountain-chapter-detail a:hover { color:var(--bone); }
+.mountain-chapter-detail a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
 @media(max-width:720px) { .mountain-chapter-detail { margin-top:14px; font-size:10px; } }
 
 .footer-ridge { grid-column:1 / -1; width:100%; display:flex; align-items:flex-end; color:#829184; }
