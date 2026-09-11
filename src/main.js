@@ -311,6 +311,8 @@ function createPlantAnimation(canvas, species, seed) {
   }
 
   function drawLeaves(progress, width, height) {
+    // Keep the banyan canopy within its vertical drawing space on wide screens.
+    const leafScale = species === "banyan" ? Math.min(width, height * 1.2) : width;
     for (let index = 0; index < config.leaves; index += 1) {
       const fraction = index / Math.max(1, config.leaves - 1);
       const threshold = .14 + fraction * .68;
@@ -325,8 +327,8 @@ function createPlantAnimation(canvas, species, seed) {
       }
       angle += (noise(index + 40) - .5) * .22;
       const point = stemPoint(attach, width, height);
-      const length = width * config.leafLength * (.68 + noise(index + 80) * .45);
-      const leafWidth = width * config.leafWidth * (.75 + noise(index + 120) * .4);
+      const length = leafScale * config.leafLength * (.68 + noise(index + 80) * .45);
+      const leafWidth = leafScale * config.leafWidth * (.75 + noise(index + 120) * .4);
       const shade = index % 3 === 0 ? config.leaf : index % 3 === 1 ? "#315f3d" : "#54834a";
       drawLeaf(point.x, point.y, angle, length, leafWidth, growth, shade, config.shape);
     }
