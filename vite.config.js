@@ -1,3 +1,4 @@
+import { homeSocialPreview } from "./scripts/social-preview.js";
 import { renderApply } from "./scripts/render-apply.js";
 import { renderFooter } from "./scripts/render-footer.js";
 import { defineConfig } from "vite";
@@ -5,6 +6,7 @@ import { renderTestimonials } from "./scripts/generate-projects.js";
 import { generatePages } from "./scripts/generate-pages.js";
 
 const pages = generatePages();
+const homePreview = homeSocialPreview();
 const routes = new Set(pages.map(path => "/" + path.replace(/\/index\.html$/, "")));
 function canonicalRoutes(server) {
   server.middlewares.use((request, response, next) => {
@@ -19,7 +21,7 @@ export default defineConfig({
   appType: "mpa",
   plugins: [{
     name: "canonical-content-routes",
-    transformIndexHtml: html => html.replace("<!-- TESTIMONIALS -->", renderTestimonials()).replace("<!-- FOOTER -->", renderFooter()).replace("<!-- APPLY -->", renderApply()),
+    transformIndexHtml: html => html.replace("<!-- SOCIAL_PREVIEW -->", homePreview).replace("<!-- TESTIMONIALS -->", renderTestimonials()).replace("<!-- FOOTER -->", renderFooter()).replace("<!-- APPLY -->", renderApply()),
     configureServer: canonicalRoutes,
     configurePreviewServer: canonicalRoutes,
   }],

@@ -8,7 +8,7 @@ import { parse } from "yaml";
 import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
 
-const site = "https://sovereignengineering.io";
+import { socialPreview } from "./social-preview.js";
 const escape = value => String(value ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const slug = title => title.replace(/^#/, "").replace(/[^a-zA-Z0-9\s-]/g, "").trim().replace(/\s+/g, "-").toLowerCase();
 const clean = html => sanitizeHtml(html, {
@@ -33,13 +33,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
   <meta name="theme-color" content="#080808">
   <title>${escape(title)} — Sovereign Engineering</title>
   <meta name="description" content="${escape(description)}">
-  <link rel="canonical" href="${site}${path}">
-  <meta property="og:title" content="${escape(title)}">
-  <meta property="og:description" content="${escape(description)}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="${site}${path}">
-  <meta property="og:image" content="${escape(image.startsWith("/") ? site + image : image)}">
-  <meta name="twitter:card" content="summary_large_image">
+  ${socialPreview(title, description, path, image)}
   <link rel="alternate" type="application/rss+xml" title="No Solutions" href="/dialogues.xml">
   <link rel="stylesheet" href="/src/styles.css">
 </head>
@@ -69,7 +63,7 @@ export function generatePages() {
   if (!episodes.length || new Set(episodes.map(ep => ep.slug)).size !== episodes.length) throw new Error("Missing or duplicate episodes");
   const files = [];
   // These directories contain only generated output, never editable source.
-  for (const directory of ["podcast", "faq", "policy", "projects", "mountain"]) rmSync(directory, { recursive: true, force: true });
+  for (const directory of ["podcast", "faq", "policy", "projects", "mountain", "public/social"]) rmSync(directory, { recursive: true, force: true });
   const write = (path, html) => {
     mkdirSync(dirname(path), { recursive: true });
     writeFileSync(path, html);

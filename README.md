@@ -220,6 +220,29 @@ git push -u origin short-problem-name
 
 For your next contribution, pull upstream again and create a new branch.
 
+## Social previews
+
+Every page gets its own 1200×630 PNG card and Open Graph / Twitter card
+metadata at build time. `scripts/social-preview.js` renders the designs using
+local fonts and artwork; no browser, external image service, or network access
+is needed during the build. The mountain card reuses the mountain illustration
+and opener from `content/mountain.md`. Project and dialogue cards use their
+page titles. Generated images live in `public/social/` (ignored by Git) and
+use content hashes so a changed design gets a new image URL.
+
+Canonical and image URLs use `SITE_URL` when set, otherwise Vercel’s
+`VERCEL_PROJECT_PRODUCTION_URL`, with the current production alias
+`https://v3-nine-eta-60.vercel.app` as the local fallback. When the custom domain
+moves to this site, set `SITE_URL=https://sovereignengineering.io` in Vercel and
+redeploy. This keeps previews from requesting v3 images from the old website.
+For a preview deployment that needs independent metadata, set `SITE_URL` to
+that deployment’s public HTTPS origin.
+
+Run `npm run check:social` to build and validate every page’s metadata, image
+URL, PNG dimensions, and content hash. EB Garamond and DM Mono are bundled in
+`scripts/social-fonts/` with their SIL Open Font License files, from the
+[Google Fonts repository](https://github.com/google/fonts).
+
 ## Deploy to Vercel
 
 1. Import [`soveng/v3`](https://github.com/soveng/v3) at

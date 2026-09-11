@@ -9,6 +9,7 @@ dist/
 /policy/
 /projects/
 /mountain/
+/public/social/
 
 .env
 .env.*
