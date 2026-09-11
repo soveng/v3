@@ -434,6 +434,7 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 
 .finale-main { padding:4vh 0 2vh; }
 .finale-main h2 { font-size:clamp(58px,9vw,150px); line-height:.95; }
+.finale-main .invitation-accent { color:var(--red); }
 .application-invitation { max-width:42ch; margin:36px auto 0; color:var(--bone); font-size:clamp(21px,2vw,28px); line-height:1.45; }
 .application-status { margin:32px auto 0; color:var(--dim); font:13px/1.7 var(--mono); }
 .finale-main .apply-button { margin-top:32px; box-shadow:none; }
