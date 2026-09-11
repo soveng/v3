@@ -160,7 +160,7 @@ footer { min-height:90px; border-top:1px solid #282828; display:grid; grid-templ
 @media (max-width:720px) {
   .nav { grid-template-columns:minmax(0,1fr) max-content; }.nav > p { display:none; }.nav-apply span { margin-left:10px; }.title-line { white-space:normal; }.opening-meta p:first-child { display:none; }.opening-meta { justify-content:flex-end; }
   .chapter-break .chapter-body { position:relative; top:calc(clamp(24px,5svh,48px) + var(--breath-drift,0px)); }
-  .manifesto-foot { gap:10px; }.manifesto-foot span { text-align:left !important; }.chapter-content { width:90vw; }.chapter-body { margin-left:0; }.chapter-aside { display:none; }
+  .manifesto-foot { gap:10px; }.chapter-content { width:90vw; }.chapter-body { margin-left:0; }.chapter-aside { display:none; }
   .work-heading { position:relative; top:auto; width:calc(100% - 8vw); }.work-heading h2 { margin:4vh 0 0; }.project-garden { margin-top:4vh; gap:2vh; }.project-plant,.project-plant:nth-child(odd),.project-plant:nth-child(even) { width:100%; min-height:560px; margin-left:0; margin-right:0; }.project-plant:nth-child(even) .plant { left:-100%; width:200%; }.project-plant:nth-child(odd) .plant { left:0; width:200%; }.project-plant:nth-child(even) .botanical,.project-plant:nth-child(odd) .botanical { left:0; width:100vw; }
   footer { grid-template-columns:1fr 1fr; }.finale footer p:nth-child(2) { display:none; }
 }
