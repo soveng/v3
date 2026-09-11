@@ -10,14 +10,14 @@ chapters:
     title: Up, together.
     body: Make a shared map of our building blocks, then climb together. Let the conversation wander as we walk. Settle in over dinner, fire, or sauna. Leave the devices behind. Bring pen, paper, and curiosity. No coding.
     links:
-      - [Nostr, 'https://github.com/nostr-protocol/nostr']
+      - [Nostr, /projects/nostr/]
       - [Blossom, /projects/blossom/]
       - [Nsite, /projects/nsite/]
       - [FIPS, /projects/fips/]
-      - [eCash, 'https://cashu.space/']
-      - [MLS, 'https://www.rfc-editor.org/rfc/rfc9420.html']
-      - [Marmot, 'https://github.com/marmot-protocol/marmot']
-      - [MDK, 'https://github.com/marmot-protocol/mdk']
+      - [eCash, /projects/ecash/]
+      - [MLS, /projects/mls/]
+      - [Marmot, /projects/marmot/]
+      - [MDK, /projects/mdk/]
   - day: Day 03 / The mountain
     title: Less reception. More signal.
     body: A full day for high-bandwidth interactions. Walks, meals, sauna, and fire. Free-flowing conversations and ideation, with pen and paper at hand. Tap into distributed cognition as each person’s questions and insights help the others think further. No devices, no coding.
