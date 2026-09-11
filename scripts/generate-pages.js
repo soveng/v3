@@ -1,3 +1,4 @@
+import { renderFooter } from "./render-footer.js";
 import { generateProjects } from "./generate-projects.js";
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { dirname } from "node:path";
@@ -48,7 +49,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
     <div class="nav-links"><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>listen</a><a href="/#apply">apply</a></div>
   </nav>
   <main id="content" class="content-shell">${body}</main>
-  <footer class="content-footer"><a href="/">Sovereign Engineering<br>Madeira, Portugal</a><a href="/policy/">Policies</a><a href="mailto:info@sovereignengineering.io">Get in touch ↗</a></footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }

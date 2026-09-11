@@ -1,3 +1,4 @@
+import { renderFooter } from "./scripts/render-footer.js";
 import { defineConfig } from "vite";
 import { renderTestimonials } from "./scripts/generate-projects.js";
 import { generatePages } from "./scripts/generate-pages.js";
@@ -17,7 +18,7 @@ export default defineConfig({
   appType: "mpa",
   plugins: [{
     name: "canonical-content-routes",
-    transformIndexHtml: html => html.replace("<!-- TESTIMONIALS -->", renderTestimonials()),
+    transformIndexHtml: html => html.replace("<!-- TESTIMONIALS -->", renderTestimonials()).replace("<!-- FOOTER -->", renderFooter()),
     configureServer: canonicalRoutes,
     configurePreviewServer: canonicalRoutes,
   }],
