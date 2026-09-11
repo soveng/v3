@@ -2,28 +2,28 @@
 chapters:
   - day: Mountain cohort / Spring 2027
     title: Seven days. One goal
-    body: Seven days. One weekly cycle. Come together in the valley, leave the devices behind, and take your ideas up the mountain.
+    body: Seven days of dialogical development. Think together through free-flowing conversations, discover what’s worth building, and bring it to life. One weekly cycle, from dialogue to demo.
   - day: Day 01 / The valley
     title: Find your crew.
-    body: Arrive for Gigi’s introduction and a 30-second circle. Share your project in a lightning talk. Then lunch and a light afternoon together, with a walk or a meal.
+    body: Dialogue starts with getting to know each other. Gigi’s introduction, a 30-second circle, and project lightning talks. Then lunch and a light afternoon walk or meal. Share what you’re working on and the questions you’re carrying.
   - day: Day 02 / Valley → Mountain
     title: Up, together.
-    body: In the morning, make a shared map of our building blocks, then climb together. Settle in, have dinner, and gather by the fire or in the sauna. No coding.
+    body: Make a shared map of our building blocks, then climb together. Let the conversation wander as we walk. Settle in over dinner, fire, or sauna. Leave the devices behind. Bring pen, paper, and curiosity. No coding.
     detail: Nostr · Blossom · Nsite · FIPS · eCash · MLS · Marmot · MDK
   - day: Day 03 / The mountain
     title: Less reception. More signal.
-    body: A full day of device-free time together. Walks, meals, sauna, and fire. Pen and paper. Talk, argue, combine ideas. No coding.
+    body: A full day for high-bandwidth interactions. Walks, meals, sauna, and fire. Free-flowing conversations and ideation, with pen and paper at hand. Tap into distributed cognition as each person’s questions and insights help the others think further. No devices, no coding.
   - day: Day 04 / The mountain
     title: Take it to the top.
-    body: A second full day on the mountain. Walk to the peak together. More meals, more sauna, more talking. Stay device-free and keep exploring the ideas.
+    body: A second full day of dialogue, all the way to the peak. Follow a question, challenge an assumption, connect ideas across projects. More walks, meals, and sauna. Stay device-free and give the conversation room to unfold.
   - day: Day 05 / Mountain → Valley
     title: Down to work.
-    body: Come down. Decompress. Get back into the coworking room. The 24-hour build starts here. Turn the ideas from the mountain into something you can show.
+    body: Descend, decompress, and return to the coworking room. Now we have 24 hours to build. Put the ideas we developed in dialogue into practice. Keep thinking together as we turn shared understanding into working software.
   - day: Day 06 / The valley
     title: Show it.
-    body: Finish building in the morning. In the afternoon, everyone demos. Six minutes to show, two minutes to talk. Then food, together.
+    body: Finish building in the morning. In the afternoon, everyone demos. Six minutes to show, two minutes to talk. See what our conversations made possible, then continue them over food.
     detail: Demo Day · 6 min show / 2 min talk
   - day: Day 07 / The valley
     title: Until next time.
-    body: Goodbyes, decompression, and departure. Take the ideas, the work, and the connections home with you.
+    body: Decompress, say goodbye, and head home. Take the work and the connections with you. The week ends; the dialogue and collaboration can keep going.
 ---
