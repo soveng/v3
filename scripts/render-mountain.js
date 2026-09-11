@@ -4,12 +4,17 @@ import { parse } from 'yaml';
 export function renderMountain() {
   const data = parse(readFileSync('content/mountain.md', 'utf8').split('---')[1]);
   const e = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const ascent = "M224 806 C286 785 307 738 359 704 S415 646 455 614 S526 588 522 540 S568 492 589 461 S611 416 635 413";
+  const summit = `${ascent} C620 375 659 339 646 302 S649 231 659 202 S664 158 671 141`;
+  const route = `${summit} C694 182 696 244 714 281 S694 359 705 414 S706 477 725 508 S753 559 797 603 S811 692 848 738 S883 778 931 806`;
   return `<div class="mountain-page">
     <div class="mountain-journey">
       <div class="mountain-stage">
         <svg class="mountain-scene" viewBox="0 0 1200 900" role="img" aria-labelledby="mountain-scene-title">
           <title id="mountain-scene-title">One journey from the valley to a mountain camp and back, together.</title>
           <defs>
+            <path id="mountain-ascent" d="${ascent}"/>
+            <path id="mountain-summit-route" d="${summit}"/>
             <linearGradient id="mountain-sky" x2="0" y2="1"><stop stop-color="#182c32"/><stop offset="1" stop-color="#b18464"/></linearGradient>
             <linearGradient id="mountain-face" x2=".7" y2="1"><stop stop-color="#71827c"/><stop offset="1" stop-color="#213b3b"/></linearGradient>
             <linearGradient id="mountain-shadow" x2=".4" y2="1"><stop stop-color="#405958"/><stop offset="1" stop-color="#142b2d"/></linearGradient>
@@ -35,8 +40,8 @@ export function renderMountain() {
             <path d="M0 814 Q175 700 314 786 T572 817 Q769 729 924 776 T1200 742 V900 H0Z" fill="#142d2b"/>
             <path d="M0 880 Q211 762 400 855 T778 865 Q965 801 1200 849 V900 H0Z" fill="#0d2223"/>
             <g class="mountain-trees" fill="#1c3730" stroke="#657766" stroke-width="1">${[80,120,152,190,905,949,980,1060,1100].map((x,i)=>`<path d="M${x} ${775+(i%3)*12} v-43 m-17 29 l17-36 17 36 m-30-11 l13-31 13 31"/>`).join('')}</g>
-            <path id="mountain-route" d="M224 806 C286 785 307 738 359 704 S415 646 455 614 S526 588 522 540 S568 492 589 461 S611 416 635 413 S700 459 725 508 S753 559 797 603 S811 692 848 738 S883 778 931 806" fill="none" stroke="#ead7ac" stroke-width="2" stroke-dasharray="3 8" opacity=".3"/>
-            <path class="mountain-trail" d="M224 806 C286 785 307 738 359 704 S415 646 455 614 S526 588 522 540 S568 492 589 461 S611 416 635 413 S700 459 725 508 S753 559 797 603 S811 692 848 738  S883 778 931 806" fill="none" stroke="#ed6a4d" stroke-width="3" pathLength="100" stroke-dasharray="100" stroke-linecap="round"/>
+            <path id="mountain-route" d="${route}" fill="none" stroke="#ead7ac" stroke-width="2" stroke-dasharray="3 8" opacity=".3"/>
+            <path class="mountain-trail" d="${route}" fill="none" stroke="#ed6a4d" stroke-width="3" pathLength="100" stroke-dasharray="100" stroke-linecap="round"/>
             <g class="mountain-base" stroke="#c6c4a7" stroke-width="1.5" fill="#253b34">
               <path d="M171 805 V778 L193 760 L215 778 V805Z M164 780 L193 756 L222 780 M182 805 V788 H195 V805"/>
               <path d="M895 808 V777 L920 761 L945 777 V808Z M888 778 L920 756 L952 778 M907 808 V788 H921 V808"/>

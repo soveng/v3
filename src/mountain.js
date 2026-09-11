@@ -18,7 +18,9 @@ if (journey) {
   const caption = journey.querySelector('.mountain-caption');
   const clamp = n => Math.max(0, Math.min(1, n));
   const smooth = n => { const t = clamp(n); return t * t * (3 - 2 * t); };
-  const stops = [0, .04, .48, .51, .51, 1, 1, 1];
+  const campStop = scene.querySelector('#mountain-ascent').getTotalLength() / routeLength;
+  const summitStop = scene.querySelector('#mountain-summit-route').getTotalLength() / routeLength;
+  const stops = [0, .025, campStop, campStop, summitStop, 1, 1, 1];
   let frame = 0;
   let visible = true;
 
@@ -54,7 +56,7 @@ if (journey) {
     glow.setAttribute('cy', sunY);
     sun.style.opacity = String(.65 * (1 - smooth(darkness)));
     mist.setAttribute('transform', `translate(${reduced.matches ? 0 : raw * 8} 0)`);
-    caption.textContent = reduced.matches ? 'Valley → Mountain → Valley' : ['The journey / One weekly cycle', 'The valley / Meet the crew', 'The ascent / Leave devices behind', 'Day 03 / Pen & paper', 'Day 04 / Stay with the ideas', 'The valley / 24 hours to build', 'Demo Day / Show it', 'The way home / Keep the ideas'][Math.min(chapters.length - 1, Math.floor(raw + .01))];
+    caption.textContent = reduced.matches ? 'Valley → Mountain → Valley' : ['The journey / One weekly cycle', 'The valley / Meet the crew', 'The ascent / Leave devices behind', 'Day 03 / Pen & paper', 'Day 04 / Reach the summit', 'The valley / 24 hours to build', 'Demo Day / Show it', 'The way home / Keep the ideas'][Math.min(chapters.length - 1, Math.floor(raw + .01))];
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(draw); }
   function configure() {

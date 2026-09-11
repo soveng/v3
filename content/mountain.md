@@ -14,8 +14,8 @@ chapters:
     title: Less signal. More thought.
     body: A full day of device-free time together. Walks, meals, sauna, and fire. Pen and paper. Talk, argue, combine ideas. No coding.
   - day: Day 04 / The mountain
-    title: Stay with the ideas.
-    body: A second full day on the mountain. More walks, more meals, more sauna, more talking. Stay device-free and keep exploring the ideas together.
+    title: Take it to the top.
+    body: A second full day on the mountain. Walk to the peak together. More meals, more sauna, more talking. Stay device-free and keep exploring the ideas.
   - day: Day 05 / Mountain → Valley
     title: Down to work.
     body: Come down. Decompress. Get back into the coworking room. The 24-hour build starts here. Turn the ideas from the mountain into something you can show.
