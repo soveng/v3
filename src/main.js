@@ -1,3 +1,4 @@
+import "./testimonials.js";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animatePodcast } from "./podcast-animation";

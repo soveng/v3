@@ -72,7 +72,10 @@ The project archive preserves 154 entries across SEC-00 through SEC-07,
 including the original cohort URLs, project anchors, descriptions, and resource
 links. Search and cohort filters enhance the static directory; without JavaScript
 all entries remain visible. The seven homepage highlights link to dedicated
-project stories. Testimonials appear immediately before Apply on the homepage.
+project stories. Testimonials appear immediately before Apply on the homepage in a swipeable
+carousel with all original quotes and author portraits. Arrow buttons and keyboard
+controls cycle through the slides; there is no automatic advance. Native horizontal
+scrolling remains available without JavaScript.
 
 - `content/projects.json`: original archive entries.
 - `content/cohorts.json`: cohort introductions.
@@ -80,6 +83,7 @@ project stories. Testimonials appear immediately before Apply on the homepage.
 - `content/testimonials.json`: original community quotes and attribution links.
 - `scripts/generate-projects.js`: archive, story, and testimonial rendering.
 - `src/project-archive.js`: search, filtering, and progressive results.
+- `src/testimonials.js`: carousel controls and slide announcements.
 
 Archive content and local project logos were migrated from `soveng/website` at
 `8bfb0bc`. Restart Vite after editing content to regenerate the pages.

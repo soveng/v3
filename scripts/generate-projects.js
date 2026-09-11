@@ -69,7 +69,10 @@ export function generateProjects({ write, layout, escape: e }) {
 export function renderTestimonials() {
   const quotes = JSON.parse(readFileSync("content/testimonials.json", "utf8"));
   const escape = text => String(text).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-  const render = q => `<figure class="alumni-quote"><blockquote><p>${escape(q.content)}</p></blockquote><figcaption><a href="https://njump.to/${escape(q.noteid || q.npub)}">${escape(q.name)} ↗</a><span>${escape(q.designation)}</span></figcaption></figure>`;
-  const featured = [quotes[0], quotes[2], quotes[4]];
-  return `<section class="testimonials" id="voices" aria-labelledby="voices-title"><div class="testimonials-heading"><p class="section-index">From the people who were there</p><h2 id="voices-title">In good company.</h2></div><div class="testimonials-grid">${featured.map(render).join("")}</div><details class="more-testimonials"><summary>More voices from the community <span aria-hidden="true">+</span></summary><div class="testimonials-grid">${quotes.filter(q => !featured.includes(q)).map(render).join("")}</div></details></section>`;
+  const render = (q, index) => {
+    const source = q.noteid || q.npub;
+    const author = source ? `<a href="https://njump.to/${escape(source)}">${escape(q.name)} ↗</a>` : `<span>${escape(q.name)}</span>`;
+    return `<figure class="alumni-quote" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${quotes.length}"><blockquote><p>${escape(q.content)}</p></blockquote><figcaption><img src="${escape(q.avatar)}" alt="" width="64" height="64" loading="lazy" decoding="async"><div>${author}<span>${escape(q.designation)}</span></div></figcaption></figure>`;
+  };
+  return `<section class="testimonials" id="voices" aria-labelledby="voices-title" aria-roledescription="carousel"><div class="testimonials-heading"><p class="section-index">From the people who were there</p><h2 id="voices-title">In good company.</h2></div><div class="testimonial-controls" hidden><button type="button" data-direction="-1" aria-label="Previous testimonial" aria-controls="testimonial-track">←</button><span class="testimonial-position" role="status" aria-live="polite" aria-atomic="true"></span><button type="button" data-direction="1" aria-label="Next testimonial" aria-controls="testimonial-track">→</button></div><div class="testimonial-track" id="testimonial-track" tabindex="0" aria-label="Community testimonials">${quotes.map(render).join("")}</div></section>`;
 }
