@@ -31,7 +31,7 @@ chapters:
     title: Show it.
     body: Finish building in the morning. In the afternoon, everyone demos. Six minutes to show, two minutes to talk. See what our conversations made possible, then continue them over food.
     detail: Demo Day · 6 min show / 2 min talk
-  - day: Day 07 / The valley
+  - day: Day 07 / Return to civilization
     title: Until next time.
     body: Decompress, say goodbye, and head home. Take the work and the connections with you. The week ends; the dialogue and collaboration can keep going.
 ---
