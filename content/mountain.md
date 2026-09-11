@@ -19,7 +19,7 @@ chapters:
       - [Marmot, /projects/marmot/]
       - [MDK, /projects/mdk/]
   - day: Day 03 / The mountain
-    title: Less reception. More signal.
+    title: Less reception. More signal?
     body: A full day of high-bandwidth, face-to-face dialogue around our mountain base. Walks, meals, sauna, and fire. Free-flowing conversations and ideation, with pen and paper at hand. Tap into distributed cognition as we help each other think further. No devices, no coding.
   - day: Day 04 / The mountain
     title: Take it to the top.
