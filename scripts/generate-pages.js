@@ -45,7 +45,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
   <a class="skip-link" href="#content">Skip to content</a>
   <nav class="nav" aria-label="Main navigation">
     <a class="nav-brand" href="/" aria-label="Sovereign Engineering home"><img src="/src/assets/brandmark.svg" alt=""><span>Sovereign<br>Engineering</span></a>
-    <div class="nav-links"><a href="/projects/"${path.startsWith("/projects") ? ' aria-current="page"' : ""}>Projects</a><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>Podcast</a><a href="/faq/"${path === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a><a href="/#apply">Cohorts ↗</a></div>
+    <div class="nav-links"><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>listen</a><a href="/#apply">apply</a></div>
   </nav>
   <main id="content" class="content-shell">${body}</main>
   <footer class="content-footer"><a href="/">Sovereign Engineering<br>Madeira, Portugal</a><a href="/policy/">Policies</a><a href="mailto:info@sovereignengineering.io">Get in touch ↗</a></footer>
