@@ -40,8 +40,8 @@ server to regenerate the pages:
   episode URLs). Add new episodes here, then rebuild.
 - `content/faq.md`: FAQ answers, in YAML frontmatter with Markdown answers.
 - `content/policy.md`: selection and participation policies.
-- `content/mountain.md`: placeholder copy for the one-week mountain cohort in
-  2027, available at `/mountain/` and linked only from the footer.
+- `content/mountain.md`: the seven-day mountain cohort narrative for 2027,
+  available at `/mountain/` and linked only from the footer.
 - `scripts/generate-pages.js`: shared page layout and content rendering.
 - `src/podcast-animation.js`: the homepage bell-curve scroll sequence.
   Its characters use the [Bell Curve template](https://imgflip.com/memegenerator/533936279/Bell-Curve)
@@ -107,6 +107,13 @@ Archive content and local project logos were migrated from `soveng/website` at
 The shared footer’s sea divider and ship follow scrolling via
 `src/footer-animation.js`. The ship sails into the center as the waves appear;
 reduced-motion and no-JavaScript visitors see the completed scene.
+
+The mountain page uses one continuous SVG landscape in `scripts/render-mountain.js`.
+`src/mountain.js` follows scrolling through the valley, ascent, device-free camp,
+descent and 24-hour build, demos, and departure. The scene stays pinned while the
+chapters pass; mobile places the illustration below the copy. Reduced motion and
+no JavaScript show the landscape and chapters in a normal document flow. Exact
+dates, location, and applications remain unannounced.
 
 ## Run locally
 

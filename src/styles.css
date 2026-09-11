@@ -462,3 +462,55 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   }
   .project-plant:nth-child(odd) .plant-copy p { margin-left:auto; }
 }
+
+/* One landscape carries the mountain cohort through a single weekly cycle. */
+.content-shell.mountain-shell { max-width:none; padding:0; }
+.mountain-page { width:100%; background:#102529; }
+.mountain-journey { position:relative; }
+.mountain-stage { position:relative; width:100%; height:75svh; overflow:hidden; background:#182c32; }
+.mountain-scene { position:absolute; width:100%; height:100%; right:0; top:0; }
+.mountain-vignette { position:absolute; inset:0; pointer-events:none; background:linear-gradient(0deg,#102529,transparent 30%); }
+.mountain-caption { position:absolute; bottom:26px; right:5vw; font:10px/1.5 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:#d0d1bc; }
+.mountain-chapters { position:relative; }
+.mountain-chapter { padding:70px 6vw; border-top:1px solid #ffffff12; }
+.mountain-copy { max-width:540px; }
+.mountain-day { font:12px/1.5 var(--mono); text-transform:uppercase; letter-spacing:.13em; color:#e5aa80; margin-bottom:26px; }
+.mountain-copy h1,.mountain-copy h2 { font:400 clamp(52px,5.7vw,92px)/.96 var(--serif); letter-spacing:-.04em; margin:0; text-wrap:balance; }
+.mountain-copy h1 em { font-style:normal; color:#ecb591; }
+.mountain-description { max-width:34ch; margin-top:28px; font-size:clamp(20px,1.7vw,25px); line-height:1.5; color:#c6cec8; }
+.mountain-scroll { display:inline-flex; gap:24px; margin-top:32px; padding-bottom:8px; border-bottom:1px solid #a8b5aa66; font:12px var(--mono); }
+.mountain-scroll span { color:#e5aa80; }
+.mountain-copy a:focus-visible { outline:2px solid #e5aa80; outline-offset:6px; }
+.mountain-enhanced .mountain-stage { position:sticky; top:0; height:100svh; margin-bottom:-100svh; }
+.mountain-enhanced .mountain-scene { width:77%; right:-8%; mask-image:linear-gradient(90deg,transparent,#000 15%); }
+.mountain-enhanced .mountain-vignette { background:linear-gradient(90deg,#102529 3%,#102529ed 22%,#10252966 45%,transparent 64%),linear-gradient(0deg,#102529 0%,transparent 18%); }
+.mountain-enhanced .mountain-chapter { height:100svh; min-height:700px; display:flex; align-items:center; border:0; padding:110px 6vw 80px; }
+.mountain-enhanced .mountain-copy { width:37%; }
+.mountain-outro { padding:110px 6vw; text-align:center; background:#080808; }
+.mountain-outro h2 { font:400 clamp(50px,6vw,90px)/1 var(--serif); letter-spacing:-.04em; }
+.mountain-outro > p:not(.mountain-day) { max-width:40ch; margin:28px auto 0; font-size:22px; color:var(--dim); }
+.mountain-outro .mountain-details { font:12px/1.6 var(--mono) !important; }
+@media(max-width:1000px) {
+  .mountain-enhanced .mountain-copy { width:43%; }
+  .mountain-enhanced .mountain-scene { width:85%; right:-13%; }
+}
+@media(max-width:720px) {
+  .mountain-stage { height:60svh; }
+  .mountain-enhanced .mountain-stage { height:100svh; }
+  .mountain-enhanced .mountain-scene { mask-image:linear-gradient(180deg,transparent,#000 18%); width:115%; height:64%; top:auto; bottom:0; right:-8%; }
+  .mountain-enhanced .mountain-vignette { background:linear-gradient(180deg,#102529 0%,#102529 34%,#102529bb 43%,transparent 58%,#102529 100%); }
+  .mountain-enhanced .mountain-chapter { align-items:flex-start; padding:105px 6vw 0; min-height:700px; }
+  .mountain-enhanced .mountain-copy { width:100%; max-width:470px; }
+  .mountain-copy h1,.mountain-copy h2 { font-size:clamp(44px,10.7vw,66px); max-width:12ch; }
+  .mountain-description { font-size:18px; line-height:1.45; margin-top:20px; }
+  .mountain-day { font-size:10px; margin-bottom:18px; }
+  .mountain-caption { bottom:16px; left:6vw; right:auto; font-size:9px; }
+  .mountain-scroll { margin-top:20px; }
+  .mountain-outro { padding:80px 6vw; }
+}
+@media(max-width:720px) and (max-height:700px) {
+  .mountain-enhanced .mountain-chapter { padding-top:85px; }
+  .mountain-copy h1,.mountain-copy h2 { font-size:40px; }
+  .mountain-description { font-size:16px; margin-top:16px; }
+  .mountain-enhanced .mountain-scene { height:52%; }
+}

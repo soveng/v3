@@ -1,3 +1,4 @@
+import { renderMountain } from "./render-mountain.js";
 import { renderFooter } from "./render-footer.js";
 import { generateProjects } from "./generate-projects.js";
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
@@ -48,7 +49,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
     <a class="nav-brand" href="/" aria-label="Sovereign Engineering home"><img src="/src/assets/brandmark.svg" alt=""><span>Sovereign<br>Engineering</span></a>
     <div class="nav-links"><a href="/podcast/"${path.startsWith("/podcast") ? ' aria-current="page"' : ""}>Listen</a><a href="/faq/"${path === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a><a href="/#apply">Apply</a></div>
   </nav>
-  <main id="content" class="content-shell">${body}</main>
+  <main id="content" class="content-shell${path === "/mountain/" ? " mountain-shell" : ""}">${body}</main>
   ${renderFooter()}
   <script type="module" src="/src/footer-animation.js"></script>
 </body>
@@ -111,8 +112,7 @@ export function generatePages() {
       <header class="text-hero"><p class="section-index">Sovereign Engineering / ${name === "faq" ? "The practical details" : "How we work"}</p><h1>${name === "faq" ? "Before you<br>join us." : escape(data.title)}</h1><div class="content-lead">${name === "faq" ? "The program, the island, and what to expect." : markdown(data.intro.content)}</div></header>
       <div class="faq-layout"><aside class="section-menu" aria-label="On this page">${data.sections.map(section => `<a href="#${escape(section.id)}">${escape(section.title)}</a>`).join("")}</aside><div>${sections}</div></div><script type="module" src="/src/content.js"></script>`, "/images/sovereign-engineering.png"));
   }
-  write("mountain/index.html", layout("Mountain cohort — 2027", "A one-week Sovereign Engineering mountain cohort in 2027. More details coming soon.", "/mountain/", `
-    <header class="text-hero"><h1>Mountain<br>cohort.</h1><div class="content-lead">${markdown(readFileSync("content/mountain.md", "utf8"))}</div></header>`, "/images/sovereign-engineering.png"));
+  write("mountain/index.html", layout("Mountain cohort — 2027", "Seven days. One weekly cycle. A device-free mountain retreat, followed by 24 hours to build and Demo Day.", "/mountain/", renderMountain(), "/images/sovereign-engineering.png"));
   generateProjects({ write, layout, escape });
   return files;
 }
