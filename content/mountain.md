@@ -32,6 +32,6 @@ chapters:
     body: The morning is for finishing the build. Everyone demos in the afternoon, with six minutes to show what they made and two minutes to talk about it. Afterwards, we eat together.
     detail: Demo Day · 6 min show / 2 min talk
   - day: Day 07 / Return to civilization
-    title: Return
+    title: Return to Civilization
     body: Time to decompress, say goodbye, and head home.
 ---
