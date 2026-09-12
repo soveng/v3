@@ -338,18 +338,26 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .project-identity svg { width:100%; height:100%; }
 .project-identity > img,.project-identity > span { position:absolute; width:24%; height:24%; object-fit:contain; top:38%; left:38%; }
 .project-identity > span { display:grid; place-items:center; color:var(--bone); font:clamp(48px,7vw,100px)/1 var(--serif); }
-.project-plant-art { position:relative; width:100%; aspect-ratio:4/5; overflow:hidden; }
+/* The plant shares the hero's space and grows from the story divider. */
+.project-story-hero.has-plant { position:relative; isolation:isolate; display:flex; min-height:700px; padding:64px 0 56px; overflow:clip; }
+.has-plant .project-story-copy { position:relative; z-index:1; display:flex; flex-direction:column; justify-content:space-between; align-self:stretch; width:100%; gap:100px; }
+.has-plant .project-story-heading { max-width:85%; }
+.has-plant h1 { font-size:clamp(72px,10vw,156px); }
+.has-plant .content-lead { max-width:38ch; width:48%; line-height:1.55; }
+.project-plant-art { position:absolute; z-index:0; width:70%; top:0; right:-6%; bottom:-28px; pointer-events:none; mask-image:linear-gradient(to right,transparent,black 32%); }
 .project-plant-art canvas { display:block; width:100%; height:100%; visibility:hidden; }
 .project-plant-art.is-ready canvas { visibility:visible; }
-.project-plant-fallback { position:absolute; width:110px; height:110px; object-fit:contain; left:50%; top:50%; transform:translate(-50%,-50%); }
+.project-plant-fallback { position:absolute; width:110px; height:110px; object-fit:contain; left:65%; top:50%; transform:translate(-50%,-50%); }
 .project-plant-art.is-ready .project-plant-fallback { display:none; }
-.project-plant-art[data-plant-species="mycelium"] canvas { width:90%; height:92%; margin:4% auto; }
+.project-plant-art[data-plant-species="mycelium"] { top:40px; bottom:-100px; mask-image:linear-gradient(to right,transparent,black 48%); }
 @media(max-width:720px) {
-  .project-story-hero.has-plant { display:flex; flex-direction:column; align-items:stretch; }
-  .has-plant .project-story-copy { display:contents; }
-  .has-plant .project-story-heading { order:0; }
-  .has-plant .project-plant-art { order:1; aspect-ratio:1; }
-  .has-plant .content-lead { order:2; }
+  .project-story-hero.has-plant { min-height:700px; padding:44px 0 40px; }
+  .has-plant .project-story-heading { max-width:100%; }
+  .has-plant h1 { font-size:clamp(56px,13vw,92px); }
+  .has-plant .project-tagline { max-width:20ch; font-size:27px; }
+  .has-plant .content-lead { width:76%; font-size:20px; }
+  .project-plant-art { width:125%; top:0; right:-45%; mask-image:linear-gradient(to right,transparent 12%,rgba(0,0,0,.35) 35%,black 58%); }
+  .project-plant-art[data-plant-species="mycelium"] { top:150px; mask-image:linear-gradient(to right,transparent 20%,rgba(0,0,0,.25) 40%,black 65%); }
 }
 .story-layout { display:grid; grid-template-columns:1fr 2fr; gap:7vw; padding:60px 0; border-top:1px solid #333; }
 .story-links { display:flex; flex-direction:column; align-items:start; gap:20px; }
