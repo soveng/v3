@@ -226,7 +226,8 @@ Every page gets its own 1200×630 PNG card and Open Graph / Twitter card
 metadata at build time. `scripts/social-preview.js` renders the designs using
 local fonts and artwork; no browser, external image service, or network access
 is needed during the build. The mountain card reuses the mountain illustration
-and opener from `content/mountain.md`. Project and dialogue cards use their
+and opener from `content/mountain.md`. The homepage uses the supplied figure
+and city image in `src/assets/social-landing.png`. Project and dialogue cards use their
 page titles. Generated images live in `public/social/` (ignored by Git) and
 use content hashes so a changed design gets a new image URL.
 

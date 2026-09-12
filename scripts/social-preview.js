@@ -54,7 +54,9 @@ function art(path, image) {
     return `<image x="805" y="205" width="310" height="310" href="${cover}"/><path d="M805 545 H1115" stroke="#ed3238" stroke-width="3"/>`;
   }
   if (path === '/') {
-    return `<circle cx="965" cy="295" r="145" fill="#ed3238"/><g fill="none" stroke="#eee8dd" opacity=".5">${Array.from({length:8},(_,i)=>`<path d="M730 ${465+i*14} Q790 ${445+i*14} 850 ${465+i*14} T970 ${465+i*14} T1090 ${465+i*14} T1210 ${465+i*14}"/>`).join('')}</g><g transform="translate(865 215)" stroke="#eee8dd" stroke-width="2" fill="#080808"><path d="M0 193 H190 L165 221 H35Z M60 193 V0 M128 193 V32"/><path d="M16 24 Q60 36 103 24 L96 136 Q60 148 20 136Z M105 53 Q130 61 162 53 L170 153 Q134 165 103 153Z"/><path d="M5 192 L60 5 L108 192 M92 192 L128 36 L184 192" fill="none"/></g>`;
+    // Frame the supplied portrait around the figure and city in the wide card.
+    const background = dataImage('src/assets/social-landing.png');
+    return `<image x="570" y="-130" width="660" height="1163" href="${background}"/><rect x="570" width="250" height="630" fill="url(#fade)"/>`;
   }
   const logo = image?.startsWith('/images/showcase/') ? dataImage(`public${image}`) : null;
   return `<g transform="translate(960 345)"><g fill="none" stroke="#66765d"><circle r="170"/><circle r="128" stroke-dasharray="2 9"/><path d="M0 170 V128 M-170 0 H-128 M128 0 H170 M-120-120 L-90-90 M90 90 L120 120"/></g><g fill="#ed3238"><circle cy="170" r="6"/><circle cx="-170" r="6"/><circle cx="120" cy="-120" r="6"/></g>${logo ? `<image x="-66" y="-66" width="132" height="132" href="${logo}"/>` : `<path d="M0 108 V-60 M0 0 Q-85-3-77-72 Q-9-67 0 0 M0-30 Q67-25 73-106 Q4-95 0-30" fill="#53694e" stroke="#aab599" stroke-width="2"/>`}</g>`;
