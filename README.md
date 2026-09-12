@@ -19,6 +19,13 @@ Both scenes follow scrolling and use an unpinned static layout for reduced motio
 to complete a task in the red Demo Day section. The short pinned sequence follows
 scrolling; reduced motion and no JavaScript show the completed SVG scene.
 
+`src/plant-animation.js` is the shared renderer for the seven showcase plants.
+The homepage drives growth with scrolling; `src/project-plant.js` plays it once
+over time on the individual project pages, pausing while offscreen. FIPS packets
+continue through the roots after growth finishes. Reduced motion shows the
+finished illustration, and visitors without JavaScript see the project logo.
+Plant species and seeds are set in `content/project-stories.json`.
+
 `src/fips-animation.js` grows a branching root network directly from the base
 of TollGate’s mangrove, showing FIPS emerging from TollGate. The two canvases
 share a root anchor, and TollGate stays upright to preserve that connection.

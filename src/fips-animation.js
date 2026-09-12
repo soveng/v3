@@ -1,15 +1,15 @@
 // FIPS grows underground from the exact base of the TollGate mangrove.
-export function createFipsAnimation(canvas, reducedMotion) {
+export function createFipsAnimation(canvas, reducedMotion, { standalone = false } = {}) {
   const context = canvas.getContext("2d");
-  const state = { progress: reducedMotion ? 1 : 0 };
+  const state = { progress: reducedMotion ? 1 : 0, reducedMotion };
   const clamp = value => Math.max(0, Math.min(1, value));
   const smooth = value => { const t = clamp(value); return t * t * (3 - 2 * t); };
   let seed = 812;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
   const branches = [];
   const tips = [];
-  const source = document.querySelector('#tollgate .botanical');
-  const rootX = Number(source.dataset.rootX);
+  const source = standalone ? null : document.querySelector('#tollgate .botanical');
+  const rootX = Number(source?.dataset.rootX ?? .5);
 
   function grow(start, angle, length, depth, parent = null) {
     const end = {
@@ -103,7 +103,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
 
   function tick(time) {
     frame = 0;
-    if (!visible || reducedMotion || state.progress < .5) { previousTime = 0; return; }
+    if (!visible || state.reducedMotion || document.hidden || state.progress < .5) { previousTime = 0; return; }
     if (previousTime) elapsed += Math.min(time - previousTime, 50) / 1000;
     previousTime = time;
     draw();
@@ -123,8 +123,8 @@ export function createFipsAnimation(canvas, reducedMotion) {
     const progress = clamp(state.progress);
     const spread = width;
     const project = p => ({ x: p.x * spread, y: p.y / rootDepth * height * .96 });
-    const copy = canvas.closest(".project-plant").querySelector(".plant-copy");
-    const copyTop = copy.offsetTop - parseFloat(canvas.style.top);
+    const copy = canvas.closest(".project-plant")?.querySelector(".plant-copy");
+    const copyTop = copy ? copy.offsetTop - parseFloat(canvas.style.top) : Infinity;
     const inkOpacity = y => 1 - smooth((y - copyTop + 50) / 100) * .65;
     const size = Math.max(.65, spread / 1000);
     context.lineCap = "round";
@@ -169,9 +169,9 @@ export function createFipsAnimation(canvas, reducedMotion) {
 
     // A few trailing rootlets reach across the headline and description themselves.
     const canvasRect = canvas.getBoundingClientRect();
-    const titleRect = copy.querySelector("h3").getBoundingClientRect();
-    const textRect = copy.querySelector("p").getBoundingClientRect();
-    for (let index = 0; !portrait && index < 3; index++) {
+    const titleRect = copy?.querySelector("h3").getBoundingClientRect();
+    const textRect = copy?.querySelector("p").getBoundingClientRect();
+    for (let index = 0; copy && !portrait && index < 3; index++) {
       const start = sortedTips[Math.floor(sortedTips.length * (.72 + index * .08))].end;
       const end = {
         x: (titleRect.right - canvasRect.left - titleRect.width * (.05 + index * .12)) / width,
@@ -183,7 +183,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
 
     // Slow, repeated packets make the network readable even while scrolling pauses.
     if (progress >= .5) routes.forEach((route, routeIndex) => {
-      const phase = reducedMotion ? .65 : (elapsed / 12 + routeIndex / 3) % 1;
+      const phase = state.reducedMotion ? .65 : (elapsed / 12 + routeIndex / 3) % 1;
       const travel = phase * route.length;
       const reverse = routeIndex === 1;
       const ordered = reverse ? [...route].reverse() : route;
@@ -206,18 +206,20 @@ export function createFipsAnimation(canvas, reducedMotion) {
       context.fillStyle = "#ed5834"; context.fill();
     });
     context.globalAlpha = 1;
-    if (visible && !reducedMotion && progress >= .5 && !frame) frame = requestAnimationFrame(tick);
+    if (visible && !state.reducedMotion && !document.hidden && progress >= .5 && !frame) frame = requestAnimationFrame(tick);
   }
 
   function resize() {
-    const card = canvas.closest(".project-plant");
-    const sourceRect = source.getBoundingClientRect();
-    const cardRect = card.getBoundingClientRect();
-    const top = sourceRect.top + source.clientHeight * .96 - cardRect.top;
-    canvas.style.top = `${top}px`;
-    canvas.style.left = `${sourceRect.left - cardRect.left}px`;
-    canvas.style.width = `${source.clientWidth}px`;
-    canvas.style.height = `${Math.max(120, card.clientHeight + 80 - top)}px`;
+    if (!standalone) {
+      const card = canvas.closest(".project-plant");
+      const sourceRect = source.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const top = sourceRect.top + source.clientHeight * .96 - cardRect.top;
+      canvas.style.top = `${top}px`;
+      canvas.style.left = `${sourceRect.left - cardRect.left}px`;
+      canvas.style.width = `${source.clientWidth}px`;
+      canvas.style.height = `${Math.max(120, card.clientHeight + 80 - top)}px`;
+    }
     layoutRoots(canvas.clientWidth, canvas.clientHeight);
     const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(canvas.clientWidth * ratio);
@@ -231,6 +233,7 @@ export function createFipsAnimation(canvas, reducedMotion) {
     else { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
   });
   observer.observe(canvas);
+  document.addEventListener("visibilitychange", () => { previousTime = 0; if (!document.hidden && visible) draw(); });
   resize();
   window.addEventListener("resize", resize);
   document.fonts.ready.then(resize);
