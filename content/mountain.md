@@ -5,7 +5,7 @@ chapters:
     body: Seven days of dialogical development. Think together through free-flowing conversations, discover what’s worth building, and bring it to life. One weekly cycle, from dialogue to demo.
   - day: Day 01 / The valley
     title: Find your crew.
-    body: Dialogue starts with getting to know each other. Gigi’s introduction, a 30-second circle, and project lightning talks. Then lunch and a light afternoon walk or meal. Share what you’re working on and the questions you’re carrying.
+    body: Dialogue starts with getting to know each other. A welcome, a 30-second introduction circle, and project lightning talks. Then lunch and a light afternoon walk or meal. Share what you’re working on and the questions you’re carrying.
   - day: Day 02 / Valley → Mountain
     title: Up, together.
     body: Make a shared map of our building blocks in the valley. Leave the devices behind, then climb to our mountain base together, with pen, paper, and curiosity. Let the conversation wander as we walk. Settle in over dinner, fire, or sauna. No laptops.
