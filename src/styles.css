@@ -338,7 +338,7 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .project-identity svg { width:100%; height:100%; }
 .project-identity > img,.project-identity > span { position:absolute; width:24%; height:24%; object-fit:contain; top:38%; left:38%; }
 .project-identity > span { display:grid; place-items:center; color:var(--bone); font:clamp(48px,7vw,100px)/1 var(--serif); }
-.project-plant-art { position:relative; width:100%; aspect-ratio:4/5; background:var(--bone); overflow:hidden; }
+.project-plant-art { position:relative; width:100%; aspect-ratio:4/5; overflow:hidden; }
 .project-plant-art canvas { display:block; width:100%; height:100%; visibility:hidden; }
 .project-plant-art.is-ready canvas { visibility:visible; }
 .project-plant-fallback { position:absolute; width:110px; height:110px; object-fit:contain; left:50%; top:50%; transform:translate(-50%,-50%); }

@@ -2,15 +2,17 @@ import { createFipsAnimation } from "./fips-animation";
 
 export function createPlantAnimation(canvas, species, seed, reduced = false, options = {}) {
   if (species === "mycelium") return createFipsAnimation(canvas, reduced, options);
+  // Keep the original garden palette; standalone pages opt into brighter ink.
+  const color = (light, dark) => options.theme === "dark" ? dark : light;
   const context = canvas.getContext("2d");
   const state = { progress: reduced ? 1 : 0 };
   const speciesConfig = {
-    cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: "#553a35", trunkWidth: 8, leaf: "#4c7148", accent: "#ed7e91", flowers: 21, crown: false, shape: "pointed" },
+    cherry: { height: .7, leaves: 17, leafLength: .13, leafWidth: .027, trunk: color("#553a35", "#a78072"), trunkWidth: 8, leaf: color("#4c7148", "#86ac72"), accent: "#ed7e91", flowers: 21, crown: false, shape: "pointed" },
     cashew: { height: 0, leaves: 0, leafLength: 0, leafWidth: 0, trunk: "#9b622d", trunkWidth: 0, leaf: "#d8ad68", accent: "#f1cf8b", flowers: 0, crown: false, shape: "cashew" },
-    banyan: { height: .8, leaves: 28, leafLength: .16, leafWidth: .045, trunk: "#604933", trunkWidth: 16, leaf: "#2f6644", accent: "#ed3238", flowers: 0, crown: true, shape: "broad", roots: false },
-    papyrus: { height: .82, leaves: 34, leafLength: .19, leafWidth: .009, trunk: "#71884d", trunkWidth: 7, leaf: "#5c8b55", accent: "#d9b83e", flowers: 0, crown: true, shape: "needle" },
-    mangrove: { height: .67, leaves: 24, leafLength: .13, leafWidth: .035, trunk: "#594737", trunkWidth: 13, leaf: "#346c52", accent: "#ed3238", flowers: 0, crown: false, shape: "broad", roots: false },
-    dandelion: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: "#3d6b42", trunkWidth: 6, leaf: "#386f45", accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
+    banyan: { height: .8, leaves: 28, leafLength: .16, leafWidth: .045, trunk: color("#604933", "#ac9372"), trunkWidth: 16, leaf: color("#2f6644", "#629d76"), accent: "#ed3238", flowers: 0, crown: true, shape: "broad", roots: false },
+    papyrus: { height: .82, leaves: 34, leafLength: .19, leafWidth: .009, trunk: color("#71884d", "#a8b978"), trunkWidth: 7, leaf: color("#5c8b55", "#8eb47d"), accent: "#d9b83e", flowers: 0, crown: true, shape: "needle" },
+    mangrove: { height: .67, leaves: 24, leafLength: .13, leafWidth: .035, trunk: color("#594737", "#aa9276"), trunkWidth: 13, leaf: color("#346c52", "#6caa87"), accent: "#ed3238", flowers: 0, crown: false, shape: "broad", roots: false },
+    dandelion: { height: .65, leaves: 25, leafLength: .11, leafWidth: .025, trunk: color("#3d6b42", "#83a773"), trunkWidth: 6, leaf: color("#386f45", "#79a86e"), accent: "#ed3e2f", flowers: 12, crown: false, shape: "pointed" }
   };
   const config = speciesConfig[species];
   const papyrusCrownCache = new Map();
@@ -139,7 +141,7 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
       const point = stemPoint(attach, width, height);
       const length = leafScale * config.leafLength * (.68 + noise(index + 80) * .45);
       const leafWidth = leafScale * config.leafWidth * (.75 + noise(index + 120) * .4);
-      const shade = index % 3 === 0 ? config.leaf : index % 3 === 1 ? "#315f3d" : "#54834a";
+      const shade = index % 3 === 0 ? config.leaf : index % 3 === 1 ? color("#315f3d", "#568966") : color("#54834a", "#8ab474");
       drawLeaf(point.x, point.y, angle, length, leafWidth, growth, shade, config.shape);
     }
   }
@@ -280,17 +282,17 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
         const endX = 0 + dx, endY = 0 + dy + droop;
         paint.beginPath(); paint.moveTo(0, 0);
         paint.bezierCurveTo(0 + dx * .35, 0 + dy * .45 - reach * .22, 0 + dx * .82, 0 + dy - reach * .12, endX, endY);
-        paint.strokeStyle = ray % 3 ? "#66854b" : "#9aa35a";
+        paint.strokeStyle = ray % 3 ? color("#66854b", "#a1bc7e") : color("#9aa35a", "#c7cb8b");
         paint.lineWidth = ray % 5 ? .8 : 1.25; paint.stroke();
         // Tiny terminal branchlets give the crown its feathery papyrus texture.
         for (const side of [-1, 1]) {
           paint.beginPath(); paint.moveTo(endX - dx * .09, endY - droop * .35);
           paint.quadraticCurveTo(endX + side * reach * .035, endY - 5, endX + side * reach * .07, endY + 3);
-          paint.strokeStyle = "rgba(121,136,72,.7)"; paint.lineWidth = .55; paint.stroke();
+          paint.strokeStyle = color("rgba(121,136,72,.7)", "rgba(173,191,126,.85)"); paint.lineWidth = .55; paint.stroke();
         }
       }
       paint.beginPath(); paint.arc(0, 0, 2, 0, Math.PI * 2);
-      paint.fillStyle = "#56723d"; paint.fill();
+      paint.fillStyle = color("#56723d", "#91ad6c"); paint.fill();
     const crown = { bitmap, extent };
     papyrusCrownCache.set(index, crown);
     return crown;
@@ -313,7 +315,7 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
       const topY = baseY + (y - baseY) * growth;
       context.beginPath(); context.moveTo(rootX, baseY);
       context.bezierCurveTo(rootX + offset * spread * .12, baseY - height * tall * growth * .4, topX - offset * spread * .12, topY + height * .15 * growth, topX, topY);
-      context.strokeStyle = index % 2 ? "#668044" : "#496a3c";
+      context.strokeStyle = index % 2 ? color("#668044", "#a1b774") : color("#496a3c", "#7d9e66");
       context.lineWidth = Math.max(2.5, Math.min(5, width * .005)); context.stroke();
       context.strokeStyle = "rgba(205,207,130,.5)"; context.lineWidth = .8; context.stroke();
       const bloom = smooth(clamp((progress - .38 - index * .045) / .4));
@@ -344,19 +346,19 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
         const t = tooth / 9;
         context.lineTo(Math.sin(t * Math.PI) * length * (tooth % 2 ? .18 : .055), -length * t);
       }
-      context.closePath(); context.fillStyle = leaf % 2 ? "#567842" : "#3f673b"; context.fill();
+      context.closePath(); context.fillStyle = leaf % 2 ? color("#567842", "#95b479") : color("#3f673b", "#739860"); context.fill();
       context.beginPath(); context.moveTo(0, 0); context.lineTo(0, -length);
       context.strokeStyle = "rgba(216,222,153,.55)"; context.lineWidth = .8; context.stroke(); context.restore();
     }
     const crownY = base.y + (head.y - base.y) * growth;
     context.beginPath(); context.moveTo(base.x, base.y);
     context.bezierCurveTo(base.x - 12, base.y - height * .24 * growth, head.x + 12, crownY + height * .2 * growth, head.x, crownY);
-    context.strokeStyle = "#6e854a"; context.lineWidth = 4; context.stroke();
+    context.strokeStyle = color("#6e854a", "#a4bb79"); context.lineWidth = 4; context.stroke();
     context.strokeStyle = "rgba(213,218,153,.5)"; context.lineWidth = 1; context.stroke();
     const bloom = smooth(clamp((progress - .25) / .25));
     if (!bloom) return;
     context.beginPath(); context.arc(head.x, crownY, 7 * bloom, 0, Math.PI * 2);
-    context.fillStyle = "#998a5d"; context.fill();
+    context.fillStyle = color("#998a5d", "#c9bd92"); context.fill();
     for (let seedIndex = 0; seedIndex < 42; seedIndex++) {
       const angle = seedIndex * 2.39996;
       const reach = radius * Math.sqrt((seedIndex + 1) / 42) * bloom;
@@ -367,17 +369,17 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
       const rotation = angle + Math.PI / 2 + flight * .65;
       if (flight === 0) {
         context.beginPath(); context.moveTo(head.x, crownY); context.lineTo(x, y);
-        context.strokeStyle = "rgba(139,143,115,.28)"; context.lineWidth = .6; context.stroke();
+        context.strokeStyle = color("rgba(139,143,115,.28)", "rgba(216,222,196,.45)"); context.lineWidth = .6; context.stroke();
       }
       context.save(); context.translate(x, y); context.rotate(rotation); context.globalAlpha = bloom;
       const tuft = Math.max(6, radius * .12);
       context.beginPath(); context.moveTo(0, 9); context.lineTo(0, 0);
-      context.strokeStyle = "#9b8962"; context.lineWidth = 1; context.stroke();
+      context.strokeStyle = color("#9b8962", "#c9b990"); context.lineWidth = 1; context.stroke();
       for (let hair = 0; hair < 9; hair++) {
         const fan = Math.PI + hair / 8 * Math.PI;
         context.beginPath(); context.moveTo(0, 0);
         context.quadraticCurveTo(Math.cos(fan) * tuft * .5, Math.sin(fan) * tuft * .7, Math.cos(fan) * tuft, Math.sin(fan) * tuft - 2);
-        context.strokeStyle = hair % 2 ? "#b7b9a4" : "#969d86"; context.lineWidth = .65; context.stroke();
+        context.strokeStyle = hair % 2 ? color("#b7b9a4", "#ebe9d8") : color("#969d86", "#c4ceb1"); context.lineWidth = .65; context.stroke();
       }
       context.restore();
     }
@@ -395,7 +397,7 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
       const size = Math.max(44, Math.min(76, width * .09)) * scale * growth;
       context.beginPath(); context.moveTo(branch.x, branch.y);
       context.quadraticCurveTo(x, branch.y - 12, x, y + 5);
-      context.strokeStyle = "#604933"; context.lineWidth = 1.8; context.stroke();
+      context.strokeStyle = color("#604933", "#ac9372"); context.lineWidth = 1.8; context.stroke();
       context.drawImage(puzzleGlobe, x - size / 2, y, size, size * puzzleGlobe.naturalHeight / puzzleGlobe.naturalWidth);
     });
   }
@@ -412,7 +414,7 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
     context.beginPath();
     context.moveTo(-spread / 2, 3);
     context.bezierCurveTo(-spread * .25, -1, spread * .22, 5, spread / 2, 1);
-    context.strokeStyle = '#8c896b';
+    context.strokeStyle = color("#8c896b", "#b4b294");
     context.lineWidth = 1.2;
     context.stroke();
     const bladeCount = 42;
@@ -426,7 +428,7 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
       context.beginPath();
       context.moveTo(x, y);
       context.quadraticCurveTo(x + lean * .2, y - length * .65, x + lean, y - length);
-      context.strokeStyle = ['#59734b', '#83915b', '#446647'][i % 3];
+      context.strokeStyle = [color("#59734b", "#8eab76"), color("#83915b", "#b4c68b"), color("#446647", "#759974")][i % 3];
       context.lineWidth = 1 + noise(i + 730) * .7;
       context.lineCap = 'round';
       context.stroke();
@@ -442,14 +444,14 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
     context.save();
     context.translate(tip.x, tip.y);
     context.globalAlpha = growth;
-    context.strokeStyle = "#594737";
+    context.strokeStyle = color("#594737", "#aa9276");
     context.lineWidth = 3;
     context.beginPath(); context.moveTo(0, 0); context.lineTo(0, -82 * growth); context.stroke();
     context.translate(0, -82 * growth);
     context.scale(growth, growth);
     // A rooftop-style directional aerial: reflector, folded dipole, and directors.
     context.rotate(-Math.PI / 10);
-    context.strokeStyle = "#696b60";
+    context.strokeStyle = color("#696b60", "#c3c8b5");
     context.lineWidth = 2.5;
     context.beginPath(); context.moveTo(-size, 0); context.lineTo(size * 1.4, 0); context.stroke();
     for (const [position, halfLength] of [[-.9, .72], [.05, .53], [.48, .46], [.9, .39], [1.3, .32]]) {
@@ -467,7 +469,7 @@ export function createPlantAnimation(canvas, species, seed, reduced = false, opt
     context.beginPath();
     context.moveTo(-size * .42, 3);
     context.quadraticCurveTo(-size * .3, size * .55, size * .12, size * .58);
-    context.strokeStyle = "#594737"; context.lineWidth = 1; context.stroke();
+    context.strokeStyle = color("#594737", "#aa9276"); context.lineWidth = 1; context.stroke();
     context.restore();
   }
 

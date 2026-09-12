@@ -24,7 +24,8 @@ The homepage drives growth with scrolling; `src/project-plant.js` plays it once
 over time on the individual project pages, pausing while offscreen. FIPS packets
 continue through the roots after growth finishes. Reduced motion shows the
 finished illustration, and visitors without JavaScript see the project logo.
-Plant species and seeds are set in `content/project-stories.json`.
+Project pages opt into a brighter dark-background palette; the homepage keeps
+its original colors. Plant species and seeds are set in `content/project-stories.json`.
 
 `src/fips-animation.js` grows a branching root network directly from the base
 of TollGate’s mangrove, showing FIPS emerging from TollGate. The two canvases

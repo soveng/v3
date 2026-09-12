@@ -1,5 +1,6 @@
 // FIPS grows underground from the exact base of the TollGate mangrove.
-export function createFipsAnimation(canvas, reducedMotion, { standalone = false } = {}) {
+export function createFipsAnimation(canvas, reducedMotion, { standalone = false, theme = "light" } = {}) {
+  const color = (light, dark) => theme === "dark" ? dark : light;
   const context = canvas.getContext("2d");
   const state = { progress: reducedMotion ? 1 : 0, reducedMotion };
   const clamp = value => Math.max(0, Math.min(1, value));
@@ -148,9 +149,9 @@ export function createFipsAnimation(canvas, reducedMotion, { standalone = false 
       const growth = smooth((progress / .65 - branch.arrival) / .2);
       if (!growth) continue;
       const weight = (12 * Math.pow(.53, branch.depth) + .25) * size;
-      filament(branch, 0, growth, branch.depth < 2 ? "#594737" : "#8b8063", weight);
+      filament(branch, 0, growth, branch.depth < 2 ? color("#594737", "#aa9276") : color("#8b8063", "#c3b596"), weight);
       // Pale edges and tiny lateral hairs give each root a tapered, fibrous texture.
-      filament(branch, 0, growth, "rgba(193,177,140,.38)", weight * .3);
+      filament(branch, 0, growth, color("rgba(193,177,140,.38)", "rgba(237,224,191,.55)"), weight * .3);
       for (const hair of branch.hairs) {
         const reach = smooth((growth - hair.t) / .25);
         if (!reach) continue;
@@ -161,7 +162,7 @@ export function createFipsAnimation(canvas, reducedMotion, { standalone = false 
         const b = project({ x: p.x + Math.cos(angle) * hair.length * reach, y: p.y + Math.sin(angle) * hair.length * reach * (portrait ? width / height : 1) });
         context.beginPath(); context.moveTo(a.x, a.y);
         context.quadraticCurveTo(a.x, b.y, b.x, b.y);
-        context.strokeStyle = "rgba(124,113,83,.42)";
+        context.strokeStyle = color("rgba(124,113,83,.42)", "rgba(190,179,146,.65)");
         context.globalAlpha = inkOpacity(a.y);
         context.lineWidth = .55 * size; context.stroke();
       }
@@ -178,7 +179,7 @@ export function createFipsAnimation(canvas, reducedMotion, { standalone = false 
         y: (textRect.bottom - canvasRect.top + 12 + index * 12) / (height * .96) * rootDepth,
       };
       const rootlet = { start, end, control: { x: end.x - .04, y: start.y + (end.y - start.y) * .3 } };
-      filament(rootlet, 0, smooth((progress / .65 - .55) / .2), "rgba(139,128,99,.8)", .9 * size);
+      filament(rootlet, 0, smooth((progress / .65 - .55) / .2), color("rgba(139,128,99,.8)", "rgba(206,193,161,.85)"), .9 * size);
     }
 
     // Slow, repeated packets make the network readable even while scrolling pauses.

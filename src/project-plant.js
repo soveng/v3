@@ -12,7 +12,7 @@ if (art) {
         link.addEventListener('error', resolve, {once:true});
       })),
     ]);
-    const renderer = createPlantAnimation(canvas, art.dataset.plantSpecies, Number(art.dataset.plantSeed), reduced.matches, {standalone:true});
+    const renderer = createPlantAnimation(canvas, art.dataset.plantSpecies, Number(art.dataset.plantSeed), reduced.matches, {standalone:true, theme:'dark'});
     art.classList.add('is-ready');
     let frame = 0;
     let previous = 0;
