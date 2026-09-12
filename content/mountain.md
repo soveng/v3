@@ -5,7 +5,7 @@ chapters:
     body: We’re spending a week in the mountains to talk through ideas and work out what to build together. We call this dialogical development. Most of the week is for conversation, away from our devices. Back in the valley, we have 24 hours to build before Demo Day.
   - day: Day 01 / The valley
     title: Assembly
-    body: We meet in the valley. Everyone gets 30 seconds to introduce themselves, followed by lightning talks about their projects. After lunch, there’s time for a walk or another meal together.
+    body: We meet in the valley. We start with introductions, followed by lightning talks about our projects. After lunch, there’s time for a walk or another meal together.
   - day: Day 02 / Valley → Mountain
     title: Up, together.
     body: We start with a shared map of the protocols and tools we can build on. Then we leave our devices in the valley and walk up to our mountain base. Bring pen and paper. Once we’ve settled in, there’s dinner, a fire, or a sauna. No laptops.
