@@ -1,3 +1,4 @@
+import { renderSignup } from './render-signup.js';
 import { readFileSync } from 'node:fs';
 
 export function renderApply(settings = JSON.parse(readFileSync('content/applications.json', 'utf8'))) {
@@ -10,6 +11,7 @@ export function renderApply(settings = JSON.parse(readFileSync('content/applicat
     <p class="application-invitation">Hard problems. Uncharted territory. Good company.</p>
     <p class="application-status">${open ? 'Applications are open. Join the next cohort.' : 'Applications are closed for now.<br>Details of the next cohort will appear here.'}</p>
     ${open ? `<a href="${escape(settings.applicationUrl)}" class="apply-button"><span>Apply to join the crew</span><span aria-hidden="true">↗</span></a>` : ''}
+    ${renderSignup('summer')}
     <a href="/faq/" class="application-faq">Read the FAQ <span aria-hidden="true">↗</span></a>
   </div>`;
 }

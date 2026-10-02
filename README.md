@@ -273,3 +273,20 @@ by Wikimedia (version 1 by Nohat, concept by Paullusmagnus), under
 [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 The original SVG is stored in `public/images/wikipedia-globe.svg` and rendered
 at different sizes in the plant canvas.
+
+### Cohort email notifications
+
+The summer and mountain signup forms send email addresses to Buttondown through
+`api/subscribe.js`, a Vercel Function. The account is https://buttondown.com/soveng.
+Set `BUTTONDOWN_API_KEY` in the Vercel project's **Settings → Environment Variables**
+for Production, then redeploy. Enable it for Preview only if preview signups should
+also enter the real list. Never use a `VITE_` prefix: the key stays server-side.
+Use a Buttondown key with subscriber access. New addresses require email confirmation.
+The initial signup's `cohort_interest` metadata records `summer` or `mountain`.
+Existing subscribers are preserved; submitting again does not overwrite their metadata
+or automatically reactivate an unsubscribed address.
+
+For local API testing, put the key in ignored `.env.local` and run `vercel dev`.
+Vite's dev/preview server serves the pages but does not run Vercel Functions.
+`node --test tests/subscribe.test.cjs` checks the endpoint using a mocked Buttondown
+API, without adding subscribers or sending email. No key is needed for that test.
