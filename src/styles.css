@@ -630,3 +630,32 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .timeline-animated .timeline-event::before,.timeline-animated .timeline-year > h2 { transition:none; }
   .timeline-animated .timeline-event::after { transform:none; }
 }
+
+.swag-hero { display:grid; grid-template-columns:1.2fr 1fr; align-items:center; gap:4vw; padding:30px 0 80px; }
+.swag-hero .text-link { display:inline-block; margin-top:32px; }
+.swag-hero > img { width:100%; height:auto; object-fit:contain; }
+.swag-product { display:grid; grid-template-columns:1.2fr 1fr; gap:7vw; align-items:center; padding:70px 0; border-top:1px solid #333; scroll-margin-top:100px; }
+.swag-product:nth-child(even) .swag-gallery { order:1; }
+.swag-gallery { min-width:0; }
+.swag-main-image { width:100%; height:auto; aspect-ratio:6/5; object-fit:contain; }
+.swag-views { display:flex; gap:16px; justify-content:center; margin-top:20px; }
+.swag-views a { display:grid; justify-items:center; gap:8px; padding:8px; border-bottom:1px solid transparent; color:var(--dim); font:10px var(--mono); }
+.swag-views a[aria-current] { border-color:var(--red); color:var(--bone); }
+.swag-views img { width:64px; height:64px; object-fit:contain; }
+.swag-views a:hover { color:var(--bone); border-color:var(--bone); }
+.swag-copy h2 { margin:20px 0; }
+.swag-description { color:var(--dim); font-size:23px; line-height:1.55; max-width:36ch; }
+.swag-credit { margin-top:24px; font:11px/1.6 var(--mono); color:var(--dim); }
+.swag-credit a { text-decoration:underline; text-underline-offset:4px; }
+.swag-copy > .text-link { display:inline-block; margin-top:30px; }
+.swag-references { display:flex; flex-direction:column; gap:12px; margin-top:24px; font:11px/1.6 var(--mono); color:var(--dim); }
+.swag-references a:hover { color:var(--bone); }
+.swag-shop { text-align:center; padding:80px 0 20px; border-top:1px solid #333; }
+.swag-shop .text-link { display:inline-block; margin-top:28px; }
+@media(max-width:720px) {
+  .swag-hero { grid-template-columns:1fr; gap:24px; padding:12px 0 48px; }
+  .swag-hero > img { max-width:450px; justify-self:center; }
+  .swag-product { grid-template-columns:1fr; gap:32px; padding:40px 0; }
+  .swag-product:nth-child(even) .swag-gallery { order:0; }
+  .swag-description { font-size:21px; }
+}

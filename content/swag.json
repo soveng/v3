@@ -1,0 +1,166 @@
+{
+  "shop": "https://plebeian.market/profile/83d999a148625c3d2bb819af3064c0f6a12d7da88f68b2c69221f3a746171d19",
+  "products": [
+    {
+      "cohort": "SEC-01",
+      "title": "The Beginning",
+      "description": "A shirt from the first cohort. Start ugly, ship something, and improve it from there.",
+      "images": [
+        {
+          "src": "/images/swag/SEC01_Shirt.webp",
+          "label": "View 1"
+        },
+        {
+          "src": "/images/swag/SEC01_Shirt2.webp",
+          "label": "View 2"
+        },
+        {
+          "src": "/images/swag/SEC01_Shirt3.webp",
+          "label": "View 3"
+        }
+      ],
+      "links": [
+        {
+          "label": "Listen to dialogues",
+          "url": "/podcast/"
+        }
+      ]
+    },
+    {
+      "cohort": "SEC-02",
+      "title": "Opsec Friendly",
+      "description": "The SEC-02 hat. A nod to operational security and the idea that true names are not required.",
+      "images": [
+        {
+          "src": "/images/swag/SEC02_Hat.webp",
+          "label": "View 1"
+        },
+        {
+          "src": "/images/swag/SEC02_Hat2.webp",
+          "label": "View 2"
+        },
+        {
+          "src": "/images/swag/SEC02_Hat3.webp",
+          "label": "View 3"
+        }
+      ],
+      "links": [
+        {
+          "label": "True names are not required",
+          "url": "https://dergigi.com/names"
+        }
+      ]
+    },
+    {
+      "cohort": "SEC-03",
+      "title": "Ecash",
+      "description": "The burning cassette design pays tribute to ecash and the cypherpunks who worked on digital cash before Bitcoin.",
+      "images": [
+        {
+          "src": "/images/swag/SEC03_Back.webp",
+          "label": "Back"
+        },
+        {
+          "src": "/images/swag/SEC03_Front.webp",
+          "label": "Front"
+        }
+      ],
+      "credit": {
+        "name": "NoGood",
+        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
+      }
+    },
+    {
+      "cohort": "SEC-04",
+      "title": "Trilemmas",
+      "description": "A compass for a cohort about trade-offs: good, fast, cheap, and the choices we make when building.",
+      "images": [
+        {
+          "src": "/images/swag/SEC04_Back.webp",
+          "label": "Back"
+        },
+        {
+          "src": "/images/swag/SEC04_Front.webp",
+          "label": "Front"
+        }
+      ],
+      "credit": {
+        "name": "NoGood",
+        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
+      },
+      "links": [
+        {
+          "label": "The engineering triangle",
+          "url": "https://press.rebus.community/requirementsengineering/chapter/the-engineering-triangle/"
+        },
+        {
+          "label": "The impossible trinity",
+          "url": "https://en.wikipedia.org/wiki/Impossible_trinity"
+        }
+      ]
+    },
+    {
+      "cohort": "SEC-05",
+      "title": "YOLO Mode",
+      "description": "A shirt for building without asking permission. The SEC-05 cohort worked across Nostr, Bitcoin, and the tools around them.",
+      "images": [
+        {
+          "src": "/images/swag/SEC05_Back.webp",
+          "label": "Back"
+        },
+        {
+          "src": "/images/swag/SEC05_Front.webp",
+          "label": "Front"
+        }
+      ],
+      "credit": {
+        "name": "NoGood",
+        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
+      },
+      "links": [
+        {
+          "label": "The Way of Code",
+          "url": "https://www.thewayofcode.com/"
+        }
+      ]
+    },
+    {
+      "cohort": "SEC-06",
+      "title": "Identity & Signers",
+      "description": "The snake, dice, and “Roll for Keypair” banner turn key generation into the subject of the SEC-06 design.",
+      "images": [
+        {
+          "src": "/images/swag/SEC06_Back.webp",
+          "label": "Back"
+        },
+        {
+          "src": "/images/swag/SEC06_Front.webp",
+          "label": "Front"
+        }
+      ],
+      "credit": {
+        "name": "NoGood",
+        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
+      }
+    },
+    {
+      "cohort": "SEC-07",
+      "title": "Networks & Hardware",
+      "description": "Machines, cables, radios, and the people who run them. The SEC-07 design is about the physical infrastructure beneath our applications.",
+      "images": [
+        {
+          "src": "/images/swag/SEC07_Back.webp",
+          "label": "Back"
+        },
+        {
+          "src": "/images/swag/SEC07_Front.webp",
+          "label": "Front"
+        }
+      ],
+      "credit": {
+        "name": "NoGood",
+        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
+      }
+    }
+  ]
+}

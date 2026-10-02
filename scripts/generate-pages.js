@@ -1,3 +1,4 @@
+import { generateSwag } from './render-swag.js';
 import { generateLibrary } from './render-library.js';
 import { renderMountain } from "./render-mountain.js";
 import { renderFooter } from "./render-footer.js";
@@ -64,7 +65,7 @@ export function generatePages() {
   if (!episodes.length || new Set(episodes.map(ep => ep.slug)).size !== episodes.length) throw new Error("Missing or duplicate episodes");
   const files = [];
   // These directories contain only generated output, never editable source.
-  for (const directory of ["podcast", "faq", "policy", "projects", "mountain", "books", "timeline", "public/social"]) rmSync(directory, { recursive: true, force: true });
+  for (const directory of ["podcast", "faq", "policy", "projects", "mountain", "books", "timeline", "swag", "public/social"]) rmSync(directory, { recursive: true, force: true });
   const write = (path, html) => {
     mkdirSync(dirname(path), { recursive: true });
     writeFileSync(path, html);
@@ -110,5 +111,6 @@ export function generatePages() {
   write("mountain/index.html", layout("Mountain cohort — Spring 2027", "A seven-day mountain cohort in spring 2027. Talk through ideas together, away from devices, then return to the valley for a 24-hour build and Demo Day.", "/mountain/", renderMountain(), "/images/sovereign-engineering.png"));
   generateProjects({ write, layout, escape });
   generateLibrary({ write, layout, escape });
+  generateSwag({ write, layout, escape });
   return files;
 }
