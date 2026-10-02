@@ -50,6 +50,12 @@ function art(path, image) {
       .replace(/<svg[^>]*>/, '<svg x="590" y="100" width="650" height="500" viewBox="170 20 1000 880">');
     return `${mountainArt}<rect x="590" y="100" width="650" height="90" fill="url(#fade-down)"/><rect x="590" y="550" width="650" height="50" fill="url(#fade-up)"/><rect x="580" y="100" width="250" height="500" fill="url(#fade)"/>`;
   }
+  if (path === '/books/') {
+    return `<g transform="translate(830 205)" stroke="#eee8dd" stroke-width="2"><g transform="rotate(-9 40 230)"><rect width="68" height="250" fill="#343e32"/><path d="M14 0 V250 M24 24 H54 M24 226 H54"/></g><g transform="translate(82 -35)"><rect width="68" height="285" fill="#773b38"/><path d="M14 0 V285 M24 24 H54 M24 261 H54"/></g><g transform="translate(172 12) rotate(8)"><rect width="68" height="238" fill="#665743"/><path d="M14 0 V238 M24 24 H54 M24 214 H54"/></g><path d="M-55 273 H300" stroke="#536057"/></g>`;
+  }
+  if (path === '/timeline/') {
+    return `<path d="M935 190 V490" stroke="#536057" stroke-width="2"/>${['2023','2024','2025','2026','2027'].map((year,i)=>`<circle cx="935" cy="${190+i*75}" r="${i===4?7:4}" fill="${i===4?'#ed3238':'#eee8dd'}"/><text x="965" y="${196+i*75}" fill="#c5c4b9" font-family="DM Mono" font-size="19">${year}</text>`).join('')}`;
+  }
   if (path.startsWith('/podcast/')) {
     return `<image x="805" y="205" width="310" height="310" href="${cover}"/><path d="M805 545 H1115" stroke="#ed3238" stroke-width="3"/>`;
   }

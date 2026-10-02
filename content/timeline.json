@@ -1,0 +1,102 @@
+[
+  {
+    "id": "sec-00",
+    "year": "2023",
+    "date": "2023",
+    "title": "SEC-00 · Genesis",
+    "description": "Builders come together in Madeira to walk, talk, and ship. Highlighter, Lightning Prisms, and Data Vending Machines emerge from those first conversations.",
+    "link": "/projects/SEC-00/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-01",
+    "year": "2024",
+    "date": "Jan–Mar 2024",
+    "title": "SEC-01 · The Beginning",
+    "description": "The weekly Show → Talk → Build loop takes shape. Blossom, npub.cash, Wikifreedia, and Zapstore are developed during the cohort.",
+    "link": "/projects/SEC-01/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-02",
+    "year": "2024",
+    "date": "May–Jun 2024",
+    "title": "SEC-02 · Opsec Friendly",
+    "description": "NIP-60 and NIP-61 define Cashu wallets and payments on Nostr. Nsite brings websites to the protocol. TollGate explores paid network access, while Shopstr works on decentralized commerce.",
+    "link": "/projects/SEC-02/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-03",
+    "year": "2024",
+    "date": "Oct–Dec 2024",
+    "title": "SEC-03 · Ecash",
+    "description": "Nutstash gets a redesign. TollGate gets branding and a landing page. Cashu work continues with Safebox and Athenut, alongside Lightning projects such as Bolt12 prisms.",
+    "link": "/projects/SEC-03/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "dialogues",
+    "year": "2025",
+    "date": "Feb 2025",
+    "title": "No Solutions: Dialogues",
+    "description": "No Solutions launches at block 882,690. Walking dialogues about freedom and code, recorded on Madeira’s levadas.",
+    "link": "/podcast/",
+    "linkLabel": "Listen to dialogues"
+  },
+  {
+    "id": "sec-04",
+    "year": "2025",
+    "date": "Mar–Apr 2025",
+    "title": "SEC-04 · Trilemmas",
+    "description": "Work includes castr.me, HTTPN, Hypernote, DVMCP, gitworkshop.dev, and the nginx 402 payment module.",
+    "link": "/projects/SEC-04/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-05",
+    "year": "2025",
+    "date": "Sep–Oct 2025",
+    "title": "SEC-05 · YOLO Mode",
+    "description": "Marmot Chat, Boris, ContextVM, hashpool, and Frontier Browser are among the projects developed during the cohort. Work spans relays, mining, browsers, and AI.",
+    "link": "/projects/SEC-05/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-06",
+    "year": "2026",
+    "date": "Mar 2026",
+    "title": "SEC-06 · Identity & Signers",
+    "description": "A focused cohort on identity: signers, key management, and the infrastructure for holding your own keys.",
+    "link": "/projects/SEC-06/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-07",
+    "year": "2026",
+    "date": "Mar–Apr 2026",
+    "title": "SEC-07 · Networks & Hardware",
+    "description": "Relays, transports, and connectivity. Builders work on the networks their applications depend on.",
+    "link": "/projects/SEC-07/",
+    "linkLabel": "Explore the work"
+  },
+  {
+    "id": "sec-08",
+    "year": "2026",
+    "date": "Jul 20, 2026",
+    "title": "SEC-08 · YOLO++",
+    "description": "A six-week summer cohort in Madeira, beginning on July 20, 2026. The cohort has concluded.",
+    "link": "https://primal.net/soveng/sec-08-yolo",
+    "linkLabel": "Read the announcement"
+  },
+  {
+    "id": "mountain-2027",
+    "year": "2027",
+    "date": "Spring 2027",
+    "title": "Mountain cohort",
+    "description": "Seven days. One shared mission. Dialogue on the mountain, then back to the valley for a 24-hour build and Demo Day. Dates and location are still to be confirmed.",
+    "link": "/mountain/",
+    "linkLabel": "Explore the mountain cohort",
+    "upcoming": true
+  }
+]

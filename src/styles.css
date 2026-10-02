@@ -565,3 +565,51 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .signup-fields :focus-visible { outline:2px solid var(--red); outline-offset:4px; }
 .cohort-signup .signup-feedback { margin:12px 0 0; color:var(--bone); font:12px/1.6 var(--mono); max-width:none; }
 .signup-trap { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+
+/* The bookshelf and the cohort history share the site's editorial typography. */
+.library-hero { padding:30px 0 80px; }
+.library-hero .content-lead { max-width:32ch; }
+.bookshelf { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:64px 48px; }
+.book-entry { min-width:0; scroll-margin-top:110px; }
+.book-cover { display:flex; align-items:end; justify-content:center; height:310px; padding:0 32px 24px; border-bottom:1px solid #444; background:radial-gradient(ellipse at bottom,#24221e,transparent 70%); }
+.book-cover img { display:block; height:auto; width:auto; max-width:100%; max-height:100%; object-fit:contain; box-shadow:8px 10px 20px #0008; transform:rotate(-2deg); transition:transform .3s; }
+.book-entry:nth-child(even) .book-cover img { transform:rotate(2deg); }
+.book-cover:hover img { transform:rotate(0); }
+.book-copy { padding-top:26px; }
+.book-author { color:#ba9c84; font:11px/1.6 var(--mono); margin-bottom:12px; }
+.book-entry h2 { font-size:clamp(28px,2.8vw,38px); line-height:1.08; }
+.book-entry h2 a:hover { color:#d98775; }
+.book-description { color:var(--dim); font-size:19px; line-height:1.5; margin:18px 0 22px; }
+.book-links { display:flex; gap:20px; }
+.book-links a { font-size:12px; }
+.timeline-years { display:flex; flex-wrap:wrap; gap:28px; padding:0 0 28px; border-bottom:1px solid #444; font:13px var(--mono); }
+.timeline-years a { padding:8px 0; color:var(--dim); }
+.timeline-years a:hover { color:var(--bone); }
+.timeline-year { display:grid; grid-template-columns:1fr 3fr; gap:8vw; padding-top:64px; scroll-margin-top:105px; }
+.timeline-year > h2 { align-self:start; position:sticky; top:105px; font-size:clamp(48px,6vw,84px); color:#ba9c84; }
+.timeline-events { list-style:none; padding:0; margin:0; }
+.timeline-event { position:relative; padding:0 0 64px 40px; border-left:1px solid #444; scroll-margin-top:110px; }
+.timeline-event::before { content:''; position:absolute; width:9px; height:9px; border-radius:50%; background:var(--bone); left:-5px; top:5px; }
+.timeline-date { font:12px/1.6 var(--mono); color:var(--dim); margin-bottom:18px; }
+.timeline-event h3 { font:400 clamp(30px,3.5vw,48px)/1.1 var(--serif); letter-spacing:-.02em; }
+.timeline-description { max-width:48ch; color:var(--dim); font-size:22px; line-height:1.55; margin:20px 0 24px; }
+.timeline-event.is-upcoming::before { background:var(--red); box-shadow:0 0 0 5px #ed32381a; }
+.timeline-event.is-upcoming .timeline-date { color:#d98775; }
+@media(max-width:1000px) { .bookshelf { grid-template-columns:repeat(2,minmax(0,1fr)); gap:56px 32px; } }
+@media(max-width:600px) {
+  .library-hero { padding:12px 0 48px; }
+  .bookshelf { grid-template-columns:1fr; gap:34px; }
+  .book-entry { display:grid; grid-template-columns:100px minmax(0,1fr); gap:22px; padding-bottom:34px; border-bottom:1px solid #333; }
+  .book-cover { height:auto; align-self:start; padding:8px 0; border:0; background:none; }
+  .book-copy { padding:0; }
+  .book-entry h2 { font-size:28px; }
+  .book-author { font-size:10px; margin-bottom:9px; }
+  .book-description { font-size:18px; margin:12px 0 18px; }
+  .timeline-years { justify-content:space-between; gap:12px; }
+  .timeline-year { grid-template-columns:1fr; gap:28px; padding-top:40px; }
+  .timeline-year > h2 { position:static; font-size:54px; }
+  .timeline-events { padding-left:5px; }
+  .timeline-event { padding-left:26px; padding-bottom:42px; }
+  .timeline-description { font-size:20px; }
+}
+@media(prefers-reduced-motion:reduce) { .book-cover img { transition:none; } }

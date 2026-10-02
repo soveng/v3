@@ -82,7 +82,7 @@ Before public release:
 - Confirm the next cohort's dates and application status; SEC-08 is currently
   shown as concluded, matching the source site's closed applications.
 - Decide how legacy routes such as `/concept`, `/philosophy`, `/loop`,
-  `/books`, and `/timeline` should be retained or redirected.
+  `/media`, `/swag`, and `/contest` should be retained or redirected.
 - Verify external media playback and subscription on the production domain.
   Canonical and social URLs assume `https://sovereignengineering.io`.
 
@@ -290,3 +290,12 @@ For local API testing, put the key in ignored `.env.local` and run `vercel dev`.
 Vite's dev/preview server serves the pages but does not run Vercel Functions.
 `node --test tests/subscribe.test.cjs` checks the endpoint using a mocked Buttondown
 API, without adding subscribers or sending email. No key is needed for that test.
+
+### Books and timeline
+
+`content/books.json` retains the old site's twelve books and reading links;
+cover images keep their original `/images/books/` paths. `content/timeline.json`
+contains dated milestones, with cohort links pointing to their project pages.
+SEC-08 is marked concluded and the spring 2027 mountain cohort is upcoming.
+Edit these files to maintain the content. `scripts/render-library.js` generates
+`/books/` and `/timeline/`; both are linked from the footer and have social images.
