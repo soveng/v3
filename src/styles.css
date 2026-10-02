@@ -557,8 +557,7 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 
 /* Shared cohort notification form. */
 .cohort-signup { position:relative; width:100%; max-width:560px; margin:36px auto 0; text-align:left; }
-.cohort-signup > label { display:block; color:var(--bone); font:22px/1.3 var(--serif); }
-.cohort-signup .signup-note { margin:10px 0 18px; color:var(--dim); font:12px/1.6 var(--mono); max-width:none; }
+.cohort-signup .signup-note { margin:0 0 20px; color:var(--dim); font:20px/1.5 var(--serif); max-width:none; text-align:center; }
 .signup-fields { display:flex; border-bottom:1px solid #777; }
 .signup-fields input { min-width:0; flex:1; border:0; border-radius:0; padding:16px 0; background:transparent; color:var(--bone); font:16px/1.4 var(--mono); }
 .signup-fields button { border:0; padding:16px 12px; background:var(--bone); color:var(--ink); cursor:pointer; font:12px/1.4 var(--mono); white-space:nowrap; }
