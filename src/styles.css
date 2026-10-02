@@ -613,3 +613,20 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .timeline-description { font-size:20px; }
 }
 @media(prefers-reduced-motion:reduce) { .book-cover img { transition:none; } }
+
+/* A scroll-drawn rail, with content always available before JS and on focus. */
+.timeline-animated .timeline-event::after { content:''; position:absolute; top:0; bottom:0; left:-1px; width:1px; background:#d98775; transform-origin:top; transform:scaleY(var(--trace,0)); }
+.timeline-animated .timeline-event::before { z-index:1; background:#555; box-shadow:0 0 0 0 transparent; transition:background .35s,box-shadow .35s; }
+.timeline-animated .timeline-event.is-reached::before { background:#d98775; }
+.timeline-animated .timeline-event.is-current::before { background:var(--red); box-shadow:0 0 0 6px #ed323821,0 0 22px #ed323845; }
+.timeline-animated .timeline-event > * { opacity:calc(.3 + var(--reveal,1) * .7); transform:translateY(calc((1 - var(--reveal,1)) * 18px)); }
+.timeline-animated .timeline-event > a { display:inline-block; }
+.timeline-animated .timeline-event:focus-within > * { opacity:1; transform:none; }
+.timeline-animated .timeline-year > h2 { color:#72685e; transition:color .4s; }
+.timeline-animated .is-current-year > h2 { color:#d98775; }
+.timeline-years a[aria-current="location"] { color:var(--bone); text-decoration:underline; text-decoration-color:var(--red); text-underline-offset:8px; }
+@media(prefers-reduced-motion:reduce) {
+  .timeline-animated .timeline-event > * { opacity:1; transform:none; }
+  .timeline-animated .timeline-event::before,.timeline-animated .timeline-year > h2 { transition:none; }
+  .timeline-animated .timeline-event::after { transform:none; }
+}
