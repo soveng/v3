@@ -11,7 +11,7 @@ export function generateRestored({write,layout}) {
   for(const name of ['concept','philosophy','loop']) {
     const data=frontmatter(name);
     const lead=quotes.find(q=>name==='concept'?q.id==='berdyaev-beginning-end':name==='loop'?q.id==='will-durant-excellence':data.intro.quote_section&&q.section===data.intro.quote_section);
-    const sections=name==='loop'?rhythm.schedule.map(day=>({id:slug(day.day),title:day.day,content:day.description,image:day.image,pullquote:{quote:day.tagline,author:day.goal}})):data.sections;
+    const sections=name==='loop'?rhythm.schedule.map(day=>({id:slug(day.day),title:day.day,content:day.description,image:day.image})):data.sections;
     const heroImage=name==='loop'?'show-talk-build-loop.jpeg':data.intro.image;
     write(`${name}/index.html`,layout(data.title,data.description,`/${name}/`,`<header class="reading-hero"><h1>${e(data.title)}</h1><div class="prose content-lead">${md(data.intro.content)}</div>${image(`/assets/images/${heroImage}`,data.title,'reading-cover')}</header>${quote(lead)}
       <div class="reading-layout"><nav class="reading-menu" aria-label="On this page"><span class="reading-menu-label" aria-hidden="true">On this page</span>${sections.map(s=>link('#'+s.id,s.title,'')).join('')}</nav><div>
