@@ -12,6 +12,15 @@ if (parsedOrigin.protocol !== 'https:' || parsedOrigin.pathname !== '/' || parse
   throw new Error('SITE_URL must be an HTTPS origin without a path, query, or fragment');
 }
 export const site = parsedOrigin.origin;
+// Images must be served by this deployment, even before the main domain moves.
+const imageOrigin = process.env.SOCIAL_IMAGE_ORIGIN ||
+  (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` :
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : site);
+const parsedImageOrigin = new URL(imageOrigin);
+if (parsedImageOrigin.protocol !== 'https:' || parsedImageOrigin.pathname !== '/' || parsedImageOrigin.search || parsedImageOrigin.hash) {
+  throw new Error('SOCIAL_IMAGE_ORIGIN must be an HTTPS origin without a path, query, or fragment');
+}
+export const socialImageOrigin = parsedImageOrigin.origin;
 const e = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 const font = { loadSystemFonts: false, fontFiles: ['scripts/social-fonts/EBGaramond.ttf', 'scripts/social-fonts/DMMono-Regular.ttf'], defaultFontFamily: 'EB Garamond' };
 const svg = body => `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">${body}</svg>`;
@@ -86,7 +95,7 @@ export function socialPreview(title, description, path, image) {
   const filename = `${path === '/' ? 'home' : path.slice(1,-1).replaceAll('/','-')}-${hash}.png`;
   mkdirSync('public/social', {recursive:true});
   writeFileSync(`public/social/${filename}`,png);
-  const imageUrl = `${site}/social/${filename}`;
+  const imageUrl = `${socialImageOrigin}/social/${filename}`;
   const alt = `${title} — Sovereign Engineering. ${cardTitle}`;
   return `<link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">

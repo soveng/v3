@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { socialImageOrigin } from './social-preview.js';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
@@ -39,7 +40,7 @@ for (const file of files) {
   const image = new URL(get('og:image'));
   const page = new URL(get('og:url'));
   assert.equal(page.protocol,'https:');
-  assert.equal(image.origin,page.origin);
+  assert.equal(image.origin,socialImageOrigin);
   assert.equal(page.pathname,file.slice(4).replace(/index\.html$/,''));
   assert.ok(image.pathname.startsWith('/social/'));
   const png = readFileSync(`dist${image.pathname}`);

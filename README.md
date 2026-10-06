@@ -239,13 +239,12 @@ and city image in `src/assets/social-landing.png`. Project and dialogue cards us
 page titles. Generated images live in `public/social/` (ignored by Git) and
 use content hashes so a changed design gets a new image URL.
 
-Canonical and image URLs use `SITE_URL` when set, otherwise Vercel’s
-`VERCEL_PROJECT_PRODUCTION_URL`, with the current production alias
-`https://v3-nine-eta-60.vercel.app` as the local fallback. When the custom domain
-moves to this site, set `SITE_URL=https://sovereignengineering.io` in Vercel and
-redeploy. This keeps previews from requesting v3 images from the old website.
-For a preview deployment that needs independent metadata, set `SITE_URL` to
-that deployment’s public HTTPS origin.
+Canonical URLs use `SITE_URL`, defaulting to `https://sovereignengineering.io`.
+Image URLs are separate: Vercel production builds use
+`VERCEL_PROJECT_PRODUCTION_URL`; preview builds use `VERCEL_URL`. This keeps
+v3 images accessible before the main domain moves. Outside Vercel, image URLs
+fall back to `SITE_URL`. Set `SOCIAL_IMAGE_ORIGIN` to override the image host
+with a public HTTPS origin that serves the generated files.
 
 Run `npm run check:social` to build and validate every page’s metadata, image
 URL, PNG dimensions, and content hash. EB Garamond and DM Mono are bundled in
