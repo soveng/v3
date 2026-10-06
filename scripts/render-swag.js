@@ -9,7 +9,7 @@ export function generateSwag({ write, layout, escape: e }) {
     <div class="swag-collection">${products.map((product, index) => `<section class="swag-product" id="${product.cohort.toLowerCase()}" aria-labelledby="swag-heading-${index}">
       <div class="swag-gallery" data-swag-gallery>
         <div class="swag-image-frame"><img class="swag-main-image" id="sec${String(index+1).padStart(2,'0')}-main" src="${e(product.images[0].src)}" alt="${e(product.cohort)} — ${e(product.images[0].label)}" width="1200" height="1000" loading="lazy"></div>
-        <div class="swag-views" aria-label="${e(product.cohort)} image views">${product.images.map((image, i) => `<a href="${e(image.src)}" data-image-label="${e(product.cohort)} — ${e(image.label)}"${i===0?' aria-current="true"':''}><img src="${e(image.src)}" alt="" width="64" height="64" loading="lazy"><span>${e(image.label)}</span></a>`).join('')}</div>
+        <div class="swag-views" aria-label="${e(product.cohort)} image views">${product.images.map((image, i) => `<a href="${e(image.src)}" aria-label="${e(product.cohort)} — ${e(image.label)}" data-image-label="${e(product.cohort)} — ${e(image.label)}"${i===0?' aria-current="true"':''}><img src="${e(image.src)}" alt="" width="64" height="64" loading="lazy"></a>`).join('')}</div>
       </div>
       <div class="swag-copy"><h2 id="swag-heading-${index}">${e(product.title)}</h2><div class="swag-description">${html(product.body)}</div></div>
     </section>`).join('')}</div>
