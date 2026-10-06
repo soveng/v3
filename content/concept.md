@@ -9,7 +9,7 @@ intro:
   content: |
     Sovereign Engineering is a six-week program in Madeira for people who want to build freedom tech with other serious builders.
 
-    The structure is simple. Twenty-one people come together for six weeks, with a break in Week 04. During the program weeks, Monday sets the week. Tuesday is for talks. Wednesday is for workshops. Thursday is open build time. Friday is Demo Day. The weekend is for walks, recovery, and long conversations.
+    The structure is simple. Twenty-one people come together for six weeks, with a break in Week 04. During the program weeks, Monday starts with the captain’s talk and a walk. Tuesday is for talks. Wednesday is for workshops. Thursday is open build time. Friday is Demo Day. The weekend has no formal agenda: time for recovery and long conversations.
 
     The program is private and in person. People can speak freely, test rough ideas, and ship without performing for the whole internet.
   image: 'www-life-path.png'
@@ -35,7 +35,7 @@ sections:
   - id: 'weekly-loop'
     title: 'The Weekly Loop'
     content: |
-      The loop is simple. Friday forces the work into the open. Everyone demos. The weekend walks and Monday reset give the cohort time to argue, rethink, and pick a direction. Tuesday through Thursday are for building the next thing.
+      The loop is simple. Friday forces the work into the open. Everyone demos. The Monday walks give the cohort time to argue, rethink, and pick a direction. Tuesday through Thursday are for building the next thing.
     image: 'show-talk-build-loop.jpeg'
 
   - id: 'walks'

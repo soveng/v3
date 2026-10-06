@@ -10,15 +10,15 @@ export function generateRestored({write,layout}) {
   const quotes=json('philosophy-quotes');const rhythm=json('weekly-rhythm');
   for(const name of ['concept','philosophy','loop']) {
     const data=frontmatter(name);
-    const lead=quotes.find(q=>name==='concept'?q.id==='berdyaev-beginning-end':name==='loop'?q.id==='will-durant-excellence':q.section===data.intro.quote_section);
+    const lead=quotes.find(q=>name==='concept'?q.id==='berdyaev-beginning-end':name==='loop'?q.id==='will-durant-excellence':data.intro.quote_section&&q.section===data.intro.quote_section);
     const sections=name==='loop'?rhythm.schedule.map(day=>({id:slug(day.day),title:day.day,content:day.description,image:day.image,pullquote:{quote:day.tagline,author:day.goal}})):data.sections;
     const heroImage=name==='loop'?'show-talk-build-loop.jpeg':data.intro.image;
     write(`${name}/index.html`,layout(data.title,data.description,`/${name}/`,`<header class="reading-hero"><h1>${e(data.title)}</h1><div class="prose content-lead">${md(data.intro.content)}</div>${image(`/assets/images/${heroImage}`,data.title,'reading-cover')}</header>${quote(lead)}
       <div class="reading-layout"><nav class="reading-menu" aria-label="On this page"><span class="reading-menu-label" aria-hidden="true">On this page</span>${sections.map(s=>link('#'+s.id,s.title,'')).join('')}</nav><div>
       ${name==='loop'?quote(quotes.find(q=>q.id==='epictetus-habits')):''}
-      ${sections.map(s=>`<section class="reading-section" id="${e(s.id)}"><h2>${e(s.title)}</h2><div class="prose">${md(s.content)}${name==='concept'&&s.id==='weekly-loop'?`<ul>${rhythm.schedule.map(day=>`<li>${link('/loop/#'+slug(day.day),day.day,'')}: ${e(day.short_description)}</li>`).join('')}</ul>`:''}${(s.bulletpoints||[]).length?`<ul>${s.bulletpoints.map(point=>`<li>${md(point)}</li>`).join('')}</ul>`:''}</div>
+      ${sections.map(s=>`<section class="reading-section" id="${e(s.id)}">${name==='loop'&&s.id==='the-weekend'?'<span class="legacy-anchor" id="weekend-walks"></span>':''}<h2>${e(s.title)}</h2><div class="prose">${md(s.content)}${name==='concept'&&s.id==='weekly-loop'?`<ul>${rhythm.schedule.map(day=>`<li>${link('/loop/#'+slug(day.day),day.day,'')}: ${e(day.short_description)}</li>`).join('')}</ul>`:''}${(s.bulletpoints||[]).length?`<ul>${s.bulletpoints.map(point=>`<li>${md(point)}</li>`).join('')}</ul>`:''}</div>
       ${s.image?(s.id==='weekly-loop'?`<a href="/loop/">${image('/assets/images/'+s.image,s.title)}</a>`:image('/assets/images/'+s.image,s.title)):''}
-      ${quote(s.pullquote||quotes.find(q=>q.section===s.quote_section))}<div class="prose">${md(s.afterContent||'')}</div>${s.link?link(s.link,'Explore more →'):''}</section>`).join('')}
+      ${quote(s.pullquote||(s.quote_section?quotes.find(q=>q.section===s.quote_section):null))}<div class="prose">${md(s.afterContent||'')}</div>${s.link?link(s.link,'Explore more →'):''}</section>`).join('')}
       ${name==='loop'?link('/podcast/','Next: Listen to some of our conversations →'):''}</div></div>`));
   }
 
