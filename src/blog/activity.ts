@@ -23,7 +23,7 @@ function renderReactions(section: HTMLElement, events: Event[]) {
   }
 
   if (!events.length) {
-    status.textContent = 'No reactions found on these relays yet.';
+    status.hidden = true;
     return;
   }
 
@@ -52,7 +52,7 @@ function renderComments(section: HTMLElement, events: Event[]) {
   }
 
   if (!events.length) {
-    status.textContent = 'No comments found on these relays yet.';
+    status.hidden = true;
     return;
   }
 
@@ -225,6 +225,9 @@ export function mountBlogActivity(section: HTMLElement) {
     } finally {
       if (active) {
         section.setAttribute('aria-busy', 'false');
+        section.hidden = [...section.querySelectorAll<HTMLElement>(
+          '[data-reaction-status], [data-comment-status], [data-reaction-list], [data-comment-list]'
+        )].every(element => element.hidden);
       }
       pool.destroy();
     }

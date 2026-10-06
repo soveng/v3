@@ -733,6 +733,7 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 }
 @media(max-width:480px) { .alumni-grid { grid-template-columns:1fr; } }
 .legacy-anchor { display:block; position:relative; height:0; scroll-margin-top:105px; pointer-events:none; }
+.blog-activity [hidden] { display:none; }
 .blog-activity { margin-top:60px; padding-top:30px; border-top:1px solid #333; }
 .blog-activity [role="status"] { font:12px var(--mono); color:var(--dim); margin-bottom:16px; }
 .blog-reaction-list { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
