@@ -9,7 +9,7 @@ intro:
   content: |
     Sovereign Engineering is a six-week program in Madeira for people who want to build freedom tech with other serious builders.
 
-    The structure is simple. Twenty-one people come together for six weeks. Monday starts with the captain’s talk and a walk. Tuesday is for talks. Wednesday is for workshops. Thursday is open build time. Friday is Demo Day. The weekend has no formal agenda: time for recovery and long conversations.
+    The structure is simple. Twenty-one people come together for six weeks. Monday starts with the captain’s talk and a walk. Tuesday is for talks. Wednesday is for workshops. Thursday is time off. Friday is Demo Day. The weekend has no formal agenda: time for recovery and long conversations.
 
     The program is private and in person. People can speak freely, test rough ideas, and ship without performing for the whole internet.
   image: 'www-life-path.png'
@@ -35,7 +35,7 @@ sections:
   - id: 'weekly-loop'
     title: 'The Weekly Loop'
     content: |
-      The loop is simple. Friday forces the work into the open. Everyone demos. The Monday walks give the cohort time to argue, rethink, and pick a direction. Tuesday through Thursday are for building the next thing.
+      The loop is simple. Friday forces the work into the open. Everyone demos. The Monday walks give the cohort time to argue, rethink, and pick a direction. Tuesday and Wednesday are for talks, workshops, and building. Thursday has no agenda.
     image: 'show-talk-build-loop.jpeg'
 
   - id: 'walks'
@@ -83,7 +83,7 @@ sections:
 
       **Off the Record, In Person**: The cohort gets real privacy. People can test ideas before the whole internet piles on.
 
-      **Alpha-Testing the Future**: Build a wallet on Thursday and try to pay with it on Friday. Hardware, merchants, and curious peers are all nearby.
+      **Alpha-Testing the Future**: Build a wallet and try paying with it at a local shop. Hardware, merchants, and curious peers are all nearby.
 
       **The Filter and the Place**: You have to get on a plane and commit to six weeks. That already filters for people who mean it.
 

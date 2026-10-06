@@ -26,11 +26,11 @@
       "image": "wednesday-workshops.png"
     },
     {
-      "day": "Thursday: Build Day",
-      "short_description": "Open build time for coding, testing, and getting ready for Friday.",
-      "tagline": "Build Without Meetings",
-      "goal": "Protect uninterrupted time for implementation.",
-      "description": "Thursday has no formal agenda. People code, pair, fix bugs, test rough edges, and get something ready to demo.",
+      "day": "Thursday: Time Off",
+      "short_description": "No agenda. Time to spend as you choose.",
+      "tagline": "Make Some Space",
+      "goal": "Leave room for rest, reflection, and individual work.",
+      "description": "Thursday has no formal agenda. Rest, explore the island, follow an idea, or work on something at your own pace.",
       "image": "thursday-time-off.png"
     },
     {
