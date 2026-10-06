@@ -9,7 +9,7 @@ intro:
   content: |
     Sovereign Engineering is a six-week program in Madeira for people who want to build freedom tech with other serious builders.
 
-    The structure is simple. Twenty-one people work in the same place for six weeks. Monday sets the week. Tuesday is for talks. Wednesday is for workshops. Thursday is open build time. Friday is Demo Day. The weekend is for walks, recovery, and long conversations.
+    The structure is simple. Twenty-one people come together for six weeks, with a break in Week 04. During the program weeks, Monday sets the week. Tuesday is for talks. Wednesday is for workshops. Thursday is open build time. Friday is Demo Day. The weekend is for walks, recovery, and long conversations.
 
     The program is private and in person. People can speak freely, test rough ideas, and ship without performing for the whole internet.
   image: 'www-life-path.png'
@@ -21,11 +21,11 @@ sections:
     content: |
       Sovereign Engineering rests on five pillars:
 
-      **[The Weekly Loop](#weekly-loop)**: The same cadence repeats every week. It keeps projects moving.
+      **[The Weekly Loop](#weekly-loop)**: A weekly cadence, with a pause in Week 04. It keeps projects moving.
 
       **[The Walks](#walks)**: Long conversations on foot. Good ideas survive contact with other minds.
 
-      **[The Demo Days](#demo-day)**: Everyone demos every week. Shipping is mandatory.
+      **[The Demo Days](#demo-day)**: Everyone demos on Fridays during the program weeks. Shipping is mandatory.
 
       **[The Captains](#weekly-captains)**: One captain each week keeps the cohort organized.
 
@@ -52,7 +52,7 @@ sections:
   - id: 'demo-day'
     title: 'The Demo Days'
     content: |
-      Every Friday afternoon the cohort gathers to **show whatever runs**. You must demo something new each week, whether it extends an existing project or starts from scratch.
+      On Friday afternoons, except during the break week, the cohort gathers to **show whatever runs**. You must demo something new, whether it extends an existing project or starts from scratch.
 
       **Format**: Six minutes of demo time. Two minutes of discussion. With 20 or more demos, we take short breaks after every 6 or 7 presentations.
 
@@ -60,7 +60,7 @@ sections:
 
       **Afterwards**: We usually end with a [beefsteak-style](https://archive.is/S3LjP) standing barbecue. Friends and family are welcome.
 
-      **Result**: Six Fridays means six checkpoints. The work leaves a trail.
+      **Result**: The demos give us regular checkpoints. The work leaves a trail.
     image: 'demo-day.jpeg'
 
   - id: 'weekly-captains'
@@ -73,7 +73,7 @@ sections:
 
       **The Rotation**: The role rotates every week. Leadership gets shared. Logistics do not pile up on one person.
 
-      **The Six-Week Rhythm**: There is no off week. The cadence holds for the full six weeks.
+      **The Six-Week Rhythm**: Week 01 is for breaking the ice. Weeks 02–03 are for going deep. Week 04 is a break week. We return in Weeks 05–06 to ship.
     image: 'weekly-loop-schedule.png'
 
   - id: 'environment'
@@ -94,7 +94,7 @@ sections:
       We are looking for **21 value-aligned builders** who want to make real things.
 
       **The Ideal Participant**:
-      Someone who can build, handle feedback, and stay curious for six straight weeks. You do not need a formal credential. You do need proof of work, good judgment, and the willingness to show unfinished things.
+      Someone who can build, handle feedback, and stay curious throughout the program. You do not need a formal credential. You do need proof of work, good judgment, and the willingness to show unfinished things.
 
       **Why it works**: Put the right people together in the same place for long enough and the work gets better.
 

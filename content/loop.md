@@ -9,5 +9,5 @@ intro:
   content: |
     The loop is simple. Friday forces the work into the open. Everyone demos. The weekend walks and Monday reset give the cohort time to argue, rethink, and pick a direction. Tuesday through Thursday are for building the next thing.
 
-    The same loop repeats every week. That matters. Nobody waits around. People ship, get feedback, and go again.
+    The loop runs in Weeks 01–03 and 05–06. Week 04 is a break week: time to breathe before coming back to build and ship.
 ---
