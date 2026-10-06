@@ -1,0 +1,74 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "#13: The Linux of Social Media w/ hzrd149",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 13, The Linux of Social Media w/ hzrd149.",
+  "fileName": "13 - The Linux of Social Media.m4a",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 444.667,
+      "title": "Automation"
+    },
+    {
+      "startTime": 444.667,
+      "endTime": 858.333,
+      "title": "Flight Mode"
+    },
+    {
+      "startTime": 858.333,
+      "endTime": 1287.2,
+      "title": "Bad Recommendations"
+    },
+    {
+      "startTime": 1287.2,
+      "endTime": 1737.267,
+      "title": "nostrdb vs Relays",
+      "url": "https://github.com/damus-io/nostrdb"
+    },
+    {
+      "startTime": 1737.267,
+      "endTime": 2100.333,
+      "title": "Ants Video",
+      "url": "https://ants.sh/e/nevent1qqstgekdlmaeu3n6gf3ss7nnlq4f0hfx3nm3nmy0pf84xs7e98wyt2ssw5p34"
+    },
+    {
+      "startTime": 2100.333,
+      "endTime": 2595.1,
+      "title": "Local-First"
+    },
+    {
+      "startTime": 2595.1,
+      "endTime": 3027.167,
+      "title": "Weed Offers"
+    },
+    {
+      "startTime": 3027.167,
+      "endTime": 3433.333,
+      "title": "Shitty First Version"
+    },
+    {
+      "startTime": 3433.333,
+      "endTime": 3862.692,
+      "title": "SEC-05 Highlights",
+      "url": "https://primal.net/soveng/sec-05-yolo-mode-report"
+    },
+    {
+      "startTime": 3862.692,
+      "endTime": 4291.667,
+      "title": "Nostr Browser"
+    },
+    {
+      "startTime": 4291.667,
+      "endTime": 4720.833,
+      "title": "Negentropy Sync",
+      "url": "https://github.com/nostr-protocol/nips/blob/master/77.md"
+    },
+    {
+      "startTime": 4720.833,
+      "endTime": 5150.0,
+      "title": "Begin Again"
+    }
+  ]
+}

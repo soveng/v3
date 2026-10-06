@@ -5,9 +5,8 @@ import { Resvg } from '@resvg/resvg-js';
 import { parse } from 'yaml';
 import { renderMountain } from './render-mountain.js';
 
-// Until the custom domain moves to v3, cards must resolve on this deployment.
-const origin = process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'https://v3-nine-eta-60.vercel.app');
+// Public canonicals stay on the main domain, including when previewing on Vercel.
+const origin = process.env.SITE_URL || 'https://sovereignengineering.io';
 const parsedOrigin = new URL(origin);
 if (parsedOrigin.protocol !== 'https:' || parsedOrigin.pathname !== '/' || parsedOrigin.search || parsedOrigin.hash) {
   throw new Error('SITE_URL must be an HTTPS origin without a path, query, or fragment');
@@ -89,7 +88,10 @@ export function socialPreview(title, description, path, image) {
   writeFileSync(`public/social/${filename}`,png);
   const imageUrl = `${site}/social/${filename}`;
   const alt = `${title} — Sovereign Engineering. ${cardTitle}`;
-  return `<link rel="canonical" href="${site}${path}">
+  return `<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="${site}${path}">
   <meta property="og:site_name" content="Sovereign Engineering">
   <meta property="og:title" content="${e(title)}">
   <meta property="og:description" content="${e(description)}">

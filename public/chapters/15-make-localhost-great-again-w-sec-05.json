@@ -1,0 +1,40 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "#15: Make Localhost Great Again w/ SEC-05",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 15, Make Localhost Great Again w/ SEC-05.",
+  "fileName": "15 - Make Localhost Great Again.m4a",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 153.804,
+      "title": "Inspiring, Stressful"
+    },
+    {
+      "startTime": 153.804,
+      "endTime": 270.828,
+      "title": "Demo Day Race"
+    },
+    {
+      "startTime": 270.828,
+      "endTime": 494.256,
+      "title": "Antonopoulos Services"
+    },
+    {
+      "startTime": 494.256,
+      "endTime": 600.0,
+      "title": "CA-Free HTTPS"
+    },
+    {
+      "startTime": 600.0,
+      "endTime": 750.0,
+      "title": "ContextVM"
+    },
+    {
+      "startTime": 750.0,
+      "endTime": 900.0,
+      "title": "Ending Hug"
+    }
+  ]
+}

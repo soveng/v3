@@ -1,0 +1,57 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "#01: Start Ugly w/ Pablo",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 1, Start Ugly w/ Pablo.",
+  "fileName": "01 - Start Ugly.mp3",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 237.852,
+      "title": "Start Ugly"
+    },
+    {
+      "startTime": 237.852,
+      "endTime": 599.879,
+      "title": "Ugly Shipping"
+    },
+    {
+      "startTime": 599.879,
+      "endTime": 931.847,
+      "title": "Happiness Is Shipping",
+      "url": "https://world.hey.com/dhh/that-shipping-feeling-b7c8c565"
+    },
+    {
+      "startTime": 931.847,
+      "endTime": 1243.556,
+      "title": "Real Before Pretty"
+    },
+    {
+      "startTime": 1243.556,
+      "endTime": 1553.122,
+      "title": "Shipping Habit"
+    },
+    {
+      "startTime": 1553.122,
+      "endTime": 1865.333,
+      "title": "Highlighter Hangup"
+    },
+    {
+      "startTime": 1865.333,
+      "endTime": 2176.222,
+      "title": "Cash Flow"
+    },
+    {
+      "startTime": 2176.222,
+      "endTime": 2481.836,
+      "title": "Value4Value"
+    },
+    {
+      "startTime": 2481.836,
+      "endTime": 2798.0,
+      "title": "DHH and 37signals",
+      "url": "https://world.hey.com/dhh"
+    }
+  ]
+}

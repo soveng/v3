@@ -1,0 +1,52 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "24: Building FIPS w/ Johnathan Corgan",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 24, Building FIPS w/ Johnathan Corgan.",
+  "fileName": "24 - Building FIPS.m4a",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 294.8,
+      "title": "Why FIPS Started",
+      "url": "https://fips.network/"
+    },
+    {
+      "startTime": 294.8,
+      "endTime": 536.5,
+      "title": "Transport-Agnostic Networks"
+    },
+    {
+      "startTime": 536.5,
+      "endTime": 804.75,
+      "title": "Robustness Over Elegance"
+    },
+    {
+      "startTime": 804.75,
+      "endTime": 1151.276,
+      "title": "Next FIPS Release"
+    },
+    {
+      "startTime": 1151.276,
+      "endTime": 1431.952,
+      "title": "Why Nostr Matters"
+    },
+    {
+      "startTime": 1431.952,
+      "endTime": 1590.228,
+      "title": "Claude Code and FIPS",
+      "url": "https://www.anthropic.com/claude-code"
+    },
+    {
+      "startTime": 1590.228,
+      "endTime": 1877.75,
+      "title": "Agentic Coding Trade-offs"
+    },
+    {
+      "startTime": 1877.75,
+      "endTime": 2146.0,
+      "title": "Just Do Things"
+    }
+  ]
+}

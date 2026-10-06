@@ -1,3 +1,4 @@
+import { generateRestored } from './generate-restored.js';
 import { generateSwag } from './render-swag.js';
 import { generateLibrary } from './render-library.js';
 import { renderMountain } from "./render-mountain.js";
@@ -36,7 +37,7 @@ function layout(title, description, path, body, image = "/images/nosolutions-og.
   <title>${escape(title)} — Sovereign Engineering</title>
   <meta name="description" content="${escape(description)}">
   ${socialPreview(title, description, path, image)}
-  <link rel="alternate" type="application/rss+xml" title="No Solutions" href="/dialogues.xml">
+  <link rel="alternate" type="application/rss+xml" title="${path.startsWith("/blog/") ? "Sovereign Engineering Blog" : "No Solutions"}" href="${path.startsWith("/blog/") ? "/blog/rss.xml" : "/dialogues.xml"}">
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body class="content-page">
@@ -65,7 +66,7 @@ export function generatePages() {
   if (!episodes.length || new Set(episodes.map(ep => ep.slug)).size !== episodes.length) throw new Error("Missing or duplicate episodes");
   const files = [];
   // These directories contain only generated output, never editable source.
-  for (const directory of ["podcast", "faq", "policy", "projects", "mountain", "books", "timeline", "swag", "public/social"]) rmSync(directory, { recursive: true, force: true });
+  for (const directory of ["podcast", "faq", "policy", "projects", "mountain", "books", "timeline", "swag", "alumni", "blog", "media", "concept", "philosophy", "loop", "contest", "public/social"]) rmSync(directory, { recursive: true, force: true });
   const write = (path, html) => {
     mkdirSync(dirname(path), { recursive: true });
     writeFileSync(path, html);
@@ -112,5 +113,7 @@ export function generatePages() {
   generateProjects({ write, layout, escape });
   generateLibrary({ write, layout, escape });
   generateSwag({ write, layout, escape });
+  generateRestored({ write, layout, escape });
+  write('404.html', layout('Page not found', 'Find your way back to Sovereign Engineering.', '/404.html', `<section class="library-hero"><p class="section-index">404</p><h1>Off the map.</h1><p class="content-lead">That page isn’t here. Try the links below.</p><div class="article-footer"><a class="text-link" href="/">Back to the program →</a><a class="text-link" href="/projects/">Project archive →</a><a class="text-link" href="/blog/">Blog →</a></div></section>`).replace('</head>', '<meta name="robots" content="noindex"></head>'));
   return files;
 }

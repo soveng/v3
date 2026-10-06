@@ -12,6 +12,20 @@ dist/
 /books/
 /timeline/
 /swag/
+/alumni/
+/blog/
+/media/
+/concept/
+/philosophy/
+/loop/
+/contest/
+/404.html
+/public/blog/rss.xml
+/public/sitemap.xml
+/public/sitemap-index.xml
+/public/sitemap-0.xml
+/public/robots.txt
+/public/podcast-social/
 /public/social/
 
 .env
@@ -21,3 +35,6 @@ dist/
 
 .DS_Store
 npm-debug.log*
+
+/2023/
+/2024/

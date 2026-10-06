@@ -1,0 +1,70 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "19: Romantically Shitting on Paywalls w/ Pablo",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 19, Romantically Shitting on Paywalls w/ Pablo.",
+  "fileName": "19 - Romantically Shitting on Paywalls.m4a",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 355.523,
+      "title": "World Hunger Agents"
+    },
+    {
+      "startTime": 355.523,
+      "endTime": 620.505,
+      "title": "Agora"
+    },
+    {
+      "startTime": 620.505,
+      "endTime": 966.968,
+      "title": "Citizen Journalism"
+    },
+    {
+      "startTime": 966.968,
+      "endTime": 1285.831,
+      "title": "Identity Migration"
+    },
+    {
+      "startTime": 1285.831,
+      "endTime": 1642.517,
+      "title": "Monetizing Relationships"
+    },
+    {
+      "startTime": 1642.517,
+      "endTime": 2122.996,
+      "title": "Substack's Pareto Problem"
+    },
+    {
+      "startTime": 2122.996,
+      "endTime": 2470.323,
+      "title": "Content Competition"
+    },
+    {
+      "startTime": 2470.323,
+      "endTime": 2913.697,
+      "title": "Nostr's Promise"
+    },
+    {
+      "startTime": 2913.697,
+      "endTime": 3201.792,
+      "title": "Young People"
+    },
+    {
+      "startTime": 3201.792,
+      "endTime": 3614.975,
+      "title": "Own the List"
+    },
+    {
+      "startTime": 3614.975,
+      "endTime": 3880.845,
+      "title": "Crypto App Problem"
+    },
+    {
+      "startTime": 3880.845,
+      "endTime": 4235.0,
+      "title": "Professionalization Mode"
+    }
+  ]
+}

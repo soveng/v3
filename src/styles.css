@@ -668,3 +668,77 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .swag-description a,.swag-intro a { text-decoration:underline; text-underline-offset:4px; text-decoration-color:#777; }
 .swag-description a:hover,.swag-intro a:hover { color:var(--bone); text-decoration-color:var(--red); }
 .swag-description p:last-child:has(a[href*="npub.world"]) { font:11px/1.6 var(--mono); }
+
+/* Restored long-form pages and directories. */
+.reading-hero { margin-bottom:70px; }
+.reading-hero .content-lead { max-width:56ch; }
+.reading-cover { display:block; width:100%; max-height:620px; object-fit:cover; margin:48px 0; }
+.reading-quote { padding:36px 0; margin:30px 0 60px; border-top:1px solid #444; }
+.reading-quote blockquote { max-width:32ch; font:400 clamp(28px,4vw,48px)/1.2 var(--serif); }
+.reading-quote figcaption { margin-top:20px; font:12px var(--mono); color:#ba9c84; }
+.reading-layout { display:grid; grid-template-columns:1fr 2.4fr; gap:7vw; }
+.reading-menu { position:sticky; top:110px; align-self:start; display:flex; flex-direction:column; gap:18px; font:12px/1.5 var(--mono); color:var(--dim); }
+.reading-menu a:hover { color:var(--bone); }
+.reading-section { padding:36px 0 60px; border-top:1px solid #333; scroll-margin-top:105px; }
+.reading-section > h2 { margin-bottom:26px; }
+.reading-section > img,.reading-section > a > img { width:100%; height:auto; margin:32px 0; }
+.reading-section .prose,.article-body { font-size:22px; color:var(--dim); }
+.prose img { max-width:100%; height:auto; margin:30px 0; }
+.prose pre { overflow:auto; max-width:100%; padding:20px; background:#151515; font-size:14px; }
+.prose table { display:block; max-width:100%; overflow:auto; }
+.prose blockquote { padding-left:24px; border-left:2px solid #ba9c84; }
+.alumni-alphabet { display:flex; flex-wrap:wrap; gap:22px; padding-bottom:24px; border-bottom:1px solid #444; margin-bottom:36px; font:14px var(--mono); }
+.alumni-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; }
+.alumni-card { min-width:0; border-bottom:1px solid #333; padding-bottom:32px; scroll-margin-top:110px; }
+.alumni-avatar { display:grid; place-items:center; position:relative; width:72px; height:72px; overflow:hidden; border-radius:50%; background:#262720; color:#ba9c84; margin-bottom:22px; font:22px var(--mono); }
+.alumni-avatar img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.alumni-card h2 { font-size:30px; overflow-wrap:anywhere; }
+.alumni-handle { color:#ba9c84; font:11px/1.5 var(--mono); overflow-wrap:anywhere; margin-top:10px; }
+.alumni-about { margin-top:18px; white-space:pre-line; overflow-wrap:anywhere; font-size:18px; color:var(--dim); line-height:1.5; }
+.blog-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:64px 48px; }
+.blog-card { min-width:0; border-bottom:1px solid #333; padding-bottom:36px; }
+.blog-card img { width:100%; aspect-ratio:16/9; object-fit:cover; margin-bottom:24px; }
+.blog-card time { font:12px var(--mono); color:#ba9c84; }
+.blog-card h2 { margin-top:18px; font-size:36px; }
+.blog-card p { color:var(--dim); margin-top:18px; font-size:21px; line-height:1.5; }
+.blog-article { max-width:960px; margin:auto; }
+.blog-article header { margin:48px 0; }
+.blog-article header h1 { font-size:clamp(46px,6.4vw,92px); overflow-wrap:anywhere; }
+.article-body { max-width:68ch; margin:auto; }
+.article-body h2,.article-body h3 { color:var(--bone); margin:48px 0 24px; }
+.article-footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; border-top:1px solid #444; padding-top:32px; margin-top:60px; }
+.media-list { list-style:none; padding:0; }
+.media-row { display:grid; grid-template-columns:1fr 2fr; gap:48px; padding:42px 0; border-top:1px solid #333; scroll-margin-top:105px; }
+.media-row img { width:100%; aspect-ratio:1; object-fit:cover; }
+.media-row h2 { margin:24px 0; }
+.media-row p:not(.section-index) { color:var(--dim); line-height:1.5; font-size:22px; }
+.media-related { display:flex; flex-wrap:wrap; gap:14px 20px; margin-top:22px; font:12px var(--mono); color:#ba9c84; }
+.contest-details { margin-top:30px; font-size:20px; line-height:1.5; }
+.contest-details dt { font:12px var(--mono); color:#ba9c84; margin-top:24px; }
+.contest-details dd { margin:8px 0 0; }
+.contest-prizes { padding:0; list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:48px; }
+.contest-prizes span,.contest-prizes strong { display:block; }
+.contest-prizes strong { font:32px var(--serif); color:#d98775; margin:14px 0; }
+.content-lead a { text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:900px) { .alumni-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:720px) {
+  .reading-layout,.media-row,.blog-grid { grid-template-columns:1fr; gap:28px; }
+  .reading-menu { position:static; flex-direction:row; flex-wrap:wrap; gap:16px; margin-bottom:24px; }
+  .reading-hero { margin-bottom:40px; }
+  .reading-cover { margin:30px 0; }
+  .reading-section .prose,.article-body { font-size:20px; }
+  .blog-card h2 { font-size:32px; }
+  .media-row > a { max-width:300px; }
+  .contest-prizes { grid-template-columns:1fr; }
+}
+@media(max-width:480px) { .alumni-grid { grid-template-columns:1fr; } }
+.legacy-anchor { display:block; position:relative; height:0; scroll-margin-top:105px; pointer-events:none; }
+.blog-activity { margin-top:60px; padding-top:30px; border-top:1px solid #333; }
+.blog-activity [role="status"] { font:12px var(--mono); color:var(--dim); margin-bottom:16px; }
+.blog-reaction-list { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+.blog-reaction-chip { padding:8px 12px; background:#24241e; border-radius:4px; }
+.blog-comment-list { list-style:none; padding:0; }
+.blog-comment { border-top:1px solid #333; padding:24px 0; overflow-wrap:anywhere; }
+.blog-comment-header { display:flex; gap:12px; align-items:center; font:12px/1.5 var(--mono); }
+.blog-comment-avatar { width:32px; height:32px; border-radius:50%; object-fit:cover; }
+.blog-comment-content { white-space:pre-wrap; margin-top:14px; color:var(--dim); line-height:1.5; }

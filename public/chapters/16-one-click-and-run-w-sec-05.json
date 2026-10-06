@@ -1,0 +1,40 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "#16: One Click and Run w/ SEC-05",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 16, One Click and Run w/ SEC-05.",
+  "fileName": "16 - One Click and Run.m4a",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 87.341,
+      "title": "One-Click Dream"
+    },
+    {
+      "startTime": 87.341,
+      "endTime": 167.387,
+      "title": "IPs, Docker, VPN"
+    },
+    {
+      "startTime": 167.387,
+      "endTime": 253.048,
+      "title": "Paid Reliability"
+    },
+    {
+      "startTime": 253.048,
+      "endTime": 376.821,
+      "title": "uTorrent UX"
+    },
+    {
+      "startTime": 376.821,
+      "endTime": 499.971,
+      "title": "Learn by Doing"
+    },
+    {
+      "startTime": 499.971,
+      "endTime": 575.0,
+      "title": "Forty-Eight Hours"
+    }
+  ]
+}

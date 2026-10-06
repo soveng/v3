@@ -1,0 +1,65 @@
+{
+  "version": "1.2.0",
+  "author": "Gigi",
+  "title": "22: Sovereign Engineering w/ Yo",
+  "podcastName": "No Solutions",
+  "description": "Draft chapter map for episode 22, Sovereign Engineering w/ Yo.",
+  "fileName": "22 - Sovereign Engineering.m4a",
+  "chapters": [
+    {
+      "startTime": 0,
+      "endTime": 402.8,
+      "title": "Gigi's AI Setup",
+      "url": "https://github.com/dergigi/vibeline"
+    },
+    {
+      "startTime": 402.8,
+      "endTime": 805.6,
+      "title": "Human vs Useful"
+    },
+    {
+      "startTime": 805.6,
+      "endTime": 1152.696,
+      "title": "Routing Models",
+      "url": "https://openrouter.ai/"
+    },
+    {
+      "startTime": 1152.696,
+      "endTime": 1540.064,
+      "title": "High Barrier Entry"
+    },
+    {
+      "startTime": 1540.064,
+      "endTime": 2154.064,
+      "title": "Fabian's NIP-17 Plugin",
+      "url": "https://github.com/fabianfabian/openclaw-nostr-nip17"
+    },
+    {
+      "startTime": 2154.064,
+      "endTime": 2418.192,
+      "title": "Vertex Demo",
+      "url": "https://vertexlab.io/"
+    },
+    {
+      "startTime": 2418.192,
+      "endTime": 2819.6,
+      "title": "SEC06 to SEC07"
+    },
+    {
+      "startTime": 2819.6,
+      "endTime": 3222.4,
+      "title": "DNS Is Shitcoin"
+    },
+    {
+      "startTime": 3222.4,
+      "endTime": 3654.912,
+      "title": "TollGate Balloons",
+      "url": "https://tollgate.me/"
+    },
+    {
+      "startTime": 3654.912,
+      "endTime": 4028.0,
+      "title": "Only Trade-offs"
+    }
+  ]
+}
