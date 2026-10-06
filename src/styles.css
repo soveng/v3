@@ -661,3 +661,8 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .swag-product:nth-child(even) .swag-gallery { order:0; }
   .swag-description { font-size:21px; }
 }
+
+.swag-description p + p { margin-top:24px; }
+.swag-description a,.swag-intro a { text-decoration:underline; text-underline-offset:4px; text-decoration-color:#777; }
+.swag-description a:hover,.swag-intro a:hover { color:var(--bone); text-decoration-color:var(--red); }
+.swag-description p:last-child:has(a[href*="npub.world"]) { font:11px/1.6 var(--mono); }

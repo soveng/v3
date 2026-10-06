@@ -303,6 +303,7 @@ Edit these files to maintain the content. `scripts/render-library.js` generates
 ### Swag
 
 `content/swag.json` contains the seven cohort designs, original image paths,
-designer credits, and webshop URL. `scripts/render-swag.js` builds `/swag/`.
+designer credits, and webshop URL. Its introduction and product copy, including
+inline links, match the live site as of October 6, 2026. `scripts/render-swag.js` builds `/swag/`.
 The galleries use `src/swag.js` for image selection with a short transition;
 without JavaScript, each thumbnail links directly to its image.

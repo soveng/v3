@@ -3,8 +3,7 @@
   "products": [
     {
       "cohort": "SEC-01",
-      "title": "The Beginning",
-      "description": "A shirt from the first cohort. Start ugly, ship something, and improve it from there.",
+      "title": "SEC-01: The Beginning",
       "images": [
         {
           "src": "/images/swag/SEC01_Shirt.webp",
@@ -19,17 +18,11 @@
           "label": "View 3"
         }
       ],
-      "links": [
-        {
-          "label": "Listen to dialogues",
-          "url": "/podcast/"
-        }
-      ]
+      "body": "<p>\nIt all starts with an idea and the will to build. This shirt is a tribute to that first step,\n                the moment you decide to create something new instead of complaining about the old. It's a\n                reminder that every journey begins with a single line of code, and that to build a better\n                future, you must first be willing to\n<a href=\"/podcast\">start ugly</a>.\n</p>\n<p>\nPerfection is the enemy of progress, and this design is a badge of honor for those who\n                understand that. It's for the builders, the creators, and the pioneers who aren't afraid\n                to ship imperfect things. It separates the talkers from the doers, and it's a public\n                declaration that you are here to build.\n</p>"
     },
     {
       "cohort": "SEC-02",
-      "title": "Opsec Friendly",
-      "description": "The SEC-02 hat. A nod to operational security and the idea that true names are not required.",
+      "title": "SEC-02: Opsec Friendly",
       "images": [
         {
           "src": "/images/swag/SEC02_Hat.webp",
@@ -44,17 +37,11 @@
           "label": "View 3"
         }
       ],
-      "links": [
-        {
-          "label": "True names are not required",
-          "url": "https://dergigi.com/names"
-        }
-      ]
+      "body": "<p>\nIn a world of total surveillance, privacy is not a feature; it's a precondition for freedom.\n                This hat is for those who understand that true sovereignty begins with operational security.\n                It's a nod to the cypherpunks who taught us that\n<a href=\"https://dergigi.com/names\" target=\"_blank\" rel=\"noopener noreferrer\">True names are not required</a>.\n</p>\n<p>\nIt's a subtle signal to those in the know, a quiet acknowledgment of the invisible war being\n                waged for our minds and our data. It's a reminder to stay vigilant, to question authority,\n                and to build systems that can't be evil. Stay low, stay safe, stay sovereign.\n</p>"
     },
     {
       "cohort": "SEC-03",
-      "title": "Ecash",
-      "description": "The burning cassette design pays tribute to ecash and the cypherpunks who worked on digital cash before Bitcoin.",
+      "title": "SEC-03: Ecash",
       "images": [
         {
           "src": "/images/swag/SEC03_Back.webp",
@@ -65,15 +52,11 @@
           "label": "Front"
         }
       ],
-      "credit": {
-        "name": "NoGood",
-        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
-      }
+      "body": "<p>\nBefore Bitcoin, there was ecash. This design is a tribute to the pioneers who dreamed of\n                digital cash and the cypherpunks who fought for it. The burning cassette symbolizes the\n                creative destruction of the old financial system, a necessary step to build a new one on\n                a foundation of freedom.\n</p>\n<p>\nFor decades, ecash was a dream deferred, a powerful idea waiting for its moment. Bitcoin\n                finally provided the missing piece: a trustless, decentralized bearer asset. Now, combined\n                with a simple, open protocol like nostr, ecash is not just viable; it's a match made in\n                heaven, ready to power a new generation of sovereign applications.\n</p>\n<p>\nDesign by <a href=\"https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4\" target=\"_blank\" rel=\"noopener noreferrer\">NoGood</a> </p>"
     },
     {
       "cohort": "SEC-04",
-      "title": "Trilemmas",
-      "description": "A compass for a cohort about trade-offs: good, fast, cheap, and the choices we make when building.",
+      "title": "SEC-04: Trilemmas",
       "images": [
         {
           "src": "/images/swag/SEC04_Back.webp",
@@ -84,25 +67,11 @@
           "label": "Front"
         }
       ],
-      "credit": {
-        "name": "NoGood",
-        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
-      },
-      "links": [
-        {
-          "label": "The engineering triangle",
-          "url": "https://press.rebus.community/requirementsengineering/chapter/the-engineering-triangle/"
-        },
-        {
-          "label": "The impossible trinity",
-          "url": "https://en.wikipedia.org/wiki/Impossible_trinity"
-        }
-      ]
+      "body": "<p>\nThere are <a href=\"/podcast\">no perfect solutions</a>,\n                only trade-offs. This shirt is a nod to the fundamental trilemmas that govern our world,\n                from the classic\n<a href=\"https://press.rebus.community/requirementsengineering/chapter/the-engineering-triangle/\" target=\"_blank\" rel=\"noopener noreferrer\">Good, Fast, Cheap</a>\nto the\n<a href=\"https://en.wikipedia.org/wiki/Impossible_trinity\" target=\"_blank\" rel=\"noopener noreferrer\">impossible trinity</a>\nof monetary policy. It's an acknowledgment that reality has constraints, and that pretending\n                otherwise is a recipe for disaster.\n</p>\n<p>\nThe compass reminds us that while the path may be fraught with impossible choices, we must\n                always navigate by the star of our principles. It's about making conscious, informed\n                trade-offs, not wishful thinking. Understanding these constraints is the first step to\n                overcoming them.\n</p>\n<p>\nDesign by <a href=\"https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4\" target=\"_blank\" rel=\"noopener noreferrer\">NoGood</a> </p>"
     },
     {
       "cohort": "SEC-05",
-      "title": "YOLO Mode",
-      "description": "A shirt for building without asking permission. The SEC-05 cohort worked across Nostr, Bitcoin, and the tools around them.",
+      "title": "SEC-05: YOLO Mode",
       "images": [
         {
           "src": "/images/swag/SEC05_Back.webp",
@@ -113,21 +82,11 @@
           "label": "Front"
         }
       ],
-      "credit": {
-        "name": "NoGood",
-        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
-      },
-      "links": [
-        {
-          "label": "The Way of Code",
-          "url": "https://www.thewayofcode.com/"
-        }
-      ]
+      "body": "<p>\nThe future is not something you wait for; it's something you build. This design is for\n                those who are done asking for permission and are ready to enter\n<a href=\"https://www.thewayofcode.com/\" target=\"_blank\" rel=\"noopener noreferrer\">YOLO mode</a>, building the world\n                they want to live in, starting now.\n</p>\n<p>\nBecause Bitcoin and nostr are permissionless, we don't have to ask for anyone's approval\n                to build. This allows us to lean heavily into the vibe, creating systems that are not\n                only uncensorable but also aligned with our vision of a freer, more sovereign future.\n                This shirt is a declaration that we're not here to reform the old system; we're here to\n                make it obsolete.\n</p>\n<p>\nDesign by <a href=\"https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4\" target=\"_blank\" rel=\"noopener noreferrer\">NoGood</a> </p>"
     },
     {
       "cohort": "SEC-06",
-      "title": "Identity & Signers",
-      "description": "The snake, dice, and “Roll for Keypair” banner turn key generation into the subject of the SEC-06 design.",
+      "title": "SEC-06: Identity & Signers",
       "images": [
         {
           "src": "/images/swag/SEC06_Back.webp",
@@ -138,15 +97,11 @@
           "label": "Front"
         }
       ],
-      "credit": {
-        "name": "NoGood",
-        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
-      }
+      "body": "<p>\nIdentity in sovereign systems is not assigned by a platform; it is generated, held, and\n                proven with keys. This shirt is for builders who understand that a signer is more than\n                a login device. It is the boundary where intent becomes cryptographic action.\n</p>\n<p>\nThe snake, dice, and Roll for Keypair banner nod to entropy, ceremony, and the seriousness\n                of key generation. Sovereignty begins when you stop asking permission to exist online and\n                start carrying the keys that prove who you are.\n</p>\n<p>\nDesign by <a href=\"https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4\" target=\"_blank\" rel=\"noopener noreferrer\">NoGood</a> </p>"
     },
     {
       "cohort": "SEC-07",
-      "title": "Networks & Hardware",
-      "description": "Machines, cables, radios, and the people who run them. The SEC-07 design is about the physical infrastructure beneath our applications.",
+      "title": "SEC-07: Networks & Hardware",
       "images": [
         {
           "src": "/images/swag/SEC07_Back.webp",
@@ -157,10 +112,10 @@
           "label": "Front"
         }
       ],
-      "credit": {
-        "name": "NoGood",
-        "url": "https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4"
-      }
+      "body": "<p>\nProtocols need a body. They run on machines, cables, radios, chips, disks, and the\n                operators willing to keep them alive. This shirt is a tribute to the hardware and network\n                layers beneath every sovereign application.\n</p>\n<p>\nThe freedom stack is not an abstraction floating in the cloud. It is built from nodes you\n                can run, networks you can route around failure, and tools that keep working when permissioned\n                infrastructure turns hostile. Sovereign engineering means owning the stack all the way down.\n</p>\n<p>\nDesign by <a href=\"https://npub.world/npub12hcytyr8fumy3axde8wgeced523gyp6v6zczqktwuqeaztfc2xzsz3rdp4\" target=\"_blank\" rel=\"noopener noreferrer\">NoGood</a> </p>"
     }
-  ]
+  ],
+  "heading": "The Story of Our Swag",
+  "intro": "<p>\nThis collection tells the story of Sovereign Engineering. It's a chronicle of the\n<a href=\"/projects\">tools we build</a>\nand the <a href=\"/philosophy\">principles</a>\nwe uphold. Each design is a chapter in our ongoing journey to create technology that empowers\n          the individual and secures our digital freedom.\n</p>",
+  "shopLabel": "Visit Webshop →"
 }
