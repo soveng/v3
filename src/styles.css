@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=EB+Garamond:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap');
 
 :root { --ink:#080808; --red:#ed3238; --bone:#eee8dd; --dim:#a7a29a; --serif:'EB Garamond',Georgia,serif; --mono:'DM Mono',monospace; --type-label:clamp(13px,calc(12px + .15vw),15px); --type-body:clamp(18px,calc(17px + .3vw),22px); --type-title:clamp(48px,5vw,96px); --type-display:clamp(80px,12vw,192px); }
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -673,9 +673,11 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .reading-hero { margin-bottom:70px; }
 .reading-hero .content-lead { max-width:56ch; }
 .reading-cover { display:block; width:100%; max-height:620px; object-fit:cover; margin:48px 0; }
-.reading-quote { padding:36px 0; margin:30px 0 60px; border-top:1px solid #444; }
-.reading-quote blockquote { max-width:32ch; font:400 clamp(28px,4vw,48px)/1.2 var(--serif); }
-.reading-quote figcaption { margin-top:20px; font:12px var(--mono); color:#ba9c84; }
+.reading-quote { padding:4px 0 4px 22px; margin:32px 0 40px; border-left:2px solid #655549; }
+.reading-quote blockquote { max-width:48ch; font:italic 400 clamp(22px,2vw,28px)/1.5 var(--serif); color:#c6c1b7; }
+.reading-quote blockquote::before { content:"“"; }
+.reading-quote blockquote::after { content:"”"; }
+.reading-quote figcaption { margin-top:14px; font:12px var(--mono); color:#ba9c84; }
 .reading-layout { display:grid; grid-template-columns:1fr 2.4fr; gap:7vw; }
 .reading-menu { position:sticky; top:110px; align-self:start; display:flex; flex-direction:column; gap:18px; font:12px/1.5 var(--mono); color:var(--dim); }
 .reading-menu-label { display:none; }
