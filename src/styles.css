@@ -659,7 +659,9 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
   .swag-hero > img { max-width:450px; justify-self:center; }
   .swag-product { grid-template-columns:1fr; gap:32px; padding:40px 0; }
   .swag-product:nth-child(even) .swag-gallery { order:0; }
-  .swag-description { font-size:21px; }
+  .swag-copy { display:contents; }
+  .swag-copy h2 { order:-1; margin:0; }
+  .swag-description { order:1; font-size:21px; }
 }
 
 .swag-description p + p { margin-top:24px; }
