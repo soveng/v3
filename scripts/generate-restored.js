@@ -14,7 +14,7 @@ export function generateRestored({write,layout}) {
     const sections=name==='loop'?rhythm.schedule.map(day=>({id:slug(day.day),title:day.day,content:day.description,image:day.image,pullquote:{quote:day.tagline,author:day.goal}})):data.sections;
     const heroImage=name==='loop'?'show-talk-build-loop.jpeg':data.intro.image;
     write(`${name}/index.html`,layout(data.title,data.description,`/${name}/`,`<header class="reading-hero"><h1>${e(data.title)}</h1><div class="prose content-lead">${md(data.intro.content)}</div>${image(`/assets/images/${heroImage}`,data.title,'reading-cover')}</header>${quote(lead)}
-      <div class="reading-layout"><nav class="reading-menu" aria-label="On this page">${sections.map(s=>link('#'+s.id,s.title,'')).join('')}</nav><div>
+      <div class="reading-layout"><nav class="reading-menu" aria-label="On this page"><span class="reading-menu-label" aria-hidden="true">On this page</span>${sections.map(s=>link('#'+s.id,s.title,'')).join('')}</nav><div>
       ${name==='loop'?quote(quotes.find(q=>q.id==='epictetus-habits')):''}
       ${sections.map(s=>`<section class="reading-section" id="${e(s.id)}"><h2>${e(s.title)}</h2><div class="prose">${md(s.content)}${name==='concept'&&s.id==='weekly-loop'?`<ul>${rhythm.schedule.map(day=>`<li>${link('/loop/#'+slug(day.day),day.day,'')}: ${e(day.short_description)}</li>`).join('')}</ul>`:''}${(s.bulletpoints||[]).length?`<ul>${s.bulletpoints.map(point=>`<li>${md(point)}</li>`).join('')}</ul>`:''}</div>
       ${s.image?(s.id==='weekly-loop'?`<a href="/loop/">${image('/assets/images/'+s.image,s.title)}</a>`:image('/assets/images/'+s.image,s.title)):''}
