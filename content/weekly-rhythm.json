@@ -2,7 +2,7 @@
   "description": "The weekly loop runs in Weeks 01–03 and 05–06, with a break in Week 04.",
   "schedule": [
     {
-      "day": "Monday Mornings",
+      "day": "Monday Movement",
       "short_description": "The captain’s talk, a walk, and planning for the week.",
       "tagline": "Reset the Week",
       "goal": "Get everyone on the same page for the week ahead.",
