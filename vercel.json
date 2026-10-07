@@ -37,7 +37,7 @@
       "permanent": true
     },
     {
-      "source": "/blog/sec-06-identity-signers",
+      "source": "/blog/sec-06-identity-signers/",
       "destination": "/blog/sec-06-identity--signers/",
       "permanent": true
     },
