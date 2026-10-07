@@ -1,0 +1,6 @@
+{
+  "*": {"main-content":"content", "contact":"footer", "apply":"/#apply"},
+  "/": {"main-content":"program", "main":"program", "banner":"opening", "one":"program", "two":"program", "three":"voices", "five":"voices", "four":"apply", "dates":"apply"},
+  "/faq/": {"how-do-i-need-to-prepare-for-the-six-weeks":"how-do-i-need-to-prepare-for-the-program"},
+  "/blog/": {"blog-follow-title":"blog-follow", "blog-podcast-title":"blog-podcast"}
+}

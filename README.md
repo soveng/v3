@@ -78,17 +78,34 @@ in sync when opening applications.
 
 Before public release:
 
-- Finish the intended concept, philosophy, and loop copy.
-- Confirm the next cohort's dates and application status; SEC-08 is currently
-  shown as concluded, matching the source site's closed applications.
-- Decide how legacy routes such as `/concept`, `/philosophy`, `/loop`,
-  `/media`, and `/contest` should be retained or redirected.
-- Verify external media playback and subscription on the production domain.
-  Canonical and social URLs assume `https://sovereignengineering.io`.
+- Run `npm run check:migration` and `npm run check:live-links` against the v3
+  deployment. The latter accepts an origin argument for checking the main domain.
+- Finish the remaining general browser review, then move the main domain and
+  verify HTTPS, redirects, feeds, social previews, and Nostr verification there.
+- Applications remain closed. A real newsletter signup test is deferred.
+
+The 2026-10-07 URL audit captured the live site's 77 sitemap pages, content
+fragments, internal links, podcast references, and URLs found in historical
+pages and cohort documentation. `content/legacy-links.json` records 988 known
+paths and fragments. Internal navigation-control and analytics IDs, along with
+old generated JS/CSS bundles, are excluded; public images and content anchors
+are preserved. This inventory cannot discover links in private messages or
+external pages that are not in those sources.
+
+`content/legacy-fragments.json` maps renamed sections and old page-level Apply
+links. The original Bitcoin, Nostr, and Madeira pages retain their `.html` URLs
+and section IDs as archives. SEC-08 includes all 76 projects from the old site.
+Image dimensions and post-layout anchor positioning prevent fonts, lazy images,
+and the homepage intro from displacing deep links. User interaction stops
+subsequent automatic positioning.
+
+The podcast audit preserves all 38 GUIDs, audio enclosure URLs, and episode
+links against `content/legacy-podcast-items.json`. The RSS snapshot includes the
+latest episode 37 show notes and transcript reference from the live source.
 
 ## Projects and testimonials
 
-The project archive preserves 154 entries across SEC-00 through SEC-07,
+The project archive preserves 230 entries across SEC-00 through SEC-08,
 including the original cohort URLs, project anchors, descriptions, and resource
 links. Search and cohort filters enhance the static directory; without JavaScript
 all entries remain visible. The seven homepage highlights link to dedicated

@@ -1,3 +1,4 @@
+import { settleDeepLink } from "./legacy-links.js";
 import "./footer-animation.js";
 import "./testimonials.js";
 import { gsap } from "gsap";
@@ -213,6 +214,7 @@ async function runExperience() {
       gsap.set(".prologue", { display: "none" });
       document.body.style.overflow = "";
       ScrollTrigger.refresh();
+      requestAnimationFrame(settleDeepLink);
     }})
     .from(".opening-meta", { opacity: 0, duration: .6 }, "<.3");
 
@@ -304,7 +306,7 @@ if (!reduced) {
   // Earlier scenes expand the document as their scroll classes are added.
   // Measure every trigger again once all scenes and fonts have settled.
   Promise.all([runExperience(), document.fonts.ready]).then(() => {
-    requestAnimationFrame(() => ScrollTrigger.refresh());
+    requestAnimationFrame(() => { ScrollTrigger.refresh(); requestAnimationFrame(settleDeepLink); });
   });
 } else {
   document.querySelectorAll(".botanical").forEach((plant, index) => {

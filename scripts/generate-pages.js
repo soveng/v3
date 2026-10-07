@@ -1,3 +1,4 @@
+import { preserveLegacyFragments } from './legacy-fragments.js';
 import { generateRestored } from './generate-restored.js';
 import { generateSwag } from './render-swag.js';
 import { generateLibrary } from './render-library.js';
@@ -69,7 +70,7 @@ export function generatePages() {
   for (const directory of ["podcast", "faq", "policy", "projects", "mountain", "books", "timeline", "swag", "alumni", "blog", "media", "concept", "philosophy", "loop", "contest", "public/social"]) rmSync(directory, { recursive: true, force: true });
   const write = (path, html) => {
     mkdirSync(dirname(path), { recursive: true });
-    writeFileSync(path, html);
+    writeFileSync(path, preserveLegacyFragments(html, "/"+path.replace(/index\.html$/, "")));
     files.push(path);
   };
   const meta = ep => `<p class="episode-meta"><time datetime="${ep.date.toISOString()}">${ep.date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time><span>${ep.duration}</span></p>`;

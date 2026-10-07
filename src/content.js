@@ -5,7 +5,7 @@ function openAnswer() {
   const answer = document.getElementById(id);
   if (answer instanceof HTMLDetailsElement) {
     answer.open = true;
-    answer.scrollIntoView();
+    answer.scrollIntoView({behavior:'instant',block:'start'});
   }
 }
 openAnswer();

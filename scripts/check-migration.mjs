@@ -31,11 +31,28 @@ for(const [file,doc] of docs) {
     }
   }
 }
-for(const path of json('legacy-urls')) {
+const legacyLinks=json('legacy-links').urls;
+for(const path of legacyLinks) {
  const target=resolve(path,'https://sovereignengineering.io/');
- if(!target||!existsSync(target.file))problems.push(`Legacy URL missing: ${path}`);
+ // Two originally broken relative links in syndicated posts belong to dergigi.com.
+ if(!target && redirects[new URL(path,'https://sovereignengineering.io').pathname]?.startsWith('https://dergigi.com/'))continue;
+ if(!target||!existsSync(target.file)){problems.push(`Legacy URL missing: ${path}`);continue;}
+ if(target.hash&&docs.has(target.file)&&!D.findOne(el=>el.attribs?.id===target.hash,docs.get(target.file).children))problems.push(`Legacy fragment missing: ${path}`);
 }
 const rss=readFileSync('dist/dialogues.xml','utf8');
+const feed=new XMLParser({ignoreAttributes:false,parseTagValue:false}).parse(rss).rss.channel;
+for(const old of json('legacy-podcast-items')) {
+ const episode=feed.item.find(item=>(item.guid?.['#text']||item.guid)===old.guid);
+ assert.ok(episode,`Podcast GUID missing: ${old.guid}`);
+ assert.equal(episode.enclosure['@_url'],old.enclosure,`Podcast audio changed: ${old.guid}`);
+ assert.equal(episode.link,old.link,`Podcast link changed: ${old.guid}`);
+}
+const vercelRedirects=JSON.parse(readFileSync('vercel.json','utf8')).redirects;
+for(const [source,destination] of Object.entries(redirects)) {
+ const deployed=source.split('/').at(-1).includes('.')?source:source+'/';
+ assert.ok(vercelRedirects.some(rule=>rule.source===deployed&&rule.destination===destination&&rule.permanent),`Missing Vercel redirect: ${source}`);
+}
+
 for(const [,url] of rss.matchAll(/<podcast:chapters url="([^"]+)"/g)) {
  const {file}=resolve(url,'https://sovereignengineering.io/');
  assert.ok(existsSync(file),url);assert.ok(JSON.parse(readFileSync(file)).chapters.length>0);
@@ -46,4 +63,4 @@ assert.equal(sitemap.length,docs.size-1);assert.ok(!sitemap.some(u=>u.loc.includ
 assert.equal(blogArticles().length,15);
 assert.match(readFileSync('dist/404.html','utf8'),/name="robots" content="noindex"/);
 assert.equal(problems.length,0,[...new Set(problems)].join('\n'));
-console.log(`Verified ${docs.size} pages, ${json('legacy-urls').length} legacy URLs, internal links/anchors, chapter files, RSS, and sitemap.`);
+console.log(`Verified ${docs.size} pages, ${legacyLinks.length} legacy paths and fragments, internal links/anchors, chapter files, RSS, and sitemap.`);

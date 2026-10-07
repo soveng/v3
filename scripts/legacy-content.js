@@ -1,3 +1,4 @@
+import { imageSize } from 'image-size';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { Marked } from 'marked';
@@ -33,13 +34,19 @@ export function richMarkdown(content = '', base = null) {
   headingCounts = new Map();
   return sanitizeHtml(markdown.parse(content), {
     allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img'],
-    allowedAttributes: { a:['href','title','target','rel'],img:['src','alt','title','loading','decoding'],code:['class'],h1:['id'],h2:['id'],h3:['id'],h4:['id'],h5:['id'],h6:['id'] },
+    allowedAttributes: { div:['id'],section:['id'],a:['href','title','target','rel'],img:['src','alt','title','loading','decoding','width','height'],code:['class'],h1:['id'],h2:['id'],h3:['id'],h4:['id'],h5:['id'],h6:['id'] },
     allowedSchemes:['https','http','mailto'],
     transformTags: { a: (tag,attrs) => {
       let href=attrs.href?.replace(/^nostr:/i,'https://njump.me/');
       if(base && href?.startsWith('/') && !href.startsWith('//'))href=new URL(href,base).href;
       return {tagName:tag,attribs:{...attrs,href}};
-    }, img: (tag, attrs) => ({tagName:tag,attribs:{...attrs,loading:'lazy',decoding:'async'}}) },
+    }, img: (tag, attrs) => {
+      let dimensions={};
+      if(attrs.src?.startsWith('/')&&!attrs.src.startsWith('//')) {
+        const {width,height}=imageSize(readFileSync(`public${attrs.src}`));dimensions={width,height};
+      }
+      return {tagName:tag,attribs:{...attrs,...dimensions,loading:'lazy',decoding:'async'}};
+    } },
   });
 }
 export function blogArticles() {

@@ -1,5 +1,5 @@
 export function renderFooter(theme = "sea") {
-  return `<footer class="site-footer">
+  return `<footer class="site-footer" id="footer">
     ${theme === "mountain" ? `<div class="footer-ridge" aria-hidden="true">
       <svg viewBox="0 0 160 80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M0 76 H12 L49 32 L68 51 L100 8 L143 76 H160"/>

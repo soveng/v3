@@ -1,3 +1,4 @@
+import { preserveLegacyFragments } from './scripts/legacy-fragments.js';
 import { prepareRelease } from "./scripts/prepare-release.js";
 import { existsSync, readFileSync } from "node:fs";
 import { homeSocialPreview } from "./scripts/social-preview.js";
@@ -27,7 +28,7 @@ export default defineConfig({
   appType: "mpa",
   plugins: [{
     name: "canonical-content-routes",
-    transformIndexHtml: html => html.replace("<!-- SOCIAL_PREVIEW -->", homePreview).replace("<!-- TESTIMONIALS -->", renderTestimonials()).replace("<!-- FOOTER -->", renderFooter()).replace("<!-- APPLY -->", renderApply()),
+    transformIndexHtml: (html,ctx) => ctx.path !== "/index.html" && ctx.path !== "/" ? html : preserveLegacyFragments(html.replace("<!-- SOCIAL_PREVIEW -->", homePreview).replace("<!-- TESTIMONIALS -->", renderTestimonials()).replace("<!-- FOOTER -->", renderFooter()).replace("<!-- APPLY -->", renderApply()), "/"),
     configureServer: canonicalRoutes,
     configurePreviewServer(server) {
       canonicalRoutes(server);

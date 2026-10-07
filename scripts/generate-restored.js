@@ -1,9 +1,15 @@
+import { imageSize } from 'image-size';
 import { parse } from 'yaml';
 import { writeFileSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import { json, frontmatter, escape as e, slug, safeImage, richMarkdown as md, blogArticles } from './legacy-content.js';
 import { site } from './social-preview.js';
 const date = value => new Date(value).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
-const image = (src, alt='', cls='') => src ? `<img class="${cls}" src="${e(src)}" alt="${e(alt)}" loading="lazy" decoding="async">` : '';
+const dimensions = src => {
+  if(!src.startsWith('/'))return '';
+  const {width,height}=imageSize(readFileSync(`public${src}`));
+  return ` width="${width}" height="${height}"`;
+};
+const image = (src, alt='', cls='') => src ? `<img class="${cls}"${dimensions(src)} src="${e(src)}" alt="${e(alt)}" loading="lazy" decoding="async">` : '';
 const link = (url,label,cls='text-link') => `<a class="${cls}" href="${e(url)}">${e(label)}</a>`;
 const quote = q => q ? `<figure class="reading-quote"><blockquote>${e(q.quote)}</blockquote><figcaption>— ${e(q.author)}</figcaption></figure>` : '';
 export function generateRestored({write,layout}) {
@@ -20,6 +26,12 @@ export function generateRestored({write,layout}) {
       ${s.image?(s.id==='weekly-loop'?`<a href="/loop/">${image('/assets/images/'+s.image,s.title)}</a>`:image('/assets/images/'+s.image,s.title)):''}
       ${quote(s.pullquote||(s.quote_section?quotes.find(q=>q.section===s.quote_section):null))}<div class="prose">${md(s.afterContent||'')}</div>${s.link?link(s.link,'Explore more →'):''}</section>`).join('')}
       ${name==='loop'?link('/podcast/','Next: Listen to some of our conversations →'):''}</div></div>`));
+  }
+
+  for (const file of readdirSync('content/historical-pages')) {
+    const raw=readFileSync(`content/historical-pages/${file}`,'utf8');
+    const [,metadata,...body]=raw.split('---');const data=parse(metadata);const path=`/${file.replace(/\.md$/,'.html')}`;
+    write(path.slice(1),layout(data.title,data.description,path,`<article class="blog-article"><header class="library-hero"><p class="section-index">From the original website / Archive</p><h1>${e(data.title)}</h1></header><div class="prose article-body">${md(body.join('---'))}</div></article>`));
   }
 
   const profiles=json('alumni').filter(p=>p.picture||p.about).sort((a,b)=>(a.displayName||a.name||a.npub).localeCompare(b.displayName||b.name||b.npub,undefined,{sensitivity:'base'})||a.npub.localeCompare(b.npub));
@@ -39,7 +51,7 @@ export function generateRestored({write,layout}) {
   });
   for(const post of historical) write(post.path.slice(1),layout(post.title,post.description,post.path,`<article class="blog-article">${link('/blog/','← All articles')}<header><p class="section-index">${date(post.date)} / Archive</p><h1>${e(post.title)}</h1>${image('/'+post.image,post.title,'reading-cover')}</header><div class="prose article-body">${md(post.body)}</div></article>`));
   const articles=blogArticles();
-  write('blog/index.html',layout('Blog','Notes from the frontier of freedom tech.','/blog/',`<header class="library-hero"><h1>Blog</h1><p class="content-lead">Notes from the frontier of freedom tech.</p>${link('/blog/rss.xml','Subscribe via RSS ↗')}</header><div class="blog-grid">${articles.map(a=>`<article class="blog-card"><a href="/blog/${a.slug}/">${image(a.image,a.title)}<time datetime="${new Date(a.publishedAt*1000).toISOString()}">${date(a.publishedAt*1000)}</time><h2>${e(a.title)}</h2></a><p>${e(a.summary)}</p></article>`).join('')}</div><section class="reading-section"><h2>Earlier posts</h2><div class="blog-grid">${historical.map(post=>`<article class="blog-card">${link(post.path,post.title)}<p>${e(post.description)}</p></article>`).join('')}</div></section>`));
+  write('blog/index.html',layout('Blog','Notes from the frontier of freedom tech.','/blog/',`<header class="library-hero"><h1>Blog</h1><p class="content-lead">Notes from the frontier of freedom tech.</p><span id="blog-follow">${link('/blog/rss.xml','Subscribe via RSS ↗')}</span></header><div class="blog-grid">${articles.map(a=>`<article class="blog-card"><a href="/blog/${a.slug}/">${image(a.image,a.title)}<time datetime="${new Date(a.publishedAt*1000).toISOString()}">${date(a.publishedAt*1000)}</time><h2>${e(a.title)}</h2></a><p>${e(a.summary)}</p></article>`).join('')}</div><p id="blog-podcast">${link('/podcast/','Listen to dialogues →')}</p><section class="reading-section"><h2>Earlier posts</h2><div class="blog-grid">${historical.map(post=>`<article class="blog-card">${link(post.path,post.title)}<p>${e(post.description)}</p></article>`).join('')}</div></section>`));
   for(const a of articles) write(`blog/${a.slug}/index.html`,layout(a.title,a.summary||a.title,`/blog/${a.slug}/`,`<article class="blog-article">${link('/blog/','← All articles')}<header><p class="section-index"><time datetime="${new Date(a.publishedAt*1000).toISOString()}">${date(a.publishedAt*1000)}</time></p><h1>${e(a.title)}</h1>${a.summary?`<p class="content-lead">${e(a.summary)}</p>`:''}${image(a.image,a.title,'reading-cover')}</header><div class="prose article-body">${a.html}</div><section class="blog-activity" data-blog-activity data-article-address="30023:83d999a148625c3d2bb819af3064c0f6a12d7da88f68b2c69221f3a746171d19:${e(a.identifier)}" data-article-id="${a.id}" data-relays="wss://nos.lol wss://relay.damus.io" data-profile-relays="wss://nos.lol wss://relay.damus.io wss://relay.vertexlab.io" aria-label="Reactions and comments"><p data-reaction-status role="status">Loading reactions…</p><div class="blog-reaction-list" data-reaction-list hidden></div><p data-comment-status role="status">Loading comments…</p><ol class="blog-comment-list" data-comment-list hidden></ol><noscript><a href="${e(a.url)}">Join the discussion on Nostr ↗</a></noscript></section><div class="article-footer">${link(a.url,'Join the discussion ↗')}${link('/blog/','← All articles')}</div></article><script type="module" src="/src/blog/entry.js"></script>`));
   mkdirSync('public/blog',{recursive:true});
   writeFileSync('public/blog/rss.xml',`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>The Sovereign Engineering Blog</title><link>${site}/blog/</link><description>Notes from the frontier of freedom tech.</description>${articles.map(a=>`<item><title>${e(a.title)}</title><link>${site}/blog/${a.slug}/</link><guid>${site}/blog/${a.slug}</guid><pubDate>${new Date(a.publishedAt*1000).toUTCString()}</pubDate><description>${e(a.html)}</description></item>`).join('')}</channel></rss>`);

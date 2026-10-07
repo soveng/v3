@@ -35,10 +35,10 @@ if (form) {
   });
   function revealHash() {
     if (!location.hash) return;
-    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    const target = document.getElementById((() => { try { return decodeURIComponent(location.hash.slice(1)); } catch { return ''; } })());
     if (target?.classList.contains('project-record')) {
       query.value = ''; if (cohort) cohort.value = ''; limit = cards.length; update(false);
-      requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+      requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }));
     }
   }
   update(false); revealHash();

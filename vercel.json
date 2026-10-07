@@ -42,16 +42,6 @@
       "permanent": true
     },
     {
-      "source": "/nostr.html",
-      "destination": "/projects/nostr/",
-      "permanent": true
-    },
-    {
-      "source": "/madeira.html",
-      "destination": "/concept/#environment",
-      "permanent": true
-    },
-    {
       "source": "/faq.html",
       "destination": "/faq/",
       "permanent": true
@@ -79,6 +69,36 @@
     {
       "source": "/2024/03/19/what-came-out-of-SEC-01.html",
       "destination": "/blog/1710949472591/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/",
+      "destination": "/bitcoin.html",
+      "permanent": true
+    },
+    {
+      "source": "/nostr/",
+      "destination": "/nostr.html",
+      "permanent": true
+    },
+    {
+      "source": "/madeira/",
+      "destination": "/madeira.html",
+      "permanent": true
+    },
+    {
+      "source": "/all_posts/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/dialogue/",
+      "destination": "https://dergigi.com/dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/sloppypasta/",
+      "destination": "https://dergigi.com/sloppypasta",
       "permanent": true
     }
   ]
