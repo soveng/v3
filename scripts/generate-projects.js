@@ -31,7 +31,7 @@ export function generateProjects({ write, layout, escape: e }) {
       <div class="project-record-links">${story ? link(`/projects/${story.slug}/`, "Read the story", "project-story-link") : ""}${links.map(l => link(l.link, l.linkText)).join("")}</div>
     </article>`;
   };
-  const directory = (list, overview) => `<section class="archive-explorer" aria-labelledby="directory-title">${overview ? '<span id="project-archives" class="legacy-anchor" aria-hidden="true"></span>' : ""}
+  const directory = (list, overview, paginate = true) => `<section class="archive-explorer" aria-labelledby="directory-title">${overview ? '<span id="project-archives" class="legacy-anchor" aria-hidden="true"></span>' : ""}
     <div class="archive-section-heading"><h2 id="directory-title">${overview ? "Explore the work." : "Built in this cohort."}</h2></div>
     <form class="project-filters" role="search" hidden>
       <label>Find a project<input type="search" name="q" placeholder="Search names, ideas, protocols…" autocomplete="off"></label>
@@ -41,7 +41,7 @@ export function generateProjects({ write, layout, escape: e }) {
     <p class="project-results" role="status" aria-live="polite" hidden></p>
     <div class="project-record-grid">${list.map(p => card(p, overview)).join("")}</div>
     <p class="project-empty" hidden>No projects found. Try another name or clear the filters.</p>
-    <button class="project-more" type="button" hidden>Show more projects ↓</button>
+    ${paginate ? '<button class="project-more" type="button" hidden>Show more projects ↓</button>' : ""}
     </section>`;
   const scripts = '<script type="module" src="/src/project-archive.js"></script>';
   const summary = (c, compact = false) => `<a id="${c}" class="cohort-tile${compact ? " compact" : ""}" href="/projects/${c}/"><span class="cohort-code">${c}</span><h3>${e(intros[c]?.theme || c)}</h3><p>${entries(c).length} projects <span aria-hidden="true">↗</span></p></a>`;
@@ -54,7 +54,7 @@ export function generateProjects({ write, layout, escape: e }) {
     ${directory(cohorts.flatMap(entries), true)}<section class="project-lineage"><div class="archive-section-heading"><h2>Building blocks.</h2><p>Explore the foundations we build with.</p></div>${stories.filter(s => s.buildingBlock).map(s => `<a href="/projects/${s.slug}/"><span>Explore</span><strong>${e(s.name)}</strong><span aria-hidden="true">→</span></a>`).join("")}</section>${scripts}</div>`, "/images/sovereign-engineering.png"));
   for (const [index, cohort] of cohorts.entries()) {
     const pager = `<nav class="cohort-pager" aria-label="Adjacent cohorts">${cohorts[index + 1] ? `<a href="/projects/${cohorts[index + 1]}/">← ${cohorts[index + 1]}</a>` : '<span></span>'}<a href="/projects/">All cohorts</a>${cohorts[index - 1] ? `<a href="/projects/${cohorts[index - 1]}/">${cohorts[index - 1]} →</a>` : '<span></span>'}</nav>`;
-    write(`projects/${cohort}/index.html`, layout(`${cohort} — ${intros[cohort]?.theme || "Projects"}`, `Projects built during ${cohort} at Sovereign Engineering.`, `/projects/${cohort}/`, `<div class="project-archive"><a class="text-link" href="/projects/">← Project archive</a><header class="cohort-hero"><p class="section-index">${cohort}</p><h1>${e(intros[cohort]?.theme || cohort)}<span class="cohort-ghost" aria-hidden="true">${cohort.slice(-2)}</span></h1><p class="content-lead">${intro(cohort)}</p></header>${pager}${directory(entries(cohort), false)}${pager}${scripts}</div>`, "/images/sovereign-engineering.png"));
+    write(`projects/${cohort}/index.html`, layout(`${cohort} — ${intros[cohort]?.theme || "Projects"}`, `Projects built during ${cohort} at Sovereign Engineering.`, `/projects/${cohort}/`, `<div class="project-archive"><a class="text-link" href="/projects/">← Project archive</a><header class="cohort-hero"><p class="section-index">${cohort}</p><h1>${e(intros[cohort]?.theme || cohort)}<span class="cohort-ghost" aria-hidden="true">${cohort.slice(-2)}</span></h1><p class="content-lead">${intro(cohort)}</p></header>${pager}${directory(entries(cohort), false, cohort !== "SEC-08")}${pager}${scripts}</div>`, "/images/sovereign-engineering.png"));
   }
   for (const [index, story] of stories.entries()) {
     const related = projects.filter(p => {
