@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { extname } from 'node:path';
 import { Resvg } from '@resvg/resvg-js';
 import { parse } from 'yaml';
@@ -69,7 +69,10 @@ function art(path, image) {
     return `<path d="M935 190 V490" stroke="#536057" stroke-width="2"/>${['2023','2024','2025','2026','2027'].map((year,i)=>`<circle cx="935" cy="${190+i*75}" r="${i===4?7:4}" fill="${i===4?'#ed3238':'#eee8dd'}"/><text x="965" y="${196+i*75}" fill="#c5c4b9" font-family="DM Mono" font-size="19">${year}</text>`).join('')}`;
   }
   if (path.startsWith('/podcast/')) {
-    return `<image x="805" y="205" width="310" height="310" href="${cover}"/><path d="M805 545 H1115" stroke="#ed3238" stroke-width="3"/>`;
+    const episode = path !== '/podcast/';
+    const file = episode && image ? `public/images/dialogue-covers/${createHash('sha256').update(image).digest('hex').slice(0,16)}` : null;
+    const artwork = file ? dataImage(`${file}.${existsSync(`${file}.png`) ? 'png' : 'jpg'}`) : cover;
+    return `<image x="780" y="190" width="360" height="360" preserveAspectRatio="xMidYMid meet" href="${artwork}"/><path d="M780 570 H1140" stroke="#ed3238" stroke-width="3"/>`;
   }
   if (path === '/') {
     // Frame the supplied portrait around the figure and city in the wide card.

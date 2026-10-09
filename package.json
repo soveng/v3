@@ -13,7 +13,9 @@
     "preview": "vite preview",
     "check:social": "npm run build && node scripts/check-social-previews.mjs",
     "check:migration": "npm run build && node scripts/check-migration.mjs",
-    "check:live-links": "node scripts/check-live-links.mjs"
+    "check:live-links": "node scripts/check-live-links.mjs",
+    "prebuild": "node scripts/sync-podcast-artwork.mjs",
+    "predev": "node scripts/sync-podcast-artwork.mjs"
   },
   "dependencies": {
     "gsap": "^3.13.0",
