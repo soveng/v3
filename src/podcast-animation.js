@@ -1,8 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export function animatePodcast(reducedMotion) {
-  const scene = document.querySelector(".podcast-preview");
+export function animatePodcast(reducedMotion, scene = document.querySelector(".podcast-preview"), autoplay = false) {
   if (!scene || reducedMotion) return;
 
   gsap.registerPlugin(ScrollTrigger);
@@ -19,7 +18,12 @@ export function animatePodcast(reducedMotion) {
 
   gsap.set(select(".grug-portrait"), { transformOrigin: "50% 90%" });
   const timeline = gsap.timeline({
-    scrollTrigger: {
+    scrollTrigger: autoplay ? {
+      trigger: scene,
+      start: "top 65%",
+      once: true,
+      toggleActions: "play none none none",
+    } : {
       trigger: scene,
       start: "top 65%",
       end: "bottom bottom",

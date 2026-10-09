@@ -761,3 +761,11 @@ details .prose { color:var(--dim); padding:0 24px 12px 0; }
 .blog-comment-header { display:flex; gap:12px; align-items:center; font:12px/1.5 var(--mono); }
 .blog-comment-avatar { width:32px; height:32px; border-radius:50%; object-fit:cover; }
 .blog-comment-content { white-space:pre-wrap; margin-top:14px; color:var(--dim); line-height:1.5; }
+
+/* A breathing space between recent dialogues and the full archive. */
+.podcast-bell-interlude { padding:64px 0 32px; }
+.podcast-bell-interlude .bell-scene { max-width:760px; margin:auto; }
+.podcast-bell-interlude .bell-meme { max-height:none; }
+@media (max-width:600px) {
+  .podcast-bell-interlude { padding:48px 0 24px; }
+}
