@@ -39,7 +39,7 @@ function textWidth(text, size) {
   }
   return widthCache.get(text) * size / 100;
 }
-function fitTitle(title, explicitLines) {
+function fitTitle(title, explicitLines, episode = false) {
   for (let size = explicitLines ? 100 : 86; size >= 38; size -= 2) {
     const lines = explicitLines ? [...explicitLines] : [''];
     if (!explicitLines) for (const word of title.split(/\s+/)) {
@@ -47,7 +47,7 @@ function fitTitle(title, explicitLines) {
       if (lines.at(-1) && textWidth(candidate, size) > 660) lines.push(word);
       else lines[lines.length - 1] = candidate;
     }
-    if (lines.length <= 3 && lines.every(line => textWidth(line, size) <= 660) && lines.length * size <= (explicitLines ? 290 : 250)) return {lines,size};
+    if (lines.length <= (episode ? 5 : 3) && lines.every(line => textWidth(line, size) <= 660) && lines.length * size <= (episode ? 330 : explicitLines ? 290 : 250)) return {lines,size};
   }
   throw new Error(`Social preview title is too long: ${title}`);
 }
@@ -89,13 +89,13 @@ export function socialPreview(title, description, path, image) {
   const chapter = mountain ? parse(readFileSync('content/mountain.md','utf8').split('---')[1]).chapters[0] : null;
   const cardTitle = home ? 'Build the tools. Ship the future.' : mountain ? chapter.title : title.replace(/ — No Solutions$/, '');
   const explicitLines = home ? ['Build the tools.', 'Ship the future.'] : mountain ? chapter.title.split(/(?<=\.)\s+/) : null;
-  const {lines,size} = fitTitle(cardTitle, explicitLines);
+  const {lines,size} = fitTitle(cardTitle, explicitLines, episode);
   const label = home ? 'SIX WEEKS / MADEIRA' : mountain ? chapter.day.toUpperCase() : episode ? 'NO SOLUTIONS / DIALOGUES' : path === '/podcast/' ? 'FREE-FLOWING DIALOGUES' : path.startsWith('/projects/') ? 'PROJECTS / OPEN BUILDING BLOCKS' : 'SOVEREIGN ENGINEERING / THE DETAILS';
   const subtitle = home ? 'A program to ship something real.' : mountain ? 'A week of dialogue. 24 hours to build.' : path.startsWith('/podcast/') ? 'Walking towards a better internet.' : path.startsWith('/projects/') ? 'Explore the work. Connect the ideas.' : 'The program, the people, and what to expect.';
   const episodeNumber = episode ? path.match(/^\/podcast\/(\d+)-/)?.[1] : null;
   const footer = episodeNumber !== null && episodeNumber !== undefined ? `NOSOLUTIONS.SHOW/${Number(episodeNumber)}` : path === '/podcast/' ? 'NOSOLUTIONS.SHOW' : 'THINK TOGETHER. BUILD TOGETHER.';
   const background = mountain ? '#102529' : '#080808';
-  const card = svg(`<defs><linearGradient id="fade"><stop stop-color="${background}"/><stop offset="1" stop-color="${background}" stop-opacity="0"/></linearGradient><linearGradient id="fade-down" x2="0" y2="1"><stop stop-color="${background}"/><stop offset="1" stop-color="${background}" stop-opacity="0"/></linearGradient><linearGradient id="fade-up" x2="0" y2="1"><stop stop-color="${background}" stop-opacity="0"/><stop offset="1" stop-color="${background}"/></linearGradient></defs><rect width="1200" height="630" fill="${background}"/><g transform="translate(0 ${episode ? -80 : 0})">${art(path,image)}${episode ? '' : `<image x="58" y="46" width="46" height="54" href="${brandmark}"/><g fill="#eee8dd" font-family="DM Mono" font-size="17" letter-spacing="2"><text x="124" y="68">SOVEREIGN</text><text x="124" y="92">ENGINEERING</text></g>`}${episode ? '' : `<text x="60" y="176" font-family="DM Mono" font-size="16" letter-spacing="1.4" fill="${mountain?'#e5aa80':'#a7a29a'}">${e(label)}</text>`}<g font-family="EB Garamond" font-size="${size}" letter-spacing="-2">${lines.map((line,i)=>`<text x="57" y="${270+i*size*.96}" fill="${i===lines.length-1&&lines.length>1?(mountain?'#e5aa80':'#ed3238'):'#eee8dd'}">${e(line)}</text>`).join('')}</g><text x="60" y="${Math.max(450,285+lines.length*size*.96)}" font-family="EB Garamond" font-size="27" fill="#c5c4b9">${e(subtitle)}</text><path d="M60 567 H700" stroke="#536057"/><text x="${episode ? 1140 : 60}" y="600" text-anchor="${episode ? 'end' : 'start'}" font-family="DM Mono" font-size="14" letter-spacing="2" fill="#a7a29a">${e(footer)}</text></g>`);
+  const card = svg(`<defs><linearGradient id="fade"><stop stop-color="${background}"/><stop offset="1" stop-color="${background}" stop-opacity="0"/></linearGradient><linearGradient id="fade-down" x2="0" y2="1"><stop stop-color="${background}"/><stop offset="1" stop-color="${background}" stop-opacity="0"/></linearGradient><linearGradient id="fade-up" x2="0" y2="1"><stop stop-color="${background}" stop-opacity="0"/><stop offset="1" stop-color="${background}"/></linearGradient></defs><rect width="1200" height="630" fill="${background}"/><g transform="translate(0 ${episode ? -80 : 0})">${art(path,image)}${episode ? '' : `<image x="58" y="46" width="46" height="54" href="${brandmark}"/><g fill="#eee8dd" font-family="DM Mono" font-size="17" letter-spacing="2"><text x="124" y="68">SOVEREIGN</text><text x="124" y="92">ENGINEERING</text></g>`}${episode ? '' : `<text x="60" y="176" font-family="DM Mono" font-size="16" letter-spacing="1.4" fill="${mountain?'#e5aa80':'#a7a29a'}">${e(label)}</text>`}<g font-family="EB Garamond" font-size="${size}" letter-spacing="-2">${lines.map((line,i)=>`<text x="57" y="${(episode ? 190+size*.75 : 270)+i*size*.96}" fill="${i===lines.length-1&&lines.length>1?(mountain?'#e5aa80':'#ed3238'):'#eee8dd'}">${e(line)}</text>`).join('')}</g><text x="60" y="${episode ? 535 : Math.max(450,285+lines.length*size*.96)}" font-family="EB Garamond" font-size="27" fill="#c5c4b9">${e(subtitle)}</text><path d="M60 567 H700" stroke="#536057"/><text x="${episode ? 1140 : 60}" y="600" text-anchor="${episode ? 'end' : 'start'}" font-family="DM Mono" font-size="14" letter-spacing="2" fill="#a7a29a">${e(footer)}</text></g>`);
   const png = new Resvg(card,{font}).render().asPng();
   const hash = createHash('sha256').update(png).digest('hex').slice(0,12);
   const filename = `${path === '/' ? 'home' : path.slice(1,-1).replaceAll('/','-')}-${hash}.png`;
