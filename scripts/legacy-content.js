@@ -12,6 +12,7 @@ export const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&
 export const slug = text => text.toLowerCase().replace(/[^\p{L}\p{N}\s_-]/gu, '').replace(/\s/g, '-');
 export const safeImage = value => /^(https?:\/\/|\/(?!\/))/.test(value || '') ? value : '';
 const replacements = {
+  'https://sovereignengineering.io/assets/images/sec01-landing.jpg':'/assets/images/sec01-landing.jpg',
   'https://sovereignengineering.io/assets/images/banner.jpg':'/images/banner.png',
   'https://sovereignengineering.io/assets/images/bell-labs.jpg':'/images/blog/bell-labs.jpeg',
   'https://sovereignengineering.io/assets/images/school-of-athens.jpg':'/images/blog/school-of-athens.jpeg',
