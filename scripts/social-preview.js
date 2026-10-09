@@ -34,7 +34,8 @@ const widthCache = new Map();
 function textWidth(text, size) {
   if (!widthCache.has(text)) {
     const renderer = new Resvg(svg(`<text y="120" font-family="EB Garamond" font-size="100">${e(text)}</text>`), {font});
-    widthCache.set(text, renderer.innerBBox()?.width || 0);
+    // innerBBox clips to the SVG viewport, undercounting long titles.
+    widthCache.set(text, renderer.getBBox()?.width || 0);
   }
   return widthCache.get(text) * size / 100;
 }
