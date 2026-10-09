@@ -4,6 +4,9 @@ if (form) {
   const status = document.querySelector('.project-results');
   const more = document.querySelector('.project-more');
   const empty = document.querySelector('.project-empty');
+  const grid = document.querySelector('.project-record-grid');
+  const searchFirst = form.dataset.searchFirst === 'true';
+  let linkedCard = null;
   const query = form.elements.q;
   const cohort = form.elements.cohort;
   const params = new URLSearchParams(location.search);
@@ -14,11 +17,14 @@ if (form) {
   form.hidden = status.hidden = false;
   function update(save = true) {
     const words = query.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    const matching = cards.filter(card => (!cohort?.value || card.dataset.cohort === cohort.value) && words.every(word => card.dataset.search.includes(word)));
+    const active = !searchFirst || words.length > 0 || Boolean(cohort?.value);
+    grid.hidden = !active && !linkedCard;
+    const matching = cards.filter(card => (active || card === linkedCard) && (!cohort?.value || card.dataset.cohort === cohort.value) && words.every(word => card.dataset.search.includes(word)));
     cards.forEach(card => { card.hidden = true; });
     matching.slice(0, limit).forEach(card => { card.hidden = false; });
     status.textContent = `${matching.length} ${matching.length === 1 ? 'project' : 'projects'}${matching.length > limit ? ` · Showing ${limit}` : ''}`;
-    empty.hidden = matching.length > 0;
+    status.hidden = !active && !linkedCard;
+    empty.hidden = !active || matching.length > 0;
     if (more) more.hidden = matching.length <= limit;
     if (save) {
       const url = new URL(location.href);
@@ -27,8 +33,8 @@ if (form) {
     }
   }
   form.addEventListener('submit', event => event.preventDefault());
-  form.addEventListener('input', () => { limit = initialLimit; update(); });
-  form.addEventListener('reset', () => { requestAnimationFrame(() => { limit = initialLimit; update(); query.focus(); }); });
+  form.addEventListener('input', () => { linkedCard = null; limit = initialLimit; update(); });
+  form.addEventListener('reset', () => { requestAnimationFrame(() => { linkedCard = null; limit = initialLimit; update(); query.focus(); }); });
   more?.addEventListener('click', () => {
     const firstHidden = cards.filter(c => c.hidden).find(c => (!cohort?.value || c.dataset.cohort === cohort.value) && query.value.trim().toLowerCase().split(/\s+/).every(w => c.dataset.search.includes(w)));
     limit += 18; update();
@@ -38,7 +44,7 @@ if (form) {
     if (!location.hash) return;
     const target = document.getElementById((() => { try { return decodeURIComponent(location.hash.slice(1)); } catch { return ''; } })());
     if (target?.classList.contains('project-record')) {
-      query.value = ''; if (cohort) cohort.value = ''; limit = cards.length; update(false);
+      linkedCard = target; query.value = ''; if (cohort) cohort.value = ''; limit = cards.length; update(false);
       requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }));
     }
   }

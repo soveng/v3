@@ -34,13 +34,13 @@ export function generateProjects({ write, layout, escape: e }) {
   };
   const directory = (list, overview, paginate = true) => `<section class="archive-explorer" aria-labelledby="directory-title">${overview ? '<span id="project-archives" class="legacy-anchor" aria-hidden="true"></span>' : ""}
     <div class="archive-section-heading"><h2 id="directory-title">${overview ? "Explore the work." : "Built in this cohort."}</h2></div>
-    <form class="project-filters" role="search" hidden>
+    <form class="project-filters" role="search"${overview ? ' data-search-first="true"' : ""} hidden>
       <label>Find a project<input type="search" name="q" placeholder="Search names, ideas, protocols…" autocomplete="off"></label>
       ${overview ? `<label>Cohort<select name="cohort"><option value="">All cohorts</option>${cohorts.map(c => `<option>${c}</option>`).join("")}</select></label>` : ""}
       <button type="reset">Clear</button>
     </form>
     <p class="project-results" role="status" aria-live="polite" hidden></p>
-    <div class="project-record-grid">${list.map(p => card(p, overview)).join("")}</div>
+    <div class="project-record-grid"${overview ? " hidden" : ""}>${list.map(p => card(p, overview)).join("")}</div>
     <p class="project-empty" hidden>No projects found. Try another name or clear the filters.</p>
     ${paginate ? '<button class="project-more" type="button" hidden>Show more projects ↓</button>' : ""}
     </section>`;
