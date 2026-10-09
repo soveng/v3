@@ -26,6 +26,50 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "nosolutions.show"
+        }
+      ],
+      "destination": "https://soveng.com/podcast/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "nosolutions.show"
+        }
+      ],
+      "destination": "https://soveng.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "nsltns.com"
+        }
+      ],
+      "destination": "https://soveng.com/podcast/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "nsltns.com"
+        }
+      ],
+      "destination": "https://soveng.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
