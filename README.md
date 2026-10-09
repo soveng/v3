@@ -323,3 +323,8 @@ designer credits, and webshop URL. Its introduction and product copy, including
 inline links, match the live site as of October 6, 2026. `scripts/render-swag.js` builds `/swag/`.
 The galleries use `src/swag.js` for image selection with a short transition;
 without JavaScript, each thumbnail links directly to its image.
+
+Podcast shortcuts `/0` through `/38` redirect permanently to the dedicated
+episode pages. Both trailing-slash spellings work. When adding an episode, add
+its numbered shortcut to `content/legacy-redirects.json` and `vercel.json`;
+`check:migration` checks that every episode has the correct shortcut.

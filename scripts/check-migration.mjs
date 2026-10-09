@@ -41,6 +41,15 @@ for(const path of legacyLinks) {
 }
 const rss=readFileSync('dist/dialogues.xml','utf8');
 const feed=new XMLParser({ignoreAttributes:false,parseTagValue:false}).parse(rss).rss.channel;
+for(const episode of feed.item) {
+ const number=Number(episode.title.match(/^#?(\d+):/)[1]);
+ const shortcut=redirects[`/${number}`];
+ assert.ok(shortcut?.startsWith('/podcast/'),`Missing episode shortcut /${number}`);
+ const destination=resolve(shortcut,'https://sovereignengineering.io/');
+ assert.ok(destination&&existsSync(destination.file),`Broken episode shortcut /${number}`);
+ const title=D.textContent(D.findOne(el=>el.name==='h1',docs.get(destination.file).children));
+ assert.equal(title,episode.title,`Wrong episode at /${number}`);
+}
 for(const old of json('legacy-podcast-items')) {
  const episode=feed.item.find(item=>(item.guid?.['#text']||item.guid)===old.guid);
  assert.ok(episode,`Podcast GUID missing: ${old.guid}`);

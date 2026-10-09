@@ -100,6 +100,201 @@
       "source": "/sloppypasta/",
       "destination": "https://dergigi.com/sloppypasta",
       "permanent": true
+    },
+    {
+      "source": "/38/",
+      "destination": "/podcast/38-trusted-execution-environments-and-the-future-of-human-machine-interaction-w-gzuuus/",
+      "permanent": true
+    },
+    {
+      "source": "/37/",
+      "destination": "/podcast/37-advanced-malware-w-arjen/",
+      "permanent": true
+    },
+    {
+      "source": "/36/",
+      "destination": "/podcast/36-a-taste-for-freedom-w-zaza/",
+      "permanent": true
+    },
+    {
+      "source": "/35/",
+      "destination": "/podcast/35-drinking-from-the-firehose-w-sec-08/",
+      "permanent": true
+    },
+    {
+      "source": "/34/",
+      "destination": "/podcast/34-female-engineering-w-sherry/",
+      "permanent": true
+    },
+    {
+      "source": "/33/",
+      "destination": "/podcast/33-asmap-nix-and-nix-nostr-w-julien/",
+      "permanent": true
+    },
+    {
+      "source": "/32/",
+      "destination": "/podcast/32-nostrology-w-whisperhash/",
+      "permanent": true
+    },
+    {
+      "source": "/31/",
+      "destination": "/podcast/31-buzz-mosaico-and-other-stuff-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/30/",
+      "destination": "/podcast/30-napplets-w-sandwich/",
+      "permanent": true
+    },
+    {
+      "source": "/29/",
+      "destination": "/podcast/29-state-of-the-mint-and-mind-w-calle/",
+      "permanent": true
+    },
+    {
+      "source": "/28/",
+      "destination": "/podcast/28-speak-human-w-mouxdesign/",
+      "permanent": true
+    },
+    {
+      "source": "/27/",
+      "destination": "/podcast/27-separation-of-business-from-state-w-gsovereignty/",
+      "permanent": true
+    },
+    {
+      "source": "/26/",
+      "destination": "/podcast/26-zapstore-w-franzap/",
+      "permanent": true
+    },
+    {
+      "source": "/25/",
+      "destination": "/podcast/25-white-noise-mls-and-marmot-w-jeff-g/",
+      "permanent": true
+    },
+    {
+      "source": "/24/",
+      "destination": "/podcast/24-building-fips-w-johnathan-corgan/",
+      "permanent": true
+    },
+    {
+      "source": "/23/",
+      "destination": "/podcast/23-shipping-violently-w-justin-moon/",
+      "permanent": true
+    },
+    {
+      "source": "/22/",
+      "destination": "/podcast/22-sovereign-engineering-w-yo/",
+      "permanent": true
+    },
+    {
+      "source": "/21/",
+      "destination": "/podcast/21-hashtree-nostr-vpn-and-iris-w-martti-malmi/",
+      "permanent": true
+    },
+    {
+      "source": "/20/",
+      "destination": "/podcast/20-archipelago-meshtadels-w-shadrach/",
+      "permanent": true
+    },
+    {
+      "source": "/19/",
+      "destination": "/podcast/19-romantically-shitting-on-paywalls-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/18/",
+      "destination": "/podcast/18-rewriting-tenex-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/17/",
+      "destination": "/podcast/17-organic-tech-w-arjen/",
+      "permanent": true
+    },
+    {
+      "source": "/16/",
+      "destination": "/podcast/16-one-click-and-run-w-sec-05/",
+      "permanent": true
+    },
+    {
+      "source": "/15/",
+      "destination": "/podcast/15-make-localhost-great-again-w-sec-05/",
+      "permanent": true
+    },
+    {
+      "source": "/14/",
+      "destination": "/podcast/14-building-browsers-w-justin/",
+      "permanent": true
+    },
+    {
+      "source": "/13/",
+      "destination": "/podcast/13-the-linux-of-social-media-w-hzrd149/",
+      "permanent": true
+    },
+    {
+      "source": "/12/",
+      "destination": "/podcast/12-the-windy-lawnmower-stuff-w-pete/",
+      "permanent": true
+    },
+    {
+      "source": "/11/",
+      "destination": "/podcast/11-10x-less-productive-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/10/",
+      "destination": "/podcast/10-walking-with-jesus-w-gzuuus/",
+      "permanent": true
+    },
+    {
+      "source": "/9/",
+      "destination": "/podcast/09-no-strudelutions-w-hzrd149/",
+      "permanent": true
+    },
+    {
+      "source": "/8/",
+      "destination": "/podcast/08-navigating-the-vibe-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/7/",
+      "destination": "/podcast/07-zig-multiplatform-w-justin/",
+      "permanent": true
+    },
+    {
+      "source": "/6/",
+      "destination": "/podcast/06-the-winds-of-ai-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/5/",
+      "destination": "/podcast/05-prompt-pray-w-paul/",
+      "permanent": true
+    },
+    {
+      "source": "/4/",
+      "destination": "/podcast/04-ecash-fixes-402-w-calle/",
+      "permanent": true
+    },
+    {
+      "source": "/3/",
+      "destination": "/podcast/03-data-ownership-is-a-lie-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/2/",
+      "destination": "/podcast/02-there-is-no-global-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/1/",
+      "destination": "/podcast/01-start-ugly-w-pablo/",
+      "permanent": true
+    },
+    {
+      "source": "/0/",
+      "destination": "/podcast/00-test-recording-teaser-w-pablo/",
+      "permanent": true
     }
   ]
 }

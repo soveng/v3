@@ -6,7 +6,7 @@ import {parseDocument,DomUtils} from 'htmlparser2';
 const run=promisify(execFile);
 const base=new URL(process.argv[2]||'https://v3-nine-eta-60.vercel.app');
 const contract=JSON.parse(readFileSync('content/legacy-links.json','utf8'));
-const links=new Set(contract.urls);
+const links=new Set([...contract.urls,...Object.keys(JSON.parse(readFileSync('content/legacy-redirects.json','utf8')))]);
 // Check both spellings: Vercel normalizes slashes before custom redirects.
 for(const link of [...links]) {
  const url=new URL(link,base);
