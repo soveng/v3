@@ -37,7 +37,7 @@
       "permanent": true
     },
     {
-      "source": "/:path*/",
+      "source": "/:path((?!\\.well-known/nostr\\.json(?:/|$)).*)/",
       "has": [
         {
           "type": "host",
@@ -48,7 +48,7 @@
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/:path((?!\\.well-known/nostr\\.json(?:/|$)).*)",
       "has": [
         {
           "type": "host",
@@ -361,6 +361,18 @@
       "source": "/0/",
       "destination": "/podcast/00-test-recording-teaser-w-pablo/",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/.well-known/nostr.json",
+      "has": [
+        {
+          "type": "host",
+          "value": "nosolutions.show"
+        }
+      ],
+      "destination": "/no-solutions-nip05.json"
     }
   ]
 }
