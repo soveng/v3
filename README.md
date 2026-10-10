@@ -82,7 +82,9 @@ Before public release:
   deployment. The latter accepts an origin argument for checking the main domain.
 - Finish the remaining general browser review, then move the main domain and
   verify HTTPS, redirects, feeds, social previews, and Nostr verification there.
-- Applications remain closed. A real newsletter signup test is deferred.
+- Applications remain closed.
+- [x] Live Buttondown newsletter signup test passed — confirmed by Gigi on
+  2026-10-10.
 
 The 2026-10-07 URL audit captured the live site's 77 sitemap pages, content
 fragments, internal links, podcast references, and URLs found in historical
