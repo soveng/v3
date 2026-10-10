@@ -373,6 +373,10 @@
         }
       ],
       "destination": "/no-solutions-nip05.json"
+    },
+    {
+      "source": "/.well-known/nostr.json",
+      "destination": "/sovereign-engineering-nip05.json"
     }
   ]
 }
